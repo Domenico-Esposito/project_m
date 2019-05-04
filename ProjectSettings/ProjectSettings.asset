@@ -621,7 +621,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 87e08b0d-3012-4c01-ac12-208bc450f616
   framebufferDepthMemorylessMode: 0
-  projectName: Mizamo - Animation & Move
+  projectName: Test Mixamo, Animation, Move e Camera
   organizationId: domenicoesposito
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

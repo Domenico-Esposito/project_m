@@ -11,6 +11,8 @@ public class MovePlayer : MonoBehaviour
 
     private float movementSpeed = 1f;
 
+    private float angular = 0f;
+    private float preAngular = 0f;
 
     private void Awake()
     {
@@ -59,17 +61,29 @@ public class MovePlayer : MonoBehaviour
 
     private void Animation()
     {
+        Animation_Turn();
         Animation_Walk();
+    }
+
+    private void Animation_Turn()
+    {
+        
+        angular = Mathf.Abs(transform.rotation.eulerAngles.y);
+        float diff = angular - preAngular;
+        animator.SetFloat("angular", diff);
+        preAngular = angular;
+        //Debug.Log("Angular: " + angular);
+
     }
 
     private void Animation_Walk()
     {        
-        float agentSpeed = Mathf.Max(
-                        Mathf.Abs(navMeshAgent.velocity.x),
-                        Mathf.Abs(navMeshAgent.velocity.y)
-                    );
+    
+        float agentSpeed = Mathf.Abs(navMeshAgent.velocity.x);
         float animatorSpeed = agentSpeed * movementSpeed;
         animator.SetFloat("speed", animatorSpeed);
+        //Debug.Log("Speed: " + animatorSpeed);
+
     }
 
 }

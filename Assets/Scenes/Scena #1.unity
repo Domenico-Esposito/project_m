@@ -231,6 +231,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Big
       objectReference: {fileID: 0}
+    - target: {fileID: 7298696176398184232, guid: 90a11d203406a447e8a664605a65a750,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298696176398184232, guid: 90a11d203406a447e8a664605a65a750,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298696177669904284, guid: 90a11d203406a447e8a664605a65a750,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298696177669904284, guid: 90a11d203406a447e8a664605a65a750,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7298696177417359234, guid: 90a11d203406a447e8a664605a65a750,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,16 +426,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ab49e745683ca4f22854f27d6b92b3e6, type: 2}
-    - target: {fileID: 7298696177669904284, guid: 90a11d203406a447e8a664605a65a750,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298696177669904284, guid: 90a11d203406a447e8a664605a65a750,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7298696177669904288, guid: 90a11d203406a447e8a664605a65a750,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -621,16 +631,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b885c61c2fe1f4545ac0cf180c4f31c9, type: 2}
-    - target: {fileID: 7298696176398184232, guid: 90a11d203406a447e8a664605a65a750,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298696176398184232, guid: 90a11d203406a447e8a664605a65a750,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7298696176398184233, guid: 90a11d203406a447e8a664605a65a750,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -887,7 +887,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: fbd46e6b7ddaa41b68cdfcadc6d0b247, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Cervo
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: fbd46e6b7ddaa41b68cdfcadc6d0b247, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1200,7 +1200,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100144, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
       propertyPath: m_Name
-      value: Cervo
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 100144, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
       propertyPath: m_TagString
