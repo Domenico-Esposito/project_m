@@ -2010,7 +2010,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 4
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -2611,12 +2611,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d8c660f1ef1da4fa2abe67dfe718ab98, type: 2}
+    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
 --- !u!1 &753884103
@@ -4535,6 +4539,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2ff8c21b7f77b49598dd0768b1f13be5, type: 2}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
 --- !u!1 &1820744854 stripped
