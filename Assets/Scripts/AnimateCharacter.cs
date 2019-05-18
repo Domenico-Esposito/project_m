@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimateCharacter : MonoBehaviour
 {
 
-    private Animator animator;
+    public Animator animator;
 
     public float speed = 0f;
 
@@ -31,5 +31,16 @@ public class AnimateCharacter : MonoBehaviour
 
         animator.SetFloat("speed", speed);
 
+    }
+
+
+    public void TotalTurn()
+    {
+        animator.SetTrigger("TotalTurn");
+    }
+
+    public void Turn()
+    {
+        animator.SetTrigger("turn");
     }
 }
