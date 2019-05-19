@@ -168,8 +168,8 @@ public class MovePlayer : MonoBehaviour
         if (distanceFromCorner > 0.1f)
             RotationToTarget(path.corners[indexCornerPath], 10f);
 
-        // Incrementa punto di interesse
-        if (distanceFromCorner < 0.6f)
+        // Passa al corner successivo
+        if (distanceFromCorner < 0.5f)
         {
             indexCornerPath++;
 
