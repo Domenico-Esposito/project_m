@@ -68,6 +68,8 @@ public class MoveAutomaticBot : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+
+        Debug.Log("OnCollisionExit");
         if (collision.gameObject.CompareTag("Quadro") && path != null)
             timedelta = 0f;
     }
@@ -83,9 +85,7 @@ public class MoveAutomaticBot : MonoBehaviour
     private void Walk()
     {
 
-
-
-        if (timedelta > 2f)
+        if (timedelta > 5f)
         {
             GenerateNewPath();
 
@@ -130,8 +130,8 @@ public class MoveAutomaticBot : MonoBehaviour
         Collider floorPicture = pictures[indexPicture].GetComponent<Collider>();
 
         Vector3 floorPictureSize = floorPicture.bounds.size;
-        float randomXInFloorPicture = Random.Range(-floorPictureSize.x / 2f, floorPictureSize.x / 2f);
-        float randomYInFloorPicture = Random.Range(-floorPictureSize.y / 2f, floorPictureSize.y / 2f);
+        float randomXInFloorPicture = Random.Range(-floorPictureSize.x / 2.5f, floorPictureSize.x / 2.5f);
+        float randomYInFloorPicture = Random.Range(-floorPictureSize.y / 2.5f, floorPictureSize.y / 2.5f);
 
         Vector3 randomPositionInPlane = pictures[indexPicture].transform.position + new Vector3(randomXInFloorPicture, 0f, randomYInFloorPicture);
 

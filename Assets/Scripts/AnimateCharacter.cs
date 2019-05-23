@@ -25,6 +25,7 @@ public class AnimateCharacter : MonoBehaviour
 
     private readonly float tolleranceDestination = 0.5f;
 
+    [HideInInspector]
     public bool turnBack;
 
     private void Awake()
