@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveAutomaticBot : MonoBehaviour
+public class MoveCharacter : MonoBehaviour
 {
+
     private Rigidbody playerRidiBody;
-    private GameObject[] pictures;
 
     private AnimateCharacter generalAnimation;
     private AnimationViewQuadro quadroViewAnimation;
 
     private NavMeshPath path;
+
 
     private readonly float tolleranceDestination = 0.5f;
 
@@ -19,13 +20,9 @@ public class MoveAutomaticBot : MonoBehaviour
     private Vector3 firstCornerTarget;
     private int indexCornerPath = 1;
 
-    private float timedelta = 0f;
-    private int indexPicture = 0;
 
     private void Awake()
     {
-
-        pictures = GameObject.FindGameObjectsWithTag("Quadro");
 
         playerRidiBody = GetComponent<Rigidbody>();
 
@@ -39,8 +36,6 @@ public class MoveAutomaticBot : MonoBehaviour
         quadroViewAnimation.tolleranceLeft = -1.5f;
         quadroViewAnimation.tolleranceRight = 1.5f;
         quadroViewAnimation.angleForTurnLeft = quadroViewAnimation.angleForTurnRight = 50f;
-
-        GenerateNewPath();
     }
 
 
@@ -52,25 +47,15 @@ public class MoveAutomaticBot : MonoBehaviour
 
     }
 
+
     private void OnCollisionStay(Collision collision)
     {
 
         quadroViewAnimation.path = path;
         quadroViewAnimation.TurnTowardsPicture(collision);
 
-        Debug.Log("OnCollisionStay: " + timedelta);
-
-        if (collision.gameObject.CompareTag("Quadro") && path == null)
-            timedelta += Time.deltaTime;
-
     }
 
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Quadro") && path != null)
-            timedelta = 0f;
-    }
 
     private void Move()
     {
@@ -83,17 +68,9 @@ public class MoveAutomaticBot : MonoBehaviour
     private void Walk()
     {
 
-
-
-        if (timedelta > 2f)
+        if (Input.GetMouseButton(0))
         {
-            GenerateNewPath();
-
-            timedelta = 0f;
-            indexPicture = indexPicture + 1;
-
-            if (indexPicture >= pictures.Length)
-                indexPicture = 0;
+            GeneratePathMousePosition();
         }
 
         DrawPath();
@@ -107,37 +84,24 @@ public class MoveAutomaticBot : MonoBehaviour
 
     }
 
-
-    private void GenerateNewPath()
+    private void GeneratePathMousePosition()
     {
-        path = new NavMeshPath();
+        RaycastHit hit;
+        Ray rayCameraToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(rayCameraToMouse, out hit, 100, 1 << 10))
+        {
+            path = new NavMeshPath();
+            NavMesh.CalculatePath(transform.position, hit.point, 1, path);
+            //Debug.Log("Percorso - Lunghezza: " + path.corners.Length);
 
-        NavMesh.CalculatePath(transform.position, RandomCoordinatesInFloorPicture(), 1, path);
+            firstCornerTarget = path.corners[1] - transform.position;
+            generalAnimation.angleBetweenPlayerAndTarget = Vector3.Angle(transform.forward, firstCornerTarget);
 
-        Debug.Log("Percorso - Lunghezza: " + path.corners.Length);
-
-        firstCornerTarget = path.corners[1] - transform.position;
-        generalAnimation.angleBetweenPlayerAndTarget = Vector3.Angle(transform.forward, firstCornerTarget);
-        generalAnimation.localPos = transform.InverseTransformPoint(path.corners[1]);
-        indexCornerPath = 1;
-
+            generalAnimation.localPos = transform.InverseTransformPoint(path.corners[1]);
+            indexCornerPath = 1;
+        }
     }
 
-
-    private Vector3 RandomCoordinatesInFloorPicture()
-    {
-
-        Collider floorPicture = pictures[indexPicture].GetComponent<Collider>();
-
-        Vector3 floorPictureSize = floorPicture.bounds.size;
-        float randomXInFloorPicture = Random.Range(-floorPictureSize.x / 2f, floorPictureSize.x / 2f);
-        float randomYInFloorPicture = Random.Range(-floorPictureSize.y / 2f, floorPictureSize.y / 2f);
-
-        Vector3 randomPositionInPlane = pictures[indexPicture].transform.position + new Vector3(randomXInFloorPicture, 0f, randomYInFloorPicture);
-
-        return randomPositionInPlane;
-
-    }
 
     private void DrawPath()
     {
@@ -187,7 +151,7 @@ public class MoveAutomaticBot : MonoBehaviour
 
     private void FollowPath()
     {
-        Debug.Log("Movimento - indexCornerPath: " + indexCornerPath + " | Corners: " + path.corners.Length);
+        //Debug.Log("Movimento - indexCornerPath: " + indexCornerPath + " | Corners: " + path.corners.Length);
 
         playerRidiBody.MovePosition(Vector3.MoveTowards(transform.position, path.corners[indexCornerPath], Time.deltaTime * 5f));
         generalAnimation.speed = 1f;
@@ -212,5 +176,6 @@ public class MoveAutomaticBot : MonoBehaviour
             }
         }
     }
+
 
 }
