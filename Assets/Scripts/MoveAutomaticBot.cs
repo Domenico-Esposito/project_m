@@ -60,7 +60,7 @@ public class MoveAutomaticBot : MonoBehaviour
 
         Debug.Log("OnCollisionStay: " + timedelta);
 
-        if (collision.gameObject.CompareTag("Quadro") && path == null)
+        if (collision.gameObject.CompareTag("Quadro"))
             timedelta += Time.deltaTime;
 
     }
@@ -200,12 +200,12 @@ public class MoveAutomaticBot : MonoBehaviour
         // Passa al corner successivo
         if (distanceFromCorner < 0.5f)
         {
-            //Debug.Log("Passa punto successivo.");
+            Debug.Log("Passa punto successivo.");
             indexCornerPath++;
 
             if (indexCornerPath > path.corners.Length - 1)
             {
-                //Debug.Log("Movimento - Destinazione raggiunta");
+                Debug.Log("Movimento - Destinazione raggiunta");
                 generalAnimation.speed = 0f;
                 indexCornerPath = 1;
                 path = null;
