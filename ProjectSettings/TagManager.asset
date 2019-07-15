@@ -8,6 +8,10 @@ TagManager:
   - LookAtSedia
   - Wall
   - Quadro
+  - Fish Floor
+  - Salto
+  - Muro Intermedio
+  - Uscita
   layers:
   - Default
   - TransparentFX
