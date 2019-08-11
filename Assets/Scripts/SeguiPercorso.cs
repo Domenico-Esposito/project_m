@@ -5,10 +5,6 @@ using UnityEngine.AI;
 
 public abstract class SeguiPercorso : MonoBehaviour
 {
-    public float x = 0;
-    public float y = 0;
-    public float z = 0;
-
     // Pattern movimento
     private Rigidbody rigidBody;
    
@@ -21,6 +17,9 @@ public abstract class SeguiPercorso : MonoBehaviour
     public Vector3 firstCornerTarget;
     public int indexCornerPath = 1;
     public float timedelta = 0f;
+
+    public float pauseTime = 5f;
+    public float rigidBodySpeed = 5f;
 
     public abstract GameObject GetNextDestination();
 
@@ -51,9 +50,7 @@ public abstract class SeguiPercorso : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.DrawRay(transform.position,  new Vector3(x, y, z) * 3, Color.yellow);
-
+    
         Move();
         generalAnimation.Animation();
     }
@@ -85,7 +82,7 @@ public abstract class SeguiPercorso : MonoBehaviour
     private void Walk()
     {
 
-        if (timedelta > 5f)
+        if (timedelta > pauseTime)
         {
             GenerateNewPath();
             timedelta = 0f;            
@@ -193,7 +190,7 @@ public abstract class SeguiPercorso : MonoBehaviour
 
     private void FollowPath()
     {
-        rigidBody.MovePosition(Vector3.MoveTowards(transform.position, path.corners[indexCornerPath], Time.deltaTime * 5f));
+        rigidBody.MovePosition(Vector3.MoveTowards(transform.position, path.corners[indexCornerPath], Time.deltaTime * rigidBodySpeed));
         generalAnimation.speed = 1f;
 
         float distanceFromCorner = Vector3.Distance(transform.position, path.corners[indexCornerPath]);

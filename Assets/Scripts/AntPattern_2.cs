@@ -15,9 +15,9 @@ public class AntPattern_2 : SeguiPercorso
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
-        currentWall = GetNextPicture().transform.parent.gameObject;
+        currentWall = GetVisibleForBotPictureWithMinimumIndex().transform.parent.gameObject;
         
-        pictureOnWall[currentWall].Sort(Distanza);
+        pictureOnWall[currentWall].Sort(SortByPathLength);
         pictures = pictureOnWall[currentWall].GetEnumerator();
 
     }
@@ -56,46 +56,25 @@ public class AntPattern_2 : SeguiPercorso
             transform.right,
             transform.forward,
             -transform.forward
-/*             new Vector3(Mathf.Sin(22.5f * Mathf.Deg2Rad), 0, Mathf.Cos(22.5f * Mathf.Deg2Rad)),
-            - new Vector3(Mathf.Sin(22.5f * Mathf.Deg2Rad), 0, Mathf.Cos(22.5f * Mathf.Deg2Rad)),
-            new Vector3(Mathf.Sin(45 * Mathf.Deg2Rad), 0, Mathf.Cos(45 * Mathf.Deg2Rad)),
-            - new Vector3(Mathf.Sin(45 * Mathf.Deg2Rad), 0, Mathf.Cos(45 * Mathf.Deg2Rad)),
-            new Vector3(Mathf.Sin(67.5f * Mathf.Deg2Rad), 0, Mathf.Cos(67.5f * Mathf.Deg2Rad)),
-            -new Vector3(Mathf.Sin(67.5f * Mathf.Deg2Rad), 0, Mathf.Cos(67.5f * Mathf.Deg2Rad)),
-            new Vector3(Mathf.Sin(112.5f * Mathf.Deg2Rad), 0, Mathf.Cos(112.5f * Mathf.Deg2Rad)),
-            -new Vector3(Mathf.Sin(112.5f * Mathf.Deg2Rad), 0, Mathf.Cos(112.5f * Mathf.Deg2Rad)),
-            new Vector3(Mathf.Sin(135 * Mathf.Deg2Rad), 0, Mathf.Cos(135 * Mathf.Deg2Rad)),
-            - new Vector3(Mathf.Sin(135 * Mathf.Deg2Rad), 0, Mathf.Cos(135 * Mathf.Deg2Rad)),
-            new Vector3(Mathf.Sin(157.5f * Mathf.Deg2Rad), 0, Mathf.Cos(157.5f * Mathf.Deg2Rad)),
-            -new Vector3(Mathf.Sin(157.5f * Mathf.Deg2Rad), 0, Mathf.Cos(157.5f * Mathf.Deg2Rad)) */
         };
 
         List<GameObject> wallsCollision = new List<GameObject>();
 
-        foreach(Vector3 direction in directions)
+        foreach (Vector3 direction in directions)
         {
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, direction, 25f);
-            if (hits.Length > 0)
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position + new Vector3(0, 5, 0), direction, out hit, 20))
             {
-                foreach (var hit in hits)
-                {
-                    if(hit.collider.gameObject.layer == wallsLayer){
-                        Debug.Log("Hit: " + hit.collider.name, hit.collider.gameObject);
-                        if(pictureOnWall.ContainsKey(hit.collider.gameObject)){
-                            if(pictureOnWall[hit.collider.gameObject].Count > 0){
-                                wallsCollision.Add(hit.collider.gameObject);
-                            }
-                        }
-                    }
-                }
-                    
+                if (hit.collider.gameObject.layer == wallsLayer)
+                    wallsCollision.Add(hit.collider.gameObject);
             }
         }
 
         return wallsCollision;
     }
 
-    private GameObject GetNextPicture()
+
+    private GameObject GetVisibleForBotPictureWithMinimumIndex()
     {
         int nextPictureIndex = 0;
         GameObject nextPicture = null;
@@ -161,8 +140,9 @@ public class AntPattern_2 : SeguiPercorso
                 pictureOnWall[currentWall].Remove(pictures.Current);
 
                 int currentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
-
-                foreach(GameObject wall in pictureOnWall.Keys)
+                pauseTime = Random.Range(5, 90);
+                
+                foreach (GameObject wall in pictureOnWall.Keys)
                 {
                     pictureOnWall[wall].RemoveAll(
                         delegate (GameObject x){
@@ -196,17 +176,17 @@ public class AntPattern_2 : SeguiPercorso
                 return GameObject.FindGameObjectWithTag("Uscita").gameObject;
             }
 
-            pictureOnWall[currentWall].Sort(Distanza);
+            pictureOnWall[currentWall].Sort(SortByIndexPicture);
 
             pictures = pictureOnWall[currentWall].GetEnumerator();
             pictures.MoveNext();
-
         }
 
         return pictures.Current.transform.GetChild(0).gameObject;
     }
 
-    private int Distanza(GameObject x, GameObject y)
+
+    private int SortByPathLength(GameObject x, GameObject y)
     {
         float distance_1 = GetPathLength(x);
         float distance_2 = GetPathLength(y);
@@ -216,7 +196,7 @@ public class AntPattern_2 : SeguiPercorso
         return 0;
     }
 
-    private int SortIndexPictures(GameObject x, GameObject y)
+    private int SortByIndexPicture(GameObject x, GameObject y)
     {
         float distance_1 = x.GetComponent<PictureInfo>().index;
         float distance_2 = y.GetComponent<PictureInfo>().index;

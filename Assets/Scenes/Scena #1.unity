@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,14 +184,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
   generalAnimation: {fileID: 0}
   quadroViewAnimation: {fileID: 0}
   firstCornerTarget: {x: 0, y: 0, z: 0}
   indexCornerPath: 1
   timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!114 &131073891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,14 +309,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
   generalAnimation: {fileID: 0}
   quadroViewAnimation: {fileID: 0}
   firstCornerTarget: {x: 0, y: 0, z: 0}
   indexCornerPath: 1
   timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!1 &146997468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -331,19 +329,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146997468}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
   generalAnimation: {fileID: 0}
   quadroViewAnimation: {fileID: 0}
   firstCornerTarget: {x: 0, y: 0, z: 0}
   indexCornerPath: 1
   timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!114 &146997470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +447,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &146997478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146997468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!1 &170034044
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1135,14 +1151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
   generalAnimation: {fileID: 0}
   quadroViewAnimation: {fileID: 0}
   firstCornerTarget: {x: 0, y: 0, z: 0}
   indexCornerPath: 1
   timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!1 &339812825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,7 +2639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3359,19 +3374,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298892961}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
   generalAnimation: {fileID: 0}
   quadroViewAnimation: {fileID: 0}
   firstCornerTarget: {x: 0, y: 0, z: 0}
   indexCornerPath: 1
   timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!114 &1298892963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,6 +3492,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1298892971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298892961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!1 &1312285239
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,19 +4246,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786994027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
   generalAnimation: {fileID: 0}
   quadroViewAnimation: {fileID: 0}
   firstCornerTarget: {x: 0, y: 0, z: 0}
   indexCornerPath: 1
   timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!114 &1786994029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4332,6 +4364,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1786994037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786994027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
+  pauseTime: 5
+  rigidBodySpeed: 5
 --- !u!1 &1798248660
 GameObject:
   m_ObjectHideFlags: 0
@@ -4951,11 +5002,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7212818169487825833, guid: 0f1cb98f5af1040af8e9e2db5e791390,
-        type: 3}
-      propertyPath: m_Name
-      value: Room Big
-      objectReference: {fileID: 0}
     - target: {fileID: 7212818167653046945, guid: 0f1cb98f5af1040af8e9e2db5e791390,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -4965,6 +5011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212818169487825833, guid: 0f1cb98f5af1040af8e9e2db5e791390,
+        type: 3}
+      propertyPath: m_Name
+      value: Room Big
       objectReference: {fileID: 0}
     - target: {fileID: 7212818167596615475, guid: 0f1cb98f5af1040af8e9e2db5e791390,
         type: 3}
