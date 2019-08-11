@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,11 +179,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131073889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  z: 0
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
 --- !u!114 &131073891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +298,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &131073899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131073889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  z: 0
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
 --- !u!1 &146997468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -308,6 +336,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  z: 0
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
 --- !u!114 &146997470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -769,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -781,7 +817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.89
+      value: 18.55
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1099,6 +1135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  z: 0
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
 --- !u!1 &339812825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,7 +1627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.42
+      value: -15.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1591,7 +1635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.89
+      value: 8.93
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2291,26 +2335,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d8c660f1ef1da4fa2abe67dfe718ab98, type: 2}
-    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
-      propertyPath: m_CullingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2353,6 +2377,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d8c660f1ef1da4fa2abe67dfe718ab98, type: 2}
+    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 34c2caae8e79e4292916b20a84b31677, type: 3}
+      propertyPath: m_UpdateMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2580,7 +2624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3320,6 +3364,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  z: 0
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
 --- !u!114 &1298892963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4166,6 +4218,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef05e7c78a7047939bea21f471df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  z: 0
+  generalAnimation: {fileID: 0}
+  quadroViewAnimation: {fileID: 0}
+  firstCornerTarget: {x: 0, y: 0, z: 0}
+  indexCornerPath: 1
+  timedelta: 0
 --- !u!114 &1786994029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4976,6 +5036,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7212818167653046944, guid: 0f1cb98f5af1040af8e9e2db5e791390,
+        type: 3}
+      propertyPath: m_Name
+      value: Wall Bingo
+      objectReference: {fileID: 0}
     - target: {fileID: 7212818169425574231, guid: 0f1cb98f5af1040af8e9e2db5e791390,
         type: 3}
       propertyPath: m_TagString
@@ -5026,6 +5091,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7212818167754338340, guid: 0f1cb98f5af1040af8e9e2db5e791390,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7212818167678176029, guid: 0f1cb98f5af1040af8e9e2db5e791390,
         type: 3}
       propertyPath: m_TagString
@@ -5040,6 +5110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212818167526510175, guid: 0f1cb98f5af1040af8e9e2db5e791390,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5562441811467324712, guid: 0f1cb98f5af1040af8e9e2db5e791390,
         type: 3}
