@@ -7,20 +7,106 @@ public class AntPattern_2 : SeguiPercorso
     private IEnumerator<GameObject> pictures;
     private List<GameObject> walls = new List<GameObject>();
     private Dictionary<GameObject, List<GameObject>> pictureOnWall = new Dictionary<GameObject, List<GameObject>>();
+
+    public GameObject startWall;
     private GameObject currentWall;
- 
+    private GameObject currentPicture;
+    private int currentPictureIndex = 1;
 
     public override void InitMovementPattern()
     {
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
-        currentWall = GetVisibleForBotPictureWithMinimumIndex().transform.parent.gameObject;
-        
-        pictureOnWall[currentWall].Sort(SortByPathLength);
+        currentWall = startWall;
         pictures = pictureOnWall[currentWall].GetEnumerator();
-
+        currentPicture = GetNextDestination();
     }
+
+
+    public override GameObject GetNextDestination()
+    {
+    
+        if (!pictures.MoveNext())
+        {
+            currentWall = GetMostCloseWallComparedToCurrentWall();
+            pictures = pictureOnWall[currentWall].GetEnumerator();
+            pictures.MoveNext();
+
+        }
+
+        currentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
+
+        Debug.Log("PictureIndex: " + currentPictureIndex, pictures.Current);
+        return pictures.Current.transform.GetChild(0).gameObject;
+    }
+
+
+    private GameObject GetMostCloseWallComparedToCurrentWall()
+    {
+
+        GameObject mostCloseWall = null;
+        bool presentIntersec = false;
+        List<GameObject> mostCloseWalls = new List<GameObject>();
+
+        walls.Remove(currentWall);
+
+        foreach (GameObject wall in walls)
+        {
+            if( wall == currentWall)
+                continue;
+
+            Debug.Log("Wall Considerato: ", currentWall);
+
+            if (currentWall.GetComponent<MeshRenderer>().bounds.Intersects(wall.GetComponent<MeshRenderer>().bounds))
+            {
+                mostCloseWalls.Add(wall);
+                presentIntersec = true;
+            }
+        }
+
+
+        Debug.Log("mostConsoleWall: " + mostCloseWalls.Count);
+
+        if (presentIntersec == true)
+        {
+            foreach (GameObject wall in mostCloseWalls)
+            {
+                foreach(GameObject picture in pictureOnWall[wall])
+                {
+                    if(picture.GetComponent<PictureInfo>().index > currentPictureIndex)
+                    {
+                        currentPictureIndex = picture.GetComponent<PictureInfo>().index;
+                        Debug.Log("Wall: ", wall);
+                        return wall;
+                    }
+                }
+            }
+        }
+
+
+        foreach (GameObject wall in walls)
+        {
+            if (pictureOnWall.ContainsKey(wall))
+            {
+                foreach (GameObject picture in pictureOnWall[wall])
+                {
+                    Debug.Log(picture.GetComponent<PictureInfo>().index);
+
+                    if (picture.GetComponent<PictureInfo>().index == currentPictureIndex + 1)
+                    {
+                        Debug.Log("Wall: ", wall);
+                        return wall;
+                    }
+                }
+            }
+        }
+        
+
+        return mostCloseWall;
+    }
+
+
 
     private void FindWallsWithPictures()
     {
@@ -46,145 +132,6 @@ public class AntPattern_2 : SeguiPercorso
 
         }
     }
-
-    private List<GameObject> GetWallsVisibleForBot()
-    {
-        int wallsLayer = 9;
-
-        Vector3[] directions = new Vector3[]{
-            -transform.right,
-            transform.right,
-            transform.forward,
-            -transform.forward
-        };
-
-        List<GameObject> wallsCollision = new List<GameObject>();
-
-        foreach (Vector3 direction in directions)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position + new Vector3(0, 5, 0), direction, out hit, 20))
-            {
-                if (hit.collider.gameObject.layer == wallsLayer)
-                    wallsCollision.Add(hit.collider.gameObject);
-            }
-        }
-
-        return wallsCollision;
-    }
-
-
-    private GameObject GetVisibleForBotPictureWithMinimumIndex()
-    {
-        int nextPictureIndex = 0;
-        GameObject nextPicture = null;
-
-        List<GameObject> t = GetWallsVisibleForBot();
-
-        foreach(GameObject wall in t)
-        {
-            if (wall == null)
-                continue;
-
-            foreach(GameObject picture in pictureOnWall[wall])
-            {
-                if (picture.GetComponent<PictureInfo>().index < nextPictureIndex || nextPictureIndex == 0)
-                {
-                    nextPictureIndex = picture.GetComponent<PictureInfo>().index;
-                    nextPicture = picture;
-                }
-            }
-        }
-        
-        return nextPicture;
-    }
-
-    private GameObject GetClosestWall()
-    {
-        float minDistance = Mathf.Infinity;
-        GameObject closestWall = null;
-
-        foreach (GameObject wall in walls)
-        {
-            if (Vector3.Distance(wall.transform.position, transform.position) <= minDistance)
-            {
-                if(pictureOnWall[wall].Count > 0)
-                {
-                    closestWall = wall;
-                    minDistance = Vector3.Distance(wall.transform.position, transform.position);
-                }
-            }
-        }
-
-        return closestWall;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        if (collision.gameObject.CompareTag("Uscita"))
-        {
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Quadro"))
-        {
-            // Il quadro non va visitato, non c'è nessun muro di interesse
-            if (currentWall == null)
-            {
-                return;
-            }
-
-            if (pictureOnWall[currentWall].Contains(pictures.Current))
-            {
-                pictureOnWall[currentWall].Remove(pictures.Current);
-
-                int currentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
-                pauseTime = Random.Range(5, 90);
-                
-                foreach (GameObject wall in pictureOnWall.Keys)
-                {
-                    pictureOnWall[wall].RemoveAll(
-                        delegate (GameObject x){
-
-                            if(x.gameObject.GetComponent<PictureInfo>().index < currentPictureIndex)
-                                return true;
-
-                            return false;
-                        });
-                }
-
-            }
-
-            pictures = pictureOnWall[currentWall].GetEnumerator();
-
-        }
-
-    }
-
-    public override GameObject GetNextDestination()
-    {
-        // Se ho visitato tutti i quadri sull'attuale muro
-        if (!pictures.MoveNext())
-        {
-            walls.Remove(currentWall);
-            currentWall = GetClosestWall();
-
-            // Se sono finiti i muri da visitare
-            if (currentWall == null || pictureOnWall[currentWall].Count == 0)
-            {
-                return GameObject.FindGameObjectWithTag("Uscita").gameObject;
-            }
-
-            pictureOnWall[currentWall].Sort(SortByIndexPicture);
-
-            pictures = pictureOnWall[currentWall].GetEnumerator();
-            pictures.MoveNext();
-        }
-
-        return pictures.Current.transform.GetChild(0).gameObject;
-    }
-
 
     private int SortByPathLength(GameObject x, GameObject y)
     {
