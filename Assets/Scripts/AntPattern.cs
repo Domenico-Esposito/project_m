@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class AntPattern : SeguiPercorso
+public class AntPattern : PathManager
 {
     // Pattern movimento
     private IEnumerator<GameObject> pictures;

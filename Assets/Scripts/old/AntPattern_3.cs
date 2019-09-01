@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AntPattern_3 : SeguiPercorso
+public class AntPattern_3 : PathManager
 {
 
     public override void InitMovementPattern()
