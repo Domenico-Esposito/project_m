@@ -7,10 +7,13 @@ public class SauterellePattern : PathManager
     // Pattern movimento
     private IEnumerator<GameObject> picturesToWatch;
 
-    private GameObject[] pictures;
+    private List<GameObject> pictures;
 
     public override void InitMovementPattern ()
     {
+        pictures = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Quadro" ) );
+        pictures.Sort( SortByIndexPicture );
+
         RefreshPicturesToWatch();
     }
 
@@ -30,26 +33,42 @@ public class SauterellePattern : PathManager
 
     private void RefreshPicturesToWatch ()
     {
-
-        pictures = GameObject.FindGameObjectsWithTag( "Quadro" );
-
+   
         List<GameObject> picturesToWatch_list = new List<GameObject>();
-
+        int lastPictureIndexAdded = 0;
 
         foreach ( GameObject picture in pictures )
         {
-            if ( Random.Range( 0, 20 ) > 15 ) // 75%
+            int pictureIndex = picture.GetComponentInParent<PictureInfo>().index;
+
+            if ( Random.Range( 0, 10 ) < 5 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
             {
+                lastPictureIndexAdded = picture.GetComponentInParent<PictureInfo>().index;
                 picturesToWatch_list.Add( picture );
             }
         }
 
-        picturesToWatch_list.Sort( SortByIndexPicture );
+        foreach(GameObject pic in picturesToWatch_list )
+        {
+            Debug.Log( pic.GetComponentInParent<PictureInfo>().index );
+        }
 
         picturesToWatch = picturesToWatch_list.GetEnumerator();
-        picturesToWatch.MoveNext();
-
     }
+
+
+    private bool IsMaxJump (int pictureIndex, int lastPictureIndex)
+    {
+        int maxJump = 6;
+
+        if( pictureIndex >= maxJump + lastPictureIndex )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
     private int SortByIndexPicture ( GameObject x, GameObject y )
     {

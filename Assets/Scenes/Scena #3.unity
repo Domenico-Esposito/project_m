@@ -3724,7 +3724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseTime: 5
-  rigidBodySpeed: 5
+  rigidBodySpeed: 7
   startWall: {fileID: 2141527501}
 --- !u!114 &552231443
 MonoBehaviour:
