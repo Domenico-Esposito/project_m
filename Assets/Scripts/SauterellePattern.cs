@@ -41,7 +41,7 @@ public class SauterellePattern : PathManager
         {
             int pictureIndex = picture.GetComponentInParent<PictureInfo>().index;
 
-            if ( Random.Range( 0, 10 ) < 5 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
+            if ( Random.Range( 0, 10 ) > 6 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
             {
                 lastPictureIndexAdded = picture.GetComponentInParent<PictureInfo>().index;
                 picturesToWatch_list.Add( picture );
