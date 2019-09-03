@@ -48,10 +48,6 @@ public class SauterellePattern : PathManager
             }
         }
 
-        foreach(GameObject pic in picturesToWatch_list )
-        {
-            Debug.Log( pic.GetComponentInParent<PictureInfo>().index );
-        }
 
         picturesToWatch = picturesToWatch_list.GetEnumerator();
     }
