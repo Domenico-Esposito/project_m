@@ -15,6 +15,7 @@ public class FourmiPattern : PathManager
 
     public override void InitMovementPattern ()
     {
+        colorDrawPath = Color.yellow;
 
         FindWallsWithPictures();
         FindPicturesOnWalls();

@@ -17,7 +17,7 @@ public class PapillonPattern : PathManager
 
     public override void InitMovementPattern ()
     {
-
+        colorDrawPath = new Color( 1.0f, 0.64f, 0.0f ); //orange
         FindWallsWithPictures();
         FindPicturesOnWalls();
         

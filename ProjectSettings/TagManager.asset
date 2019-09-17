@@ -12,6 +12,7 @@ TagManager:
   - Salto
   - Muro Intermedio
   - Uscita
+  - NPC
   layers:
   - Default
   - TransparentFX

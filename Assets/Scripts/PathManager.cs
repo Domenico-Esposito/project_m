@@ -7,29 +7,44 @@ public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
     private Rigidbody rigidBody;
+    protected GameObject destination;
+    public bool inPausa = true;
+    protected  GameObject destinationPoint;
 
+    protected Color colorDrawPath = Color.red;
     // Animazione
-    private AnimateCharacter generalAnimation;
-    private AnimationViewQuadro quadroViewAnimation;
+    protected AnimateCharacter generalAnimation;
+    protected AnimationViewQuadro quadroViewAnimation;
 
     // Segui percorso
-    private NavMeshPath path;
+    protected NavMeshPath path;
     private Vector3 firstCornerTarget;
     private int indexCornerPath = 1;
-    private float timedelta = 0f;
+    protected float timedelta = 0f;
 
     public float pauseTime = 5f;
+    public float basePauseTime;
+
     public float rigidBodySpeed = 7f;
 
     public abstract GameObject GetNextDestination ();
 
     public abstract void InitMovementPattern ();
 
-    private void Awake ()
+    protected virtual void Start ()
     {
         InitAnimationBheavior();
         InitMovementPattern();
+
+        basePauseTime = pauseTime;
+
+        UpdatePauseTime();
         GenerateNewPath();
+    }
+
+    public void UpdatePauseTime ()
+    {
+        pauseTime = basePauseTime * Random.Range( 1f, 1.7f );
     }
 
     public void InitAnimationBheavior ()
@@ -49,36 +64,37 @@ public abstract class PathManager : MonoBehaviour
 
     }
 
+
     private void Update ()
     {
-
-        Move();
-        generalAnimation.Animation();
+        if ( inPausa )
+        {
+            GeneratePathFromDestinationInPause();
+        }
+        else
+        {
+            Move();
+            generalAnimation.Animation();
+        }
     }
 
-    private void OnCollisionStay ( Collision collision )
-    {
-        quadroViewAnimation.path = path;
-        quadroViewAnimation.TurnTowardsPicture( collision );
 
-        if ( collision.gameObject.CompareTag( "Quadro" ) )
+    protected virtual void OnCollisionStay ( Collision collision )
+    {
+        if ( collision.gameObject.CompareTag( "Quadro" ) && collision.gameObject == destination )
         {
+            quadroViewAnimation.path = path;
+            quadroViewAnimation.TurnTowardsPicture( collision );
             timedelta += Time.deltaTime;
         }
     }
 
-    private void OnCollisionExit ( Collision collision )
-    {
-        if ( collision.gameObject.CompareTag( "Quadro" ) && path != null )
-        {
-            timedelta = 0f;
-        }
-    }
 
     private void Move ()
     {
         Walk();
     }
+
 
     private void Walk ()
     {
@@ -94,10 +110,53 @@ public abstract class PathManager : MonoBehaviour
 
         if ( CheckTurn() )
         {
-            FollowPath();
+                FollowPath();
         }
 
     }
+
+
+    private void GenerateNewPath ( )
+    {
+    
+        path = new NavMeshPath();
+        destination = GetNextDestination();
+        UpdatePauseTime();
+
+        if ( destinationPoint != null )
+        {
+            destinationPoint.GetComponent<PuntoDiInteresse>().Libera();
+        }
+
+        GeneratePathFromDestinationInPause();
+    }
+
+    private void GeneratePathFromDestinationInPause ()
+    {
+        if ( destination.GetComponent<PlaneScript>().HaveAvailablePoint() )
+        {
+            NavMesh.CalculatePath( transform.position, GetPositionInFloorPicture(), 1, path );
+            firstCornerTarget = path.corners[ 1 ] - transform.position;
+            generalAnimation.angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, firstCornerTarget );
+            generalAnimation.localPos = transform.InverseTransformPoint( path.corners[ 1 ] );
+            indexCornerPath = 1;
+            inPausa = false;
+        }
+        else
+        {
+            inPausa = true;
+        }
+    }
+
+    public virtual Vector3 GetPositionInFloorPicture ()
+    {
+      
+        destinationPoint = destination.GetComponent<PlaneScript>().GetAvailablePoint();
+        destinationPoint.GetComponent<PuntoDiInteresse>().Occupa();
+        
+        return destinationPoint.transform.position;
+    }
+
 
     public float GetPathLength ( GameObject picture )
     {
@@ -110,39 +169,8 @@ public abstract class PathManager : MonoBehaviour
         {
             lng += Vector3.Distance( p.corners[ i ], p.corners[ i + 1 ] );
         }
-
-        Debug.Log( "Lunghezza path: " + lng + " | Status: " + p.status, picture );
-
+        
         return lng;
-    }
-
-    private void GenerateNewPath ()
-    {
-        path = new NavMeshPath();
-
-        NavMesh.CalculatePath( transform.position, RandomCoordinatesInFloorPicture(), 1, path );
-
-        firstCornerTarget = path.corners[ 1 ] - transform.position;
-        generalAnimation.angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, firstCornerTarget );
-        generalAnimation.localPos = transform.InverseTransformPoint( path.corners[ 1 ] );
-        indexCornerPath = 1;
-
-    }
-
-    public Vector3 RandomCoordinatesInFloorPicture ()
-    {
-        GameObject next = GetNextDestination();
-
-        Collider floorPicture = next.GetComponent<Collider>();
-
-        Vector3 floorPictureSize = floorPicture.bounds.size;
-        float randomXInFloorPicture = Random.Range( -floorPictureSize.x / 2.5f, floorPictureSize.x / 2.5f );
-        float randomYInFloorPicture = Random.Range( -floorPictureSize.y / 2.5f, floorPictureSize.y / 2.5f );
-
-        Vector3 randomPositionInPlane = next.transform.position + new Vector3( randomXInFloorPicture, 0f, randomYInFloorPicture );
-
-        return randomPositionInPlane;
-
     }
 
 
@@ -151,9 +179,10 @@ public abstract class PathManager : MonoBehaviour
         if ( path != null )
         {
             for ( int i = 0; i < path.corners.Length - 1; i++ )
-                Debug.DrawLine( path.corners[ i ], path.corners[ i + 1 ], Color.red );
+                Debug.DrawLine( path.corners[ i ], path.corners[ i + 1 ], colorDrawPath );
         }
     }
+
 
     private void RotationToTarget ( Vector3 target, float speed )
     {
@@ -162,6 +191,7 @@ public abstract class PathManager : MonoBehaviour
         targetRotation.z = 0f;
         transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * speed );
     }
+
 
     private bool CheckTurn ()
     {
@@ -193,6 +223,7 @@ public abstract class PathManager : MonoBehaviour
     {
         rigidBody.MovePosition( Vector3.MoveTowards( transform.position, path.corners[ indexCornerPath ], Time.deltaTime * rigidBodySpeed ) );
         generalAnimation.speed = 1f;
+        GetComponent<Collider>().isTrigger = true;
 
         float distanceFromCorner = Vector3.Distance( transform.position, path.corners[ indexCornerPath ] );
 
@@ -207,6 +238,7 @@ public abstract class PathManager : MonoBehaviour
             if ( indexCornerPath > path.corners.Length - 1 )
             {
                 // Destinazione raggiunta
+                GetComponent<Collider>().isTrigger = false;
                 generalAnimation.speed = 0f;
                 indexCornerPath = 1;
                 path = null;

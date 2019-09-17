@@ -11,6 +11,8 @@ public class SauterellePattern : PathManager
 
     public override void InitMovementPattern ()
     {
+        colorDrawPath = Color.red;
+
         pictures = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Quadro" ) );
         pictures.Sort( SortByIndexPicture );
 

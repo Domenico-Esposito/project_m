@@ -8,10 +8,12 @@ public class AntPattern : PathManager
     private List<GameObject> walls = new List<GameObject>();
     private Dictionary<GameObject, List<GameObject>> pictureOnWall = new Dictionary<GameObject, List<GameObject>>();
     private GameObject currentWall;
- 
+
 
     public override void InitMovementPattern()
     {
+        colorDrawPath = Color.yellow;
+
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
