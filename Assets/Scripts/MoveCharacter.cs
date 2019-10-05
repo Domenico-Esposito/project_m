@@ -43,7 +43,7 @@ public class MoveCharacter : MonoBehaviour
     {
 
         Move();
-        generalAnimation.Animation();
+        generalAnimation.Animation_Walk();
 
     }
 

@@ -12,40 +12,62 @@ public class FourmiPattern : PathManager
     private GameObject currentWall;
     private int currentPictureIndex = 0;
 
+    public int numberOfStop;
 
     public override void InitMovementPattern ()
-    {
+    { 
         colorDrawPath = Color.yellow;
 
         FindWallsWithPictures();
         FindPicturesOnWalls();
+        SortPicturesOnWalls();
 
+        //currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(0, GameObject.FindGameObjectsWithTag( "Wall" ).Length) ];
         currentWall = startWall;
 
+        numberOfStop = Random.Range( 13, walls.Count );
     }
 
 
     public override GameObject GetNextDestination ()
     {
+    
+        if( numberOfStop <= 0 )
+            return GetPlaneOfExit();
 
-        if ( IsNextPictureOnCurrentWall() )
+
+        if ( MoveToNextPicOnCurrentWall() )
         {
-            return GetPlaneOfCurrentPicture();
+            if ( Random.Range( 1, 10 ) > 6 )    //Salto un quadro
+            {
+                return GetNextDestination();
+            }
+
+            numberOfStop -= 1;
+        }
+        else if ( MoveToNextPicOnAnotherWall() )
+        {
+
+            if ( Random.Range( 1, 10 ) > 5 )    //Salto un muro
+            {
+                return GetNextDestination();
+            }
+
+            numberOfStop -= 1;
+        }
+        else
+        {
+            return GetPlaneOfExit();
         }
 
-        if ( IsNextPictureOnNextWall() )
-        {
-            return GetPlaneOfCurrentPicture();
-        }
 
-        return GetPlaneOfExit();
+        return GetPlaneOfCurrentPicture();
 
     }
 
 
-    private bool IsNextPictureOnCurrentWall ()
+    private bool MoveToNextPicOnCurrentWall ()
     {
-
         if ( pictures == null )
             return false;
 
@@ -60,104 +82,53 @@ public class FourmiPattern : PathManager
 
 
     private void RefreshCurrentPictureIndex ()
-    {
+    {   
         currentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
     }
 
 
-    private bool IsNextPictureOnNextWall ()
+    private bool MoveToNextPicOnAnotherWall ()
     {
+        walls.Remove( currentWall );
+        walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[ wall ][ 0 ].GetComponent<PictureInfo>().index < currentPictureIndex );
+        walls.Sort( SortByIndexPictureInWalls );
 
-        if ( ExistsNextWall() )
+        if ( NextPictureIsInClosestWall() || NextPictureIsInDetachedWall() ) 
         {
-            if ( picturesOnWalls.ContainsKey( currentWall ) )
-            {
-                pictures = picturesOnWalls[ currentWall ].GetEnumerator();
-                pictures.MoveNext();
-                RefreshCurrentPictureIndex();
-                return true;
-            }
+            pictures = picturesOnWalls[ currentWall ].GetEnumerator();
+            pictures.MoveNext();
+            RefreshCurrentPictureIndex();
+            return true;
         }
 
         return false;
     }
 
+    
 
-    private GameObject GetPlaneOfCurrentPicture ()
+    private bool NextPictureIsInClosestWall ()
     {
-
-        return pictures.Current.transform.GetChild( 0 ).gameObject;
-
-    }
-
-
-    private bool ExistsNextWall ()
-    {
-
-        walls.Remove( currentWall );
-
-        List<GameObject> wallsIntersectCurrentWall = new List<GameObject>();
-        wallsIntersectCurrentWall = GetWallsIntersectsWithCurrentWall();
-
+    
+        List<GameObject> wallsIntersectCurrentWall = GetWallsClosestToCurrent();
+        
         if ( wallsIntersectCurrentWall.Count > 0 )
         {
-            if ( ExistsNextPictureIndex( wallsIntersectCurrentWall ) )
+            GameObject picWithMinIndex = picturesOnWalls[ wallsIntersectCurrentWall[ 0 ] ][ 0 ];
+
+            if ( picWithMinIndex.GetComponent<PictureInfo>().index >= currentPictureIndex )
             {
+                currentWall = wallsIntersectCurrentWall[ 0 ];
                 return true;
             }
 
         }
 
-        if ( ExistsWallWithNextIndexPic() )
-        {
-            return true;
-        }
-
         return false;
     }
 
 
-    private bool ExistsNextPictureIndex ( List<GameObject> localWalls )
-    {
 
-        GameObject nextWall = null;
-        int nextIndex_tmp = 1000;
-
-        int maxDelayPictureIndex = 7;
-        int maxNextPictureIndex = maxDelayPictureIndex + currentPictureIndex;
-
-        foreach ( GameObject wall in localWalls )
-        {
-
-            GameObject firstPicWall = picturesOnWalls[ wall ][ 0 ];
-            int indexfirstPicWall = firstPicWall.GetComponent<PictureInfo>().index;
-
-            if ( indexfirstPicWall > currentPictureIndex )
-            {
-                if ( indexfirstPicWall < maxNextPictureIndex )
-                {
-                    if ( indexfirstPicWall < nextIndex_tmp )
-                    {
-                        nextIndex_tmp = indexfirstPicWall;
-                        nextWall = wall;
-                    }
-                }
-            }
-
-        }
-
-        if ( nextWall )
-        {
-            currentWall = nextWall;
-            return true;
-        }
-
-        return false;
-
-    }
-
-
-    private List<GameObject> GetWallsIntersectsWithCurrentWall ()
+    private List<GameObject> GetWallsClosestToCurrent ()
     {
 
         List<GameObject> intersectsWalls = new List<GameObject>();
@@ -169,39 +140,40 @@ public class FourmiPattern : PathManager
 
             if ( currentWall.GetComponent<MeshRenderer>().bounds.Intersects( wall.GetComponent<MeshRenderer>().bounds ) )
             {
-                intersectsWalls.Add( wall );
+                if( picturesOnWalls[wall][0].GetComponent<PictureInfo>().index < currentPictureIndex + 10 )
+                {
+                    intersectsWalls.Add( wall );
+                }
             }
 
         }
+
+        intersectsWalls.Sort( SortByIndexPictureInWalls );
 
         return intersectsWalls;
 
     }
 
-
-    private GameObject GetPlaneOfExit ()
+    private GameObject GetPlaneOfCurrentPicture ()
     {
-        return GameObject.FindGameObjectWithTag( "Uscita" ).gameObject;
+        return pictures.Current.transform.GetChild( 0 ).gameObject;
     }
 
 
-    private bool ExistsWallWithNextIndexPic ()
+    private bool NextPictureIsInDetachedWall ()
     {
-
-        foreach ( GameObject wall in walls )
+    
+        if(walls.Count <= 0 )
         {
-            if ( picturesOnWalls.ContainsKey( wall ) )
-            {
-                foreach ( GameObject picture in picturesOnWalls[ wall ] )
-                {
-                    if ( picture.GetComponent<PictureInfo>().index == currentPictureIndex + 1 )
-                    {
-                        currentWall = wall;
-                        return true;
-                    }
-                }
-            }
+            return false;
         }
+
+        if( picturesOnWalls.ContainsKey(walls[0]) )
+        {
+            currentWall = walls[ 0 ];
+            return true;
+        }
+
 
         return false;
 
@@ -235,24 +207,27 @@ public class FourmiPattern : PathManager
 
         }
 
+    }
+
+
+    private void SortPicturesOnWalls ()
+    {
 
         foreach ( List<GameObject> pics in picturesOnWalls.Values )
         {
             pics.Sort( SortByIndexPicture );
         }
+
     }
 
 
-    private int SortByIndexPicture ( GameObject x, GameObject y )
+    private int SortByIndexPictureInWalls ( GameObject wallX, GameObject wallY )
     {
 
-        float index_1 = x.GetComponent<PictureInfo>().index;
-        float index_2 = y.GetComponent<PictureInfo>().index;
+        GameObject quadro_x = picturesOnWalls[ wallX ][ 0 ];
+        GameObject quadro_y = picturesOnWalls[ wallY ][ 0 ];
 
-        if ( index_1 < index_2 ) return -1;
-        if ( index_1 > index_2 ) return 1;
-        return 0;
-
+        return SortByIndexPicture( quadro_x, quadro_y );
     }
 
 }

@@ -6,8 +6,6 @@ using UnityEngine.AI;
 public class AnimationViewQuadro : AnimateCharacter
 {
 
-    public NavMeshPath path;
-
     private bool isFirstTry = true;
 
     public void TurnTowardsPicture ( Collision collision )
@@ -80,15 +78,6 @@ public class AnimationViewQuadro : AnimateCharacter
 
         return false;
 
-    }
-
-
-    private void RotationToTarget ( Vector3 target, float speed )
-    {
-        Quaternion targetRotation = Quaternion.LookRotation( target - transform.position );
-        targetRotation.x = 0f;
-        targetRotation.z = 0f;
-        transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * speed );
     }
 
 }

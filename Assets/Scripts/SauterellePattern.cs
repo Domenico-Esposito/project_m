@@ -13,10 +13,21 @@ public class SauterellePattern : PathManager
     {
         colorDrawPath = Color.red;
 
-        pictures = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Quadro" ) );
-        pictures.Sort( SortByIndexPicture );
-
+        FindAllPicture();
         RefreshPicturesToWatch();
+    }
+
+
+    private void FindAllPicture ()
+    {
+        pictures = new List<GameObject>();
+
+        foreach(GameObject picture in GameObject.FindGameObjectsWithTag( "Quadro" ) )
+        {
+            pictures.Add( picture.transform.parent.gameObject );
+        }
+
+        pictures.Sort( SortByIndexPicture );
     }
 
     public override GameObject GetNextDestination ()
@@ -24,12 +35,10 @@ public class SauterellePattern : PathManager
 
         if ( picturesToWatch.MoveNext() )
         {
-            return picturesToWatch.Current;
+            return picturesToWatch.Current.transform.GetChild(0).gameObject;
         }
 
-        RefreshPicturesToWatch();
-
-        return picturesToWatch.Current;
+        return GetPlaneOfExit();
     }
 
 
@@ -41,11 +50,11 @@ public class SauterellePattern : PathManager
 
         foreach ( GameObject picture in pictures )
         {
-            int pictureIndex = picture.GetComponentInParent<PictureInfo>().index;
+            int pictureIndex = picture.GetComponent<PictureInfo>().index;
 
             if ( Random.Range( 0, 10 ) > 6 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
             {
-                lastPictureIndexAdded = picture.GetComponentInParent<PictureInfo>().index;
+                lastPictureIndexAdded = picture.GetComponent<PictureInfo>().index;
                 picturesToWatch_list.Add( picture );
             }
         }
@@ -67,7 +76,6 @@ public class SauterellePattern : PathManager
         return false;
     }
 
-
     private int SortByIndexPicture ( GameObject x, GameObject y )
     {
 
@@ -79,4 +87,5 @@ public class SauterellePattern : PathManager
         return 0;
 
     }
+
 }

@@ -10,11 +10,10 @@ public abstract class PathManager : MonoBehaviour
     protected GameObject destination;
     public bool inPausa = true;
     protected  GameObject destinationPoint;
-
+    
     protected Color colorDrawPath = Color.red;
     // Animazione
-    protected AnimateCharacter generalAnimation;
-    protected AnimationViewQuadro quadroViewAnimation;
+    protected AnimationViewQuadro managerAnimation;
 
     // Segui percorso
     protected NavMeshPath path;
@@ -51,16 +50,17 @@ public abstract class PathManager : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
 
-        generalAnimation = GetComponent<AnimateCharacter>();
-        generalAnimation.turnBack = true;
-        generalAnimation.tolleranceLeft = -3f;
-        generalAnimation.tolleranceRight = 3f;
-        generalAnimation.angleForTurnLeft = generalAnimation.angleForTurnRight = 60f;
-
-        quadroViewAnimation = GetComponent<AnimationViewQuadro>();
-        quadroViewAnimation.tolleranceLeft = -1.5f;
-        quadroViewAnimation.tolleranceRight = 1.5f;
-        quadroViewAnimation.angleForTurnLeft = quadroViewAnimation.angleForTurnRight = 50f;
+        //generalAnimation = GetComponent<AnimateCharacter>();
+        //generalAnimation.turnBack = true;
+        //generalAnimation.tolleranceLeft = -3f;
+        //generalAnimation.tolleranceRight = 3f;
+        //generalAnimation.angleForTurnLeft = generalAnimation.angleForTurnRight = 60f;
+        
+        managerAnimation = GetComponent<AnimationViewQuadro>();
+        managerAnimation.turnBack = true;
+        managerAnimation.tolleranceLeft = -1.5f;
+        managerAnimation.tolleranceRight = 1.5f;
+        managerAnimation.angleForTurnLeft = managerAnimation.angleForTurnRight = 50f;
 
     }
 
@@ -69,12 +69,22 @@ public abstract class PathManager : MonoBehaviour
     {
         if ( inPausa )
         {
-            GeneratePathFromDestinationInPause();
+            GeneratePath();
         }
         else
         {
             Move();
-            generalAnimation.Animation();
+            managerAnimation.Animation_Walk();
+        }
+    }
+
+
+    protected void OnCollisionEnter ( Collision collision )
+    {
+        if( collision.gameObject.CompareTag( "Uscita") && collision.gameObject == destination )
+        {
+            Debug.Log( "Cico ciao", gameObject);
+            Destroy( gameObject );
         }
     }
 
@@ -83,8 +93,8 @@ public abstract class PathManager : MonoBehaviour
     {
         if ( collision.gameObject.CompareTag( "Quadro" ) && collision.gameObject == destination )
         {
-            quadroViewAnimation.path = path;
-            quadroViewAnimation.TurnTowardsPicture( collision );
+            managerAnimation.path = path;
+            managerAnimation.TurnTowardsPicture( collision );
             timedelta += Time.deltaTime;
         }
     }
@@ -106,13 +116,9 @@ public abstract class PathManager : MonoBehaviour
         }
 
         DrawPath();
-        generalAnimation.Turn();
+        managerAnimation.Turn();
 
-        if ( CheckTurn() )
-        {
-                FollowPath();
-        }
-
+        FollowPath();
     }
 
 
@@ -128,23 +134,24 @@ public abstract class PathManager : MonoBehaviour
             destinationPoint.GetComponent<PuntoDiInteresse>().Libera();
         }
 
-        GeneratePathFromDestinationInPause();
+        GeneratePath();
     }
 
-    private void GeneratePathFromDestinationInPause ()
+    private void GeneratePath ()
     {
         if ( destination.GetComponent<PlaneScript>().HaveAvailablePoint() )
         {
             NavMesh.CalculatePath( transform.position, GetPositionInFloorPicture(), 1, path );
             firstCornerTarget = path.corners[ 1 ] - transform.position;
-            generalAnimation.angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, firstCornerTarget );
-            generalAnimation.localPos = transform.InverseTransformPoint( path.corners[ 1 ] );
+            managerAnimation.angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, firstCornerTarget );
+            managerAnimation.localPos = transform.InverseTransformPoint( path.corners[ 1 ] );
             indexCornerPath = 1;
-            inPausa = false;
+            //inPausa = false;
         }
         else
         {
-            inPausa = true;
+            //inPausa = true;
+            GenerateNewPath();
         }
     }
 
@@ -179,71 +186,81 @@ public abstract class PathManager : MonoBehaviour
         if ( path != null )
         {
             for ( int i = 0; i < path.corners.Length - 1; i++ )
-                Debug.DrawLine( path.corners[ i ], path.corners[ i + 1 ], colorDrawPath );
+                Debug.DrawLine( path.corners[ i ], path.corners[ i + 1 ], colorDrawPath, 500f);
         }
     }
 
-
-    private void RotationToTarget ( Vector3 target, float speed )
+    protected GameObject GetPlaneOfExit ()
     {
-        Quaternion targetRotation = Quaternion.LookRotation( target - transform.position );
-        targetRotation.x = 0f;
-        targetRotation.z = 0f;
-        transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * speed );
-    }
-
-
-    private bool CheckTurn ()
-    {
-        bool isRotation = generalAnimation.IsRotation();
-
-        if ( !isRotation )
-            rigidBody.isKinematic = false;
-
-        if ( !isRotation && path != null )
-        {
-            generalAnimation.angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, path.corners[ indexCornerPath ] - transform.position );
-            generalAnimation.localPos = transform.InverseTransformPoint( path.corners[ indexCornerPath ] );
-
-            if ( generalAnimation.angleBetweenPlayerAndTarget > generalAnimation.angleForTurnLeft )
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        generalAnimation.angleBetweenPlayerAndTarget = 0;
-        generalAnimation.localPos = Vector3.zero;
-
-        return false;
+        return GameObject.FindGameObjectWithTag( "Uscita" ).gameObject;
     }
 
     private void FollowPath ()
     {
-        rigidBody.MovePosition( Vector3.MoveTowards( transform.position, path.corners[ indexCornerPath ], Time.deltaTime * rigidBodySpeed ) );
-        generalAnimation.speed = 1f;
-        GetComponent<Collider>().isTrigger = true;
 
-        float distanceFromCorner = Vector3.Distance( transform.position, path.corners[ indexCornerPath ] );
-
-        if ( distanceFromCorner > 0.1f )
-            RotationToTarget( path.corners[ indexCornerPath ], 10f );
-
-        // Passa al corner successivo
-        if ( distanceFromCorner < 0.5f )
+        SetAnimationData();
+        
+        if ( managerAnimation.CheckTurn() )
         {
-            indexCornerPath++;
+            rigidBody.MovePosition( Vector3.MoveTowards( transform.position, path.corners[ indexCornerPath ], Time.deltaTime * rigidBodySpeed ) );
+            managerAnimation.speed = 1f;
+            GetComponent<Collider>().isTrigger = true;
 
-            if ( indexCornerPath > path.corners.Length - 1 )
+            float distanceFromCorner = Vector3.Distance( transform.position, path.corners[ indexCornerPath ] );
+
+            if ( distanceFromCorner > 0.1f )
+                managerAnimation.RotationToTarget( path.corners[ indexCornerPath ], 10f );
+
+            // Passa al corner successivo
+            if ( distanceFromCorner < 0.5f )
             {
-                // Destinazione raggiunta
-                GetComponent<Collider>().isTrigger = false;
-                generalAnimation.speed = 0f;
-                indexCornerPath = 1;
-                path = null;
+                if ( !NextCorner() )
+                {
+                    GetComponent<Collider>().isTrigger = false;
+                    managerAnimation.speed = 0f;
+                }
             }
         }
     }
 
+    private bool NextCorner ()
+    {
+        indexCornerPath++;
+
+        // Destinazione raggiunta
+        if ( indexCornerPath > path.corners.Length - 1 )
+        {
+            path = null;
+            indexCornerPath = 1;
+
+            return false;
+        }
+
+        return true;
+    }
+
+    private void SetAnimationData ()
+    {
+        if ( path != null && path.corners.Length > indexCornerPath )
+        {
+            managerAnimation.target = path.corners[ indexCornerPath ];
+        }
+        else
+        {
+            managerAnimation.target = Vector3.one;
+        }
+    }
+
+
+    protected int SortByIndexPicture ( GameObject x, GameObject y )
+    {
+
+        float distance_1 = x.GetComponent<PictureInfo>().index;
+        float distance_2 = y.GetComponent<PictureInfo>().index;
+
+        if ( distance_1 < distance_2 ) return -1;
+        if ( distance_1 > distance_2 ) return 1;
+        return 0;
+
+    }
 }

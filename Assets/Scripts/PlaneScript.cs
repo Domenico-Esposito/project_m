@@ -70,7 +70,7 @@ public class PlaneScript : MonoBehaviour
     public GameObject GetAvailableRandomPoint ()
     {
 
-        System.Predicate<GameObject> predicate = isAvailable;
+        System.Predicate<GameObject> predicate = IsAvailable;
         List<GameObject> availablePoint = pointOfInterest.FindAll( predicate );
 
 
@@ -78,7 +78,7 @@ public class PlaneScript : MonoBehaviour
     }
 
 
-    public bool isAvailable (GameObject point)
+    private bool IsAvailable (GameObject point)
     {
         return point.GetComponent<PuntoDiInteresse>().isAvailable;
     }

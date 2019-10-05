@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AnimateCharacter : MonoBehaviour
 {
 
     private Animator animator;
     private Rigidbody playerRidiBody;
+    public NavMeshPath path;
+    public Vector3 target;
 
     [HideInInspector]
     public Vector3 localPos;
@@ -37,15 +40,7 @@ public class AnimateCharacter : MonoBehaviour
     }
 
 
-    public void Animation()
-    {
-
-        Animation_Walk();
-
-    }
-
-
-    private void Animation_Walk()
+    public void Animation_Walk()
     {
 
         animator.SetFloat("speed", speed);
@@ -80,9 +75,7 @@ public class AnimateCharacter : MonoBehaviour
     {
         if (localPos == Vector3.zero)
             return;
-
-        //Debug.Log("localPos.x: " + localPos.x + " | tollernceLeft: " + tolleranceLeft + " | tolleranceRight: " + tolleranceRight + " | turnBack: " + turnBack, this);
-        
+            
         speed = 0f;
         playerRidiBody.isKinematic = true;
 
@@ -117,9 +110,8 @@ public class AnimateCharacter : MonoBehaviour
 
 
     private void TurnBack()
-    {
-        //Debug.Log("angleBetweenPlayerAndTarget" + angleBetweenPlayerAndTarget + " > " + angleForTurnBack + " angleForTurnBack");
 
+    {
         if (angleBetweenPlayerAndTarget > angleForTurnBack)
         {
             if (localPos.x < 0.0f)
@@ -133,5 +125,43 @@ public class AnimateCharacter : MonoBehaviour
     public bool IsRotation()
     {
         return (animator.GetCurrentAnimatorStateInfo(0).IsName("TurnL") || animator.GetCurrentAnimatorStateInfo(0).IsName("TurnR") || animator.GetCurrentAnimatorStateInfo(0).IsName("TurnTL") || animator.GetCurrentAnimatorStateInfo(0).IsName("TurnTR"));
+    }
+
+
+    public void RotationToTarget ( Vector3 target, float speed )
+    {
+        Quaternion targetRotation = Quaternion.LookRotation( target - transform.position );
+        targetRotation.x = 0f;
+        targetRotation.z = 0f;
+        transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * speed );
+    }
+
+
+    public bool CheckTurn ()
+    {
+        bool isRotation = IsRotation();
+
+        if ( !isRotation )
+        {
+            playerRidiBody.isKinematic = false;
+        }
+
+        if ( !isRotation && target != Vector3.one )
+        {
+            angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, ( target - transform.position ) );
+            localPos = transform.InverseTransformPoint( target );
+
+            if ( angleBetweenPlayerAndTarget > angleForTurnLeft )
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
+        angleBetweenPlayerAndTarget = 0;
+        localPos = Vector3.zero;
+
+        return false;
     }
 }

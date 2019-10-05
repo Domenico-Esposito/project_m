@@ -53,7 +53,7 @@ public class AntPattern : PathManager
     {
         int wallsLayer = 9;
 
-        Vector3[] directions = new Vector3[]{
+        Vector3[] directions = {
             -transform.right,
             transform.right,
             transform.forward,

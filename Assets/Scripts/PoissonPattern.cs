@@ -64,10 +64,9 @@ public class PoissonPattern : PathManager
         {
             return GetPictureDestination();
         }
-        else
-        {
-            return GetFishPlaneDestination();
-        }
+
+        return GetFishPlaneDestination();
+
 
     }
 
@@ -103,7 +102,7 @@ public class PoissonPattern : PathManager
             return pathPart.Current;
         }
 
-        return poissonFloors[ 0 ];
+        return GetPlaneOfExit();
 
     }
 
