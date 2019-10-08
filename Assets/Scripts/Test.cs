@@ -18,7 +18,7 @@ public class Test : MonoBehaviour
          if (Input.GetMouseButtonDown(0))
         {
         
-            int layer_mask = LayerMask.GetMask( "Walls", "Quadro" );
+            int layer_mask = LayerMask.GetMask( "Walls", "PicturePlane" );
             RaycastHit[ ] hits = Physics.RaycastAll( transform.position + new Vector3( 0, 5, 0 ), -transform.forward, 50f, layer_mask );
 
             Debug.DrawRay( transform.position + new Vector3( 0, 5, 0 ), -transform.forward, Color.red, 10 );

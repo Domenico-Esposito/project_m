@@ -12,7 +12,7 @@ public class PapillonPattern : PathManager
 
     private int currentPictureIndex = 0;
 
-    private GameObject nextPicture;
+    private GameObject nextDestination;
 
     public int numberOfStop;
 
@@ -37,11 +37,11 @@ public class PapillonPattern : PathManager
             if( Random.Range(1, 10)  >  7 )
             {
                 LookNextIndex();
-                return nextPicture;
+                return nextDestination;
             }
 
             numberOfStop -= 1;
-            return nextPicture;
+            return nextDestination;
         }
 
         if ( LookNextIndex() || LookNextIndex(0) )
@@ -52,7 +52,7 @@ public class PapillonPattern : PathManager
             }
 
             numberOfStop -= 1;
-            return nextPicture;
+            return nextDestination;
         }
 
         return GetPlaneOfExit();
@@ -68,14 +68,12 @@ public class PapillonPattern : PathManager
             {
                 if( pic.GetComponent<PictureInfo>().index > currentPictureIndex && pic.GetComponent<PictureInfo>().index < currentPictureIndex + maxJump )
                 {
-                    nextPicture = pic.transform.GetChild( 0 ).gameObject;
+                    nextDestination = pic.transform.GetChild( 0 ).gameObject;
                     currentPictureIndex = pic.GetComponent<PictureInfo>().index;
                     picturesOnWall[ pic.transform.parent.gameObject ].Remove( pic );
 
                     if ( picturesOnWall[ pic.transform.parent.gameObject ].Count <= 0 )
-                    {
                         picturesOnWall.Remove( pic.transform.parent.gameObject );
-                    }
 
                     return true;
                 }
@@ -107,61 +105,47 @@ public class PapillonPattern : PathManager
 
         foreach ( Vector3 direction in directions )
         {
-
             if ( Physics.Raycast( transform.position + new Vector3( 0, 5, 0 ), direction, out hit, 50f, layer_mask ) )
             {
                 if( picturesOnWall.ContainsKey( hit.collider.gameObject ) )
-                {
                     considerateWall.Add( hit.collider.gameObject );
-                }
             }
-
         }
-
 
         if ( considerateWall.Count <= 0 )
             return false;
 
+        return SelectNextPicInBackwardWalls(considerateWall);
+    }
+
+    private bool SelectNextPicInBackwardWalls(List<GameObject> considerateWall)
+    {
         considerateWall.Sort( SortByIndexPictureInWalls );
 
         if( picturesOnWall.ContainsKey(considerateWall[0]) )
         {
+            List<GameObject> consideratePics = picturesOnWall[ considerateWall[ 0 ] ];
+            consideratePics.Sort( Distanza );
 
-            List<GameObject> consideratePic = picturesOnWall[ considerateWall[ 0 ] ];
-            consideratePic.Sort( Distanza );
+            GameObject mostClosePicture = consideratePics[ 0 ];
 
-            nextPicture = consideratePic[ 0 ].transform.GetChild( 0 ).gameObject;
-            currentPictureIndex = consideratePic[ 0 ].GetComponent<PictureInfo>().index;
+            nextDestination = mostClosePicture.transform.GetChild( 0 ).gameObject;
+            currentPictureIndex = mostClosePicture.GetComponent<PictureInfo>().index;
 
-            picturesOnWall[ considerateWall[ 0 ] ].Remove( consideratePic[ 0 ] );
+            consideratePics.Remove( mostClosePicture );
 
-            if ( picturesOnWall[ considerateWall[0]].Count <= 0 )
-            {
+            if ( consideratePics.Count <= 0 )
                 picturesOnWall.Remove( considerateWall[ 0 ] );
-            }
 
             return true;
         }
-
 
         return false;
     }
 
 
-    private int Distanza ( GameObject x, GameObject y )
-    {
-        float distance_1 = GetPathLength( x );
-        float distance_2 = GetPathLength( y );
-
-        if ( distance_1 < distance_2 ) return -1;
-        if ( distance_1 > distance_2 ) return 1;
-        return 0;
-    }
-
-
     private int SortByIndexPictureInWalls ( GameObject wallX, GameObject wallY )
     {
-
         GameObject quadro_x = picturesOnWall[ wallX ][ 0 ];
         GameObject quadro_y = picturesOnWall[ wallY ][ 0 ];
 
@@ -186,24 +170,17 @@ public class PapillonPattern : PathManager
 
     private void FindPicturesOnWalls ()
     {
-
         foreach ( GameObject wall in walls )
         {
             foreach ( Transform picture in wall.transform )
             {
-                if ( picture.gameObject.transform.GetChild( 0 ).CompareTag( "Quadro" ) )
-                {
+                if ( picture.gameObject.transform.GetChild( 0 ).CompareTag( "PicturePlane" ) )
                     picturesOnWall[wall].Add( picture.gameObject );
-                }
             }
 
             if( picturesOnWall.ContainsKey(wall) )
-            {
                 picturesOnWall[ wall ].Sort( SortByIndexPicture );
-            }
         }
-
-
     }
 
 }

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuntoDiInteresse : MonoBehaviour
+public class DestinationPoint : MonoBehaviour
 {
-
     public bool isAvailable = true;
 
     public void Occupa()

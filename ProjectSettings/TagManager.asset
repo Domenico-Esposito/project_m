@@ -13,6 +13,7 @@ TagManager:
   - Muro Intermedio
   - Uscita
   - NPC
+  - PicturePlane
   layers:
   - Default
   - TransparentFX

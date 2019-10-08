@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimationViewQuadro : AnimateCharacter
+public class AnimationViewPicture : CharacterAnimator
 {
 
     private bool isFirstTry = true;
 
     public void TurnTowardsPicture ( Collision collision )
     {
-
-        if ( path == null && collision.gameObject.CompareTag( "Quadro" ) )
+        if ( path == null && collision.gameObject.CompareTag( "PicturePlane" ) )
         {
-            if ( CheckTurnQuadro( collision ) && isFirstTry )
+            if ( CheckAngleToTarget( collision ) && isFirstTry )
             {
                 Turn();
                 isFirstTry = false;
@@ -27,20 +26,18 @@ public class AnimationViewQuadro : AnimateCharacter
         {
             isFirstTry = true;
         }
-
     }
 
 
-    private bool CheckTurnQuadro ( Collision collision )
+    private bool CheckAngleToTarget ( Collision target )
     {
-
         bool isRotation = IsRotation();
 
         if ( !isRotation && path == null )
         {
-
-            angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, collision.gameObject.GetComponentInParent<RectTransform>().transform.position );
-            localPos = transform.InverseTransformPoint( collision.gameObject.GetComponentInParent<RectTransform>().transform.position );
+            Vector3 picturePosition = target.gameObject.GetComponentInParent<RectTransform>().transform.position;
+            angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, picturePosition );
+            localPos = transform.InverseTransformPoint( picturePosition );
 
             if ( angleBetweenPlayerAndTarget > 60f )
             {
@@ -53,10 +50,6 @@ public class AnimationViewQuadro : AnimateCharacter
 
                 return true;
             }
-            else
-            {
-                RotationToTarget( collision.gameObject.GetComponentInParent<RectTransform>().transform.position, 1.5f );
-            }
         }
 
         angleBetweenPlayerAndTarget = 0;
@@ -68,16 +61,12 @@ public class AnimationViewQuadro : AnimateCharacter
 
     private bool PlayerSeeQuadro ()
     {
-
         RaycastHit hit;
 
         if ( Physics.Raycast( transform.position + new Vector3( 0f, 2f, 0f ), transform.forward, out hit, 7f, 1 << 11 ) )
-        {
             return true;
-        }
 
         return false;
-
     }
 
 }

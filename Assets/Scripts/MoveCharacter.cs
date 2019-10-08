@@ -8,8 +8,8 @@ public class MoveCharacter : MonoBehaviour
 
     private Rigidbody playerRidiBody;
 
-    private AnimateCharacter generalAnimation;
-    private AnimationViewQuadro quadroViewAnimation;
+    private CharacterAnimator generalAnimation;
+    private AnimationViewPicture quadroViewAnimation;
 
     private NavMeshPath path;
 
@@ -26,13 +26,13 @@ public class MoveCharacter : MonoBehaviour
 
         playerRidiBody = GetComponent<Rigidbody>();
 
-        generalAnimation = GetComponent<AnimateCharacter>();
+        generalAnimation = GetComponent<CharacterAnimator>();
         generalAnimation.turnBack = true;
         generalAnimation.tolleranceLeft = -3f;
         generalAnimation.tolleranceRight = 3f;
         generalAnimation.angleForTurnLeft = generalAnimation.angleForTurnRight = 60f;
 
-        quadroViewAnimation = GetComponent<AnimationViewQuadro>();
+        quadroViewAnimation = GetComponent<AnimationViewPicture>();
         quadroViewAnimation.tolleranceLeft = -1.5f;
         quadroViewAnimation.tolleranceRight = 1.5f;
         quadroViewAnimation.angleForTurnLeft = quadroViewAnimation.angleForTurnRight = 50f;

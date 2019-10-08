@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_TagString
@@ -226,7 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 6
-  basePauseTime: 0
   rigidBodySpeed: 7
 --- !u!114 &10837117
 MonoBehaviour:
@@ -406,9 +405,9 @@ GameObject:
   - component: {fileID: 39243666}
   - component: {fileID: 39243665}
   - component: {fileID: 39243667}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,9 +460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &40543887
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,9 +476,9 @@ GameObject:
   - component: {fileID: 40543890}
   - component: {fileID: 40543889}
   - component: {fileID: 40543891}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,9 +531,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &46826536
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,9 +602,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 5
-  righe: 5
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 3
 --- !u!1001 &53909386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -855,7 +857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 6
-  basePauseTime: 0
   rigidBodySpeed: 7
 --- !u!136 &94832943
 CapsuleCollider:
@@ -1193,7 +1194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 5
-  basePauseTime: 0
   rigidBodySpeed: 7
   startWall: {fileID: 2141527501}
   numberOfStop: 0
@@ -1239,9 +1239,9 @@ GameObject:
   - component: {fileID: 121313847}
   - component: {fileID: 121313846}
   - component: {fileID: 121313848}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1294,9 +1294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &127524696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,9 +1310,9 @@ GameObject:
   - component: {fileID: 127524699}
   - component: {fileID: 127524698}
   - component: {fileID: 127524700}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1364,9 +1365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1001 &147500332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1807,9 +1809,9 @@ GameObject:
   - component: {fileID: 205302957}
   - component: {fileID: 205302956}
   - component: {fileID: 205302958}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1862,9 +1864,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &244018572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244018573}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PoissonPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2005,9 +2008,9 @@ GameObject:
   - component: {fileID: 297839068}
   - component: {fileID: 297839067}
   - component: {fileID: 297839069}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2060,9 +2063,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1001 &300482158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2076,7 +2080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_TagString
@@ -2419,7 +2423,7 @@ GameObject:
   - component: {fileID: 316973401}
   - component: {fileID: 316973400}
   - component: {fileID: 316973403}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PathPart
   m_TagString: Fish Floor
   m_Icon: {fileID: 0}
@@ -2487,9 +2491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 9
-  righe: 3
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 5
+  rows: 3
 --- !u!1 &336871830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,9 +2507,9 @@ GameObject:
   - component: {fileID: 336871833}
   - component: {fileID: 336871832}
   - component: {fileID: 336871834}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2557,9 +2562,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &343749656
 GameObject:
   m_ObjectHideFlags: 0
@@ -3362,9 +3368,9 @@ GameObject:
   - component: {fileID: 409796930}
   - component: {fileID: 409796929}
   - component: {fileID: 409796931}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3417,9 +3423,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &423733136
 GameObject:
   m_ObjectHideFlags: 0
@@ -3432,9 +3439,9 @@ GameObject:
   - component: {fileID: 423733139}
   - component: {fileID: 423733138}
   - component: {fileID: 423733140}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3487,9 +3494,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &467175897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4044,9 +4052,9 @@ GameObject:
   - component: {fileID: 513831868}
   - component: {fileID: 513831867}
   - component: {fileID: 513831869}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4099,9 +4107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &525872343
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,9 +4123,9 @@ GameObject:
   - component: {fileID: 525872346}
   - component: {fileID: 525872345}
   - component: {fileID: 525872347}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4169,9 +4178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &552231441 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -4192,7 +4202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 5
-  basePauseTime: 0
   rigidBodySpeed: 7
   startWall: {fileID: 2141527501}
   numberOfStop: 0
@@ -4728,7 +4737,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 5
-  basePauseTime: 0
   rigidBodySpeed: 7
 --- !u!136 &584625333
 CapsuleCollider:
@@ -4772,9 +4780,9 @@ GameObject:
   - component: {fileID: 594528964}
   - component: {fileID: 594528963}
   - component: {fileID: 594528965}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4827,9 +4835,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &624328362
 GameObject:
   m_ObjectHideFlags: 0
@@ -4992,9 +5001,9 @@ GameObject:
   - component: {fileID: 628102014}
   - component: {fileID: 628102013}
   - component: {fileID: 628102015}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5047,9 +5056,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
+--- !u!1001 &634685784
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_Name
+      value: Andromeda Ant 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.800001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -49.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d8c660f1ef1da4fa2abe67dfe718ab98, type: 2}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
 --- !u!1 &642335705
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,9 +5170,9 @@ GameObject:
   - component: {fileID: 642335708}
   - component: {fileID: 642335707}
   - component: {fileID: 642335709}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5117,9 +5225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &685199897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -5184,7 +5293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 5
-  basePauseTime: 0
   rigidBodySpeed: 7
 --- !u!136 &685199901
 CapsuleCollider:
@@ -5464,6 +5572,201 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703324501}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &705784984
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_Name
+      value: Andromeda Ant 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.800001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -49.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d8c660f1ef1da4fa2abe67dfe718ab98, type: 2}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
+--- !u!1 &726864824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 705784984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &726864825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726864824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112cb790f16784b198e73f286f461be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  localPos: {x: 0, y: 0, z: 0}
+  speed: 0
+  angleBetweenPlayerAndTarget: 0
+  tolleranceLeft: -2
+  tolleranceRight: 2
+  angleForTurnLeft: 60
+  angleForTurnRight: 60
+  angleForTurnBack: 150
+  turnBack: 0
+--- !u!114 &726864826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726864824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df39605e19a147358d033d1b2c73187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  localPos: {x: 0, y: 0, z: 0}
+  speed: 0
+  angleBetweenPlayerAndTarget: 0
+  tolleranceLeft: -2
+  tolleranceRight: 2
+  angleForTurnLeft: 60
+  angleForTurnRight: 60
+  angleForTurnBack: 150
+  turnBack: 0
+--- !u!114 &726864827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726864824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inPausa: 0
+  pauseTime: 5
+  rigidBodySpeed: 7
+  startWall: {fileID: 2141527501}
+  numberOfStop: 0
+--- !u!136 &726864828
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726864824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.6, z: 0}
+--- !u!54 &726864829
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726864824}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &729739964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5718,9 +6021,9 @@ GameObject:
   - component: {fileID: 751992618}
   - component: {fileID: 751992617}
   - component: {fileID: 751992619}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5773,9 +6076,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &754986450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -5840,7 +6144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 6
-  basePauseTime: 0
   rigidBodySpeed: 7
 --- !u!136 &754986454
 CapsuleCollider:
@@ -5884,9 +6187,9 @@ GameObject:
   - component: {fileID: 762860249}
   - component: {fileID: 762860248}
   - component: {fileID: 762860250}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5939,9 +6242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1001 &809249096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6140,9 +6444,9 @@ GameObject:
   - component: {fileID: 881030023}
   - component: {fileID: 881030022}
   - component: {fileID: 881030024}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6195,9 +6499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &883232851
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,9 +6608,9 @@ GameObject:
   - component: {fileID: 890845072}
   - component: {fileID: 890845071}
   - component: {fileID: 890845073}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6358,9 +6663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1001 &931516607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6519,7 +6825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 5
-  basePauseTime: 0
   rigidBodySpeed: 7
   startWall: {fileID: 2141527501}
   numberOfStop: 0
@@ -6565,9 +6870,9 @@ GameObject:
   - component: {fileID: 969321387}
   - component: {fileID: 969321386}
   - component: {fileID: 969321388}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6620,9 +6925,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &975051549
 GameObject:
   m_ObjectHideFlags: 0
@@ -6877,9 +7183,9 @@ GameObject:
   - component: {fileID: 986009903}
   - component: {fileID: 986009902}
   - component: {fileID: 986009904}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6932,9 +7238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1001 &1020366809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7192,7 +7499,7 @@ GameObject:
   - component: {fileID: 1036511581}
   - component: {fileID: 1036511582}
   - component: {fileID: 1036511584}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PathPart
   m_TagString: Fish Floor
   m_Icon: {fileID: 0}
@@ -7260,9 +7567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 9
-  righe: 3
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 5
+  rows: 3
 --- !u!1 &1056659231
 GameObject:
   m_ObjectHideFlags: 0
@@ -7575,9 +7883,9 @@ GameObject:
   - component: {fileID: 1060345697}
   - component: {fileID: 1060345696}
   - component: {fileID: 1060345698}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7630,9 +7938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1061927632
 GameObject:
   m_ObjectHideFlags: 0
@@ -9194,9 +9503,9 @@ GameObject:
   - component: {fileID: 1304598233}
   - component: {fileID: 1304598232}
   - component: {fileID: 1304598234}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9249,9 +9558,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1323800355
 GameObject:
   m_ObjectHideFlags: 0
@@ -9414,9 +9724,9 @@ GameObject:
   - component: {fileID: 1324894130}
   - component: {fileID: 1324894129}
   - component: {fileID: 1324894131}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9469,9 +9779,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1339043827
 GameObject:
   m_ObjectHideFlags: 0
@@ -9484,9 +9795,9 @@ GameObject:
   - component: {fileID: 1339043830}
   - component: {fileID: 1339043829}
   - component: {fileID: 1339043831}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9539,9 +9850,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1339345410
 GameObject:
   m_ObjectHideFlags: 0
@@ -9554,9 +9866,9 @@ GameObject:
   - component: {fileID: 1339345413}
   - component: {fileID: 1339345412}
   - component: {fileID: 1339345414}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9609,9 +9921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1350617788
 GameObject:
   m_ObjectHideFlags: 0
@@ -9624,9 +9937,9 @@ GameObject:
   - component: {fileID: 1350617791}
   - component: {fileID: 1350617790}
   - component: {fileID: 1350617792}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9679,9 +9992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1372988440
 GameObject:
   m_ObjectHideFlags: 0
@@ -9848,9 +10162,9 @@ GameObject:
   - component: {fileID: 1382727476}
   - component: {fileID: 1382727475}
   - component: {fileID: 1382727477}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9903,9 +10217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1394771633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -9926,7 +10241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 5
-  basePauseTime: 0
   rigidBodySpeed: 7
 --- !u!114 &1394771635
 MonoBehaviour:
@@ -10014,9 +10328,9 @@ GameObject:
   - component: {fileID: 1395315706}
   - component: {fileID: 1395315705}
   - component: {fileID: 1395315707}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10069,9 +10383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1396787258
 GameObject:
   m_ObjectHideFlags: 0
@@ -10268,9 +10583,9 @@ GameObject:
   - component: {fileID: 1427054079}
   - component: {fileID: 1427054078}
   - component: {fileID: 1427054080}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10323,9 +10638,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1447441349
 GameObject:
   m_ObjectHideFlags: 0
@@ -10476,6 +10792,103 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447441349}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1466509641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 634685784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1466509642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466509641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112cb790f16784b198e73f286f461be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  localPos: {x: 0, y: 0, z: 0}
+  speed: 0
+  angleBetweenPlayerAndTarget: 0
+  tolleranceLeft: -2
+  tolleranceRight: 2
+  angleForTurnLeft: 60
+  angleForTurnRight: 60
+  angleForTurnBack: 150
+  turnBack: 0
+--- !u!114 &1466509643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466509641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df39605e19a147358d033d1b2c73187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  localPos: {x: 0, y: 0, z: 0}
+  speed: 0
+  angleBetweenPlayerAndTarget: 0
+  tolleranceLeft: -2
+  tolleranceRight: 2
+  angleForTurnLeft: 60
+  angleForTurnRight: 60
+  angleForTurnBack: 150
+  turnBack: 0
+--- !u!114 &1466509644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466509641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b55b5bb39b4ac89394d71a7af7457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inPausa: 0
+  pauseTime: 5
+  rigidBodySpeed: 7
+  startWall: {fileID: 2141527501}
+  numberOfStop: 0
+--- !u!136 &1466509645
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466509641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.6, z: 0}
+--- !u!54 &1466509646
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466509641}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &1466756228
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,7 +10902,7 @@ GameObject:
   - component: {fileID: 1466756231}
   - component: {fileID: 1466756230}
   - component: {fileID: 1466756233}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PathPart
   m_TagString: Fish Floor
   m_Icon: {fileID: 0}
@@ -10557,9 +10970,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 9
-  righe: 3
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 5
+  rows: 3
 --- !u!1 &1483793490
 GameObject:
   m_ObjectHideFlags: 0
@@ -10885,9 +11299,9 @@ GameObject:
   - component: {fileID: 1552035888}
   - component: {fileID: 1552035887}
   - component: {fileID: 1552035889}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10940,9 +11354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1567190545
 GameObject:
   m_ObjectHideFlags: 0
@@ -11255,9 +11670,9 @@ GameObject:
   - component: {fileID: 1647755063}
   - component: {fileID: 1647755062}
   - component: {fileID: 1647755064}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11310,9 +11725,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1706820418
 GameObject:
   m_ObjectHideFlags: 0
@@ -11673,7 +12089,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 3
-  basePauseTime: 0
   rigidBodySpeed: 7
   numberOfStop: 0
 --- !u!136 &1737499659
@@ -11719,7 +12134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25, type: 3}
       propertyPath: m_TagString
@@ -11813,7 +12228,7 @@ GameObject:
   - component: {fileID: 1761017415}
   - component: {fileID: 1761017414}
   - component: {fileID: 1761017417}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PathPart
   m_TagString: Fish Floor
   m_Icon: {fileID: 0}
@@ -11881,9 +12296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 9
-  righe: 3
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 5
+  rows: 3
 --- !u!1 &1773994750
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,9 +12312,9 @@ GameObject:
   - component: {fileID: 1773994753}
   - component: {fileID: 1773994752}
   - component: {fileID: 1773994754}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11951,9 +12367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1779741287
 GameObject:
   m_ObjectHideFlags: 0
@@ -12116,9 +12533,9 @@ GameObject:
   - component: {fileID: 1782152107}
   - component: {fileID: 1782152106}
   - component: {fileID: 1782152108}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12171,9 +12588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1783344860 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 695f1339053fe4f03b2626eebefd8e25,
@@ -12194,7 +12612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 3
-  basePauseTime: 0
   rigidBodySpeed: 7
   numberOfStop: 0
 --- !u!114 &1783344862
@@ -12375,9 +12792,9 @@ GameObject:
   - component: {fileID: 1834274724}
   - component: {fileID: 1834274723}
   - component: {fileID: 1834274722}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12408,9 +12825,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!64 &1834274723
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12446,7 +12864,7 @@ GameObject:
   - component: {fileID: 1846847634}
   - component: {fileID: 1846847633}
   - component: {fileID: 1846847636}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PathPart
   m_TagString: Fish Floor
   m_Icon: {fileID: 0}
@@ -12514,9 +12932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 9
-  righe: 3
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 5
+  rows: 3
 --- !u!1 &1870400619
 GameObject:
   m_ObjectHideFlags: 0
@@ -13015,9 +13434,9 @@ GameObject:
   - component: {fileID: 1940055563}
   - component: {fileID: 1940055562}
   - component: {fileID: 1940055564}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13070,9 +13489,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1952942820
 GameObject:
   m_ObjectHideFlags: 0
@@ -13085,9 +13505,9 @@ GameObject:
   - component: {fileID: 1952942823}
   - component: {fileID: 1952942822}
   - component: {fileID: 1952942824}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13140,9 +13560,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1955461125
 GameObject:
   m_ObjectHideFlags: 0
@@ -13155,9 +13576,9 @@ GameObject:
   - component: {fileID: 1955461128}
   - component: {fileID: 1955461127}
   - component: {fileID: 1955461129}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13210,9 +13631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &1956437518
 GameObject:
   m_ObjectHideFlags: 0
@@ -13226,7 +13648,7 @@ GameObject:
   - component: {fileID: 1956437521}
   - component: {fileID: 1956437520}
   - component: {fileID: 1956437523}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PathPart
   m_TagString: Fish Floor
   m_Icon: {fileID: 0}
@@ -13294,9 +13716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 9
-  righe: 3
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 5
+  rows: 3
 --- !u!1001 &1974095619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13498,9 +13921,9 @@ GameObject:
   - component: {fileID: 2021987591}
   - component: {fileID: 2021987590}
   - component: {fileID: 2021987592}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13553,9 +13976,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 3
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1 &2022509105
 GameObject:
   m_ObjectHideFlags: 0
@@ -14012,7 +14436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inPausa: 0
   pauseTime: 3
-  basePauseTime: 0
   rigidBodySpeed: 7
   numberOfStop: 0
 --- !u!136 &2082204791
@@ -14242,9 +14665,9 @@ GameObject:
   - component: {fileID: 2102679807}
   - component: {fileID: 2102679806}
   - component: {fileID: 2102679808}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Quadro
+  m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14297,9 +14720,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ade2baa17c1c402890d509719e1dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oggetto: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd, type: 3}
-  colonne: 1
-  righe: 1
+  gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
+    type: 3}
+  columns: 3
+  rows: 1
 --- !u!1001 &2119313385
 PrefabInstance:
   m_ObjectHideFlags: 0

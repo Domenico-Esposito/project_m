@@ -22,7 +22,7 @@ public class SauterellePattern : PathManager
     {
         pictures = new List<GameObject>();
 
-        foreach(GameObject picture in GameObject.FindGameObjectsWithTag( "Quadro" ) )
+        foreach(GameObject picture in GameObject.FindGameObjectsWithTag( "PicturePlane" ) )
         {
             pictures.Add( picture.transform.parent.gameObject );
         }

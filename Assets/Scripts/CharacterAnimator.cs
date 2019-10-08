@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimateCharacter : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour
 {
 
     private Animator animator;
@@ -91,8 +91,6 @@ public class AnimateCharacter : MonoBehaviour
         {
             TurnBack();
         }
-
-
     }
 
     private void TurnLeft()
@@ -151,7 +149,7 @@ public class AnimateCharacter : MonoBehaviour
             angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, ( target - transform.position ) );
             localPos = transform.InverseTransformPoint( target );
 
-            if ( angleBetweenPlayerAndTarget > angleForTurnLeft )
+            if ( angleBetweenPlayerAndTarget > angleForTurnLeft || angleBetweenPlayerAndTarget > angleForTurnRight )
             {
                 return false;
             }

@@ -42,7 +42,7 @@ public class AntPattern : PathManager
         {
             foreach (Transform picture in wall.transform)
             {
-                if (picture.gameObject.transform.GetChild(0).CompareTag("Quadro"))
+                if (picture.gameObject.transform.GetChild(0).CompareTag("PicturePlane"))
                     pictureOnWall[wall].Add(picture.gameObject);
             }
 
@@ -128,7 +128,7 @@ public class AntPattern : PathManager
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Quadro"))
+        if (collision.gameObject.CompareTag("PicturePlane"))
         {
             // Il quadro non va visitato, non c'è nessun muro di interesse
             if (currentWall == null)

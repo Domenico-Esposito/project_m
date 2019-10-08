@@ -48,8 +48,8 @@ public class PoissonPattern : PathManager
 
     public override Vector3 GetPositionInFloorPicture ()
     {
-        destinationPoint = destination.GetComponent<PlaneScript>().GetAvailableRandomPoint();
-        destinationPoint.GetComponent<PuntoDiInteresse>().Occupa();
+        destinationPoint = destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
+        destinationPoint.GetComponent<DestinationPoint>().Occupa();
 
         return destinationPoint.transform.position;
     }
@@ -57,22 +57,17 @@ public class PoissonPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-
         bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
 
         if( viewPicture )
-        {
             return GetPictureDestination();
-        }
 
         return GetFishPlaneDestination();
-
-
     }
 
     private GameObject GetMostClosePicture ()
     {
-        List<GameObject> planes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Quadro" ) );
+        List<GameObject> planes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
         planes.Sort( Distanza );
 
         return planes[ 0 ];
@@ -96,14 +91,10 @@ public class PoissonPattern : PathManager
 
     private GameObject GetFishPlaneDestination ()
     {
-
         if ( pathPart.MoveNext() )
-        {
             return pathPart.Current;
-        }
 
         return GetPlaneOfExit();
-
     }
 
 
