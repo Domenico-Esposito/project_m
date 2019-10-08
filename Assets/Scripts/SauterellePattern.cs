@@ -9,12 +9,14 @@ public class SauterellePattern : PathManager
 
     private List<GameObject> pictures;
 
+    private int maxJump = 6;
+
     public override void InitMovementPattern ()
     {
         colorDrawPath = Color.red;
 
         FindAllPicture();
-        RefreshPicturesToWatch();
+        SetPictureToWatch();
     }
 
 
@@ -22,9 +24,9 @@ public class SauterellePattern : PathManager
     {
         pictures = new List<GameObject>();
 
-        foreach(GameObject picture in GameObject.FindGameObjectsWithTag( "PicturePlane" ) )
+        foreach(GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
-            pictures.Add( picture.transform.parent.gameObject );
+            pictures.Add( picture );
         }
 
         pictures.Sort( SortByIndexPicture );
@@ -32,19 +34,18 @@ public class SauterellePattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-
         if ( picturesToWatch.MoveNext() )
         {
-            return picturesToWatch.Current.transform.GetChild(0).gameObject;
+            GameObject picturePlane = picturesToWatch.Current.transform.GetChild(0).gameObject;
+            return picturePlane;
         }
 
         return GetPlaneOfExit();
     }
 
 
-    private void RefreshPicturesToWatch ()
+    private void SetPictureToWatch ()
     {
-   
         List<GameObject> picturesToWatch_list = new List<GameObject>();
         int lastPictureIndexAdded = 0;
 
@@ -59,33 +60,16 @@ public class SauterellePattern : PathManager
             }
         }
 
-
         picturesToWatch = picturesToWatch_list.GetEnumerator();
     }
 
 
     private bool IsMaxJump (int pictureIndex, int lastPictureIndex)
     {
-        int maxJump = 6;
-
         if( pictureIndex >= maxJump + lastPictureIndex )
-        {
             return true;
-        }
 
         return false;
-    }
-
-    private int SortByIndexPicture ( GameObject x, GameObject y )
-    {
-
-        float index_1 = x.transform.GetComponentInParent<PictureInfo>().index;
-        float index_2 = y.transform.GetComponentInParent<PictureInfo>().index;
-
-        if ( index_1 < index_2 ) return -1;
-        if ( index_1 > index_2 ) return 1;
-        return 0;
-
     }
 
 }

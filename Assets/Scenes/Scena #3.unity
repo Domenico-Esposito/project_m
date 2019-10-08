@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 105032753}
   m_Layer: 11
   m_Name: Quadro 6
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1254,7 +1254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121313844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.833, z: 15}
+  m_LocalPosition: {x: 0.303, y: -0.833, z: 15}
   m_LocalScale: {x: 0.1, y: 1, z: 1.9268}
   m_Children: []
   m_Father: {fileID: 1036096503}
@@ -1296,7 +1296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1 &127524696
 GameObject:
@@ -1664,7 +1664,7 @@ GameObject:
   - component: {fileID: 189388139}
   m_Layer: 11
   m_Name: Quadro 28
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1 &244018572
 GameObject:
@@ -2277,7 +2277,7 @@ GameObject:
   - component: {fileID: 312246109}
   m_Layer: 11
   m_Name: Quadro 7
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2583,7 +2583,7 @@ GameObject:
   - component: {fileID: 343749658}
   m_Layer: 11
   m_Name: Quadro 10
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2733,7 +2733,7 @@ GameObject:
   - component: {fileID: 368640229}
   m_Layer: 11
   m_Name: Quadro 8
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2883,7 +2883,7 @@ GameObject:
   - component: {fileID: 368689434}
   m_Layer: 11
   m_Name: Quadro 21
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3033,7 +3033,7 @@ GameObject:
   - component: {fileID: 387357102}
   m_Layer: 11
   m_Name: Quadro 22
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3607,7 +3607,7 @@ GameObject:
   - component: {fileID: 479321785}
   m_Layer: 11
   m_Name: Quadro 9
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3629,7 +3629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.005, y: 0}
+  m_AnchoredPosition: {x: -0.056, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479321785
@@ -3757,7 +3757,7 @@ GameObject:
   - component: {fileID: 485090390}
   m_Layer: 11
   m_Name: Quadro 19
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3907,7 +3907,7 @@ GameObject:
   - component: {fileID: 501564093}
   m_Layer: 11
   m_Name: Quadro 4
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4390,7 +4390,7 @@ GameObject:
   - component: {fileID: 564380938}
   m_Layer: 11
   m_Name: Quadro 27
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4540,7 +4540,7 @@ GameObject:
   - component: {fileID: 576069653}
   m_Layer: 11
   m_Name: Quadro 31
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4856,7 +4856,7 @@ GameObject:
   - component: {fileID: 624328364}
   m_Layer: 11
   m_Name: Quadro 3
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5439,7 +5439,7 @@ GameObject:
   - component: {fileID: 703324503}
   m_Layer: 11
   m_Name: Quadro 5
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5784,7 +5784,7 @@ GameObject:
   - component: {fileID: 729739966}
   m_Layer: 11
   m_Name: Quadro 14
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5806,7 +5806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.001, y: 0}
+  m_AnchoredPosition: {x: -0.003, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &729739966
@@ -6036,7 +6036,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751992615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.833, z: 15}
+  m_LocalPosition: {x: 0.491, y: -0.833, z: 15}
   m_LocalScale: {x: 0.1, y: 1, z: 1.9268}
   m_Children: []
   m_Father: {fileID: 1447441350}
@@ -6078,7 +6078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1 &754986450 stripped
 GameObject:
@@ -6946,7 +6946,7 @@ GameObject:
   - component: {fileID: 975051551}
   m_Layer: 11
   m_Name: Quadro 12
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7353,7 +7353,7 @@ GameObject:
   - component: {fileID: 1036096504}
   m_Layer: 11
   m_Name: Quadro 19
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7588,7 +7588,7 @@ GameObject:
   - component: {fileID: 1056659233}
   m_Layer: 11
   m_Name: Quadro 11
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7738,7 +7738,7 @@ GameObject:
   - component: {fileID: 1059419087}
   m_Layer: 11
   m_Name: Quadro 17
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7898,7 +7898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060345694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.833, z: 15}
+  m_LocalPosition: {x: 0.2, y: -0.833, z: 15}
   m_LocalScale: {x: 0.1, y: 1, z: 1.9268}
   m_Children: []
   m_Father: {fileID: 479321784}
@@ -7940,7 +7940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1 &1061927632
 GameObject:
@@ -7959,7 +7959,7 @@ GameObject:
   - component: {fileID: 1061927634}
   m_Layer: 11
   m_Name: Quadro 35
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8109,7 +8109,7 @@ GameObject:
   - component: {fileID: 1090712398}
   m_Layer: 11
   m_Name: Quadro 32
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8259,7 +8259,7 @@ GameObject:
   - component: {fileID: 1095109968}
   m_Layer: 11
   m_Name: Quadro 20
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8409,7 +8409,7 @@ GameObject:
   - component: {fileID: 1100676716}
   m_Layer: 11
   m_Name: Quadro 34
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8838,7 +8838,7 @@ GameObject:
   - component: {fileID: 1145691931}
   m_Layer: 11
   m_Name: Quadro 23
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8988,7 +8988,7 @@ GameObject:
   - component: {fileID: 1217771167}
   m_Layer: 11
   m_Name: Quadro 1
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 1323800357}
   m_Layer: 11
   m_Name: Quadro 18
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10219,7 +10219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1 &1394771633 stripped
 GameObject:
@@ -10659,7 +10659,7 @@ GameObject:
   - component: {fileID: 1447441351}
   m_Layer: 11
   m_Name: Quadro 21
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10991,7 +10991,7 @@ GameObject:
   - component: {fileID: 1483793492}
   m_Layer: 11
   m_Name: Quadro 37
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11375,7 +11375,7 @@ GameObject:
   - component: {fileID: 1567190547}
   m_Layer: 11
   m_Name: Quadro 30
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11525,7 +11525,7 @@ GameObject:
   - component: {fileID: 1613404155}
   m_Layer: 11
   m_Name: Quadro 16
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11746,7 +11746,7 @@ GameObject:
   - component: {fileID: 1706820420}
   m_Layer: 11
   m_Name: Quadro 29
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12388,7 +12388,7 @@ GameObject:
   - component: {fileID: 1779741289}
   m_Layer: 11
   m_Name: Quadro 33
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12953,7 +12953,7 @@ GameObject:
   - component: {fileID: 1870400621}
   m_Layer: 11
   m_Name: Quadro 15
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13195,7 +13195,7 @@ GameObject:
   - component: {fileID: 1926789269}
   m_Layer: 11
   m_Name: Quadro 25
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13449,7 +13449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940055560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.833, z: 15}
+  m_LocalPosition: {x: -0.7, y: -0.833, z: 15}
   m_LocalScale: {x: 0.1, y: 1, z: 1.9268}
   m_Children: []
   m_Father: {fileID: 387357101}
@@ -13491,7 +13491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1 &1952942820
 GameObject:
@@ -14089,7 +14089,7 @@ GameObject:
   - component: {fileID: 2069934458}
   m_Layer: 11
   m_Name: Quadro 13
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14239,7 +14239,7 @@ GameObject:
   - component: {fileID: 2080630481}
   m_Layer: 11
   m_Name: Quadro 36
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14680,7 +14680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102679804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.833, z: 15}
+  m_LocalPosition: {x: 0.45, y: -0.833, z: 15}
   m_LocalScale: {x: 0.1, y: 1, z: 1.9268}
   m_Children: []
   m_Father: {fileID: 729739965}
@@ -14722,7 +14722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
+  columns: 1
   rows: 1
 --- !u!1001 &2119313385
 PrefabInstance:
@@ -14839,7 +14839,7 @@ GameObject:
   - component: {fileID: 2120338127}
   m_Layer: 11
   m_Name: Quadro 24
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14989,7 +14989,7 @@ GameObject:
   - component: {fileID: 2135662246}
   m_Layer: 11
   m_Name: Quadro 26
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15139,7 +15139,7 @@ GameObject:
   - component: {fileID: 2135727679}
   m_Layer: 11
   m_Name: Quadro 2
-  m_TagString: Untagged
+  m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

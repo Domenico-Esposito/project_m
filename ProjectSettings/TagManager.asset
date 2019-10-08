@@ -14,6 +14,7 @@ TagManager:
   - Uscita
   - NPC
   - PicturePlane
+  - Picture
   layers:
   - Default
   - TransparentFX

@@ -61,7 +61,6 @@ public class PapillonPattern : PathManager
 
     private bool LookNextIndex (int maxJump = 5)
     {
-
         foreach(List<GameObject> pics in picturesOnWall.Values)
         {
             foreach(GameObject pic in pics )
@@ -80,14 +79,12 @@ public class PapillonPattern : PathManager
             }
         }
 
-
         return false;
     }
 
 
     private bool LookInBackward ()
     {
-
         Vector3[ ] directions =
         {   -transform.forward,
             Quaternion.AngleAxis( 150, transform.up ) * transform.forward,
