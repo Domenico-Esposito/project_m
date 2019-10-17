@@ -23,6 +23,8 @@ public abstract class PathManager : MonoBehaviour
 
     public float pauseTime = 5f;
 
+    private float baseTime;
+
     public float rigidBodySpeed = 7f;
 
     public abstract GameObject GetNextDestination ();
@@ -33,6 +35,7 @@ public abstract class PathManager : MonoBehaviour
 
     protected virtual void Start ()
     {
+        baseTime = pauseTime;
         InitAnimationBheavior();
         InitMovementPattern();
         UpdateIsHasty();
@@ -46,7 +49,7 @@ public abstract class PathManager : MonoBehaviour
 
     public void UpdatePauseTime ()
     {
-        pauseTime = (pauseTime * Random.Range( 1f, 1.7f ));
+        pauseTime = ( baseTime * Random.Range( 1f, 1.7f ));
     }
 
     public void InitAnimationBheavior ()
