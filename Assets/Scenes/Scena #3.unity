@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 105032754}
   - component: {fileID: 105032753}
   m_Layer: 11
-  m_Name: Quadro 6
+  m_Name: Picture 6
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1663,7 +1663,7 @@ GameObject:
   - component: {fileID: 189388140}
   - component: {fileID: 189388139}
   m_Layer: 11
-  m_Name: Quadro 28
+  m_Name: Picture 28
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2276,7 +2276,7 @@ GameObject:
   - component: {fileID: 312246110}
   - component: {fileID: 312246109}
   m_Layer: 11
-  m_Name: Quadro 7
+  m_Name: Picture 7
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 343749659}
   - component: {fileID: 343749658}
   m_Layer: 11
-  m_Name: Quadro 10
+  m_Name: Picture 10
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2732,7 +2732,7 @@ GameObject:
   - component: {fileID: 368640230}
   - component: {fileID: 368640229}
   m_Layer: 11
-  m_Name: Quadro 8
+  m_Name: Picture 8
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2882,7 +2882,7 @@ GameObject:
   - component: {fileID: 368689435}
   - component: {fileID: 368689434}
   m_Layer: 11
-  m_Name: Quadro 21
+  m_Name: Picture 21
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3032,7 +3032,7 @@ GameObject:
   - component: {fileID: 387357103}
   - component: {fileID: 387357102}
   m_Layer: 11
-  m_Name: Quadro 22
+  m_Name: Picture 22
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3513,7 +3513,7 @@ GameObject:
   - component: {fileID: 479321786}
   - component: {fileID: 479321785}
   m_Layer: 11
-  m_Name: Quadro 9
+  m_Name: Picture 9
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3663,7 +3663,7 @@ GameObject:
   - component: {fileID: 485090391}
   - component: {fileID: 485090390}
   m_Layer: 11
-  m_Name: Quadro 19
+  m_Name: Picture 19
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3813,7 +3813,7 @@ GameObject:
   - component: {fileID: 501564094}
   - component: {fileID: 501564093}
   m_Layer: 11
-  m_Name: Quadro 4
+  m_Name: Picture 4
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4296,7 +4296,7 @@ GameObject:
   - component: {fileID: 564380939}
   - component: {fileID: 564380938}
   m_Layer: 11
-  m_Name: Quadro 27
+  m_Name: Picture 27
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4446,7 +4446,7 @@ GameObject:
   - component: {fileID: 576069654}
   - component: {fileID: 576069653}
   m_Layer: 11
-  m_Name: Quadro 31
+  m_Name: Picture 31
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4871,7 +4871,7 @@ GameObject:
   - component: {fileID: 624328365}
   - component: {fileID: 624328364}
   m_Layer: 11
-  m_Name: Quadro 3
+  m_Name: Picture 3
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5356,7 +5356,7 @@ GameObject:
   - component: {fileID: 703324504}
   - component: {fileID: 703324503}
   m_Layer: 11
-  m_Name: Quadro 5
+  m_Name: Picture 5
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5506,7 +5506,7 @@ GameObject:
   - component: {fileID: 729739967}
   - component: {fileID: 729739966}
   m_Layer: 11
-  m_Name: Quadro 14
+  m_Name: Picture 14
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6574,7 +6574,7 @@ GameObject:
   - component: {fileID: 975051552}
   - component: {fileID: 975051551}
   m_Layer: 11
-  m_Name: Quadro 12
+  m_Name: Picture 12
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6981,7 +6981,7 @@ GameObject:
   - component: {fileID: 1036096505}
   - component: {fileID: 1036096504}
   m_Layer: 11
-  m_Name: Quadro 19
+  m_Name: Picture 19
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7216,7 +7216,7 @@ GameObject:
   - component: {fileID: 1056659234}
   - component: {fileID: 1056659233}
   m_Layer: 11
-  m_Name: Quadro 11
+  m_Name: Picture 11
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7366,7 +7366,7 @@ GameObject:
   - component: {fileID: 1059419088}
   - component: {fileID: 1059419087}
   m_Layer: 11
-  m_Name: Quadro 17
+  m_Name: Picture 17
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7587,7 +7587,7 @@ GameObject:
   - component: {fileID: 1061927635}
   - component: {fileID: 1061927634}
   m_Layer: 11
-  m_Name: Quadro 35
+  m_Name: Picture 35
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7737,7 +7737,7 @@ GameObject:
   - component: {fileID: 1090712399}
   - component: {fileID: 1090712398}
   m_Layer: 11
-  m_Name: Quadro 32
+  m_Name: Picture 32
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7887,7 +7887,7 @@ GameObject:
   - component: {fileID: 1095109969}
   - component: {fileID: 1095109968}
   m_Layer: 11
-  m_Name: Quadro 20
+  m_Name: Picture 20
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8037,7 +8037,7 @@ GameObject:
   - component: {fileID: 1100676717}
   - component: {fileID: 1100676716}
   m_Layer: 11
-  m_Name: Quadro 34
+  m_Name: Picture 34
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8466,7 +8466,7 @@ GameObject:
   - component: {fileID: 1145691932}
   - component: {fileID: 1145691931}
   m_Layer: 11
-  m_Name: Quadro 23
+  m_Name: Picture 23
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8616,7 +8616,7 @@ GameObject:
   - component: {fileID: 1217771168}
   - component: {fileID: 1217771167}
   m_Layer: 11
-  m_Name: Quadro 1
+  m_Name: Picture 1
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9207,7 +9207,7 @@ GameObject:
   - component: {fileID: 1323800358}
   - component: {fileID: 1323800357}
   m_Layer: 11
-  m_Name: Quadro 18
+  m_Name: Picture 18
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10289,7 +10289,7 @@ GameObject:
   - component: {fileID: 1447441352}
   - component: {fileID: 1447441351}
   m_Layer: 11
-  m_Name: Quadro 21
+  m_Name: Picture 21
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10616,7 +10616,7 @@ GameObject:
   - component: {fileID: 1483793493}
   - component: {fileID: 1483793492}
   m_Layer: 11
-  m_Name: Quadro 37
+  m_Name: Picture 37
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11000,7 +11000,7 @@ GameObject:
   - component: {fileID: 1567190548}
   - component: {fileID: 1567190547}
   m_Layer: 11
-  m_Name: Quadro 30
+  m_Name: Picture 30
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11150,7 +11150,7 @@ GameObject:
   - component: {fileID: 1613404156}
   - component: {fileID: 1613404155}
   m_Layer: 11
-  m_Name: Quadro 16
+  m_Name: Picture 16
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11371,7 +11371,7 @@ GameObject:
   - component: {fileID: 1706820421}
   - component: {fileID: 1706820420}
   m_Layer: 11
-  m_Name: Quadro 29
+  m_Name: Picture 29
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12013,7 +12013,7 @@ GameObject:
   - component: {fileID: 1779741290}
   - component: {fileID: 1779741289}
   m_Layer: 11
-  m_Name: Quadro 33
+  m_Name: Picture 33
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12578,7 +12578,7 @@ GameObject:
   - component: {fileID: 1870400622}
   - component: {fileID: 1870400621}
   m_Layer: 11
-  m_Name: Quadro 15
+  m_Name: Picture 15
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12820,7 +12820,7 @@ GameObject:
   - component: {fileID: 1926789270}
   - component: {fileID: 1926789269}
   m_Layer: 11
-  m_Name: Quadro 25
+  m_Name: Picture 25
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13714,7 +13714,7 @@ GameObject:
   - component: {fileID: 2069934459}
   - component: {fileID: 2069934458}
   m_Layer: 11
-  m_Name: Quadro 13
+  m_Name: Picture 13
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13864,7 +13864,7 @@ GameObject:
   - component: {fileID: 2080630482}
   - component: {fileID: 2080630481}
   m_Layer: 11
-  m_Name: Quadro 36
+  m_Name: Picture 36
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14464,7 +14464,7 @@ GameObject:
   - component: {fileID: 2120338128}
   - component: {fileID: 2120338127}
   m_Layer: 11
-  m_Name: Quadro 24
+  m_Name: Picture 24
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14614,7 +14614,7 @@ GameObject:
   - component: {fileID: 2135662247}
   - component: {fileID: 2135662246}
   m_Layer: 11
-  m_Name: Quadro 26
+  m_Name: Picture 26
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14764,7 +14764,7 @@ GameObject:
   - component: {fileID: 2135727680}
   - component: {fileID: 2135727679}
   m_Layer: 11
-  m_Name: Quadro 2
+  m_Name: Picture 2
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
