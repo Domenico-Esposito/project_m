@@ -22,8 +22,8 @@ public class FourmiPattern : PathManager
         FindPicturesOnWalls();
         SortPicturesOnWalls();
 
-        //currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(0, GameObject.FindGameObjectsWithTag( "Wall" ).Length) ];
-        currentWall = startWall;
+        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(0, 5) ];
+        //currentWall = startWall;
 
         numberOfStop = Random.Range( 13, walls.Count );
     }
@@ -36,15 +36,15 @@ public class FourmiPattern : PathManager
 
         if ( MoveToNextPicOnCurrentWall() )
         {
-            if ( Random.Range( 1, 10 ) > 6 )    //Salto un quadro
-                return GetNextDestination();
+            //if ( Random.Range( 1, 10 ) > 6 )    //Salto un quadro
+                //return GetNextDestination();
 
             numberOfStop -= 1;
         }
         else if ( MoveToNextPicOnAnotherWall() )
         {
-            if ( Random.Range( 1, 10 ) > 5 )    //Salto un muro
-                return GetNextDestination();
+            //if ( Random.Range( 1, 10 ) > 5 )    //Salto un muro
+                //return GetNextDestination();
 
             numberOfStop -= 1;
         }

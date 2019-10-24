@@ -10,7 +10,7 @@ public class AnimationViewPicture : CharacterAnimator
 
     public void TurnTowardsPicture ( Collision collision )
     {
-        if ( path == null && collision.gameObject.CompareTag( "PicturePlane" ) )
+        if (collision.gameObject.CompareTag( "PicturePlane" ) )
         {
             if ( CheckAngleToTarget( collision ) && isFirstTry )
             {
@@ -29,11 +29,33 @@ public class AnimationViewPicture : CharacterAnimator
     }
 
 
+    public void TurnPic ()
+    {
+        if ( localPos == Vector3.zero )
+            return;
+
+        speed = 0f;
+        Animation_Walk();
+
+        playerRidiBody.isKinematic = true;
+
+        if ( localPos.x < tolleranceLeft )
+        {
+            Animation_TurnLeft();
+        }
+        else if ( localPos.x > tolleranceRight )
+        {
+            Animation_TurnRight();
+        }
+
+    }
+
+
     private bool CheckAngleToTarget ( Collision target )
     {
         bool isRotation = IsRotation();
 
-        if ( !isRotation && path == null )
+        if ( !isRotation )
         {
             Vector3 picturePosition = target.gameObject.GetComponentInParent<RectTransform>().transform.position;
             angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, picturePosition );
@@ -59,11 +81,12 @@ public class AnimationViewPicture : CharacterAnimator
     }
 
 
-    private bool PlayerSeeQuadro ()
+    public bool PlayerSeeQuadro ()
     {
         RaycastHit hit;
+        int layer_mask = LayerMask.GetMask( "Quadro" );
 
-        if ( Physics.Raycast( transform.position + new Vector3( 0f, 2f, 0f ), transform.forward, out hit, 7f, 1 << 11 ) )
+        if ( Physics.Raycast( transform.position + new Vector3( 0f, 2f, 0f ), transform.forward, out hit, 7f, layer_mask ) )
             return true;
 
         return false;

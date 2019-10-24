@@ -29,12 +29,13 @@ public class PoissonPattern : PathManager
 
     protected override void OnCollisionStay ( Collision collision )
     {
+        base.OnCollisionStay( collision );
+
         if ( collision.gameObject.CompareTag( "Fish Floor" ) )
         {
             timedelta += Time.deltaTime;
         }
 
-        base.OnCollisionStay( collision );
     }
 
     private void OnCollisionExit ( Collision collision )

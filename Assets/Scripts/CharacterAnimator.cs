@@ -7,7 +7,7 @@ public class CharacterAnimator : MonoBehaviour
 {
 
     private Animator animator;
-    private Rigidbody playerRidiBody;
+    protected Rigidbody playerRidiBody;
     public NavMeshPath path;
     public Vector3 target;
 
@@ -77,6 +77,8 @@ public class CharacterAnimator : MonoBehaviour
             return;
             
         speed = 0f;
+        Animation_Walk();
+
         playerRidiBody.isKinematic = true;
 
         if (localPos.x < tolleranceLeft)
@@ -91,6 +93,7 @@ public class CharacterAnimator : MonoBehaviour
         {
             TurnBack();
         }
+
     }
 
     private void TurnLeft()
