@@ -17,48 +17,49 @@ public class PoissonPattern : PathManager
         colorDrawPath = Color.magenta;
 
         poissonFloors = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
-        poissonFloors.Sort( SortByIndexPlace );
+        poissonFloors.Sort( RandomIndex );
+        //poissonFloors.Sort( SortByIndexPlace );
 
-        if ( Random.Range( 0f, 1f ) > 0.5f )
-        {
-            poissonFloors.Reverse();
-        }
+        //if ( Random.Range( 0f, 1f ) > 0.5f )
+        //{
+        //    poissonFloors.Reverse();
+        //}
 
         pathPart = poissonFloors.GetEnumerator();
     }
 
-    protected override void OnCollisionStay ( Collision collision )
-    {
-        base.OnCollisionStay( collision );
+    //protected override void OnCollisionStay ( Collision collision )
+    //{
+    //    base.OnCollisionStay( collision );
 
-        if ( collision.gameObject.CompareTag( "Fish Floor" ) )
-        {
-            timedelta += Time.deltaTime;
-        }
+    //    if ( collision.gameObject.CompareTag( "Fish Floor" ) )
+    //    {
+    //        timedelta += Time.deltaTime;
+    //    }
 
-    }
+    //}
 
-    private void OnCollisionExit ( Collision collision )
-    {
-        if ( collision.gameObject.CompareTag( "Fish Floor" ) && path != null )
-        {
-            timedelta = 0f;
-        }
-    }
+    //private void OnCollisionExit ( Collision collision )
+    //{
+    //    if ( collision.gameObject.CompareTag( "Fish Floor" ) && path != null )
+    //    {
+    //        timedelta = 0f;
+    //    }
+    //}
 
 
-    public override Vector3 GetPositionInFloorPicture ()
+    protected override GameObject GetPointInDestination ()
     {
         destinationPoint = destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
         destinationPoint.GetComponent<DestinationPoint>().Occupa();
 
-        return destinationPoint.transform.position;
+        return destinationPoint;
     }
 
 
     public override GameObject GetNextDestination ()
     {
-        bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
+        bool viewPicture = Random.Range( 0, 10 ) > 5 ? true : false;
 
         if( viewPicture )
             return GetPictureDestination();
@@ -109,6 +110,16 @@ public class PoissonPattern : PathManager
         if ( index_1 > index_2 ) return 1;
         return 0;
 
+    }
+
+    private int RandomIndex ( GameObject x, GameObject y )
+    {
+        float hx = Random.Range( 0, 10 );
+        float hy = Random.Range( 0, 10 );
+
+        if ( hx < hy ) return -1;
+        if ( hx > hy ) return 1;
+        return 0;
     }
 
 }

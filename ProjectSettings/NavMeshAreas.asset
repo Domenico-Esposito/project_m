@@ -11,8 +11,8 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
-    cost: 1
+  - name: Punto di osservazione
+    cost: 5
   - name: 
     cost: 1
   - name: 
@@ -74,9 +74,9 @@ NavMeshProjectSettings:
   - serializedVersion: 2
     agentTypeID: 0
     agentRadius: 2
-    agentHeight: 3.71
-    agentSlope: 2.2
-    agentClimb: 0.001
+    agentHeight: 4.3
+    agentSlope: 0
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2

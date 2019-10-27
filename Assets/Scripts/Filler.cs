@@ -5,37 +5,69 @@ using UnityEngine;
 public class Filler : MonoBehaviour
 {
 
-    private float timeDelta = 0f;
-    private float pauseTime = 3f;
+    public float pauseTime = 3f;
+    private float deltaTime = 0f;
+    public int numberOfFourmi = 1;
+    public int numberOfPapillon = 1;
+    public int numberOfPoisson = 1;
+    public int numberOfSauterelle = 1;
+
 
     public GameObject fourmiBot;
     public GameObject papillonBot;
     public GameObject poissonBot;
     public GameObject sauterelleBot;
-    
-    private void Update ()
-    {
-        if( timeDelta > pauseTime )
-        {
-            int numberOfNPC = GameObject.FindGameObjectsWithTag( "NPC" ).Length;
-            if ( numberOfNPC < 50 )
-            {
-                AddNewBot();
-            }
-            Debug.Log( "Numero di NPC: " + (numberOfNPC+1) );
-            timeDelta = 0f;
-        }
 
-        timeDelta += Time.deltaTime;
+    private void Awake ()
+    {
+        fill();
     }
 
-
-    private void AddNewBot ()
+    private void Update ()
     {
+     
+        if( deltaTime > pauseTime )
+        {
+            fill();
+            deltaTime = 0;
+        }
 
-        int random = Random.Range( 0, 3 );
+        deltaTime += Time.deltaTime;
+    }
 
-        switch ( random )
+    private void fill()
+    {
+        int[ ] numbers = { numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle };
+
+
+        for ( int i = 0; i < Mathf.Max( numbers ) ; i++)
+        {
+            if( i < numberOfFourmi )
+            {
+                AddNewBot( 0 );
+            }
+
+            if( i < numberOfPapillon )
+            {
+                AddNewBot( 1 );
+            }
+
+            if ( i < numberOfPoisson)
+            {
+                AddNewBot( 2 );
+            }
+
+            if( i < numberOfSauterelle )
+            {
+                AddNewBot( 3 );
+            }
+        }
+    }
+
+    private void AddNewBot (int type)
+    {
+    
+        switch ( type )
         {
         case 0:
             AddNewFourmi();

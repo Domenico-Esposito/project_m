@@ -7,13 +7,17 @@ public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
     private Rigidbody rigidBody;
-    protected GameObject destination;
-    protected GameObject destinationPoint;
+    public GameObject destination;
+    public GameObject destinationPoint;
     private NavMeshAgent navMeshAgent;
+    public bool inPausa = false;
+    public bool isHasty = false;
+
+    Rigidbody m_Rigidbody;
+    Animator m_Animator;
 
     protected Color colorDrawPath = Color.red;
     // Animazione
-    protected AnimationViewPicture animationManager;
 
     // Segui percorso
     protected NavMeshPath path;
@@ -29,10 +33,18 @@ public abstract class PathManager : MonoBehaviour
     public abstract GameObject GetNextDestination ();
 
     public abstract void InitMovementPattern ();
+    public bool controllo = false;
 
     protected virtual void Start ()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        m_Animator = GetComponent<Animator>();
+        m_Rigidbody = GetComponent<Rigidbody>();
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.avoidancePriority = Random.Range( 0, 100);
+        isHasty = Random.Range( 0, 5 ) > 2;
+
         baseTime = pauseTime;
         InitAnimationBheavior();
         InitMovementPattern();
@@ -42,25 +54,30 @@ public abstract class PathManager : MonoBehaviour
     public void InitAnimationBheavior ()
     {
         rigidBody = GetComponent<Rigidbody>();
-
-        animationManager = GetComponent<AnimationViewPicture>();
-        animationManager.turnBack = true;
-        animationManager.tolleranceLeft = -1.5f;
-        animationManager.tolleranceRight = 1.5f;
-        animationManager.angleForTurnLeft = animationManager.angleForTurnRight = 50f;
-
     }
 
 
     private void Update ()
     {
-        if ( timedelta > pauseTime)
+        if( inPausa )
         {
-            UpdateDestination();
-            timedelta = 0f;
+            CheckNextDestination();
         }
+        else
+        {
+
+            if ( timedelta > pauseTime)
+            {
+                UpdateDestination();
+                timedelta = 0f;
+            }
         
+        }
+
+        TimerDestinazione();
         Walk();
+
+        TimerExit();
 
     }
 
@@ -70,45 +87,115 @@ public abstract class PathManager : MonoBehaviour
         CheckNextDestination();
     }
 
+    protected virtual GameObject GetPointInDestination ()
+    {
+        return destination.GetComponent<GridSystem>().GetAvailablePoint();
+    }
+
     private void CheckNextDestination ()
     {
         if( destination.GetComponent<GridSystem>().HaveAvailablePoint() )
         {
             if ( destinationPoint != null )
+            {
                 destinationPoint.GetComponent<DestinationPoint>().Libera();
+                Debug.Log( "Libero il posto: ", destinationPoint );
+            }
 
-            destinationPoint = destination.GetComponent<GridSystem>().GetAvailablePoint();
+            inPausa = false;
+
+            destinationPoint = GetPointInDestination();
             destinationPoint.GetComponent<DestinationPoint>().Occupa();
-
-            animationManager.target = destinationPoint.transform.position;
+            navMeshAgent.SetDestination( destinationPoint.transform.position );
 
         }
         else
         {
-            UpdateDestination();
+            // Qui euristica di scelta prossima destinazione
+            if( isHasty )
+            {
+                inPausa = true;
+            }
+            else
+            {
+                UpdateDestination();
+            }
+        }
+    }
+
+
+    void UpdateTurn ( float turnValue, float turnTime )
+    {
+        m_Animator.SetFloat( "Turn", turnValue, turnTime, Time.deltaTime );
+    }
+
+    void UpdateForward ( float forwardValue, float forwardTime )
+    {
+        m_Animator.SetFloat( "Forward", forwardValue, forwardTime, Time.deltaTime );
+
+    }
+
+    /*   
+     *    localPos.x < 0, localPos.y > 0 | localPos.x > 0, localPos.y > 0
+     *    ---------------------------------------------------------------
+     *    localPos.x < 0, localPos.y < 0 | localPos.x > 0, localPos.y < 0
+     */
+    void ControlloDirezione ( Vector3 destination )
+    {
+
+        float angoloPlayerTarget = Vector3.Angle( transform.forward, destination );
+        Vector3 localPos = transform.InverseTransformPoint( destination );
+
+        localPos.Normalize();
+        UpdateForward(0.5f, 0.1f );
+        UpdateTurn( Mathf.Atan2( localPos.x, localPos.z ), 0.2f );
+
+        //float turnSpeed = Mathf.Lerp(180, 360, localPos.z );
+        //transform.Rotate( 0, Mathf.Atan2( localPos.x, localPos.z ) * turnSpeed * Time.deltaTime, 0 );
+
+    }
+
+    private void TimerDestinazione ()
+    {
+        if ( destinationPoint == null )
+            return;
+
+        if( navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance || Vector3.Distance(transform.position, destinationPoint.transform.position) <= 1f)
+        {
+            if ( destinationPoint.gameObject.GetComponentInParent<RectTransform>() )
+            {
+                Vector3 localPos = transform.InverseTransformPoint( destinationPoint.gameObject.GetComponentInParent<RectTransform>().transform.position );
+                localPos.Normalize();
+                UpdateTurn( Mathf.Atan2( localPos.x, localPos.z ), 0.2f );
+                //float turnSpeed = Mathf.Lerp( 180, 360, localPos.z );
+                //transform.Rotate( 0, Mathf.Atan2( localPos.x, localPos.z ) * turnSpeed * Time.deltaTime, 0 );
+                UpdateForward( 0f, 0.5f );
+            }
+
+            timedelta += Time.deltaTime;
         }
     }
 
     protected virtual void OnCollisionStay ( Collision collision )
     {
-        if ( collision.gameObject.CompareTag( "PicturePlane" ) && collision.gameObject == destination )
-        {
-            if( navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
-            {
-                animationManager.speed = 0f;
-                animationManager.Animation_Walk();
-
-                animationManager.TurnTowardsPicture( collision );
-                timedelta += Time.deltaTime;
-            }
-
-        }
+        //if ( collision.gameObject.CompareTag( "PicturePlane" ) && collision.gameObject == destination )
+        //{
+        //    Debug.Log( "Colpito." );
+        //    if( navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
+        //    {
+        //        Vector3 localPos = transform.InverseTransformPoint( collision.gameObject.GetComponentInParent<RectTransform>().transform.position );
+        //        UpdateTurn( Mathf.Atan2( localPos.x, localPos.z ), 0.1f );
+        //        UpdateForward( 0f, 1f );
+        //        timedelta += Time.deltaTime;
+        //    }
+        //}
     }
 
-    protected void OnCollisionEnter ( Collision collision )
+    protected void TimerExit ( )
     {
-        if( collision.gameObject.CompareTag("Uscita") && collision.gameObject == destination )
+        if( destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destinationPoint.transform.position) < 3f)
         {
+            Debug.Log( "ciao" );
             Destroy( gameObject );
         }
     }
@@ -117,25 +204,22 @@ public abstract class PathManager : MonoBehaviour
 
     private void Walk ()
     {
-        if( !animationManager.IsRotation() )
+        if( destinationPoint == null )
         {
-            animationManager.Turn();
+            UpdateForward( 0f, 0.1f );
+            UpdateTurn( 0f, 0.1f );
+            return;
         }
 
-        if ( animationManager.CheckTurn())
-        {
-            if( destinationPoint != null )
-            {
-                navMeshAgent.SetDestination( destinationPoint.transform.position );
-                animationManager.speed = 1f;
-                animationManager.Animation_Walk();
-            }
-            else
-            {
-                Debug.Log( "DestinationPoint è NULL" );
-            }
+        if ( navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance || Vector3.Distance( transform.position, destinationPoint.transform.position ) > navMeshAgent.stoppingDistance )
+        {   
+            ControlloDirezione( navMeshAgent.steeringTarget );
         }
-
+        else
+        {
+            UpdateForward( 0f, 0.1f );
+            UpdateTurn( 0f, 0.1f );
+        }
     }
 
 

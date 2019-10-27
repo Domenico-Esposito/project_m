@@ -10,7 +10,9 @@ public class GridSystem : MonoBehaviour
     // Devono essere dispari
     public float columns = 3;
     public float rows = 1;
-    
+
+    public bool autoLibera = false;
+
     private List<GameObject> gridPoints = new List<GameObject>();
 
     private void Awake ()
@@ -32,7 +34,7 @@ public class GridSystem : MonoBehaviour
 
     public bool HaveAvailablePoint ()
     {
-        if( GetAvailablePoint() )
+        if( GetAvailablePoint() || autoLibera)
             return true;
 
         return false;
@@ -43,7 +45,7 @@ public class GridSystem : MonoBehaviour
     {
         foreach(GameObject point in gridPoints )
         {
-            if ( point.GetComponent<DestinationPoint>().isAvailable )
+            if ( point.GetComponent<DestinationPoint>().isAvailable || autoLibera )
                 return point;
         }
 
@@ -61,7 +63,7 @@ public class GridSystem : MonoBehaviour
 
     private bool IsAvailable (GameObject point)
     {
-        return point.GetComponent<DestinationPoint>().isAvailable;
+        return point.GetComponent<DestinationPoint>().isAvailable || autoLibera;
     }
 
 }

@@ -15,6 +15,7 @@ TagManager:
   - NPC
   - PicturePlane
   - Picture
+  - Plane_Test
   layers:
   - Default
   - TransparentFX

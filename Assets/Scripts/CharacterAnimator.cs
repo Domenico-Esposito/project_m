@@ -73,7 +73,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void Turn()
     {
-        if (localPos == Vector3.zero)
+        if (localPos == Vector3.zero || speed > 0f)
             return;
             
         speed = 0f;
