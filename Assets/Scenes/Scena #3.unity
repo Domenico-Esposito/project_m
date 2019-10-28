@@ -11971,10 +11971,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseTime: 25000
-  numberOfFourmi: 0
-  numberOfPapillon: 0
-  numberOfPoisson: 1
-  numberOfSauterelle: 0
+  numberOfFourmi: 5
+  numberOfPapillon: 5
+  numberOfPoisson: 5
+  numberOfSauterelle: 5
   fourmiBot: {fileID: 4129337992293338291, guid: dba7dd19cb0f646619319143c9676afe,
     type: 3}
   papillonBot: {fileID: 1306389439433543748, guid: 193bfe2b8f70a4678bac638e45ab5dce,
