@@ -1,168 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class CharacterAnimator : MonoBehaviour
 {
+    [SerializeField] float m_MovingTurnSpeed = 360;
+    [SerializeField] float m_StationaryTurnSpeed = 180;
 
-    private Animator animator;
-    protected Rigidbody playerRidiBody;
-    public NavMeshPath path;
-    public Vector3 target;
+    Rigidbody m_Rigidbody;
+    Animator m_Animator;
+    float m_TurnAmount;
+    float m_ForwardAmount;
+    Vector3 m_GroundNormal;
+    CapsuleCollider m_Capsule;
 
-    [HideInInspector]
-    public Vector3 localPos;
 
-    [HideInInspector]
-    public float speed;
-
-    [HideInInspector]
-    public float angleBetweenPlayerAndTarget;
-
-    [HideInInspector]
-    public float tolleranceLeft = -2f, tolleranceRight = 2f;
-
-    [HideInInspector]
-    public float angleForTurnLeft = 60f, angleForTurnRight = 60f, angleForTurnBack = 150f;
-
-    private readonly float tolleranceDestination = 0.5f;
-
-    [HideInInspector]
-    public bool turnBack;
-
-    private void Awake()
+    void Start ()
     {
+        m_Animator = GetComponent<Animator>();
+        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Capsule = GetComponent<CapsuleCollider>();
 
-        animator = GetComponent<Animator>();
-        playerRidiBody = GetComponent<Rigidbody>();
-
+        m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
 
-    public void Animation_Walk()
+    public void Move ( Vector3 move )
     {
 
-        animator.SetFloat("speed", speed);
+        if ( move.magnitude > 1f ) move.Normalize();
+        move = transform.InverseTransformDirection( move );
+        move = Vector3.ProjectOnPlane( move, m_GroundNormal );
+        m_TurnAmount = Mathf.Atan2( move.x, move.z );
+        m_ForwardAmount = move.z;
 
+        ApplyExtraTurnRotation();
+
+        UpdateAnimator( move );
     }
 
 
-    public void Animation_TurnLeft()
+    void UpdateAnimator ( Vector3 move )
     {
-        animator.Play("TurnL", 0);
+        m_Animator.SetFloat( "Forward", m_ForwardAmount, 0.1f, Time.deltaTime );
+        m_Animator.SetFloat( "Turn", m_TurnAmount, 0.1f, Time.deltaTime );
+
+        m_Animator.speed = 1;
+
     }
 
-
-    public void Animation_TurnRight()
+    public void TurnToPicture ( Vector3 move )
     {
-        animator.Play("TurnR", 0);
-    }
 
+        Quaternion targetRotation = Quaternion.LookRotation( move - transform.position );
+        targetRotation.x = 0f;
+        targetRotation.z = 0f;
 
-    public void Animation_TurnBackLeft()
-    {
-        animator.Play("TurnTL", 0);
-    }
+        transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * 1.3f );
 
-    public void Animation_TurnBackRight()
-    {
-        animator.Play("TurnTR", 0);
-    }
+        float angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, ( move - transform.position ) );
 
+        m_Animator.SetFloat( "Forward", 0, 1f, Time.deltaTime );
 
-    public void Turn()
-    {
-        if (localPos == Vector3.zero || speed > 0f)
-            return;
-            
-        speed = 0f;
-        Animation_Walk();
-
-        playerRidiBody.isKinematic = true;
-
-        if (localPos.x < tolleranceLeft)
+        if ( angleBetweenPlayerAndTarget > 40 )
         {
-            TurnLeft();
-        }
-        else if (localPos.x > tolleranceRight)
-        {
-            TurnRight();
+            move = move.normalized;
+            move = transform.InverseTransformDirection( move );
+            move = Vector3.ProjectOnPlane( move, m_GroundNormal );
+            m_TurnAmount = Mathf.Atan2( move.x, move.z );
+            m_Animator.SetFloat( "Turn", m_TurnAmount, 0.2f, Time.deltaTime );
+
         }
         else
         {
-            TurnBack();
+            m_Animator.SetFloat( "Turn", 0, 0.2f, Time.deltaTime );
         }
 
+
     }
 
-    private void TurnLeft()
+    void ApplyExtraTurnRotation ()
     {
-        if (angleBetweenPlayerAndTarget > angleForTurnLeft)
-            Animation_TurnLeft();
+        float turnSpeed = Mathf.Lerp( m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount );
+        transform.Rotate( 0, m_TurnAmount * turnSpeed * Time.deltaTime, 0 );
     }
 
 
-    private void TurnRight()
-    {
-        if (angleBetweenPlayerAndTarget > angleForTurnRight)
-            Animation_TurnRight();
-    }
-
-
-    private void TurnBack()
-
-    {
-        if (angleBetweenPlayerAndTarget > angleForTurnBack)
-        {
-            if (localPos.x < 0.0f)
-                Animation_TurnBackLeft();
-            else
-                Animation_TurnBackRight();
-        }
-    }
-
-
-    public bool IsRotation()
-    {
-        return (animator.GetCurrentAnimatorStateInfo(0).IsName("TurnL") || animator.GetCurrentAnimatorStateInfo(0).IsName("TurnR") || animator.GetCurrentAnimatorStateInfo(0).IsName("TurnTL") || animator.GetCurrentAnimatorStateInfo(0).IsName("TurnTR"));
-    }
-
-
-    public void RotationToTarget ( Vector3 target, float speed )
-    {
-        Quaternion targetRotation = Quaternion.LookRotation( target - transform.position );
-        targetRotation.x = 0f;
-        targetRotation.z = 0f;
-        transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * speed );
-    }
-
-
-    public bool CheckTurn ()
-    {
-        bool isRotation = IsRotation();
-
-        if ( !isRotation )
-        {
-            playerRidiBody.isKinematic = false;
-        }
-
-        if ( !isRotation && target != Vector3.one )
-        {
-            angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, ( target - transform.position ) );
-            localPos = transform.InverseTransformPoint( target );
-
-            if ( angleBetweenPlayerAndTarget > angleForTurnLeft || angleBetweenPlayerAndTarget > angleForTurnRight )
-            {
-                return false;
-            }
-
-            return true;
-        }
-        
-        angleBetweenPlayerAndTarget = 0;
-        localPos = Vector3.zero;
-
-        return false;
-    }
 }

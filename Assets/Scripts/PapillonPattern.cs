@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PapillonPattern : PathManager
@@ -7,9 +6,7 @@ public class PapillonPattern : PathManager
 
     // Pattern movimento
     private List<GameObject> walls = new List<GameObject>();
-
-    private Dictionary<GameObject, List<GameObject>> picturesOnWall = new Dictionary<GameObject, List<GameObject>>();
-
+    
     private int currentPictureIndex = 0;
 
     private GameObject nextDestination;
@@ -18,7 +15,6 @@ public class PapillonPattern : PathManager
 
     public override void InitMovementPattern ()
     {
-        colorDrawPath = new Color( 1.0f, 0.64f, 0.0f ); //orange
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
@@ -28,8 +24,8 @@ public class PapillonPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-    
-        if ( numberOfStop <= 0 )
+
+        if ( importantPictures.Count <= 0 && Random.Range( 0, 10 ) <= 2 )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )
@@ -40,7 +36,6 @@ public class PapillonPattern : PathManager
                 return nextDestination;
             }
 
-            numberOfStop -= 1;
             return nextDestination;
         }
 
@@ -51,7 +46,6 @@ public class PapillonPattern : PathManager
                 return GetNextDestination();
             }
 
-            numberOfStop -= 1;
             return nextDestination;
         }
 
@@ -61,7 +55,7 @@ public class PapillonPattern : PathManager
 
     private bool LookNextIndex (int maxJump = 5)
     {
-        foreach(List<GameObject> pics in picturesOnWall.Values)
+        foreach(List<GameObject> pics in picturesOnWalls.Values)
         {
             foreach(GameObject pic in pics )
             {
@@ -69,10 +63,10 @@ public class PapillonPattern : PathManager
                 {
                     nextDestination = pic.transform.GetChild( 0 ).gameObject;
                     currentPictureIndex = pic.GetComponent<PictureInfo>().index;
-                    picturesOnWall[ pic.transform.parent.gameObject ].Remove( pic );
+                    picturesOnWalls[ pic.transform.parent.gameObject ].Remove( pic );
 
-                    if ( picturesOnWall[ pic.transform.parent.gameObject ].Count <= 0 )
-                        picturesOnWall.Remove( pic.transform.parent.gameObject );
+                    if ( picturesOnWalls[ pic.transform.parent.gameObject ].Count <= 0 )
+                        picturesOnWalls.Remove( pic.transform.parent.gameObject );
 
                     return true;
                 }
@@ -104,7 +98,7 @@ public class PapillonPattern : PathManager
         {
             if ( Physics.Raycast( transform.position + new Vector3( 0, 5, 0 ), direction, out hit, 50f, layer_mask ) )
             {
-                if( picturesOnWall.ContainsKey( hit.collider.gameObject ) )
+                if( picturesOnWalls.ContainsKey( hit.collider.gameObject ) )
                     considerateWall.Add( hit.collider.gameObject );
             }
         }
@@ -117,12 +111,13 @@ public class PapillonPattern : PathManager
 
     private bool SelectNextPicInBackwardWalls(List<GameObject> considerateWall)
     {
-        considerateWall.Sort( SortByIndexPictureInWalls );
+        utilitySort.picturesOnWalls = picturesOnWalls;
+        considerateWall.Sort( utilitySort.SortByIndexPictureInWalls );
 
-        if( picturesOnWall.ContainsKey(considerateWall[0]) )
+        if( picturesOnWalls.ContainsKey(considerateWall[0]) )
         {
-            List<GameObject> consideratePics = picturesOnWall[ considerateWall[ 0 ] ];
-            consideratePics.Sort( Distanza );
+            List<GameObject> consideratePics = picturesOnWalls[ considerateWall[ 0 ] ];
+            consideratePics.Sort( utilitySort.Distanza );
 
             GameObject mostClosePicture = consideratePics[ 0 ];
 
@@ -132,21 +127,12 @@ public class PapillonPattern : PathManager
             consideratePics.Remove( mostClosePicture );
 
             if ( consideratePics.Count <= 0 )
-                picturesOnWall.Remove( considerateWall[ 0 ] );
+                picturesOnWalls.Remove( considerateWall[ 0 ] );
 
             return true;
         }
 
         return false;
-    }
-
-
-    private int SortByIndexPictureInWalls ( GameObject wallX, GameObject wallY )
-    {
-        GameObject quadro_x = picturesOnWall[ wallX ][ 0 ];
-        GameObject quadro_y = picturesOnWall[ wallY ][ 0 ];
-
-        return SortByIndexPicture( quadro_x, quadro_y );
     }
 
 
@@ -158,7 +144,7 @@ public class PapillonPattern : PathManager
             if ( wall.transform.childCount > 0 )
             {
                 walls.Add( wall );
-                picturesOnWall.Add( wall, new List<GameObject>() );
+                picturesOnWalls.Add( wall, new List<GameObject>() );
             }
         }
 
@@ -172,11 +158,11 @@ public class PapillonPattern : PathManager
             foreach ( Transform picture in wall.transform )
             {
                 if ( picture.gameObject.transform.GetChild( 0 ).CompareTag( "PicturePlane" ) )
-                    picturesOnWall[wall].Add( picture.gameObject );
+                    picturesOnWalls[ wall].Add( picture.gameObject );
             }
 
-            if( picturesOnWall.ContainsKey(wall) )
-                picturesOnWall[ wall ].Sort( SortByIndexPicture );
+            if( picturesOnWalls.ContainsKey(wall) )
+                picturesOnWalls[ wall ].Sort( utilitySort.SortByIndexPicture );
         }
     }
 

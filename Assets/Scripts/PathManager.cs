@@ -1,89 +1,172 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using Museum.Utility;
+using System.Collections.Generic;
+using System.IO;
 
 public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
-    private Rigidbody rigidBody;
-    public GameObject destination;
-    public GameObject destinationPoint;
-    private NavMeshAgent navMeshAgent;
+    protected GameObject destination;
+    protected GameObject destinationPoint;
+    NavMeshAgent m_Agent;
+
+    protected Sort utilitySort;
+
     public bool inPausa = false;
-    public bool isHasty = false;
+    public bool isHasty = true;
 
     Rigidbody m_Rigidbody;
     Animator m_Animator;
 
-    protected Color colorDrawPath = Color.red;
     // Animazione
+    CharacterAnimator character;
 
     // Segui percorso
-    protected NavMeshPath path;
-    private Vector3 firstCornerTarget;
-    public float timedelta = 0f;
+    float timedelta = 0f;
+    float baseTime;
+    [SerializeField] float pauseTime = 5f;
 
-    public float pauseTime = 5f;
+    protected Dictionary<GameObject, List<GameObject>> picturesOnWalls = new Dictionary<GameObject, List<GameObject>>();
 
-    private float baseTime;
-
-    public float rigidBodySpeed = 7f;
+    protected List<GameObject> visitedPictures = new List<GameObject>();
+    public List<GameObject> importantPictures = new List<GameObject>();
 
     public abstract GameObject GetNextDestination ();
 
     public abstract void InitMovementPattern ();
-    public bool controllo = false;
+
+    private GameObject lastPositionPattern;
 
     protected virtual void Start ()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        utilitySort = new Sort
+        {
+            transform = transform
+        };
+
+        m_Agent = GetComponent<NavMeshAgent>();
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
 
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.avoidancePriority = Random.Range( 0, 100);
-        isHasty = Random.Range( 0, 5 ) > 2;
+        InitNavMeshAgent();
 
         baseTime = pauseTime;
+
         InitAnimationBheavior();
         InitMovementPattern();
+
+        foreach ( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
+        {
+            // Importante per l'agente || Importante per l'espositore
+            if ( Random.Range(0, 1) == 1 || picture.GetComponent<PictureInfo>().priority > 0 )
+            {
+                importantPictures.Add( picture );
+            }
+        }
+
+        utilitySort.transform = transform;
+        importantPictures.Sort( utilitySort.SortByIndexPicture );
+        importantPictures.Reverse();
+
         UpdateDestination();
+        
+    }
+
+    void InitNavMeshAgent ()
+    {
+        m_Agent.avoidancePriority = Random.Range( 0, 100 );
+        //isHasty = Random.Range( 0, 5 ) > 2;
+        m_Agent.updateRotation = false;
     }
 
     public void InitAnimationBheavior ()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        character = GetComponent<CharacterAnimator>();
     }
-
 
     private void Update ()
     {
+
         if( inPausa )
         {
             CheckNextDestination();
+            return;
+        }
+
+
+        if ( timedelta > pauseTime)
+        {
+            UpdateDestination();
+            timedelta = 0f;
+        }
+
+
+        if ( m_Agent.remainingDistance > m_Agent.stoppingDistance )
+        {
+            character.Move( m_Agent.desiredVelocity );
         }
         else
         {
+            character.Move( Vector3.zero );
 
-            if ( timedelta > pauseTime)
+            if( destinationPoint.transform.parent.CompareTag( "PicturePlane" ) )   
             {
-                UpdateDestination();
-                timedelta = 0f;
+                Vector3 position = destination.transform.parent.transform.position;
+                character.TurnToPicture( position );
             }
-        
+
+            timedelta += Time.deltaTime;
+
         }
 
-        TimerDestinazione();
-        Walk();
-
-        TimerExit();
+        IsExit();
 
     }
 
     private void UpdateDestination ()
     {
-        destination = GetNextDestination();
+        // Per il backtracking
+        foreach (GameObject picture in importantPictures )
+        {
+            if ( destination != null 
+                && picture.GetComponent<PictureInfo>().priority > 0 
+                && picture.GetComponent<PictureInfo>().index < destination.transform.parent.GetComponent<PictureInfo>().index
+               ) // Quadro importante
+            {
+                if( !visitedPictures.Contains( picture ) && 
+                    picture.transform.GetChild( 0 ).GetComponent<GridSystem>().HaveAvailablePoint() )
+                {
+                    if ( lastPositionPattern == null )
+                    {
+                        lastPositionPattern = GetNextDestination();
+                    }
+
+                    destination = picture.transform.GetChild( 0 ).gameObject;
+                    importantPictures.Remove( picture );
+                    visitedPictures.Add( destination.transform.parent.gameObject );
+                    CheckNextDestination();
+                    return;
+                }
+            }
+        }
+
+        // Per il forwardtraking
+        if ( lastPositionPattern )
+        {
+            destination = lastPositionPattern;
+            lastPositionPattern = null;
+        }
+        else
+        {
+            destination = GetNextDestination();
+        }
+
+        if( importantPictures.Contains(destination.transform.parent.gameObject) )
+        {
+            importantPictures.Remove( destination.transform.parent.gameObject );
+        }
+
         CheckNextDestination();
     }
 
@@ -92,27 +175,36 @@ public abstract class PathManager : MonoBehaviour
         return destination.GetComponent<GridSystem>().GetAvailablePoint();
     }
 
+    private void GoToDestinationPoint ()
+    {
+        m_Agent.SetDestination( destinationPoint.transform.position );
+    }
+
+    private void UpdateDestinationPoint ()
+    {
+        if ( destinationPoint != null )
+            destinationPoint.GetComponent<DestinationPoint>().Libera();
+
+        destinationPoint = GetPointInDestination();
+        destinationPoint.GetComponent<DestinationPoint>().Occupa();
+    }
+
     private void CheckNextDestination ()
     {
         if( destination.GetComponent<GridSystem>().HaveAvailablePoint() )
         {
-            if ( destinationPoint != null )
-            {
-                destinationPoint.GetComponent<DestinationPoint>().Libera();
-                Debug.Log( "Libero il posto: ", destinationPoint );
-            }
+            visitedPictures.Add( destination.transform.parent.gameObject );
+
+            UpdateDestinationPoint();
+            GoToDestinationPoint();
 
             inPausa = false;
-
-            destinationPoint = GetPointInDestination();
-            destinationPoint.GetComponent<DestinationPoint>().Occupa();
-            navMeshAgent.SetDestination( destinationPoint.transform.position );
-
         }
         else
         {
+        
             // Qui euristica di scelta prossima destinazione
-            if( isHasty )
+            if ( isHasty )
             {
                 inPausa = true;
             }
@@ -124,161 +216,90 @@ public abstract class PathManager : MonoBehaviour
     }
 
 
-    void UpdateTurn ( float turnValue, float turnTime )
-    {
-        m_Animator.SetFloat( "Turn", turnValue, turnTime, Time.deltaTime );
-    }
+    
 
-    void UpdateForward ( float forwardValue, float forwardTime )
-    {
-        m_Animator.SetFloat( "Forward", forwardValue, forwardTime, Time.deltaTime );
-
-    }
-
-    /*   
-     *    localPos.x < 0, localPos.y > 0 | localPos.x > 0, localPos.y > 0
-     *    ---------------------------------------------------------------
-     *    localPos.x < 0, localPos.y < 0 | localPos.x > 0, localPos.y < 0
-     */
-    void ControlloDirezione ( Vector3 destination )
-    {
-
-        float angoloPlayerTarget = Vector3.Angle( transform.forward, destination );
-        Vector3 localPos = transform.InverseTransformPoint( destination );
-
-        localPos.Normalize();
-        UpdateForward(0.5f, 0.1f );
-        UpdateTurn( Mathf.Atan2( localPos.x, localPos.z ), 0.2f );
-
-        //float turnSpeed = Mathf.Lerp(180, 360, localPos.z );
-        //transform.Rotate( 0, Mathf.Atan2( localPos.x, localPos.z ) * turnSpeed * Time.deltaTime, 0 );
-
-    }
-
-    private void TimerDestinazione ()
-    {
-        if ( destinationPoint == null )
-            return;
-
-        if( navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance || Vector3.Distance(transform.position, destinationPoint.transform.position) <= 1f)
-        {
-            if ( destinationPoint.gameObject.GetComponentInParent<RectTransform>() )
-            {
-                Vector3 localPos = transform.InverseTransformPoint( destinationPoint.gameObject.GetComponentInParent<RectTransform>().transform.position );
-                localPos.Normalize();
-                UpdateTurn( Mathf.Atan2( localPos.x, localPos.z ), 0.2f );
-                //float turnSpeed = Mathf.Lerp( 180, 360, localPos.z );
-                //transform.Rotate( 0, Mathf.Atan2( localPos.x, localPos.z ) * turnSpeed * Time.deltaTime, 0 );
-                UpdateForward( 0f, 0.5f );
-            }
-
-            timedelta += Time.deltaTime;
-        }
-    }
-
-    protected virtual void OnCollisionStay ( Collision collision )
-    {
-        //if ( collision.gameObject.CompareTag( "PicturePlane" ) && collision.gameObject == destination )
-        //{
-        //    Debug.Log( "Colpito." );
-        //    if( navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
-        //    {
-        //        Vector3 localPos = transform.InverseTransformPoint( collision.gameObject.GetComponentInParent<RectTransform>().transform.position );
-        //        UpdateTurn( Mathf.Atan2( localPos.x, localPos.z ), 0.1f );
-        //        UpdateForward( 0f, 1f );
-        //        timedelta += Time.deltaTime;
-        //    }
-        //}
-    }
-
-    protected void TimerExit ( )
+    protected bool IsExit ( )
     {
         if( destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destinationPoint.transform.position) < 3f)
         {
-            Debug.Log( "ciao" );
+            //WriteLog();
+
+            Debug.Log( GetStringVisitati() );
+            Debug.Log( GetStringNonVisitati() );
+
             Destroy( gameObject );
+            return true;
         }
+
+        return false;
     }
 
 
-
-    private void Walk ()
+    private string GetStringNonVisitati ()
     {
-        if( destinationPoint == null )
-        {
-            UpdateForward( 0f, 0.1f );
-            UpdateTurn( 0f, 0.1f );
-            return;
-        }
 
-        if ( navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance || Vector3.Distance( transform.position, destinationPoint.transform.position ) > navMeshAgent.stoppingDistance )
-        {   
-            ControlloDirezione( navMeshAgent.steeringTarget );
-        }
-        else
+        string quadriImportantiNonVisitati = "Importanti non visitati:";
+
+        foreach ( GameObject p in importantPictures )
         {
-            UpdateForward( 0f, 0.1f );
-            UpdateTurn( 0f, 0.1f );
+            quadriImportantiNonVisitati = quadriImportantiNonVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
         }
+        
+        return quadriImportantiNonVisitati;
     }
 
-
-    public virtual Vector3 GetPositionInFloorPicture ()
+    private string GetStringVisitati ()
     {
-        destinationPoint = destination.GetComponent<GridSystem>().GetAvailablePoint();
-        destinationPoint.GetComponent<DestinationPoint>().Occupa();
+        string quadriVisitati = "Visitati:";
 
-        return destinationPoint.transform.position;
+        foreach ( GameObject p in visitedPictures )
+        {
+            quadriVisitati = quadriVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
+        }
+        
+        return quadriVisitati;
     }
 
-    public float GetPathLength ( GameObject picture )
+    private void WriteLog ()
     {
-        NavMeshPath p = new NavMeshPath();
-        NavMesh.CalculatePath( transform.position, picture.transform.GetChild( 0 ).transform.position, 1, p );
+        string filePath = "logs.txt";
 
-        float lng = 0;
+        StreamWriter writer = new StreamWriter( filePath, true );
 
-        for ( int i = 0; i < p.corners.Length - 1; i++ )
-        {
-            lng += Vector3.Distance( p.corners[ i ], p.corners[ i + 1 ] );
+        string quadriVisitati = "Visitati:";
+
+        foreach ( GameObject p in visitedPictures ) {
+            quadriVisitati = quadriVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
         }
 
-        return lng;
+        quadriVisitati = quadriVisitati.Substring( 0, quadriVisitati.Length - 2 );
+
+        writer.WriteLine( quadriVisitati);
+
+        string quadriImportantiNonVisitati = "Importanti non visitati:";
+
+        foreach ( GameObject p in importantPictures )
+        {
+            quadriImportantiNonVisitati = quadriImportantiNonVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
+        }
+
+        quadriImportantiNonVisitati = quadriImportantiNonVisitati.Substring( 0, quadriImportantiNonVisitati.Length - 2 );
+
+        writer.WriteLine( GetType() );
+        writer.WriteLine( quadriVisitati );
+        writer.WriteLine( quadriImportantiNonVisitati );
+        writer.WriteLine( "---" );
+        writer.Close();
+
+        Debug.Log( GetType() );
+
+
     }
 
-    private void DrawPath ()
-    {
-        if ( path != null )
-        {
-            for ( int i = 0; i < path.corners.Length - 1; i++ )
-                Debug.DrawLine( path.corners[ i ], path.corners[ i + 1 ], colorDrawPath, 500f );
-        }
-    }
 
     protected GameObject GetPlaneOfExit ()
     {
         return GameObject.FindGameObjectWithTag( "Uscita" ).gameObject;
     }
 
-    protected int SortByIndexPicture ( GameObject x, GameObject y )
-    {
-
-        float distance_1 = x.GetComponent<PictureInfo>().index;
-        float distance_2 = y.GetComponent<PictureInfo>().index;
-
-        if ( distance_1 < distance_2 ) return -1;
-        if ( distance_1 > distance_2 ) return 1;
-        return 0;
-
-    }
-
-    protected int Distanza ( GameObject x, GameObject y )
-    {
-        float distance_1 = GetPathLength( x );
-        float distance_2 = GetPathLength( y );
-
-        if ( distance_1 < distance_2 ) return -1;
-        if ( distance_1 > distance_2 ) return 1;
-        return 0;
-    }
 }

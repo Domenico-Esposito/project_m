@@ -6,7 +6,6 @@ public class FourmiPattern : PathManager
     // Pattern movimento
     private IEnumerator<GameObject> pictures;
     private List<GameObject> walls = new List<GameObject>();
-    private Dictionary<GameObject, List<GameObject>> picturesOnWalls = new Dictionary<GameObject, List<GameObject>>();
 
     public GameObject startWall;
     private GameObject currentWall;
@@ -16,14 +15,12 @@ public class FourmiPattern : PathManager
 
     public override void InitMovementPattern ()
     { 
-        colorDrawPath = Color.yellow;
-
         FindWallsWithPictures();
         FindPicturesOnWalls();
         SortPicturesOnWalls();
 
-        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(0, 5) ];
-        //currentWall = startWall;
+        //currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(0, 5) ];
+        currentWall = startWall;
 
         numberOfStop = Random.Range( 13, walls.Count );
     }
@@ -31,22 +28,20 @@ public class FourmiPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if( numberOfStop <= 0 )
+        if( importantPictures.Count <= 0 && Random.Range(0, 5) > 2 )
             return GetPlaneOfExit();
 
         if ( MoveToNextPicOnCurrentWall() )
         {
-            //if ( Random.Range( 1, 10 ) > 6 )    //Salto un quadro
-                //return GetNextDestination();
+            if ( Random.Range( 1, 10 ) > 6 )    //Salto un quadro
+                return GetNextDestination();
 
-            numberOfStop -= 1;
         }
         else if ( MoveToNextPicOnAnotherWall() )
         {
-            //if ( Random.Range( 1, 10 ) > 5 )    //Salto un muro
-                //return GetNextDestination();
+            if ( Random.Range( 1, 10 ) > 5 )    //Salto un muro
+                return GetNextDestination();
 
-            numberOfStop -= 1;
         }
         else{
             return GetPlaneOfExit();
@@ -81,7 +76,9 @@ public class FourmiPattern : PathManager
     {
         walls.Remove( currentWall );
         walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[ wall ][ 0 ].GetComponent<PictureInfo>().index < currentPictureIndex );
-        walls.Sort( SortByIndexPictureInWalls );
+
+        utilitySort.picturesOnWalls = picturesOnWalls;
+        walls.Sort( utilitySort.SortByIndexPictureInWalls );
 
         if ( NextPictureIsInClosestWall() || NextPictureIsInDetachedWall() ) 
         {
@@ -135,7 +132,8 @@ public class FourmiPattern : PathManager
             }
         }
 
-        intersectsWalls.Sort( SortByIndexPictureInWalls );
+        utilitySort.picturesOnWalls = picturesOnWalls;
+        intersectsWalls.Sort( utilitySort.SortByIndexPictureInWalls );
 
         return intersectsWalls;
     }
@@ -185,7 +183,6 @@ public class FourmiPattern : PathManager
             GameObject wall = (picture.transform).parent.gameObject;
 
             picturesOnWalls[ wall ].Add( picture );
-
         }
 
     }
@@ -193,23 +190,10 @@ public class FourmiPattern : PathManager
 
     private void SortPicturesOnWalls ()
     {
-
         foreach ( List<GameObject> pics in picturesOnWalls.Values )
-        {
-            pics.Sort( SortByIndexPicture );
-        }
-
+            pics.Sort( utilitySort.SortByIndexPicture );
     }
 
-
-    private int SortByIndexPictureInWalls ( GameObject wallX, GameObject wallY )
-    {
-
-        GameObject quadro_x = picturesOnWalls[ wallX ][ 0 ];
-        GameObject quadro_y = picturesOnWalls[ wallY ][ 0 ];
-
-        return SortByIndexPicture( quadro_x, quadro_y );
-    }
 
 }
 

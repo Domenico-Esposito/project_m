@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SauterellePattern : PathManager
@@ -13,8 +12,6 @@ public class SauterellePattern : PathManager
 
     public override void InitMovementPattern ()
     {
-        colorDrawPath = Color.red;
-
         FindAllPicture();
         SetPictureToWatch();
     }
@@ -29,7 +26,7 @@ public class SauterellePattern : PathManager
             pictures.Add( picture );
         }
 
-        pictures.Sort( SortByIndexPicture );
+        pictures.Sort( utilitySort.SortByIndexPicture );
     }
 
     public override GameObject GetNextDestination ()
