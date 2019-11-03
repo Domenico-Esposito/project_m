@@ -23,14 +23,16 @@ public abstract class PathManager : MonoBehaviour
     CharacterAnimator character;
 
     // Segui percorso
-    float timedelta = 0f;
+    public float timedelta = 0f;
     float baseTime;
     [SerializeField] float pauseTime = 5f;
 
     protected Dictionary<GameObject, List<GameObject>> picturesOnWalls = new Dictionary<GameObject, List<GameObject>>();
 
-    protected List<GameObject> visitedPictures = new List<GameObject>();
+    public List<GameObject> visitedPictures = new List<GameObject>();
     public List<GameObject> importantPictures = new List<GameObject>();
+
+    public float distanzaPercorsa = 0f;
 
     public abstract GameObject GetNextDestination ();
 
@@ -90,7 +92,17 @@ public abstract class PathManager : MonoBehaviour
 
         if( inPausa )
         {
-            CheckNextDestination();
+            if ( m_Agent.remainingDistance > m_Agent.stoppingDistance )
+            {
+                character.Move( m_Agent.desiredVelocity );
+            }
+            else
+            {
+                character.Move( Vector3.zero );
+                timedelta += Time.deltaTime;
+            }
+
+            CheckDestinationFromPause();
             return;
         }
 
@@ -120,7 +132,10 @@ public abstract class PathManager : MonoBehaviour
 
         }
 
-        IsExit();
+        if ( IsExit() )
+        {
+            Destroy( gameObject );
+        }
 
     }
 
@@ -132,21 +147,24 @@ public abstract class PathManager : MonoBehaviour
             if ( destination != null 
                 && picture.GetComponent<PictureInfo>().priority > 0 
                 && picture.GetComponent<PictureInfo>().index < destination.transform.parent.GetComponent<PictureInfo>().index
+                && picture.GetComponent<PictureInfo>().ignoro == false
                ) // Quadro importante
             {
-                if( !visitedPictures.Contains( picture ) && 
-                    picture.transform.GetChild( 0 ).GetComponent<GridSystem>().HaveAvailablePoint() )
+                if( !visitedPictures.Contains( picture ) )
                 {
-                    if ( lastPositionPattern == null )
+                    if( picture.transform.GetChild( 0 ).GetComponent<GridSystem>().HaveAvailablePoint() )
                     {
-                        lastPositionPattern = GetNextDestination();
-                    }
+                        if ( lastPositionPattern == null )
+                        {
+                            lastPositionPattern = GetNextDestination();
+                        }
 
-                    destination = picture.transform.GetChild( 0 ).gameObject;
-                    importantPictures.Remove( picture );
-                    visitedPictures.Add( destination.transform.parent.gameObject );
-                    CheckNextDestination();
-                    return;
+                        destination = picture.transform.GetChild( 0 ).gameObject;
+                        importantPictures.Remove( picture );
+                        visitedPictures.Add( picture );
+                        CheckNextDestination();
+                        return;
+                    }
                 }
             }
         }
@@ -178,6 +196,9 @@ public abstract class PathManager : MonoBehaviour
     private void GoToDestinationPoint ()
     {
         m_Agent.SetDestination( destinationPoint.transform.position );
+        Debug.Log("Distanza rimanente: " + m_Agent.remainingDistance );
+
+        distanzaPercorsa += (m_Agent.remainingDistance +  m_Agent.stoppingDistance);
     }
 
     private void UpdateDestinationPoint ()
@@ -189,9 +210,42 @@ public abstract class PathManager : MonoBehaviour
         destinationPoint.GetComponent<DestinationPoint>().Occupa();
     }
 
+    GameObject destinationPrePause;
+
+    private void CheckDestinationFromPause ()
+    {
+
+        Debug.Log( "DestinationPrePause", destinationPrePause );
+        Debug.Log( "Destination", destination );
+
+        if ( destinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
+        {
+            destination = destinationPrePause;
+            visitedPictures.Add( destination.transform.parent.gameObject );
+
+            UpdateDestinationPoint();
+            GoToDestinationPoint();
+
+            inPausa = false;
+        }
+        else
+        {
+            // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre)
+            if( timedelta > 30f )
+            {
+                Debug.Log( "Mi scocci di attendere oltre, passo avanti..." );
+                visitedPictures.Remove( destinationPrePause );
+                importantPictures.Add( destinationPrePause );
+                destinationPrePause.GetComponent<PictureInfo>().ignoro = true;
+            }
+
+        }
+    }
+
     private void CheckNextDestination ()
     {
-        if( destination.GetComponent<GridSystem>().HaveAvailablePoint() )
+
+        if ( destination.GetComponent<GridSystem>().HaveAvailablePoint() )
         {
             visitedPictures.Add( destination.transform.parent.gameObject );
 
@@ -202,11 +256,21 @@ public abstract class PathManager : MonoBehaviour
         }
         else
         {
-        
-            // Qui euristica di scelta prossima destinazione
-            if ( isHasty )
+            // Euristica "Vado in pausa" oppure passo oltre
+            if (true || Random.Range(0, 1) == 1 )
             {
+
                 inPausa = true;
+                destinationPrePause = destination;
+
+                List<GameObject> fishPlane = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
+                utilitySort.transform = transform;
+                fishPlane.Sort( utilitySort.Distanza );
+                Debug.Log( "Scelgo di attendere in un posto vuoto", fishPlane[ 0 ] );
+                destination = fishPlane[ 0 ];
+
+                UpdateDestinationPoint();
+                GoToDestinationPoint();
             }
             else
             {
@@ -215,19 +279,32 @@ public abstract class PathManager : MonoBehaviour
         }
     }
 
-
-    
-
     protected bool IsExit ( )
     {
-        if( destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destinationPoint.transform.position) < 3f)
+        if (destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destinationPoint.transform.position) < 3f)
         {
-            //WriteLog();
+            //string importantiNonVisitati = "Importanti non visitati: ";
 
-            Debug.Log( GetStringVisitati() );
-            Debug.Log( GetStringNonVisitati() );
+            //foreach ( GameObject p in importantPictures )
+            //{
+            //    importantiNonVisitati += p.GetComponent<PictureInfo>().index + ", ";
+            //}
 
-            Destroy( gameObject );
+            //importantiNonVisitati = importantiNonVisitati.Substring( 0, importantiNonVisitati.Length - 2 );
+
+            //Debug.Log( importantiNonVisitati );
+
+            //string visitati = "Visitati: ";
+
+            //foreach (GameObject i in visitedPictures)
+            //{
+            //    visitati += i.GetComponent<PictureInfo>().index + ", ";
+            //}
+
+            //visitati = visitati.Substring( 0, visitati.Length - 2 );
+
+            //Debug.Log( visitati );
+
             return true;
         }
 
@@ -235,63 +312,38 @@ public abstract class PathManager : MonoBehaviour
     }
 
 
-    private string GetStringNonVisitati ()
-    {
-
-        string quadriImportantiNonVisitati = "Importanti non visitati:";
-
-        foreach ( GameObject p in importantPictures )
-        {
-            quadriImportantiNonVisitati = quadriImportantiNonVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
-        }
-        
-        return quadriImportantiNonVisitati;
-    }
-
-    private string GetStringVisitati ()
-    {
-        string quadriVisitati = "Visitati:";
-
-        foreach ( GameObject p in visitedPictures )
-        {
-            quadriVisitati = quadriVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
-        }
-        
-        return quadriVisitati;
-    }
-
     private void WriteLog ()
     {
-        string filePath = "logs.txt";
+        //string filePath = "logs.txt";
 
-        StreamWriter writer = new StreamWriter( filePath, true );
+        //StreamWriter writer = new StreamWriter( filePath, true );
 
-        string quadriVisitati = "Visitati:";
+        //string quadriVisitati = "Visitati:";
 
-        foreach ( GameObject p in visitedPictures ) {
-            quadriVisitati = quadriVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
-        }
+        //foreach ( GameObject p in visitedPictures ) {
+        //    quadriVisitati = quadriVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
+        //}
 
-        quadriVisitati = quadriVisitati.Substring( 0, quadriVisitati.Length - 2 );
+        //quadriVisitati = quadriVisitati.Substring( 0, quadriVisitati.Length - 2 );
 
-        writer.WriteLine( quadriVisitati);
+        //writer.WriteLine( quadriVisitati);
 
-        string quadriImportantiNonVisitati = "Importanti non visitati:";
+        //string quadriImportantiNonVisitati = "Importanti non visitati:";
 
-        foreach ( GameObject p in importantPictures )
-        {
-            quadriImportantiNonVisitati = quadriImportantiNonVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
-        }
+        //foreach ( GameObject p in importantPictures )
+        //{
+        //    quadriImportantiNonVisitati = quadriImportantiNonVisitati + " " + p.GetComponent<PictureInfo>().index + ", ";
+        //}
 
-        quadriImportantiNonVisitati = quadriImportantiNonVisitati.Substring( 0, quadriImportantiNonVisitati.Length - 2 );
+        //quadriImportantiNonVisitati = quadriImportantiNonVisitati.Substring( 0, quadriImportantiNonVisitati.Length - 2 );
 
-        writer.WriteLine( GetType() );
-        writer.WriteLine( quadriVisitati );
-        writer.WriteLine( quadriImportantiNonVisitati );
-        writer.WriteLine( "---" );
-        writer.Close();
+        //writer.WriteLine( GetType() );
+        //writer.WriteLine( quadriVisitati );
+        //writer.WriteLine( quadriImportantiNonVisitati );
+        //writer.WriteLine( "---" );
+        //writer.Close();
 
-        Debug.Log( GetType() );
+        //Debug.Log( GetType() );
 
 
     }
