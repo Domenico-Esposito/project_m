@@ -37,7 +37,10 @@ public class PoissonPattern : PathManager
     {
         bool viewPicture = Random.Range( 0, 10 ) > 5 ? true : false;
 
-        if( viewPicture )
+        if ( distanzaPercorsa > maxDistanza )
+            return GetPlaneOfExit();
+
+        if ( viewPicture )
             return GetPictureDestination();
 
         return GetFishPlaneDestination();
@@ -46,6 +49,7 @@ public class PoissonPattern : PathManager
     private GameObject GetMostClosePicture ()
     {
         List<GameObject> planes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
+        utilitySort.transform = transform;
         planes.Sort( utilitySort.Distanza );
 
         return planes[ 0 ];

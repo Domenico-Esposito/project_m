@@ -7,7 +7,7 @@ using System.IO;
 public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
-    protected GameObject destination;
+    public GameObject destination;
     protected GameObject destinationPoint;
     NavMeshAgent m_Agent;
 
@@ -32,13 +32,14 @@ public abstract class PathManager : MonoBehaviour
     public List<GameObject> visitedPictures = new List<GameObject>();
     public List<GameObject> importantPictures = new List<GameObject>();
 
+    public int maxDistanza = 30;
     public float distanzaPercorsa = 0f;
 
     public abstract GameObject GetNextDestination ();
 
     public abstract void InitMovementPattern ();
 
-    private GameObject lastPositionPattern;
+    public GameObject lastPositionPattern;
 
     protected virtual void Start ()
     {
@@ -144,8 +145,8 @@ public abstract class PathManager : MonoBehaviour
         // Per il backtracking
         foreach (GameObject picture in importantPictures )
         {
-            if ( destination != null 
-                && picture.GetComponent<PictureInfo>().priority > 0 
+            if ( destination != null && destination.CompareTag("PicturePlane")
+                //&& picture.GetComponent<PictureInfo>().priority > 0 
                 && picture.GetComponent<PictureInfo>().index < destination.transform.parent.GetComponent<PictureInfo>().index
                 && picture.GetComponent<PictureInfo>().ignoro == false
                ) // Quadro importante
@@ -196,9 +197,28 @@ public abstract class PathManager : MonoBehaviour
     private void GoToDestinationPoint ()
     {
         m_Agent.SetDestination( destinationPoint.transform.position );
-        Debug.Log("Distanza rimanente: " + m_Agent.remainingDistance );
 
-        distanzaPercorsa += (m_Agent.remainingDistance +  m_Agent.stoppingDistance);
+        NavMeshPath staticPath = new NavMeshPath();
+        m_Agent.CalculatePath(destinationPoint.transform.position, staticPath);
+
+        distanzaPercorsa += GetPathLenght( staticPath );
+
+        Debug.Log( "Agente: " + gameObject.name + " | DistanzaPercorsa: " + distanzaPercorsa, destinationPoint );
+    }
+
+    private float GetPathLenght ( NavMeshPath path )
+    {
+
+        Vector3[ ] corners = path.corners;
+
+        float lng = 0;
+
+        for ( int i = 0; i < corners.Length - 1; i++ )
+        {
+            lng += Vector3.Distance( corners[ i ], corners[ i + 1 ] );
+        }
+
+        return lng;
     }
 
     private void UpdateDestinationPoint ()
@@ -210,14 +230,11 @@ public abstract class PathManager : MonoBehaviour
         destinationPoint.GetComponent<DestinationPoint>().Occupa();
     }
 
-    GameObject destinationPrePause;
+    public GameObject destinationPrePause;
 
     private void CheckDestinationFromPause ()
     {
-
-        Debug.Log( "DestinationPrePause", destinationPrePause );
-        Debug.Log( "Destination", destination );
-
+    
         if ( destinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
         {
             destination = destinationPrePause;
@@ -233,13 +250,39 @@ public abstract class PathManager : MonoBehaviour
             // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre)
             if( timedelta > 30f )
             {
-                Debug.Log( "Mi scocci di attendere oltre, passo avanti..." );
-                visitedPictures.Remove( destinationPrePause );
-                importantPictures.Add( destinationPrePause );
-                destinationPrePause.GetComponent<PictureInfo>().ignoro = true;
+                //Debug.Log( "Mi scocci di attendere oltre, passo avanti..." );
+                visitedPictures.Remove( destinationPrePause.transform.parent.gameObject );
+                importantPictures.Add( destinationPrePause.transform.parent.gameObject );
+                destinationPrePause.GetComponentInParent<PictureInfo>().ignoro = true;
+                inPausa = false;
+                destination = null;
             }
 
         }
+    }
+
+    /*
+     * 0 = Non stanco
+     * 1 = Stanco
+     * 2 = Molto stanco
+     */
+    private int LivelloStanchezza ()
+    {
+
+        if( distanzaPercorsa > (maxDistanza / 1.2f ) )
+        {
+            //Debug.Log( "Livello stanchezza: Stanco" );
+            return 1;
+        }
+
+        if( distanzaPercorsa > maxDistanza )
+        {
+            //Debug.Log( "Livello stanchezza: Molto stanco" );
+            return 2;
+        }
+
+        //Debug.Log( "Livello stanchezza: Non stanco" );
+        return 0;
     }
 
     private void CheckNextDestination ()
@@ -257,16 +300,16 @@ public abstract class PathManager : MonoBehaviour
         else
         {
             // Euristica "Vado in pausa" oppure passo oltre
-            if (true || Random.Range(0, 1) == 1 )
+            if ( LivelloStanchezza() == 0 )
             {
-
                 inPausa = true;
                 destinationPrePause = destination;
 
                 List<GameObject> fishPlane = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
-                utilitySort.transform = transform;
+                utilitySort.transform = destination.transform;
                 fishPlane.Sort( utilitySort.Distanza );
-                Debug.Log( "Scelgo di attendere in un posto vuoto", fishPlane[ 0 ] );
+                Debug.Log( "Destinazione: ", destination );
+                Debug.Log( "Scelgo di attendere in un posto vuoto, vicino alla destinazione", fishPlane[ 0 ] );
                 destination = fishPlane[ 0 ];
 
                 UpdateDestinationPoint();

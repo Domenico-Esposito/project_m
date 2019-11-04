@@ -19,8 +19,8 @@ public class FourmiPattern : PathManager
         FindPicturesOnWalls();
         SortPicturesOnWalls();
 
-        //currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(0, 5) ];
-        currentWall = startWall;
+        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ 0 ];
+        //currentWall = startWall;
 
         numberOfStop = Random.Range( 13, walls.Count );
     }
@@ -28,7 +28,7 @@ public class FourmiPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if( importantPictures.Count <= 0 && Random.Range(0, 5) > 2 )
+        if ( importantPictures.Count <= 0 || distanzaPercorsa > maxDistanza )
             return GetPlaneOfExit();
 
         if ( MoveToNextPicOnCurrentWall() )

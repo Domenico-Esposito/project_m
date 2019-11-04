@@ -12,7 +12,7 @@ public class PapillonPattern : PathManager
     private GameObject nextDestination;
 
     public int numberOfStop;
-
+    
     public override void InitMovementPattern ()
     {
         FindWallsWithPictures();
@@ -25,7 +25,7 @@ public class PapillonPattern : PathManager
     public override GameObject GetNextDestination ()
     {
 
-        if ( importantPictures.Count <= 0 )
+        if ( importantPictures.Count <= 0 || distanzaPercorsa > maxDistanza )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )

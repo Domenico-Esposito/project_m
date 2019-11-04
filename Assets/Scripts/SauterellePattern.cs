@@ -31,6 +31,9 @@ public class SauterellePattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
+        if ( distanzaPercorsa > maxDistanza )
+            return GetPlaneOfExit();
+
         if ( picturesToWatch.MoveNext() )
         {
             GameObject picturePlane = picturesToWatch.Current.transform.GetChild(0).gameObject;

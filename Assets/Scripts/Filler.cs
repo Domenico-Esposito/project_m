@@ -11,7 +11,7 @@ public class Filler : MonoBehaviour
     public int numberOfPapillon = 1;
     public int numberOfPoisson = 1;
     public int numberOfSauterelle = 1;
-
+    public int index = 1;
 
     public GameObject fourmiBot;
     public GameObject papillonBot;
@@ -88,24 +88,24 @@ public class Filler : MonoBehaviour
 
     private void AddNewFourmi ()
     {
-        Instantiate( fourmiBot, transform, true );
+        Instantiate( fourmiBot, transform, true ).name = "Agente " + index++;
     }
 
     private void AddNewPapillon ()
     {
-        Instantiate( papillonBot, transform, true );
+        Instantiate( papillonBot, transform, true ).name = "Agente " + index++;
 
     }
 
     private void AddNewPoisson ()
     {
-        Instantiate( poissonBot, transform, true );
+        Instantiate( poissonBot, transform, true ).name = "Agente " + index++;
 
     }
 
     private void AddNewSauterelle ()
     {
-        Instantiate( sauterelleBot, transform, true );
+        Instantiate( sauterelleBot, transform, true ).name = "Agente " + index++;
 
     }
 }
