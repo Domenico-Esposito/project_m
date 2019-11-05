@@ -8,10 +8,11 @@ public class PoissonPattern : PathManager
     private List<GameObject> poissonFloors;
 
     private IEnumerator<GameObject> pathPart;
-
+    List<GameObject> picturePlanes;
 
     public override void InitMovementPattern ()
     {
+        picturePlanes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
         poissonFloors = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
         poissonFloors.Sort( utilitySort.SortByIndexPlace );
 
@@ -48,11 +49,13 @@ public class PoissonPattern : PathManager
 
     private GameObject GetMostClosePicture ()
     {
-        List<GameObject> planes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
         utilitySort.transform = transform;
-        planes.Sort( utilitySort.Distanza );
+        picturePlanes.Sort( utilitySort.Distanza );
 
-        return planes[ 0 ];
+        GameObject destinationPlane = picturePlanes[ 0 ];
+        picturePlanes.Remove( destinationPlane );
+
+        return picturePlanes[ 0 ];
     }
 
     private GameObject GetPictureDestination ()

@@ -7,7 +7,7 @@ public class PapillonPattern : PathManager
     // Pattern movimento
     private List<GameObject> walls = new List<GameObject>();
     
-    private int currentPictureIndex = 0;
+    //private int currentPictureIndex = 0;
 
     private GameObject nextDestination;
 
@@ -20,7 +20,6 @@ public class PapillonPattern : PathManager
 
         numberOfStop = Random.Range( 15, walls.Count );
     }
-
 
     public override GameObject GetNextDestination ()
     {

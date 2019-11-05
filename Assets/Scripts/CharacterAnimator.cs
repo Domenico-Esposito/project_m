@@ -55,25 +55,26 @@ public class CharacterAnimator : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation( move - transform.position );
         targetRotation.x = 0f;
         targetRotation.z = 0f;
-
-        transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * 1.3f );
-
         float angleBetweenPlayerAndTarget = Vector3.Angle( transform.forward, ( move - transform.position ) );
 
         m_Animator.SetFloat( "Forward", 0, 1f, Time.deltaTime );
 
         if ( angleBetweenPlayerAndTarget > 40 )
         {
-            move = move.normalized;
-            move = transform.InverseTransformDirection( move );
-            move = Vector3.ProjectOnPlane( move, m_GroundNormal );
-            m_TurnAmount = Mathf.Atan2( move.x, move.z );
-            m_Animator.SetFloat( "Turn", m_TurnAmount, 0.2f, Time.deltaTime );
+            //move = move.normalized;
+            //move = transform.InverseTransformDirection( move );
+            //move = Vector3.ProjectOnPlane( move, m_GroundNormal );
+            //m_TurnAmount = Mathf.Atan2( move.x, move.z );
+            //m_Animator.SetFloat( "Turn", m_TurnAmount, 0.2f, Time.deltaTime );
+
+            m_Animator.SetFloat( "Turn", 0.4f );
+            transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * 2f );
 
         }
         else
         {
-            m_Animator.SetFloat( "Turn", 0, 0.2f, Time.deltaTime );
+            m_Animator.SetFloat( "Turn", 0f, 0.1f, Time.deltaTime );
+            transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * 1.2f );
         }
 
 

@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FourmiPattern : PathManager
 {
     // Pattern movimento
     private IEnumerator<GameObject> pictures;
-    private List<GameObject> walls = new List<GameObject>();
+    public List<GameObject> walls = new List<GameObject>();
 
     public GameObject startWall;
     private GameObject currentWall;
-    private int currentPictureIndex = 0;
+    //private int currentPictureIndex = 0;
 
     public int numberOfStop;
 
@@ -75,13 +76,16 @@ public class FourmiPattern : PathManager
     private bool MoveToNextPicOnAnotherWall ()
     {
         walls.Remove( currentWall );
+        walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[wall].Count <= 0 );
         walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[ wall ][ 0 ].GetComponent<PictureInfo>().index < currentPictureIndex );
+
 
         utilitySort.picturesOnWalls = picturesOnWalls;
         walls.Sort( utilitySort.SortByIndexPictureInWalls );
 
         if ( NextPictureIsInClosestWall() || NextPictureIsInDetachedWall() ) 
         {
+            picturesOnWalls[ currentWall ].RemoveAll( ( pic ) => visitedPictures.Contains( pic ) );
             pictures = picturesOnWalls[ currentWall ].GetEnumerator();
             pictures.MoveNext();
             RefreshCurrentPictureIndex();
@@ -91,7 +95,6 @@ public class FourmiPattern : PathManager
         return false;
     }
 
-    
 
     private bool NextPictureIsInClosestWall ()
     {
@@ -99,7 +102,8 @@ public class FourmiPattern : PathManager
         
         if ( wallsIntersectCurrentWall.Count > 0 )
         {
-            GameObject wallWithMinPicIndex = wallsIntersectCurrentWall[ 0 ];
+            GameObject wallWithMinPicIndex = wallsIntersectCurrentWall[0];
+            picturesOnWalls[ wallWithMinPicIndex ].RemoveAll( ( pic ) => visitedPictures.Contains( pic ) );
             GameObject picWithMinIndex = picturesOnWalls[ wallWithMinPicIndex ][ 0 ];
 
             if ( picWithMinIndex.GetComponent<PictureInfo>().index >= currentPictureIndex )
@@ -111,7 +115,6 @@ public class FourmiPattern : PathManager
 
         return false;
     }
-
 
 
     private List<GameObject> GetWallsClosestToCurrent ()
@@ -127,8 +130,12 @@ public class FourmiPattern : PathManager
             Bounds wallBounds = wall.GetComponent<MeshRenderer>().bounds;
             if ( currentWallBounds.Intersects( wallBounds ) )
             {
-                if( picturesOnWalls[wall][0].GetComponent<PictureInfo>().index < currentPictureIndex + 10 )
-                    intersectsWalls.Add( wall );
+                picturesOnWalls[ wall ].RemoveAll( ( pic ) => visitedPictures.Contains( pic ) );
+                if( picturesOnWalls[wall].Count > 0 )
+                {
+                    if ( picturesOnWalls[wall][0].GetComponent<PictureInfo>().index < currentPictureIndex + 10 )
+                        intersectsWalls.Add( wall );
+                }
             }
         }
 
@@ -157,6 +164,7 @@ public class FourmiPattern : PathManager
 
         return false;
     }
+
 
 
     private void FindWallsWithPictures ()

@@ -8,7 +8,7 @@ public class SauterellePattern : PathManager
 
     private List<GameObject> pictures;
 
-    private int maxJump = 6;
+    private int maxJump = 10;
 
     public override void InitMovementPattern ()
     {
@@ -53,7 +53,7 @@ public class SauterellePattern : PathManager
         {
             int pictureIndex = picture.GetComponent<PictureInfo>().index;
 
-            if ( Random.Range( 0, 10 ) > 6 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
+            if ( Random.Range( 0, 10 ) > 8 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
             {
                 lastPictureIndexAdded = picture.GetComponent<PictureInfo>().index;
                 picturesToWatch_list.Add( picture );
