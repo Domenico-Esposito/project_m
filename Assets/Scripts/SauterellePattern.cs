@@ -36,8 +36,18 @@ public class SauterellePattern : PathManager
 
         if ( picturesToWatch.MoveNext() )
         {
+            if ( visitedPictures.Contains( picturesToWatch.Current ) )
+            {
+                return GetNextDestination();
+            }
+
             GameObject picturePlane = picturesToWatch.Current.transform.GetChild(0).gameObject;
             return picturePlane;
+        }
+        else
+        {
+            if( importantPictures.Count > 0)
+                return importantPictures[importantPictures.Count-1];
         }
 
         return GetPlaneOfExit();

@@ -29,7 +29,7 @@ public class PapillonPattern : PathManager
 
         if ( LookInBackward() )
         {
-            if( Random.Range(1, 10)  >  7 )
+            if( Random.Range(1, 10)  >  7 || visitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
             {
                 LookNextIndex();
                 return nextDestination;
@@ -40,13 +40,14 @@ public class PapillonPattern : PathManager
 
         if ( LookNextIndex() || LookNextIndex(0) )
         {
-            if ( Random.Range( 0, 1 ) > 0.5f )
+            if ( Random.Range( 0, 1 ) > 0.5f || visitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
             {
                 return GetNextDestination();
             }
 
             return nextDestination;
         }
+
 
         return GetPlaneOfExit();
     }

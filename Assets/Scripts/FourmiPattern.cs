@@ -48,6 +48,11 @@ public class FourmiPattern : PathManager
             return GetPlaneOfExit();
         }
 
+        if( visitedPictures.Contains( pictures.Current ) )
+        {
+            return GetNextDestination();
+        }
+
         return GetPlaneOfCurrentPicture();
     }
 
@@ -78,7 +83,6 @@ public class FourmiPattern : PathManager
         walls.Remove( currentWall );
         walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[wall].Count <= 0 );
         walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[ wall ][ 0 ].GetComponent<PictureInfo>().index < currentPictureIndex );
-
 
         utilitySort.picturesOnWalls = picturesOnWalls;
         walls.Sort( utilitySort.SortByIndexPictureInWalls );

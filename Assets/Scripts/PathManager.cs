@@ -173,6 +173,11 @@ public abstract class PathManager : MonoBehaviour
 
         foreach ( GameObject picture in importantPictures )
         {
+            if ( destination.transform.parent.CompareTag( "Picture" ) && picture.GetComponent<PictureInfo>().index > destination.transform.parent.GetComponent<PictureInfo>().index + 5)
+            {
+                continue;
+            }
+
             m_Agent.CalculatePath( picture.transform.GetChild( 0 ).gameObject.transform.position, staticPath );
 
             float distanzaPictureImportant = GetPathLenght( staticPath );
