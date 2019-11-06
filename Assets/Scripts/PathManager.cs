@@ -67,8 +67,8 @@ public abstract class PathManager : MonoBehaviour
 
         foreach ( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
-            // Importante per l'agente || Importante per l'espositore
-            if ( Random.Range(0, 1) == 1 || picture.GetComponent<PictureInfo>().priority > 0 )
+            // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
+            if ( picture.GetComponent<PictureInfo>().priority >= 1 || Random.Range(0, 2) > 1 )
             {
                 importantPictures.Add( picture );
             }
@@ -320,9 +320,9 @@ public abstract class PathManager : MonoBehaviour
         else
         {
             // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre)
-            if( timedelta > 30f )
+            if( ( timedelta > 30f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority <= 1) || ( timedelta > 60f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority > 1 ) )
             {
-                //Debug.Log( "Mi scocci di attendere oltre, passo avanti..." );
+                Debug.Log( "È passato troppo tempo, passo oltre e ignoro questo quadro..." );
                 visitedPictures.Remove( destinationPrePause.transform.parent.gameObject );
                 importantPictures.Add( destinationPrePause.transform.parent.gameObject );
                 destinationPrePause.GetComponentInParent<PictureInfo>().ignoro = true;
@@ -371,14 +371,9 @@ public abstract class PathManager : MonoBehaviour
         }
         else
         {
-            // Euristica "Vado in pausa" oppure passo oltre
-            if ( LivelloStanchezza() < 2 )
+            // "Non sono stanco", oppure "Sono stanco ma il quadro è molto importante"
+            if ( LivelloStanchezza() == 0 || (LivelloStanchezza() == 1 && destination.transform.parent.GetComponent<PictureInfo>().priority > 1 ))
             {
-
-                if ( LivelloStanchezza() > 1 && destination.transform.parent.GetComponent<PictureInfo>().priority < 1 )
-                {
-                    // Con una certa probabilità passo oltre, in base alla priorità del quadro
-                }
 
                 inPausa = true;
                 destinationPrePause = destination;
@@ -397,6 +392,7 @@ public abstract class PathManager : MonoBehaviour
             {
                 UpdateDestination();
             }
+
         }
     }
 

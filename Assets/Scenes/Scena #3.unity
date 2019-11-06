@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401f0ff2c2c8b462c819a7588dcca870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 20
+  pauseTime: 25
   numberOfFourmi: 1
   numberOfPapillon: 1
   numberOfPoisson: 1
@@ -3852,7 +3852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 31
-  priority: 1
+  priority: 2
   ignoro: 0
 --- !u!114 &576069654
 MonoBehaviour:
@@ -5719,7 +5719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 12
-  priority: 1
+  priority: 2
   ignoro: 0
 --- !u!114 &975051552
 MonoBehaviour:
@@ -9796,7 +9796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 37
-  priority: 1
+  priority: 2
   ignoro: 0
 --- !u!114 &1483793493
 MonoBehaviour:

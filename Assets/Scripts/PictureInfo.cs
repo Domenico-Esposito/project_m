@@ -8,8 +8,9 @@ public class PictureInfo : MonoBehaviour
     public int index;
 
     /*
-        0 = Neutro
-        1 = Importante
+        0 = Opere minori 
+        1 = Opere medie
+        2 = Opere maggiori
     */
     public int priority;
 
