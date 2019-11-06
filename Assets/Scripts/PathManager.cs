@@ -35,7 +35,7 @@ public abstract class PathManager : MonoBehaviour
     public int maxDistanza = 30;
     public float distanzaPercorsa = 0f;
     public int currentPictureIndex = 0;
-
+    public List<GameObject> fishPlane;
     public abstract GameObject GetNextDestination ();
 
     public abstract void InitMovementPattern ();
@@ -56,6 +56,7 @@ public abstract class PathManager : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
 
         maxIndexPictures = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) ).Capacity;
+        fishPlane = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
 
 
         InitNavMeshAgent();
@@ -377,12 +378,12 @@ public abstract class PathManager : MonoBehaviour
 
                 inPausa = true;
                 destinationPrePause = destination;
+                
+                utilitySort.transform = destinationPrePause.transform;
+                fishPlane.Sort( utilitySort.DistanzaPlane );
 
-                List<GameObject> fishPlane = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
-                utilitySort.transform = destination.transform;
-                fishPlane.Sort( utilitySort.Distanza );
-                Debug.Log( "Destinazione: ", destination );
-                Debug.Log( "Scelgo di attendere in un posto vuoto, vicino alla destinazione", fishPlane[ 0 ] );
+                Debug.Log( gameObject.name + ": Destinazione: ", destination );
+                Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", fishPlane[ 0 ] );
                 destination = fishPlane[ 0 ];
 
                 UpdateDestinationPoint();

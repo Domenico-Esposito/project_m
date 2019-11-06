@@ -35,6 +35,21 @@ namespace Museum.Utility
             return lng;
         }
 
+        public float GetPathLengthPlane ( GameObject plane )
+        {
+            NavMeshPath p = new NavMeshPath();
+            NavMesh.CalculatePath( transform.position, plane.transform.position, NavMesh.AllAreas, p );
+
+            float lng = 0;
+
+            for ( int i = 0; i < p.corners.Length - 1; i++ )
+            {
+                lng += Vector3.Distance( p.corners[ i ], p.corners[ i + 1 ] );
+            }
+
+            return lng;
+        }
+
         public int SortByIndexPlace( GameObject x, GameObject y )
         {
             return SortByIndexPicture( x, y );
@@ -62,5 +77,15 @@ namespace Museum.Utility
             return 0;
         }
 
+
+        public int DistanzaPlane ( GameObject x, GameObject y )
+        {
+            float distance_1 = GetPathLengthPlane( x );
+            float distance_2 = GetPathLengthPlane( y );
+
+            if ( distance_1 < distance_2 ) return -1;
+            if ( distance_1 > distance_2 ) return 1;
+            return 0;
+        }
     }
 }
