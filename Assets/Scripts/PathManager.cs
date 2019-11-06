@@ -101,12 +101,12 @@ public abstract class PathManager : MonoBehaviour
         {
             if ( m_Agent.remainingDistance > m_Agent.stoppingDistance )
             {
-                m_Agent.avoidancePriority = 50;
+                m_Agent.avoidancePriority = Random.Range(50, 60);
                 character.Move( m_Agent.desiredVelocity );
             }
             else
             {
-                m_Agent.avoidancePriority = 80;
+                m_Agent.avoidancePriority = 0;
                 character.Move( Vector3.zero );
                 timedelta += Time.deltaTime;
             }
@@ -125,12 +125,12 @@ public abstract class PathManager : MonoBehaviour
 
         if ( m_Agent.remainingDistance > m_Agent.stoppingDistance )
         {
-            m_Agent.avoidancePriority = 50;
+            m_Agent.avoidancePriority = Random.Range( 50, 60 );
             character.Move( m_Agent.desiredVelocity );
         }
         else
         {
-            m_Agent.avoidancePriority = 75;
+            m_Agent.avoidancePriority = 0;
             character.Move( Vector3.zero );
 
             if ( destinationPoint.transform.parent.CompareTag( "PicturePlane" ) )   
@@ -389,10 +389,18 @@ public abstract class PathManager : MonoBehaviour
 
                 Debug.Log( gameObject.name + ": Destinazione: ", destination );
                 Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", fishPlane[ 0 ] );
-                destination = fishPlane[ 0 ];
 
-                UpdateDestinationPoint();
-                GoToDestinationPoint();
+                foreach( GameObject plane in fishPlane )
+                {
+                    if( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
+                    {
+                        destination = plane;
+                        UpdateDestinationPoint();
+                        GoToDestinationPoint();
+                        break;
+                    }
+                }
+
             }
             else
             {

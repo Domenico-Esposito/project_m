@@ -20,7 +20,7 @@ public class FourmiPattern : PathManager
         FindPicturesOnWalls();
         SortPicturesOnWalls();
 
-        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ 0 ];
+        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[ Random.Range(1, 5) ];
         //currentWall = startWall;
 
         numberOfStop = Random.Range( 13, walls.Count );

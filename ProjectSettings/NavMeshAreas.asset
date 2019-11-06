@@ -12,9 +12,9 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: Punto di osservazione
-    cost: 10
-  - name: 
-    cost: 1
+    cost: 3
+  - name: Punto di attesa
+    cost: 2
   - name: 
     cost: 1
   - name: 
@@ -73,7 +73,7 @@ NavMeshProjectSettings:
   m_Settings:
   - serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 2.5
+    agentRadius: 1
     agentHeight: 4
     agentSlope: 0
     agentClimb: 0.5

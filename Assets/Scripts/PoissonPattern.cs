@@ -67,7 +67,16 @@ public class PoissonPattern : PathManager
     private GameObject GetFishPlaneDestination ()
     {
         if ( pathPart.MoveNext() )
-            return pathPart.Current;
+        {
+            if( pathPart.Current.GetComponent<GridSystem>().HaveAvailablePoint() )
+            {
+                return pathPart.Current;
+            }
+            else
+            {
+                return GetFishPlaneDestination();
+            }
+        }
 
         return GetPlaneOfExit();
     }
