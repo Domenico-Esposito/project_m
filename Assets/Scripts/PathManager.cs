@@ -378,7 +378,7 @@ public abstract class PathManager : MonoBehaviour
         else
         {
             // "Non sono stanco", oppure "Sono stanco ma il quadro è molto importante"
-            if ( LivelloStanchezza() == 0 || (LivelloStanchezza() == 1 && destination.transform.parent.GetComponent<PictureInfo>().priority > 1 ))
+            if ( LivelloStanchezza() == 0 || (LivelloStanchezza() == 1 && destination.CompareTag("PicturePlane") && destination.transform.parent.GetComponent<PictureInfo>().priority > 1 ))
             {
 
                 inPausa = true;

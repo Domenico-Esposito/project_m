@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401f0ff2c2c8b462c819a7588dcca870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 5
+  pauseTime: 20
   numberOfFourmi: 1
   numberOfPapillon: 1
   numberOfPoisson: 1
@@ -11621,13 +11621,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725522424}
-  m_LocalRotation: {x: -0.000000004619559, y: -0.6943695, z: -0.000000004760101, w: -0.7196187}
-  m_LocalPosition: {x: 8.05, y: 5, z: 11.83}
-  m_LocalScale: {x: 16.466785, y: 10, z: 0.79081047}
+  m_LocalRotation: {x: -0.0000000034976955, y: -0.5248616, z: -0.0000000056360436,
+    w: -0.8511876}
+  m_LocalPosition: {x: 0.6, y: 5, z: 11.83}
+  m_LocalScale: {x: 26.127848, y: 10, z: 0.79081047}
   m_Children: []
   m_Father: {fileID: 1378526610}
   m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: -272.046, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -296.682, z: 0}
 --- !u!65 &1725522426
 BoxCollider:
   m_ObjectHideFlags: 0

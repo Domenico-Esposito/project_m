@@ -74,7 +74,10 @@ public class FourmiPattern : PathManager
 
     private void RefreshCurrentPictureIndex ()
     {   
-        currentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
+        if( pictures.Current )
+        {
+            currentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
+        }
     }
 
 
@@ -151,7 +154,13 @@ public class FourmiPattern : PathManager
 
     private GameObject GetPlaneOfCurrentPicture ()
     {
-        return pictures.Current.transform.GetChild( 0 ).gameObject;
+        if( pictures.Current )
+        {
+            if( pictures.Current.transform.GetChild(0) )
+                return pictures.Current.transform.GetChild( 0 ).gameObject;
+        }
+
+        return GetPlaneOfExit();
     }
 
 

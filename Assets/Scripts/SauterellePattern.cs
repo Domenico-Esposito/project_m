@@ -46,8 +46,8 @@ public class SauterellePattern : PathManager
         }
         else
         {
-            if( importantPictures.Count > 0)
-                return importantPictures[importantPictures.Count-1];
+            if ( importantPictures.Count > 0 )
+                return importantPictures[ importantPictures.Count - 1 ].transform.GetChild( 0 ).gameObject;
         }
 
         return GetPlaneOfExit();
