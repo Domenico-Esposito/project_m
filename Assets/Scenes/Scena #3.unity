@@ -1539,11 +1539,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401f0ff2c2c8b462c819a7588dcca870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 30
-  numberOfFourmi: 1
-  numberOfPapillon: 1
+  pauseTime: 50
+  numberOfFourmi: 0
+  numberOfPapillon: 0
   numberOfPoisson: 1
-  numberOfSauterelle: 1
+  numberOfSauterelle: 0
   index: 1
   gruppi: 1
   fourmiBot: {fileID: 8975627631553208718, guid: b3755b3f411324863b1b21950592a1bb,
@@ -7458,7 +7458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 20
-  priority: 2
+  priority: 0
   ignoro: 0
 --- !u!114 &1095109969
 MonoBehaviour:

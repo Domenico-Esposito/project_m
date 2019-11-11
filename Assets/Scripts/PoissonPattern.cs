@@ -36,7 +36,7 @@ public class PoissonPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        bool viewPicture = Random.Range( 0, 10 ) > 5 ? true : false;
+        bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
 
         if ( distanzaPercorsa > maxDistanza )
             return GetPlaneOfExit();
