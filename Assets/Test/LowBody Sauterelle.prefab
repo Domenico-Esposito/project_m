@@ -696,7 +696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100854799044282266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.51, y: 0, z: -77.16}
+  m_LocalPosition: {x: -18.864746, y: -1.7929928e-15, z: -65.878914}
   m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_Children:
   - {fileID: 100854797989700645}
@@ -813,6 +813,9 @@ MonoBehaviour:
   currentPictureIndex: 0
   fishPlane: []
   lastPositionPattern: {fileID: 0}
+  isCapoGruppo: 0
+  groupElement: []
+  capo: {fileID: 0}
   destinationPrePause: {fileID: 0}
 --- !u!1 &100854799133895049
 GameObject:

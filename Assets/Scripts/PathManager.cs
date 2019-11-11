@@ -45,6 +45,7 @@ public abstract class PathManager : MonoBehaviour
 
     public bool isCapoGruppo;
     public List<PathManager> groupElement = new List<PathManager>();
+    public GameObject capo;
 
     protected virtual void Start ()
     {
@@ -69,14 +70,6 @@ public abstract class PathManager : MonoBehaviour
         InitAnimationBheavior();
         InitMovementPattern();
 
-        if( isCapoGruppo )
-        {
-            foreach(PathManager element in groupElement )
-            {
-                element.importantPictures = new List<GameObject>();
-            }
-        }
-
         foreach ( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
             // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
@@ -90,8 +83,24 @@ public abstract class PathManager : MonoBehaviour
         importantPictures.Sort( utilitySort.SortByIndexPicture );
         importantPictures.Reverse();
 
+        if ( isCapoGruppo )
+        {
+            foreach ( PathManager element in groupElement )
+            {
+                Debug.Log( "Rimuovo tutti i preferiti degli agenti nel gruppo", element );
+                element.importantPictures.Clear();
+                element.impostaCapo( gameObject );
+            }
+        }
+
         UpdateDestination();
         
+    }
+
+    void impostaCapo( GameObject leader )
+    {
+        capo = leader;
+        Debug.Log( "Agente " + gameObject.name + ": Leader", capo );
     }
 
     void InitNavMeshAgent ()

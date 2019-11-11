@@ -54,33 +54,40 @@ public class Filler : MonoBehaviour
     private void fillGroup ()
     {
 
-        List<PathManager> group = new List<PathManager>();
+        List<GameObject> group = new List<GameObject>();
 
         for ( int i = 0; i < Random.Range( 3, 10); i++)
         {
+            GameObject o;
+
             if( Random.Range(0, 2) >= 1)
             {
-                group.Add( AddNewBot( 0 ).GetComponent<PathManager>() );
+                o = AddNewBot( 0 );
             }
             else if ( Random.Range( 0, 2 ) >= 1 )
             {
-                group.Add( AddNewBot( 1 ).GetComponent<PathManager>() );
+                o = AddNewBot( 1 );
             }
             else if ( Random.Range( 0, 2 ) >= 1 )
             {
-                group.Add( AddNewBot( 2 ).GetComponent<PathManager>() );
+                o = AddNewBot( 2 );
             }
             else
             {
-                group.Add( AddNewBot( 3 ).GetComponent<PathManager>() );
+                o = AddNewBot( 3 );
             }
 
+            group.Add( o );
         }
 
-        PathManager p = group[ 0 ];
-        group.RemoveAt( 0 );
-        p.isCapoGruppo = true;
-        p.groupElement = group;
+        GameObject capo = group[ 0 ];
+        capo.GetComponent<PathManager>().isCapoGruppo = true;
+        group.Remove( capo );
+
+        foreach(GameObject g in group )
+        {
+            capo.GetComponent<PathManager>().groupElement.Add(g.GetComponent<PathManager>());
+        }
 
     }
 
@@ -136,7 +143,6 @@ public class Filler : MonoBehaviour
     {
         GameObject o = Instantiate( fourmiBot, transform, true );
         o.name = "Agente " + index++;
-
         return o;
     }
 

@@ -24,7 +24,7 @@ public class PapillonPattern : PathManager
     public override GameObject GetNextDestination ()
     {
 
-        if ( importantPictures.Count <= 0 || distanzaPercorsa > maxDistanza )
+        if ( (importantPictures.Count <= 0 && (capo && capo.activeInHierarchy) )|| distanzaPercorsa > maxDistanza )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )
