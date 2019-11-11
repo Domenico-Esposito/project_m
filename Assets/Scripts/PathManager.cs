@@ -43,6 +43,9 @@ public abstract class PathManager : MonoBehaviour
     public GameObject lastPositionPattern;
     int maxIndexPictures = 0;
 
+    public bool isCapoGruppo;
+    public List<PathManager> groupElement = new List<PathManager>();
+
     protected virtual void Start ()
     {
 
@@ -65,6 +68,14 @@ public abstract class PathManager : MonoBehaviour
 
         InitAnimationBheavior();
         InitMovementPattern();
+
+        if( isCapoGruppo )
+        {
+            foreach(PathManager element in groupElement )
+            {
+                element.importantPictures = new List<GameObject>();
+            }
+        }
 
         foreach ( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
@@ -270,9 +281,29 @@ public abstract class PathManager : MonoBehaviour
         return destination.GetComponent<GridSystem>().GetAvailablePoint();
     }
 
+    public void capoSceglie(GameObject destination )
+    {
+        if( destination.CompareTag( "PicturePlane" ) )
+        {
+            Debug.Log( gameObject.name + ": Capo ha scelto nuova destinazione importante", destination );
+            if( !importantPictures.Contains( destination.transform.parent.gameObject ) && !visitedPictures.Contains( destination.transform.parent.gameObject ))
+            {
+                importantPictures.Add( destination.transform.parent.gameObject );
+            }
+        }
+    }
+
     private void GoToDestinationPoint ()
     {
         m_Agent.SetDestination( destinationPoint.transform.position );
+
+        if ( isCapoGruppo )
+        {
+            foreach ( PathManager element in groupElement )
+            {
+                element.capoSceglie( destination );
+            }
+        }
 
         NavMeshPath staticPath = new NavMeshPath();
         m_Agent.CalculatePath(destinationPoint.transform.position, staticPath);

@@ -13,6 +13,8 @@ public class Filler : MonoBehaviour
     public int numberOfSauterelle = 1;
     public int index = 1;
 
+    public bool gruppi = true;
+
     public GameObject fourmiBot;
     public GameObject papillonBot;
     public GameObject poissonBot;
@@ -20,7 +22,14 @@ public class Filler : MonoBehaviour
 
     private void Awake ()
     {
-        fill();
+        if( gruppi )
+        {
+            fillGroup();
+        }
+        else
+        {
+            fill();
+        }
     }
 
     private void Update ()
@@ -28,11 +37,51 @@ public class Filler : MonoBehaviour
      
         if( deltaTime > pauseTime )
         {
-            fill();
+            if ( gruppi )
+            {
+                fillGroup();
+            }
+            else
+            {
+                fill();
+            }
             deltaTime = 0;
         }
 
         deltaTime += Time.deltaTime;
+    }
+
+    private void fillGroup ()
+    {
+
+        List<PathManager> group = new List<PathManager>();
+
+        for ( int i = 0; i < Random.Range( 3, 10); i++)
+        {
+            if( Random.Range(0, 2) >= 1)
+            {
+                group.Add( AddNewBot( 0 ).GetComponent<PathManager>() );
+            }
+            else if ( Random.Range( 0, 2 ) >= 1 )
+            {
+                group.Add( AddNewBot( 1 ).GetComponent<PathManager>() );
+            }
+            else if ( Random.Range( 0, 2 ) >= 1 )
+            {
+                group.Add( AddNewBot( 2 ).GetComponent<PathManager>() );
+            }
+            else
+            {
+                group.Add( AddNewBot( 3 ).GetComponent<PathManager>() );
+            }
+
+        }
+
+        PathManager p = group[ 0 ];
+        group.RemoveAt( 0 );
+        p.isCapoGruppo = true;
+        p.groupElement = group;
+
     }
 
     private void fill()
@@ -64,48 +113,55 @@ public class Filler : MonoBehaviour
         }
     }
 
-    private void AddNewBot (int type)
+    private GameObject AddNewBot (int type)
     {
     
         switch ( type )
         {
         case 0:
-            AddNewFourmi();
-            break;
+            return AddNewFourmi();
         case 1:
-            AddNewPapillon();
-            break;
+            return AddNewPapillon();
         case 2:
-            AddNewPoisson();
-            break;
+            return AddNewPoisson();
         case 3:
-            AddNewSauterelle();
-            break;
+            return AddNewSauterelle();
         }
 
+        return null;
     }
 
 
-    private void AddNewFourmi ()
+    private GameObject AddNewFourmi ()
     {
-        Instantiate( fourmiBot, transform, true ).name = "Agente " + index++;
+        GameObject o = Instantiate( fourmiBot, transform, true );
+        o.name = "Agente " + index++;
+
+        return o;
     }
 
-    private void AddNewPapillon ()
+    private GameObject AddNewPapillon ()
     {
-        Instantiate( papillonBot, transform, true ).name = "Agente " + index++;
+        GameObject o = Instantiate( papillonBot, transform, true );
+        o.name = "Agente " + index++;
+
+        return o;
 
     }
 
-    private void AddNewPoisson ()
+    private GameObject AddNewPoisson ()
     {
-        Instantiate( poissonBot, transform, true ).name = "Agente " + index++;
+        GameObject o = Instantiate( poissonBot, transform, true );
+        o.name = "Agente " + index++;
 
+        return o;
     }
 
-    private void AddNewSauterelle ()
+    private GameObject AddNewSauterelle ()
     {
-        Instantiate( sauterelleBot, transform, true ).name = "Agente " + index++;
+        GameObject o = Instantiate( sauterelleBot, transform, true );
+        o.name = "Agente " + index++;
 
+        return o;
     }
 }

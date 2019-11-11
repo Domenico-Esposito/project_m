@@ -16,10 +16,10 @@ public class PoissonPattern : PathManager
         poissonFloors = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
         poissonFloors.Sort( utilitySort.SortByIndexPlace );
 
-        if ( Random.Range( 0f, 1f ) > 0.5f )
-        {
-            poissonFloors.Reverse();
-        }
+        //if ( Random.Range( 0f, 1f ) > 0.5f )
+        //{
+        //    poissonFloors.Reverse();
+        //}
 
         pathPart = poissonFloors.GetEnumerator();
     }
@@ -55,7 +55,7 @@ public class PoissonPattern : PathManager
         GameObject destinationPlane = picturePlanes[ 0 ];
         picturePlanes.Remove( destinationPlane );
 
-        return picturePlanes[ 0 ];
+        return destinationPlane;
     }
 
     private GameObject GetPictureDestination ()
