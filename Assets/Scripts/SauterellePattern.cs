@@ -12,6 +12,7 @@ public class SauterellePattern : PathManager
 
     public override void InitMovementPattern ()
     {
+        maxDistanza = 880;
         FindAllPicture();
         SetPictureToWatch();
     }
@@ -27,11 +28,12 @@ public class SauterellePattern : PathManager
         }
 
         pictures.Sort( utilitySort.SortByIndexPicture );
+
     }
 
     public override GameObject GetNextDestination ()
     {
-        if ( distanzaPercorsa > maxDistanza )
+        if ( LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( picturesToWatch.MoveNext() )

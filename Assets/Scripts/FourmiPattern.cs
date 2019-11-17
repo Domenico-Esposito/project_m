@@ -24,12 +24,13 @@ public class FourmiPattern : PathManager
         //currentWall = startWall;
 
         numberOfStop = Random.Range( 13, walls.Count );
+        maxDistanza = 900;
     }
 
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( importantPictures.Count <= 0 && ( capo && capo.activeInHierarchy ) ) || distanzaPercorsa > maxDistanza )
+        if ( ( importantPictures.Count <= 0 && ( myLeader && myLeader.activeInHierarchy ) ) || LivelloStanchezza() > MOLTO_STANCO)
             return GetPlaneOfExit();
 
         if ( MoveToNextPicOnCurrentWall() )

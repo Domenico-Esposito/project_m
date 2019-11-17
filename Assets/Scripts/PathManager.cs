@@ -1,79 +1,124 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+
 using Museum.Utility;
 using System.Collections.Generic;
-using System.IO;
+using System;
 
 public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
     public GameObject destination;
     protected GameObject destinationPoint;
-    protected NavMeshAgent m_Agent;
+    protected NavMeshAgent agent;
 
     protected Sort utilitySort;
 
     public bool inPausa = false;
-    public bool isHasty = true;
 
-    Rigidbody m_Rigidbody;
     Animator m_Animator;
 
     // Animazione
     CharacterAnimator character;
 
     // Segui percorso
+    [SerializeField] float pauseTime = 5f;
     public float timedelta = 0f;
     float baseTime;
-    [SerializeField] float pauseTime = 5f;
 
     protected Dictionary<GameObject, List<GameObject>> picturesOnWalls = new Dictionary<GameObject, List<GameObject>>();
-
-    public List<GameObject> visitedPictures = new List<GameObject>();
-    public List<GameObject> importantPictures = new List<GameObject>();
+    protected List<GameObject> visitedPictures = new List<GameObject>();
+    protected List<GameObject> importantPictures = new List<GameObject>();
 
     public int maxDistanza = 30;
     public float distanzaPercorsa = 0f;
-    public int currentPictureIndex = 0;
-    public List<GameObject> fishPlane;
-    public abstract GameObject GetNextDestination ();
 
+    protected int currentPictureIndex = 0;
+
+    public List<GameObject> emptySpaces;
+
+    GameObject lastPositionPattern;
+
+    public bool isLeader = false;
+    protected GameObject myLeader;
+    List<PathManager> group = new List<PathManager>();
+    GameObject destinationPrePause;
+
+    public abstract GameObject GetNextDestination ();
     public abstract void InitMovementPattern ();
 
-    public GameObject lastPositionPattern;
-    int maxIndexPictures = 0;
+    public float tempoInAttesa = 0f;
 
-    public bool isCapoGruppo;
-    public List<PathManager> groupElement = new List<PathManager>();
-    public GameObject capo;
+    [SerializeField]
+    Image bottom;
+
+    [SerializeField]
+    GameObject[ ] status;
+
+    protected void SetColorGroup(Color color )
+    {
+        bottom.color = color;
+        transform.Find( "Bottom" ).gameObject.transform.Find( "Base" ).gameObject.GetComponent<Image>().color = color;
+    }
 
     protected virtual void Start ()
     {
-
+   
         utilitySort = new Sort
         {
             transform = transform
         };
 
-        m_Agent = GetComponent<NavMeshAgent>();
-        m_Animator = GetComponent<Animator>();
-        m_Rigidbody = GetComponent<Rigidbody>();
-
-        maxIndexPictures = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) ).Capacity;
-        fishPlane = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
-
-
-        InitNavMeshAgent();
-
         baseTime = pauseTime;
 
+        agent = GetComponent<NavMeshAgent>();
+        emptySpaces = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Empty Space" ) );
+
+        InitNavMeshAgent();
+        
         InitAnimationBheavior();
         InitMovementPattern();
 
+        SelectImportantPictureStrategy();
+        
+        InitGroupData();
+
+        UpdateDestination();
+
+    }
+
+    void InitGroupData ()
+    {
+    
+        if ( isLeader )
+        {
+            Color groupColor = GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().GetColor();
+
+            transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.SetActive( true );
+            transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.GetComponent<Image>().color = groupColor;
+
+            SetColorGroup( groupColor );
+
+            foreach ( PathManager bot in group )
+            {
+                bot.importantPictures.Clear();
+                bot.setLeader( gameObject );
+                bot.SetColorGroup( groupColor ); 
+            }
+        }
+        else
+        {
+            transform.Find( "Bottom" ).gameObject.transform.Find( "Base" ).gameObject.SetActive( true );
+        }
+    }
+
+    void SelectImportantPictureStrategy ()
+    {
         foreach ( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
             // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
-            if ( picture.GetComponent<PictureInfo>().priority >= 1 || Random.Range(0, 2) > 1 )
+            if ( picture.GetComponent<PictureInfo>().priority >= 1 || UnityEngine.Random.Range( 0, 2 ) > 1 )
             {
                 importantPictures.Add( picture );
             }
@@ -83,30 +128,22 @@ public abstract class PathManager : MonoBehaviour
         importantPictures.Sort( utilitySort.SortByIndexPicture );
         importantPictures.Reverse();
 
-        if ( isCapoGruppo )
-        {
-            foreach ( PathManager element in groupElement )
-            {
-                Debug.Log( "Rimuovo tutti i preferiti degli agenti nel gruppo", element );
-                element.importantPictures.Clear();
-                element.impostaCapo( gameObject );
-            }
-        }
-
-        UpdateDestination();
-        
     }
 
-    void impostaCapo( GameObject leader )
+    public void setGroup ( List<PathManager> members )
     {
-        capo = leader;
-        Debug.Log( "Agente " + gameObject.name + ": Leader", capo );
+        isLeader = true;
+        group = members;
+    }
+
+    void setLeader( GameObject leader )
+    {
+        myLeader = leader;
     }
 
     void InitNavMeshAgent ()
     {
-        //isHasty = Random.Range( 0, 5 ) > 2;
-        m_Agent.updateRotation = false;
+        agent.updateRotation = false;
     }
 
     public void InitAnimationBheavior ()
@@ -117,19 +154,29 @@ public abstract class PathManager : MonoBehaviour
     private void Update ()
     {
 
-        if( inPausa )
+        if ( inPausa )
         {
-            if ( m_Agent.remainingDistance > m_Agent.stoppingDistance )
+
+
+            foreach ( GameObject s in status )
             {
-                m_Agent.avoidancePriority = Random.Range(50, 60);
-                character.Move( m_Agent.desiredVelocity );
+                s.SetActive( false );
+            }
+            status[ 0 ].SetActive( true );
+
+            if ( agent.remainingDistance > agent.stoppingDistance )
+            {
+                agent.avoidancePriority = UnityEngine.Random.Range(50, 60);
+                character.Move( agent.desiredVelocity );
             }
             else
             {
-                m_Agent.avoidancePriority = 0;
+                agent.avoidancePriority = 0;
                 character.Move( Vector3.zero );
                 timedelta += Time.deltaTime;
             }
+
+            tempoInAttesa += Time.deltaTime;
 
             CheckDestinationFromPause();
             return;
@@ -143,17 +190,30 @@ public abstract class PathManager : MonoBehaviour
         }
 
 
-        if ( m_Agent.remainingDistance > m_Agent.stoppingDistance )
+        if ( agent.remainingDistance > agent.stoppingDistance )
         {
-            m_Agent.avoidancePriority = Random.Range( 50, 60 );
-            character.Move( m_Agent.desiredVelocity );
+            foreach(GameObject s in status )
+            {
+                s.SetActive( false );
+            }
+            status[ 1 ].SetActive( true );
+
+            agent.avoidancePriority = UnityEngine.Random.Range( 50, 60 );
+            character.Move( agent.desiredVelocity );
         }
         else
         {
-            m_Agent.avoidancePriority = 0;
+
+            foreach ( GameObject s in status )
+            {
+                s.SetActive( false );
+            }
+            status[ 2 ].SetActive( true );
+
+            agent.avoidancePriority = 0;
             character.Move( Vector3.zero );
 
-            if ( destinationPoint.transform.parent.CompareTag( "PicturePlane" ) )   
+            if( destination.CompareTag("PicturePlane") )
             {
                 Vector3 position = destination.transform.parent.transform.position;
                 character.TurnToPicture( position );
@@ -170,54 +230,66 @@ public abstract class PathManager : MonoBehaviour
 
     }
 
-    protected virtual void UpdateDestination () 
+    private void UseLastDestinationOrNew ()
     {
-
-        bool controllo = false;
-
         if ( lastPositionPattern == null )
         {
             destination = GetNextDestination();
-            Debug.Log( "Chiedo nuova destinazione dal pattern", destination );
+            Debug.Log( gameObject.name + ": Chiedo nuova destinazione dal pattern", destination );
         }
         else
         {
             destination = lastPositionPattern;
-            Debug.Log( "Uso destinazione già calcolata in precedenza", destination );
+            Debug.Log( gameObject.name + ": Uso destinazione già calcolata in precedenza", destination );
         }
+    }
+
+    private void UpdateDestination () 
+    {
+
+        bool haveLastPositionPattern = false;
+        float distanceFromDestination = 0;
+
+        UseLastDestinationOrNew();
 
         NavMeshPath staticPath = new NavMeshPath();
-        m_Agent.CalculatePath( destination.transform.position, staticPath );
+        agent.CalculatePath( destination.transform.position, staticPath );
 
-        float distanzaProssimaDestinazione = GetPathLenght( staticPath );
+        distanceFromDestination = GetPathLenght( staticPath );
 
-        foreach ( GameObject picture in importantPictures )
+        Transform destinationPicture = destination.transform.parent;
+
+        try
         {
-            if ( destination.transform.parent.CompareTag( "Picture" ) && picture.GetComponent<PictureInfo>().index > destination.transform.parent.GetComponent<PictureInfo>().index + 5)
+            foreach ( GameObject picture in importantPictures )
             {
-                continue;
-            }
+                GameObject picturePlane = picture.transform.GetChild( 0 ).gameObject;
 
-            m_Agent.CalculatePath( picture.transform.GetChild( 0 ).gameObject.transform.position, staticPath );
+                agent.CalculatePath( picturePlane.transform.position, staticPath );
+                float distanzaFromPictureImportant = GetPathLenght( staticPath );
 
-            float distanzaPictureImportant = GetPathLenght( staticPath );
+                    // Immagine importante più vicina di immagine pattern
+                    if ( distanzaFromPictureImportant < distanceFromDestination ||
+                         picture.GetComponent<PictureInfo>().index < destinationPicture.GetComponent<PictureInfo>().index )
+                    {
+                        importantPictures.Remove( picture );
+                        lastPositionPattern = destination;
+                        haveLastPositionPattern = true;
+                        destination = picturePlane;
 
-            // Immagine importante più vicina di immagine pattern
-            if ( distanzaPictureImportant < distanzaProssimaDestinazione || 
-            ( destination.transform.parent.CompareTag( "Picture" ) && picture.GetComponent<PictureInfo>().index < destination.transform.parent.GetComponent<PictureInfo>().index) )
-            {
-                importantPictures.Remove( picture );
-                //visitedPictures.Add( picture );
-                lastPositionPattern = destination;
-                controllo = true;
-                destination = picture.transform.GetChild( 0 ).gameObject;
-                Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
-                Debug.Log( "Prossima destinazione è importante", destination );
-                break;
+                        Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
+                        Debug.Log( "Prossima destinazione è importante", destination );
+                        break;
+                    }
             }
         }
+        catch ( NullReferenceException e )
+        {
+            Debug.Log( gameObject.name + ": Destinazione è uno spazio vuoto" );
+        }
 
-        if ( controllo == false )
+
+        if ( !haveLastPositionPattern )
         {
             lastPositionPattern = null;
         }
@@ -229,60 +301,6 @@ public abstract class PathManager : MonoBehaviour
 
         CheckNextDestination();
 
-        //destination = GetNextDestination();
-        //Debug.Log( "Destinazione del pattern", destination );
-
-        //// Per il backtracking
-        //foreach (GameObject picture in importantPictures )
-        //{
-        //    if ( destination != null && destination.CompareTag("PicturePlane")
-        //        //&& picture.GetComponent<PictureInfo>().priority > 0 
-        //        && (picture.GetComponent<PictureInfo>().index < destination.transform.parent.GetComponent<PictureInfo>().index || picture.GetComponent<PictureInfo>().index >= maxIndexPictures )
-        //        && picture.GetComponent<PictureInfo>().ignoro == false
-        //       ) // Quadro importante
-        //    {
-        //        if( !visitedPictures.Contains( picture ) )
-        //        {
-        //            if( picture.transform.GetChild( 0 ).GetComponent<GridSystem>().HaveAvailablePoint() )
-        //            {
-        //                if ( lastPositionPattern == null )
-        //                {
-        //                    lastPositionPattern = destination;
-        //                }
-
-        //                destination = picture.transform.GetChild( 0 ).gameObject;
-        //                //if( destination.GetComponentInParent<PictureInfo>() )
-        //                //{
-        //                //    currentPictureIndex = picture.GetComponent<PictureInfo>().index;
-        //                //}
-
-        //                importantPictures.Remove( picture );
-        //                //visitedPictures.Add( picture );
-        //                CheckNextDestination();
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //// Per il forwardtraking
-        //if ( lastPositionPattern )
-        //{
-        //    GameObject tmp = destination;
-        //    destination = lastPositionPattern;
-        //    //if( destination.GetComponentInParent<PictureInfo>() )
-        //    //{
-        //    //    currentPictureIndex = destination.GetComponentInParent<PictureInfo>().index;
-        //    //}
-        //    lastPositionPattern = null;
-        //}
-
-        //if ( importantPictures.Contains(destination.transform.parent.gameObject) )
-        //{
-        //    importantPictures.Remove( destination.transform.parent.gameObject );
-        //}
-
-        //CheckNextDestination();
     }
 
     protected virtual GameObject GetPointInDestination ()
@@ -290,12 +308,13 @@ public abstract class PathManager : MonoBehaviour
         return destination.GetComponent<GridSystem>().GetAvailablePoint();
     }
 
-    public void capoSceglie(GameObject destination )
+    public void NotifyNewDestination(GameObject destination )
     {
         if( destination.CompareTag( "PicturePlane" ) )
         {
             Debug.Log( gameObject.name + ": Capo ha scelto nuova destinazione importante", destination );
-            if( !importantPictures.Contains( destination.transform.parent.gameObject ) && !visitedPictures.Contains( destination.transform.parent.gameObject ))
+            if( !importantPictures.Contains( destination.transform.parent.gameObject ) && 
+                !visitedPictures.Contains( destination.transform.parent.gameObject ))
             {
                 importantPictures.Add( destination.transform.parent.gameObject );
             }
@@ -304,18 +323,25 @@ public abstract class PathManager : MonoBehaviour
 
     private void GoToDestinationPoint ()
     {
-        m_Agent.SetDestination( destinationPoint.transform.position );
+        agent.SetDestination( destinationPoint.transform.position );
 
-        if ( isCapoGruppo )
+        if ( isLeader )
         {
-            foreach ( PathManager element in groupElement )
+            foreach ( PathManager bot in group )
             {
-                element.capoSceglie( destination );
+                try
+                {
+                    bot.NotifyNewDestination( destination );
+                }
+                catch( MissingReferenceException e )
+                {
+                    Debug.Log( gameObject.name + ": un membro del gruppo ha già abbandonato il museo." );
+                }
             }
         }
 
         NavMeshPath staticPath = new NavMeshPath();
-        m_Agent.CalculatePath(destinationPoint.transform.position, staticPath);
+        agent.CalculatePath(destinationPoint.transform.position, staticPath);
 
         distanzaPercorsa += GetPathLenght( staticPath );
     }
@@ -343,20 +369,13 @@ public abstract class PathManager : MonoBehaviour
         destinationPoint = GetPointInDestination();
         destinationPoint.GetComponent<DestinationPoint>().Occupa();
     }
-
-    public GameObject destinationPrePause;
-
+    
     private void CheckDestinationFromPause ()
     {
     
         if ( destinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
         {
             destination = destinationPrePause;
-            //if( destination.GetComponentInParent<PictureInfo>() )
-            //{
-            //    currentPictureIndex = destination.GetComponentInParent<PictureInfo>().index;
-            //}
-
             visitedPictures.Add( destination.transform.parent.gameObject );
             UpdateDestinationPoint();
             GoToDestinationPoint();
@@ -379,28 +398,32 @@ public abstract class PathManager : MonoBehaviour
         }
     }
 
+    public const int NON_STANCO = 0;
+    public const int STANCO = 1;
+    public const int MOLTO_STANCO = 2;
+
     /*
      * 0 = Non stanco
      * 1 = Stanco
      * 2 = Molto stanco
      */
-    private int LivelloStanchezza ()
+    public int LivelloStanchezza ()
     {
 
         if( distanzaPercorsa > (maxDistanza / 1.2f ) )
         {
-            //Debug.Log( "Livello stanchezza: Stanco" );
-            return 1;
+            Debug.Log( gameObject.name + ": Livello stanchezza: Stanco" );
+            return STANCO;
         }
 
         if( distanzaPercorsa > maxDistanza )
         {
-            //Debug.Log( "Livello stanchezza: Molto stanco" );
-            return 2;
+            Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );
+            return MOLTO_STANCO;
         }
 
-        //Debug.Log( "Livello stanchezza: Non stanco" );
-        return 0;
+        Debug.Log( gameObject.name + ": Livello stanchezza: Non stanco" );
+        return NON_STANCO;
     }
 
     protected void CheckNextDestination ()
@@ -418,19 +441,20 @@ public abstract class PathManager : MonoBehaviour
         else
         {
             // "Non sono stanco", oppure "Sono stanco ma il quadro è molto importante"
-            if ( LivelloStanchezza() == 0 || (LivelloStanchezza() == 1 && destination.CompareTag("PicturePlane") && destination.transform.parent.GetComponent<PictureInfo>().priority > 1 ))
+            if ( LivelloStanchezza() == 0 || 
+                 ( LivelloStanchezza() == 1 && destination.CompareTag("PicturePlane") && destination.transform.parent.GetComponent<PictureInfo>().priority > 1 ) )
             {
 
                 inPausa = true;
                 destinationPrePause = destination;
                 
                 utilitySort.transform = destinationPrePause.transform;
-                fishPlane.Sort( utilitySort.DistanzaPlane );
+                emptySpaces.Sort( utilitySort.DistanzaPlane );
 
                 Debug.Log( gameObject.name + ": Destinazione: ", destination );
-                Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", fishPlane[ 0 ] );
+                Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
 
-                foreach( GameObject plane in fishPlane )
+                foreach( GameObject plane in emptySpaces )
                 {
                     if( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
                     {
@@ -454,6 +478,7 @@ public abstract class PathManager : MonoBehaviour
     {
         if (destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destinationPoint.transform.position) < 3f)
         {
+            GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().ReceivData( visitedPictures, importantPictures, tempoInAttesa );
             return true;
         }
 

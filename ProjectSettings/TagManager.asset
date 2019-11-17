@@ -16,6 +16,8 @@ TagManager:
   - PicturePlane
   - Picture
   - Plane_Test
+  - Empty Space
+  - Museo
   layers:
   - Default
   - TransparentFX

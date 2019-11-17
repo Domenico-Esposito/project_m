@@ -13,7 +13,7 @@ public class PoissonPattern : PathManager
     public override void InitMovementPattern ()
     {
         picturePlanes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
-        poissonFloors = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Fish Floor" ) );
+        poissonFloors = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Empty Space" ) );
         poissonFloors.Sort( utilitySort.SortByIndexPlace );
 
         //if ( Random.Range( 0f, 1f ) > 0.5f )
@@ -22,6 +22,7 @@ public class PoissonPattern : PathManager
         //}
 
         pathPart = poissonFloors.GetEnumerator();
+        maxDistanza = 900;
     }
 
 
@@ -38,7 +39,7 @@ public class PoissonPattern : PathManager
     {
         bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
 
-        if ( distanzaPercorsa > maxDistanza )
+        if ( LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( viewPicture )

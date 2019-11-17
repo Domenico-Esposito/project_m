@@ -13,7 +13,8 @@ public class Filler : MonoBehaviour
     public int numberOfSauterelle = 1;
     public int index = 1;
 
-    public bool gruppi = true;
+    public bool gruppoMisto = false;
+    public bool gruppoSingolo = false;
 
     public GameObject fourmiBot;
     public GameObject papillonBot;
@@ -22,9 +23,13 @@ public class Filler : MonoBehaviour
 
     private void Awake ()
     {
-        if( gruppi )
+        if( gruppoMisto )
         {
             fillGroup();
+        }
+        else if( gruppoSingolo )
+        {
+            fillGroupSingolo();
         }
         else
         {
@@ -37,9 +42,13 @@ public class Filler : MonoBehaviour
      
         if( deltaTime > pauseTime )
         {
-            if ( gruppi )
+            if ( gruppoMisto )
             {
                 fillGroup();
+            }
+            else if( gruppoSingolo )
+            {
+                fillGroupSingolo();
             }
             else
             {
@@ -51,10 +60,28 @@ public class Filler : MonoBehaviour
         deltaTime += Time.deltaTime;
     }
 
+    private void fillGroupSingolo ()
+    {
+        List<PathManager> group = new List<PathManager>();
+        int pattern = Random.Range( 0, 3 );
+
+        for ( int i = 0; i < Random.Range( 3, 10 ); i++ )
+        {
+            GameObject o;
+            o = AddNewBot( pattern );
+            group.Add( o.GetComponent<PathManager>() );
+        }
+
+        PathManager capo = group[ 0 ];
+        group.Remove( capo );
+
+        capo.GetComponent<PathManager>().setGroup( group );
+    }
+
     private void fillGroup ()
     {
 
-        List<GameObject> group = new List<GameObject>();
+        List<PathManager> group = new List<PathManager>();
 
         for ( int i = 0; i < Random.Range( 3, 10); i++)
         {
@@ -77,17 +104,13 @@ public class Filler : MonoBehaviour
                 o = AddNewBot( 3 );
             }
 
-            group.Add( o );
+            group.Add( o.GetComponent<PathManager>() );
         }
 
-        GameObject capo = group[ 0 ];
-        capo.GetComponent<PathManager>().isCapoGruppo = true;
+        PathManager capo = group[ 0 ];
         group.Remove( capo );
 
-        foreach(GameObject g in group )
-        {
-            capo.GetComponent<PathManager>().groupElement.Add(g.GetComponent<PathManager>());
-        }
+        capo.GetComponent<PathManager>().setGroup( group );
 
     }
 
@@ -122,7 +145,9 @@ public class Filler : MonoBehaviour
 
     private GameObject AddNewBot (int type)
     {
-    
+
+        GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().AddUser();
+
         switch ( type )
         {
         case 0:
