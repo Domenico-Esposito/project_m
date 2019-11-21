@@ -6,12 +6,13 @@ using Museum.Utility;
 using System.Collections.Generic;
 using System;
 
+
 public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
     public GameObject destination;
     protected GameObject destinationPoint;
-    protected NavMeshAgent agent;
+    //protected NavMeshAgent agent;
 
     protected Sort utilitySort;
 
@@ -28,8 +29,8 @@ public abstract class PathManager : MonoBehaviour
     float baseTime;
 
     protected Dictionary<GameObject, List<GameObject>> picturesOnWalls = new Dictionary<GameObject, List<GameObject>>();
-    protected List<GameObject> visitedPictures = new List<GameObject>();
-    protected List<GameObject> importantPictures = new List<GameObject>();
+    public List<GameObject> visitedPictures = new List<GameObject>();
+    public List<GameObject> importantPictures = new List<GameObject>();
 
     public int maxDistanza = 30;
     public float distanzaPercorsa = 0f;
@@ -56,15 +57,17 @@ public abstract class PathManager : MonoBehaviour
     [SerializeField]
     GameObject[ ] status;
 
+    int agentIndex = 0;
+
     protected void SetColorGroup(Color color )
     {
-        bottom.color = color;
         transform.Find( "Bottom" ).gameObject.transform.Find( "Base" ).gameObject.GetComponent<Image>().color = color;
+        transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.GetComponent<Image>().color = color;
     }
 
     protected virtual void Start ()
     {
-   
+    
         utilitySort = new Sort
         {
             transform = transform
@@ -72,7 +75,7 @@ public abstract class PathManager : MonoBehaviour
 
         baseTime = pauseTime;
 
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         emptySpaces = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Empty Space" ) );
 
         InitNavMeshAgent();
@@ -81,7 +84,7 @@ public abstract class PathManager : MonoBehaviour
         InitMovementPattern();
 
         SelectImportantPictureStrategy();
-        
+
         InitGroupData();
 
         UpdateDestination();
@@ -95,10 +98,10 @@ public abstract class PathManager : MonoBehaviour
         {
             Color groupColor = GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().GetColor();
 
-            transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.SetActive( true );
-            transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.GetComponent<Image>().color = groupColor;
+            Debug.Log( gameObject.name + ": UpdateDestination" );
 
             SetColorGroup( groupColor );
+            transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.SetActive( true );
 
             foreach ( PathManager bot in group )
             {
@@ -143,7 +146,7 @@ public abstract class PathManager : MonoBehaviour
 
     void InitNavMeshAgent ()
     {
-        agent.updateRotation = false;
+        //agent.updateRotation = false;
     }
 
     public void InitAnimationBheavior ()
@@ -164,17 +167,17 @@ public abstract class PathManager : MonoBehaviour
             }
             status[ 0 ].SetActive( true );
 
-            if ( agent.remainingDistance > agent.stoppingDistance )
-            {
-                agent.avoidancePriority = UnityEngine.Random.Range(50, 60);
-                character.Move( agent.desiredVelocity );
-            }
-            else
-            {
-                agent.avoidancePriority = 0;
-                character.Move( Vector3.zero );
-                timedelta += Time.deltaTime;
-            }
+            //if ( agent.remainingDistance > agent.stoppingDistance )
+            //{
+            //    //agent.avoidancePriority = UnityEngine.Random.Range(50, 60);
+            //    character.Move( agent.desiredVelocity );
+            //}
+            //else
+            //{
+            //    //agent.avoidancePriority = 0;
+            //    character.Move( Vector3.zero );
+            //    timedelta += Time.deltaTime;
+            //}
 
             tempoInAttesa += Time.deltaTime;
 
@@ -183,45 +186,73 @@ public abstract class PathManager : MonoBehaviour
         }
 
 
+
         if ( timedelta > pauseTime)
         {
+            if ( GetComponent<RVOAgent>() != null )
+            {
+                Debug.Log( name + " rimuovo componente" );
+                GetComponent<RVOAgent>().Refresh();
+            }
+
+
             UpdateDestination();
             timedelta = 0f;
         }
 
 
-        if ( agent.remainingDistance > agent.stoppingDistance )
+        if( Vector3.Distance(transform.position, destinationPoint.transform.position) > 1f )
         {
             foreach(GameObject s in status )
             {
                 s.SetActive( false );
             }
             status[ 1 ].SetActive( true );
-
-            agent.avoidancePriority = UnityEngine.Random.Range( 50, 60 );
-            character.Move( agent.desiredVelocity );
         }
         else
         {
-
             foreach ( GameObject s in status )
             {
                 s.SetActive( false );
             }
             status[ 2 ].SetActive( true );
 
-            agent.avoidancePriority = 0;
-            character.Move( Vector3.zero );
-
-            if( destination.CompareTag("PicturePlane") )
-            {
-                Vector3 position = destination.transform.parent.transform.position;
-                character.TurnToPicture( position );
-            }
 
             timedelta += Time.deltaTime;
-
         }
+
+        //if ( agent.remainingDistance > agent.stoppingDistance )
+        //{
+        //    foreach(GameObject s in status )
+        //    {
+        //        s.SetActive( false );
+        //    }
+        //    status[ 1 ].SetActive( true );
+
+        //    //agent.avoidancePriority = UnityEngine.Random.Range( 50, 60 );
+        //    character.Move( agent.desiredVelocity );
+        //}
+        //else
+        //{
+
+        //    foreach ( GameObject s in status )
+        //    {
+        //        s.SetActive( false );
+        //    }
+        //    status[ 2 ].SetActive( true );
+
+        //    //agent.avoidancePriority = 0;
+        //    character.Move( Vector3.zero );
+
+        //    if( destination.CompareTag("PicturePlane") )
+        //    {
+        //        Vector3 position = destination.transform.parent.transform.position;
+        //        character.TurnToPicture( position );
+        //    }
+
+        //    timedelta += Time.deltaTime;
+
+        //}
 
         if ( IsExit() )
         {
@@ -253,7 +284,7 @@ public abstract class PathManager : MonoBehaviour
         UseLastDestinationOrNew();
 
         NavMeshPath staticPath = new NavMeshPath();
-        agent.CalculatePath( destination.transform.position, staticPath );
+        NavMesh.CalculatePath( transform.position, destination.transform.position, NavMesh.AllAreas, staticPath );
 
         distanceFromDestination = GetPathLenght( staticPath );
 
@@ -265,22 +296,24 @@ public abstract class PathManager : MonoBehaviour
             {
                 GameObject picturePlane = picture.transform.GetChild( 0 ).gameObject;
 
-                agent.CalculatePath( picturePlane.transform.position, staticPath );
+                NavMesh.CalculatePath( transform.position, picturePlane.transform.position, NavMesh.AllAreas, staticPath );
+
                 float distanzaFromPictureImportant = GetPathLenght( staticPath );
 
-                    // Immagine importante più vicina di immagine pattern
-                    if ( distanzaFromPictureImportant < distanceFromDestination ||
-                         picture.GetComponent<PictureInfo>().index < destinationPicture.GetComponent<PictureInfo>().index )
-                    {
-                        importantPictures.Remove( picture );
-                        lastPositionPattern = destination;
-                        haveLastPositionPattern = true;
-                        destination = picturePlane;
+                // Immagine importante più vicina di immagine pattern
+                if ( distanzaFromPictureImportant < distanceFromDestination ||
+                     picture.GetComponent<PictureInfo>().index < destinationPicture.GetComponent<PictureInfo>().index )
+                {
+                    importantPictures.Remove( picture );
+                    lastPositionPattern = destination;
+                    haveLastPositionPattern = true;
+                    destination = picturePlane;
 
-                        Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
-                        Debug.Log( "Prossima destinazione è importante", destination );
-                        break;
-                    }
+                    Debug.Log( "distanzaFromPictureImportant (" + distanzaFromPictureImportant + ") < distanceFromDestination (" + distanceFromDestination + ")" );
+                    Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
+                    Debug.Log( "Prossima destinazione è importante", destination );
+                    break;
+                }
             }
         }
         catch ( NullReferenceException e )
@@ -323,7 +356,9 @@ public abstract class PathManager : MonoBehaviour
 
     private void GoToDestinationPoint ()
     {
-        agent.SetDestination( destinationPoint.transform.position );
+        //agent.SetDestination( destinationPoint.transform.position );
+        Debug.Log( "Invio destinatioe", gameObject);
+        GetComponent<RVOAgent>().UpdateTarget( destinationPoint.transform );
 
         if ( isLeader )
         {
@@ -341,7 +376,7 @@ public abstract class PathManager : MonoBehaviour
         }
 
         NavMeshPath staticPath = new NavMeshPath();
-        agent.CalculatePath(destinationPoint.transform.position, staticPath);
+        NavMesh.CalculatePath( transform.position, destinationPoint.transform.position, NavMesh.AllAreas, staticPath );
 
         distanzaPercorsa += GetPathLenght( staticPath );
     }
@@ -488,7 +523,8 @@ public abstract class PathManager : MonoBehaviour
 
     protected GameObject GetPlaneOfExit ()
     {
-        return GameObject.FindGameObjectWithTag( "Uscita" ).gameObject;
+        //return GameObject.FindGameObjectWithTag( "Uscita" ).gameObject;
+        return null;
     }
 
 }

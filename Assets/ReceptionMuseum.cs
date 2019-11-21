@@ -23,7 +23,7 @@ public class ReceptionMuseum : MonoBehaviour
     public Text dislike;
     public Text bots;
 
-    private void Start ()
+    private void Awake ()
     {
         Color[ ] colors = { Color.blue, Color.cyan, Color.green, Color.magenta, Color.red, Color.grey, Color.yellow };
         groupColor = colors.GetEnumerator();   

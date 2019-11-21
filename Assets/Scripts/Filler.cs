@@ -167,6 +167,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewFourmi ()
     {
         GameObject o = Instantiate( fourmiBot, transform, true );
+        o.transform.position = new Vector3(Random.Range(-3.43f, -11.76f), 0, Random.Range(-14, -18.74f));
         o.name = "Agente " + index++;
         return o;
     }
@@ -174,6 +175,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewPapillon ()
     {
         GameObject o = Instantiate( papillonBot, transform, true );
+        o.transform.position = new Vector3( Random.Range( -3.43f, -11.76f ), 0, Random.Range( -14, -18.74f ) );
         o.name = "Agente " + index++;
 
         return o;
@@ -183,14 +185,15 @@ public class Filler : MonoBehaviour
     private GameObject AddNewPoisson ()
     {
         GameObject o = Instantiate( poissonBot, transform, true );
+        o.transform.position = new Vector3( Random.Range( -3.43f, -11.76f ), 0, Random.Range( -14, -18.74f ) );
         o.name = "Agente " + index++;
-
         return o;
     }
 
     private GameObject AddNewSauterelle ()
     {
         GameObject o = Instantiate( sauterelleBot, transform, true );
+        o.transform.position = new Vector3( Random.Range( -3.43f, -11.76f ), 0, Random.Range( -14, -18.74f ) );
         o.name = "Agente " + index++;
 
         return o;

@@ -18,6 +18,8 @@ TagManager:
   - Plane_Test
   - Empty Space
   - Museo
+  - RVOSim
+  - DestinationPoint
   layers:
   - Default
   - TransparentFX
