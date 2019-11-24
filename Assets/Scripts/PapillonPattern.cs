@@ -19,7 +19,7 @@ public class PapillonPattern : PathManager
         FindPicturesOnWalls();
 
         numberOfStop = Random.Range( 15, walls.Count );
-        maxDistanza = 1100;
+        maxDistanza = 300;
     }
 
     public override GameObject GetNextDestination ()

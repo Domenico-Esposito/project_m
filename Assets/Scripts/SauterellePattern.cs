@@ -6,13 +6,13 @@ public class SauterellePattern : PathManager
     // Pattern movimento
     private IEnumerator<GameObject> picturesToWatch;
 
-    private List<GameObject> pictures;
+    public List<GameObject> pictures;
 
     private int maxJump = 10;
 
     public override void InitMovementPattern ()
     {
-        maxDistanza = 880;
+        maxDistanza = 200;
         FindAllPicture();
         SetPictureToWatch();
     }
@@ -27,7 +27,8 @@ public class SauterellePattern : PathManager
             pictures.Add( picture );
         }
 
-        pictures.Sort( utilitySort.SortByIndexPicture );
+        utilitySort.transform = this.transform;
+        pictures.Sort( utilitySort.Distanza );
 
     }
 

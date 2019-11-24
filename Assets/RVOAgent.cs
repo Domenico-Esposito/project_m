@@ -7,8 +7,8 @@ using Pathfinding;
 
 public class RVOAgent : MonoBehaviour
 {
-
-    [SerializeField]
+    
+    [ SerializeField]
     Transform target;
 
     Seeker agentSeeker;
@@ -23,6 +23,7 @@ public class RVOAgent : MonoBehaviour
     // Use this for initialization
     IEnumerator Start ()
     {
+        
         currentNodeInThePath = 0;
         simulator = GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>();
         pathNodes = new List<Vector3>();
@@ -37,7 +38,7 @@ public class RVOAgent : MonoBehaviour
     IEnumerator StartPaths ()
     {
         agentSeeker = gameObject.GetComponent<Seeker>();
-        var path = agentSeeker.StartPath( transform.position, target.position, OnPathComplete );
+        Path path = agentSeeker.StartPath( transform.position, target.position, OnPathComplete );
         yield return StartCoroutine( path.WaitForPath() );
     }
 
@@ -45,15 +46,6 @@ public class RVOAgent : MonoBehaviour
     {
         isAbleToStart = true;
         target = newTarget;
-        
-
-        StopCoroutine( StartPaths() );
-
-        simulator.getSimulator().setAgentPosition( agentIndex, toRVOVector(transform.position) );
-        StartCoroutine( StartPaths() );
-
-        simulator.getSimulator().doStep();
-
     }
 
     public void Refresh ()
@@ -75,17 +67,56 @@ public class RVOAgent : MonoBehaviour
         }
     }
 
+    public bool destinazioneRaggiunta ()
+    {
+
+        float r = Vector3.Distance( transform.position, target.position );
+
+        return r <= 0.05f;
+
+        //return Vector3.Distance( toUnityVector( s.getAgentPosition( agentIndex ) ), target.position ) < 0.07f;
+
+        //if ( RVOMath.absSq( s.getAgentPosition( agentIndex ) - toRVOVector( target.transform.position ) ) <= 0.020f )
+        //{
+        //    Debug.Log( "È <= 0: " + RVOMath.absSq( s.getAgentPosition( agentIndex ) - toRVOVector( target.transform.position ) ) );
+        //}
+        //else
+        //{
+        //    Debug.Log( RVOMath.absSq( s.getAgentPosition( agentIndex ) - toRVOVector( target.transform.position ) ) );
+        //}
+
+        //return RVOMath.absSq( s.getAgentPosition( agentIndex ) - toRVOVector( target.transform.position ) ) <= 0.020f;
+
+    }
+
     Vector3 station;
+    bool doStep = true;
 
     // Update is called once per frame
     void Update ()
     {
-        if ( GetComponent<AIPath>().reachedEndOfPath )
+
+        if ( destinazioneRaggiunta() )
         {
-            Debug.Log(name + ": arrivato a destinazione ", gameObject);
+
+            //GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentMaxSpeed( agentIndex, 0f);
+            //GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentVelocity( agentIndex, new RVO.Vector2( 0f, 0f ) );
+            //GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentRadius( agentIndex, 0.8f );
+
+            //if ( doStep )
+            //{
+            //    doStep = false;
+            //    GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().doStep();
+            //}
+
+            //Debug.Log( name + ": arrivato a destinazione ", gameObject );
+            //GetComponent<CharacterAnimator>().Move( Vector3.Lerp(toUnityVector( simulator.getAgentPosition( agentIndex ) ) - transform.position, Vector3.zero, 3f));
+
+            GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentVelocity( agentIndex, new RVO.Vector2( 0f, 0f ) );
+            GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentPosition( agentIndex, toRVOVector( transform.position ) );
             GetComponent<CharacterAnimator>().Move( Vector3.zero );
 
-            if( GetComponent<PathManager>().destination.CompareTag("PicturePlane") )
+            if ( GetComponent<PathManager>().destination.CompareTag( "PicturePlane" ) )
             {
                 Vector3 position = GetComponent<PathManager>().destination.transform.parent.transform.position;
                 GetComponent<CharacterAnimator>().TurnToPicture( position );
@@ -93,13 +124,38 @@ public class RVOAgent : MonoBehaviour
         }
         else
         {
+
             if ( isAbleToStart && agentIndex != -1 )
             {
-
-                transform.position = Vector3.Lerp( transform.position, toUnityVector( simulator.getAgentPosition( agentIndex ) ), Time.deltaTime*3.2f);
+                GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentMaxSpeed( agentIndex, 2.3f );
+                doStep = true;
+                transform.position = Vector3.Lerp( transform.position, toUnityVector( simulator.getAgentPosition( agentIndex ) ), Time.deltaTime * 2.3f );
                 GetComponent<CharacterAnimator>().Move( toUnityVector( simulator.getAgentPosition( agentIndex ) ) - transform.position );
+                //GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>().getSimulator().setAgentPosition(agentIndex, toRVOVector(transform.position) );
             }
+
         }
+
+
+        //if ( GetComponent<AIPath>().reachedEndOfPath )
+        //{
+        //    Debug.Log(name + ": arrivato a destinazione ", gameObject);
+        //    GetComponent<CharacterAnimator>().Move( Vector3.zero );
+
+        //    if( GetComponent<PathManager>().destination.CompareTag("PicturePlane") )
+        //    {
+        //        Vector3 position = GetComponent<PathManager>().destination.transform.parent.transform.position;
+        //        GetComponent<CharacterAnimator>().TurnToPicture( position );
+        //    }
+        //}
+        //else
+        //{
+        //    if ( isAbleToStart && agentIndex != -1 )
+        //    {
+        //        transform.position = Vector3.Lerp( transform.position, toUnityVector( simulator.getAgentPosition( agentIndex ) ), Time.deltaTime*3.2f);
+        //        GetComponent<CharacterAnimator>().Move( toUnityVector( simulator.getAgentPosition( agentIndex ) ) - transform.position );
+        //    }
+        //}
     }
 
     public RVO.Vector2 calculateNextStation ()
@@ -120,6 +176,7 @@ public class RVOAgent : MonoBehaviour
         }
         return toRVOVector( station );
     }
+
     Vector3 toUnityVector ( RVO.Vector2 param )
     {
         return new Vector3( param.x(), transform.position.y, param.y() );

@@ -412,12 +412,11 @@ GameObject:
   - component: {fileID: 1290345037776500524}
   - component: {fileID: 1290345037776500525}
   - component: {fileID: 1290345037776500514}
-  - component: {fileID: 1290345037776500515}
-  - component: {fileID: 3780761457271404596}
   - component: {fileID: 3780761457271404597}
   - component: {fileID: 1290345037776500512}
-  - component: {fileID: 3780761457271404599}
   - component: {fileID: 1224296485017776472}
+  - component: {fileID: 7403947276331861005}
+  - component: {fileID: 2717356068305104344}
   m_Layer: 0
   m_Name: LowBody Sauterelle
   m_TagString: Untagged
@@ -478,56 +477,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!136 &1290345037776500515
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290345037776500519}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.7
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3780761457271404596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290345037776500519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.26
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 0
-  gravity: {x: NaN, y: NaN, z: NaN}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 0
-  enableRotation: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 200
-  slowdownDistance: 0.58
-  pickNextWaypointDist: 1
-  endReachedDistance: 0.26
-  alwaysDrawGizmos: 1
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
 --- !u!114 &3780761457271404597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,12 +490,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
-  detailedGizmos: 1
+  drawGizmos: 0
+  detailedGizmos: 0
   startEndModifier:
     addPoints: 0
-    exactStartPoint: 4
-    exactEndPoint: 4
+    exactStartPoint: 1
+    exactEndPoint: 1
     useRaycasting: 0
     mask:
       serializedVersion: 2
@@ -570,19 +519,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
---- !u!114 &3780761457271404599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290345037776500519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4e241b4498f4fb7a7407c2e42bb1e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &1224296485017776472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +547,34 @@ MonoBehaviour:
   - {fileID: 7883529428498584184}
   - {fileID: 7883529428831691316}
   - {fileID: 7883529429075438497}
+--- !u!136 &7403947276331861005
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290345037776500519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1.45
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2717356068305104344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290345037776500519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e3c7fbcb1f043758385983b8965c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  agentIndex: -1
 --- !u!1 &1290345038040574846
 GameObject:
   m_ObjectHideFlags: 0

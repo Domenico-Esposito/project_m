@@ -20,11 +20,11 @@ public class FourmiPattern : PathManager
         FindPicturesOnWalls();
         SortPicturesOnWalls();
 
-        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[0];
+        currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[Random.Range(0, 3)];
         //currentWall = startWall;
 
         numberOfStop = Random.Range( 13, walls.Count );
-        maxDistanza = 900;
+        maxDistanza = 280;
     }
 
 

@@ -22,7 +22,7 @@ public class PoissonPattern : PathManager
         //}
 
         pathPart = poissonFloors.GetEnumerator();
-        maxDistanza = 900;
+        maxDistanza = 400;
     }
 
 

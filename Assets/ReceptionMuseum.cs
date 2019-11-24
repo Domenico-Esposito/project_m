@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class ReceptionMuseum : MonoBehaviour
 {
@@ -49,17 +50,21 @@ public class ReceptionMuseum : MonoBehaviour
         utenti++;
     }
 
-    public void ReceivData (List<GameObject> visitati, List<GameObject> non_visitati, float tempoDiAttesa)
+    public void ReceivData (string patternType, List<GameObject> visitati, List<GameObject> non_visitati, List<GameObject> ignorati, float tempoVisita, float tempoDiAttesa, float distanza)
     {
         numero_visitati += visitati.Count;
         numero_nonVisitati += non_visitati.Count;
 
-        if( non_visitati.Count >= (visitati.Count + non_visitati.Count ) / 2  || tempoDiAttesa >= 120f)
+        bool soddisfatto;
+
+        if( visitati.Count <= (visitati.Count + ignorati.Count + non_visitati.Count ) / 3  || tempoDiAttesa >= 120f )
         {
+            soddisfatto = false;
             utentiInsoddisfatti++;
         }
         else
         {
+            soddisfatto = true;
             utentiSoddisfatti++;
         }
 
@@ -87,6 +92,15 @@ public class ReceptionMuseum : MonoBehaviour
                 nV.Add( o.name, 1 );
             }
         }
+
+        string path = "Assets/dati_visite.txt";
+
+        string resoconto = patternType + " | "  + ( soddisfatto ? "soddisfatto" : "insoddisfatto" ) + " | Visitati: " + visitati.Count + " | Non visitati: " + non_visitati.Count + " | Rinunce: " + ignorati.Count + " | Tempo: " + tempoVisita + " | Attesa: " + tempoDiAttesa + " | Distanza: " + distanza; 
+        StreamWriter writer = new StreamWriter( path, true );
+        writer.WriteLine( resoconto );
+        writer.Close();
+
+        Debug.Log( "Dati visita salvati" );
 
     }
 

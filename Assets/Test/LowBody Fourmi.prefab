@@ -687,12 +687,11 @@ GameObject:
   - component: {fileID: 8767655879096683784}
   - component: {fileID: 8767655879096683785}
   - component: {fileID: 8767655879096683786}
-  - component: {fileID: 8767655879096683787}
-  - component: {fileID: 8767655879096683796}
+  - component: {fileID: 1537196715450301706}
   - component: {fileID: 8767655879096683797}
   - component: {fileID: 8767655879096683799}
-  - component: {fileID: 8767655879096683793}
   - component: {fileID: 4972457515013527294}
+  - component: {fileID: 1479077843289961262}
   m_Layer: 0
   m_Name: LowBody Fourmi
   m_TagString: Untagged
@@ -708,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8767655879096683794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9, y: 0, z: -12.6}
+  m_LocalPosition: {x: -4.95, y: 0, z: -12.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8767655878826049985}
@@ -753,7 +752,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!136 &8767655879096683787
+--- !u!136 &1537196715450301706
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -763,46 +762,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.7
+  m_Radius: 0.1
+  m_Height: 1.45
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8767655879096683796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8767655879096683794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.26
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 0
-  gravity: {x: NaN, y: NaN, z: NaN}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 0
-  enableRotation: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 200
-  slowdownDistance: 0.58
-  pickNextWaypointDist: 1
-  endReachedDistance: 0.26
-  alwaysDrawGizmos: 1
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
 --- !u!114 &8767655879096683797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,12 +779,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
-  detailedGizmos: 1
+  drawGizmos: 0
+  detailedGizmos: 0
   startEndModifier:
     addPoints: 0
-    exactStartPoint: 4
-    exactEndPoint: 4
+    exactStartPoint: 1
+    exactEndPoint: 1
     useRaycasting: 0
     mask:
       serializedVersion: 2
@@ -830,7 +793,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -1
+    value: 1
 --- !u!114 &8767655879096683799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,19 +808,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
---- !u!114 &8767655879096683793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8767655879096683794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4e241b4498f4fb7a7407c2e42bb1e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &4972457515013527294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
   inPausa: 0
-  pauseTime: 5
+  pauseTime: 20
   timedelta: 0
   visitedPictures: []
   importantPictures: []
@@ -881,6 +831,7 @@ MonoBehaviour:
   emptySpaces: []
   isLeader: 0
   tempoInAttesa: 0
+  durataVisita: 0
   bottom: {fileID: 0}
   status:
   - {fileID: 8767655880440428955}
@@ -889,6 +840,20 @@ MonoBehaviour:
   walls: []
   startWall: {fileID: 0}
   numberOfStop: 0
+--- !u!114 &1479077843289961262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767655879096683794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e3c7fbcb1f043758385983b8965c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  agentIndex: -1
 --- !u!1 &8767655879181668093
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,8 +17,9 @@ public class RVOSimulator : MonoBehaviour
         agentPositions = new List<RVO.Vector2>();
         rvoGameObj = new List<GameObject>();
 
-        Simulator.Instance.setTimeStep( 0.01f );
-        Simulator.Instance.setAgentDefaults( 15.0f, 10, 5.0f, 5.0f, 0.5f, 2.0f, new RVO.Vector2( 0.0f, 0.0f ) );
+        //Simulator.Instance.setTimeStep( 0.01f );
+        //Simulator.Instance.setAgentDefaults( 15.0f, 10, 5.0f, 5.0f, 2f, 5.0f, new RVO.Vector2( 0.0f, 0.0f ) );
+
     }
 
     public Simulator getSimulator ()
@@ -41,7 +42,7 @@ public class RVOSimulator : MonoBehaviour
         return Simulator.Instance.getAgentPosition( agentIndex );
     }
 
-    public void removeAgent ( int agentNo )
+    public void addNew ( int agentNo )
     {
         Simulator.Instance.doStep();
     }
@@ -55,8 +56,8 @@ public class RVOSimulator : MonoBehaviour
         //clear the simulation
         Simulator.Instance.Clear();
         //re initialize the simulation
-        Simulator.Instance.setTimeStep( 0.10f );
-        Simulator.Instance.setAgentDefaults( 15.0f, 10, 5.0f, 5.0f, 0.5f, 2.0f, new RVO.Vector2( 0.0f, 0.0f ) );
+        Simulator.Instance.setTimeStep( 0.25f );
+        Simulator.Instance.setAgentDefaults( 10.0f, 3, 1.0f, 10.0f, 0.4f, 3f, new RVO.Vector2( 0.0f, 0.0f ) );
 
         //add all the previous agents
         int agentCount = agentPositions.Count;
@@ -82,7 +83,6 @@ public class RVOSimulator : MonoBehaviour
             for ( int i = 0; i < agentNUmber; i++ )
             {
                 RVO.Vector2 agentLoc = Simulator.Instance.getAgentPosition( i );
-
                 RVO.Vector2 station = rvoGameObj[ i ].GetComponent<RVOAgent>().calculateNextStation() - agentLoc;
                 if ( RVOMath.absSq( station ) > 1.0f )
                 {

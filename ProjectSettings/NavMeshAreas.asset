@@ -12,9 +12,9 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: Punto di osservazione
-    cost: 3
+    cost: 0
   - name: Punto di attesa
-    cost: 2
+    cost: 0
   - name: 
     cost: 1
   - name: 

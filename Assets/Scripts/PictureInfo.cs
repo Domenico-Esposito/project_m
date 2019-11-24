@@ -18,6 +18,6 @@ public class PictureInfo : MonoBehaviour
      * True = non considero, non cerco di visitarlo
      * False = altrimenti
      */
-    public bool ignoro;
+    //public bool ignoro;
 
 }
