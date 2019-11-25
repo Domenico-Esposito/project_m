@@ -175,3 +175,9 @@ FourmiPattern | soddisfatto | Visitati: 20 | Non visitati: 0 | Rinunce: 1 | Temp
 FourmiPattern | soddisfatto | Visitati: 22 | Non visitati: 0 | Rinunce: 0 | Tempo: 559,1574 | Attesa: 18,26587 | Distanza: 259,9172
 FourmiPattern | soddisfatto | Visitati: 21 | Non visitati: 0 | Rinunce: 2 | Tempo: 758,1218 | Attesa: 11,31084 | Distanza: 292,9696
 PapillonPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Rinunce: 3 | Tempo: 795,9015 | Attesa: 11,29317 | Distanza: 381,7006
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+PoissonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Rinunce: 0 | Tempo: 153,3279 | Attesa: 0 | Distanza: 162,058
+PoissonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Rinunce: 0 | Tempo: 149,6391 | Attesa: 0 | Distanza: 150,4447
+FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Rinunce: 0 | Tempo: 148,3385 | Attesa: 0 | Distanza: 183,9619

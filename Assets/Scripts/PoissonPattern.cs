@@ -5,10 +5,10 @@ public class PoissonPattern : PathManager
 {
 
     // Segui percorso
-    private List<GameObject> poissonFloors;
+    public List<GameObject> poissonFloors;
 
     private IEnumerator<GameObject> pathPart;
-    List<GameObject> picturePlanes;
+    public List<GameObject> picturePlanes;
 
     public override void InitMovementPattern ()
     {
@@ -43,18 +43,44 @@ public class PoissonPattern : PathManager
             return GetPlaneOfExit();
 
         if ( viewPicture )
+        {
+
+            utilitySort.transform = this.transform;
+            poissonFloors.Sort( utilitySort.DistanzaPlane );
+            int indexPathPartPiuVicino = poissonFloors[ 0 ].GetComponent<PictureInfo>().index;
+
+            if ( poissonFloors.Count > 0 )
+            {
+                poissonFloors.RemoveAll( ( GameObject obj ) => obj.GetComponent<PictureInfo>().index <= indexPathPartPiuVicino );
+                Debug.Log( "IndexPathPartVicino: " + indexPathPartPiuVicino );
+                pathPart = poissonFloors.GetEnumerator();
+            }
+
             return GetPictureDestination();
+        }
 
         return GetFishPlaneDestination();
     }
 
     private GameObject GetMostClosePicture ()
     {
-        utilitySort.transform = transform;
+        utilitySort.transform = this.transform;
+
+        if ( picturePlanes.Count <= 0 )
+            return GetPlaneOfExit();
+
         picturePlanes.Sort( utilitySort.Distanza );
 
         GameObject destinationPlane = picturePlanes[ 0 ];
         picturePlanes.Remove( destinationPlane );
+
+        Debug.Log( "Index considerata: " + destinationPlane.transform.parent.GetComponent<PictureInfo>().index + " | IndexAttuale: " + currentPictureIndex );
+
+
+        if( visitedPictures.Contains( destinationPlane.transform.parent.gameObject ) || destinationPlane.transform.parent.GetComponent<PictureInfo>().index <= currentPictureIndex )
+        {
+            return GetMostClosePicture();
+        }
 
         return destinationPlane;
     }

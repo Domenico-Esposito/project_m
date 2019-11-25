@@ -97,7 +97,7 @@ public class PapillonPattern : PathManager
 
         foreach ( Vector3 direction in directions )
         {
-            if ( Physics.Raycast( transform.position + new Vector3( 0, 5, 0 ), direction, out hit, 100f, layer_mask ) )
+            if ( Physics.Raycast( transform.position + new Vector3( 0, 5, 0 ), direction, out hit, 150f, layer_mask ) )
             {
                 if( picturesOnWalls.ContainsKey( hit.collider.gameObject ) )
                     considerateWall.Add( hit.collider.gameObject );

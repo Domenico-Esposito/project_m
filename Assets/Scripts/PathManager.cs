@@ -36,16 +36,16 @@ public abstract class PathManager : MonoBehaviour
     public int maxDistanza = 30;
     public float distanzaPercorsa = 0f;
 
-    protected int currentPictureIndex = 0;
+    public int currentPictureIndex = 0;
 
     public List<GameObject> emptySpaces;
 
-    GameObject lastPositionPattern;
+    public GameObject lastPositionPattern;
 
     public bool isLeader = false;
     protected GameObject myLeader;
     List<PathManager> group = new List<PathManager>();
-    GameObject destinationPrePause;
+    public GameObject destinationPrePause;
 
     public abstract GameObject GetNextDestination ();
     public abstract void InitMovementPattern ();
@@ -269,7 +269,21 @@ public abstract class PathManager : MonoBehaviour
         else
         {
             destination = lastPositionPattern;
+
+            if ( destination.CompareTag( "Picture" ) )
+            {
+                // Qui magari posso utilizzare la distanza dal quadro, invece che l'indice (sarebbe meglio)
+                if( destination.GetComponent<PictureInfo>().index < currentPictureIndex - 5 )
+                {
+                    Debug.Log( name + ": La destinazione già calcolata è un quadro con indice troppo basso per essere visitato ora." );
+                    lastPositionPattern = null;
+                    UseLastDestinationOrNew();
+                }
+            }
+
             Debug.Log( gameObject.name + ": Uso destinazione già calcolata in precedenza", destination );
+
+
         }
     }
 
@@ -408,6 +422,11 @@ public abstract class PathManager : MonoBehaviour
 
         destinationPoint = GetPointInDestination();
         destinationPoint.GetComponent<DestinationPoint>().Occupa();
+
+        if ( destination.CompareTag( "PicturePlane" ) )
+        {
+            currentPictureIndex = destination.transform.parent.GetComponent<PictureInfo>().index;
+        }
     }
     
     private void CheckDestinationFromPause ()
@@ -518,7 +537,7 @@ public abstract class PathManager : MonoBehaviour
 
     protected bool IsExit ( )
     {
-        if (destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destinationPoint.transform.position) < 3f)
+        if (destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, destination.transform.position) < 5f)
         {
             GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().ReceivData( this.GetType().Name, visitedPictures, importantPictures, importantIgnoratePicture, durataVisita, tempoInAttesa, distanzaPercorsa );
 
