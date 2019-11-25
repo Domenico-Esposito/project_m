@@ -52,12 +52,14 @@ public class ReceptionMuseum : MonoBehaviour
 
     public void ReceivData (string patternType, List<GameObject> visitati, List<GameObject> non_visitati, List<GameObject> ignorati, float tempoVisita, float tempoDiAttesa, float distanza)
     {
-        numero_visitati += visitati.Count;
+        // -1 è l'uscita
+        numero_visitati += visitati.Count - 1;
         numero_nonVisitati += non_visitati.Count;
 
         bool soddisfatto;
+        int nonVisitati = ignorati.Count + non_visitati.Count;
 
-        if( visitati.Count <= (visitati.Count + ignorati.Count + non_visitati.Count ) / 3  || tempoDiAttesa >= 120f )
+        if ( nonVisitati > (visitati.Count-1)/3 || tempoDiAttesa >= 30f )
         {
             soddisfatto = false;
             utentiInsoddisfatti++;

@@ -165,9 +165,7 @@ public class Filler : MonoBehaviour
 
     IEnumerator addBot ()
     {
-
-        Debug.Log( "Aggiunto.." );
-
+    
         if(  numberOfFourmi > 0)
         {
             numberOfFourmi--;
@@ -315,9 +313,7 @@ public class Filler : MonoBehaviour
 
         Regex regex_conf = new Regex( "#CONF\\n(.*\\n?)*?#END" );
         MatchCollection configurations = regex_conf.Matches( content );
-
-        Debug.Log( configurations[ 0 ].Value );
-
+        
         foreach( Match configuration in configurations )
         {
 
@@ -329,14 +325,13 @@ public class Filler : MonoBehaviour
             foreach ( Match conf_data in confs_data )
             {
                 string[ ] item = conf_data.Value.Split( '=' );
-                Debug.Log( item[ 0 ] + " -- " + item[ 1 ] );
                 data.Add(item[0], System.Int32.Parse(item[1]));
             }
 
             configurationsFill.Add( data );
         }
 
-        Debug.Log( "Configurazioni salvate" );
+        Debug.Log( "Configurazioni recuperate con successo" );
 
         reader.Close();
     }

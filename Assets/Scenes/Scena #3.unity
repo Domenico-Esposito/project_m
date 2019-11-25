@@ -8174,8 +8174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 1
-  rows: 1
+  columns: 9
+  rows: 9
   autoLibera: 1
 --- !u!1 &624053189
 GameObject:

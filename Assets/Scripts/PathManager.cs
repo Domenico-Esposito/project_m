@@ -316,7 +316,7 @@ public abstract class PathManager : MonoBehaviour
                 haveLastPositionPattern = true;
                 destination = picturePlane;
 
-                Debug.Log( "distanzaFromPictureImportant (" + distanzaFromPictureImportant + ") < distanceFromDestination (" + distanceFromDestination + ")" );
+                //Debug.Log( "distanzaFromPictureImportant (" + distanzaFromPictureImportant + ") < distanceFromDestination (" + distanceFromDestination + ")" );
                 Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
                 Debug.Log( "Prossima destinazione è importante", destination );
                 break;
@@ -425,7 +425,7 @@ public abstract class PathManager : MonoBehaviour
         else
         {
             // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre)
-            if( ( timedelta > 30f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority <= 1) || ( timedelta > 60f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority > 1 ) )
+            if( ( timedelta > 15f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority <= 1) || ( timedelta > 20f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority > 1 ) )
             {
                 Debug.Log( "È passato troppo tempo, passo oltre e ignoro questo quadro..." );
                 visitedPictures.Remove( destinationPrePause.transform.parent.gameObject );

@@ -13,7 +13,7 @@ public class ObstacleCollect : MonoBehaviour
 
         for ( int i = 0; i < boxColliders.Length; i++ )
         {
-            Debug.Log("Aggiunto " + boxColliders[i].GetComponent<Transform>().gameObject.name, boxColliders[ i ].GetComponent<Transform>().gameObject);
+            //Debug.Log("Aggiunto " + boxColliders[i].GetComponent<Transform>().gameObject.name, boxColliders[ i ].GetComponent<Transform>().gameObject);
             float minX = boxColliders[ i ].transform.position.x -
                          boxColliders[ i ].size.x * boxColliders[ i ].transform.lossyScale.x * 2f;
             float minZ = boxColliders[ i ].transform.position.z -
