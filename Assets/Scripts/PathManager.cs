@@ -120,7 +120,7 @@ public abstract class PathManager : MonoBehaviour
         foreach ( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
             // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
-            if ( picture.GetComponent<PictureInfo>().priority >= 1 || UnityEngine.Random.Range( 0, 2 ) > 1 )
+            if ( picture.GetComponent<PictureInfo>().priority > 1 || UnityEngine.Random.Range( 0, 2 ) > 1 )
             {
                 importantPictures.Add( picture );
             }

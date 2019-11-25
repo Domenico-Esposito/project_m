@@ -91,13 +91,13 @@ public class PapillonPattern : PathManager
 
         int layer_mask = LayerMask.GetMask( "Walls" );
 
-        //Debug.DrawRay( transform.position + new Vector3( 0, 5, 0 ), directions[ 0 ], Color.red, 10 );
-        //Debug.DrawRay( transform.position + new Vector3( 0, 5, 0 ), directions[ 1 ], Color.yellow, 10 );
-        //Debug.DrawRay( transform.position + new Vector3( 0, 5, 0 ), directions[ 2 ], Color.blue, 10 );
+        //Debug.DrawRay( transform.position + new Vector3( 0, 0, 0 ), directions[ 0 ], Color.red, 10 );
+        //Debug.DrawRay( transform.position + new Vector3( 0, 0, 0 ), directions[ 1 ], Color.yellow, 10 );
+        //Debug.DrawRay( transform.position + new Vector3( 0, 0, 0 ), directions[ 2 ], Color.blue, 10 );
 
         foreach ( Vector3 direction in directions )
         {
-            if ( Physics.Raycast( transform.position + new Vector3( 0, 5, 0 ), direction, out hit, 150f, layer_mask ) )
+            if ( Physics.Raycast( transform.position + new Vector3( 0, 0, 0 ), direction, out hit, 150f, layer_mask ) )
             {
                 if( picturesOnWalls.ContainsKey( hit.collider.gameObject ) )
                     considerateWall.Add( hit.collider.gameObject );
