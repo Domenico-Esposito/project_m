@@ -126,7 +126,7 @@ public class RVOAgent : MonoBehaviour
                                           dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
                 //simulator.getSimulator().doStep();
 
-                ChangePosition( 2f );
+                ChangePosition( 2.3f );
                 animationPosition = toUnityVector( simulator.getAgentPosition( agentIndex ) ) - transform.position;
                 GetComponent<CharacterAnimator>().Move( animationPosition );
             }
