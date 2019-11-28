@@ -1,4 +1,16 @@
 #CONF
+pauseTime=5
+numberOfFourmi=30
+numberOfPapillon=30
+numberOfPoisson=30
+numberOfSauterelle=30
+pauseTimeGruppoSingolo=0
+numeroGruppiSingoli=0
+pauseTimeGruppoMisto=0
+numeroGruppiMisti=0
+leaderDespota=0
+#END
+#CONF
 pauseTime=0
 numberOfFourmi=0
 numberOfPapillon=0
@@ -6,6 +18,7 @@ numberOfPoisson=0
 numberOfSauterelle=0
 pauseTimeGruppoSingolo=0
 numeroGruppiSingoli=0
-pauseTimeGruppoMisto=10
-numeroGruppiMisti=1
+pauseTimeGruppoMisto=20
+numeroGruppiMisti=3
+leaderDespota=0
 #END

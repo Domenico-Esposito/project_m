@@ -25,11 +25,13 @@ public class PapillonPattern : PathManager
     public override GameObject GetNextDestination ()
     {
 
-        if ( ( importantPictures.Count <= 0 && ( myLeader && myLeader.activeInHierarchy ) ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( importantPictures.Count <= 0 && ( leader && leader.activeInHierarchy ) ) || LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )
         {
+            Debug.Log( "Ho già visitato questo quadro? " + visitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
+
             if( Random.Range(1, 10)  >  7 || visitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
             {
                 LookNextIndex();
@@ -41,6 +43,8 @@ public class PapillonPattern : PathManager
 
         if ( LookNextIndex() || LookNextIndex(0) )
         {
+            Debug.Log( "Ho già visitato questo quadro? " + visitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
+
             if ( Random.Range( 0, 1 ) > 0.5f || visitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
             {
                 return GetNextDestination();

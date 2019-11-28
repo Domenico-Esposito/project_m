@@ -30,7 +30,7 @@ public class FourmiPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( importantPictures.Count <= 0 && ( myLeader && myLeader.activeInHierarchy ) ) || LivelloStanchezza() > MOLTO_STANCO)
+        if ( ( importantPictures.Count <= 0 && ( leader && leader.activeInHierarchy ) ) || LivelloStanchezza() > MOLTO_STANCO)
             return GetPlaneOfExit();
 
         if ( MoveToNextPicOnCurrentWall() )

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+
 
 public class GridSystem : MonoBehaviour
 {
-
+    private readonly object gridPointsLock = new object();
     public GameObject gridPoint;
 
     // Devono essere dispari
@@ -34,30 +36,41 @@ public class GridSystem : MonoBehaviour
 
     public bool HaveAvailablePoint ()
     {
-        if( GetAvailablePoint() || autoLibera)
-            return true;
+        lock( gridPointsLock )
+        {
+            if ( GetAvailablePoint() || autoLibera)
+                return true;
 
-        return false;
+            return false;
+        }
     }
 
 
     public GameObject GetAvailablePoint ()
     {
-        foreach(GameObject point in gridPoints )
+        lock ( gridPointsLock )
         {
-            if ( point.GetComponent<DestinationPoint>().isAvailable || autoLibera )
-                return point;
-        }
+            foreach ( GameObject point in gridPoints )
+            {
+                if ( point.GetComponent<DestinationPoint>().isAvailable || autoLibera )
+                    return point;
+            }
 
-        return null;
+            return null;
+        }
     }
 
 
     public GameObject GetAvailableRandomPoint ()
     {
-        List<GameObject> availablePoint = gridPoints.FindAll( (System.Predicate<GameObject>) IsAvailable );
+        List<GameObject> availablePoint;
 
-        return availablePoint[ Random.Range( 0, availablePoint.Count ) ];
+        lock ( gridPointsLock )
+        { 
+            availablePoint = gridPoints.FindAll( (System.Predicate<GameObject>) IsAvailable );
+            return availablePoint[ Random.Range( 0, availablePoint.Count ) ];
+        }
+
     }
 
 

@@ -539,14 +539,22 @@ MonoBehaviour:
   importantPictures: []
   maxDistanza: 30
   distanzaPercorsa: 0
+  currentPictureIndex: 0
   emptySpaces: []
+  lastPositionPattern: {fileID: 0}
+  destinationPrePause: {fileID: 0}
+  despota: 0
+  noChoices: 0
   isLeader: 0
+  group: []
   tempoInAttesa: 0
-  bottom: {fileID: 0}
+  durataVisita: 0
   status:
   - {fileID: 7883529428498584184}
   - {fileID: 7883529428831691316}
   - {fileID: 7883529429075438497}
+  importantIgnoratePicture: []
+  pictures: []
 --- !u!136 &7403947276331861005
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -557,8 +565,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 1.45
+  m_Radius: 0.3
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2717356068305104344

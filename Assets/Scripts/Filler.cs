@@ -27,6 +27,8 @@ public class Filler : MonoBehaviour
     public bool gruppoMisto = false;
     public bool gruppoSingolo = false;
 
+    public bool leaderDespota = false;
+
     public GameObject fourmiBot;
     public GameObject papillonBot;
     public GameObject poissonBot;
@@ -84,17 +86,21 @@ public class Filler : MonoBehaviour
         if( patternType <= -1)
             patternType = Random.Range( 0, 3 );
 
-        for ( int i = 0; i < Random.Range( 3, 10 ); i++ )
+        for ( int i = 0; i < Random.Range( 3, 8 ); i++ )
         {
             GameObject o;
             o = AddNewBot( patternType );
             group.Add( o.GetComponent<PathManager>() );
         }
 
-        PathManager capo = group[ 0 ];
+        PathManager capo = group[ group.Count - 1];
         group.Remove( capo );
 
-        capo.GetComponent<PathManager>().setGroup( group );
+        if ( leaderDespota )
+        {
+            capo.GetComponent<PathManager>().despota = true;
+        }
+        capo.GetComponent<PathManager>().SetGroup( group );
     }
 
     private void fillGroup ()
@@ -102,7 +108,7 @@ public class Filler : MonoBehaviour
 
         List<PathManager> group = new List<PathManager>();
 
-        for ( int i = 0; i < Random.Range( 3, 10); i++)
+        for ( int i = 0; i < Random.Range( 3, 8); i++)
         {
             GameObject o;
 
@@ -126,10 +132,16 @@ public class Filler : MonoBehaviour
             group.Add( o.GetComponent<PathManager>() );
         }
 
-        PathManager capo = group[ 0 ];
+        PathManager capo = group[ group.Count - 1];
         group.Remove( capo );
 
-        capo.GetComponent<PathManager>().setGroup( group );
+        if( leaderDespota )
+        {
+            capo.GetComponent<PathManager>().despota = true;
+        }
+
+        capo.GetComponent<PathManager>().SetGroup( group );
+
 
     }
 
@@ -263,6 +275,15 @@ public class Filler : MonoBehaviour
                             if ( numeroGruppiMisti > 0 )
                                 gruppoMisto = true;
                             break;
+                        case "leaderDespota":
+                            if(data.Value == 1){
+                                leaderDespota = true;
+                            }
+                            else
+                            {
+                                leaderDespota = false;
+                            }
+                            break;
                     }
                 }
             }
@@ -360,7 +381,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewFourmi ()
     {
         GameObject o = Instantiate( fourmiBot, transform, true );
-        o.transform.position = new Vector3(Random.Range(-3.43f, -11.76f), 0, Random.Range(-14, -18.74f));
+        o.transform.position = new Vector3(Random.Range(-0.60f, -11.76f), 0, Random.Range(-17f, -19f ) );
         o.name = "Agente " + index++;
         return o;
     }
@@ -368,7 +389,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewPapillon ()
     {
         GameObject o = Instantiate( papillonBot, transform, true );
-        o.transform.position = new Vector3( Random.Range( -3.43f, -11.76f ), 0, Random.Range( -14, -18.74f ) );
+        o.transform.position = new Vector3( Random.Range( -0.60f, -11.76f ), 0, Random.Range( -17f, -19f ) );
         o.name = "Agente " + index++;
 
         return o;
@@ -378,7 +399,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewPoisson ()
     {
         GameObject o = Instantiate( poissonBot, transform, true );
-        o.transform.position = new Vector3( Random.Range( -3.43f, -11.76f ), 0, Random.Range( -14, -18.74f ) );
+        o.transform.position = new Vector3( Random.Range( -0.60f, -11.76f ), 0, Random.Range( -17f, -19f ) );
         o.name = "Agente " + index++;
         return o;
     }
@@ -386,7 +407,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewSauterelle ()
     {
         GameObject o = Instantiate( sauterelleBot, transform, true );
-        o.transform.position = new Vector3( Random.Range( -3.43f, -11.76f ), 0, Random.Range( -14, -18.74f ) );
+        o.transform.position = new Vector3( Random.Range( -0.60f, -11.76f ), 0, Random.Range( -17f, -19f ) );
         o.name = "Agente " + index++;
 
         return o;

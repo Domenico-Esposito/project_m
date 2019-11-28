@@ -97,7 +97,7 @@ public class ReceptionMuseum : MonoBehaviour
 
         string path = "Assets/dati_visite.txt";
 
-        string resoconto = patternType + " | "  + ( soddisfatto ? "soddisfatto" : "insoddisfatto" ) + " | Visitati: " + visitati.Count + " | Non visitati: " + non_visitati.Count + " | Rinunce: " + ignorati.Count + " | Tempo: " + tempoVisita + " | Attesa: " + tempoDiAttesa + " | Distanza: " + distanza; 
+        string resoconto = patternType + " | "  + ( soddisfatto ? "soddisfatto" : "insoddisfatto" ) + " | Visitati: " + visitati.Count + " | Non visitati: " + (non_visitati.Count + ignorati.Count) + " | Tempo: " + tempoVisita + " | Attesa: " + tempoDiAttesa + " | Distanza: " + distanza; 
         StreamWriter writer = new StreamWriter( path, true );
         writer.WriteLine( resoconto );
         writer.Close();

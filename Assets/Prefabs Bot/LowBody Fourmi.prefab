@@ -762,8 +762,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 1.45
+  m_Radius: 0.3
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8767655879096683797
@@ -828,15 +828,21 @@ MonoBehaviour:
   importantPictures: []
   maxDistanza: 30
   distanzaPercorsa: 0
+  currentPictureIndex: 0
   emptySpaces: []
+  lastPositionPattern: {fileID: 0}
+  destinationPrePause: {fileID: 0}
+  despota: 0
+  noChoices: 0
   isLeader: 0
+  group: []
   tempoInAttesa: 0
   durataVisita: 0
-  bottom: {fileID: 0}
   status:
   - {fileID: 8767655880440428955}
   - {fileID: 8767655879052165778}
   - {fileID: 8767655879624210091}
+  importantIgnoratePicture: []
   walls: []
   startWall: {fileID: 0}
   numberOfStop: 0

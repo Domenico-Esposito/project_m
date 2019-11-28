@@ -56,8 +56,11 @@ public class RVOSimulator : MonoBehaviour
         //clear the simulation
         Simulator.Instance.Clear();
         //re initialize the simulation
-        Simulator.Instance.setTimeStep( 0.25f );
+        Simulator.Instance.setTimeStep( 0.125f );
         Simulator.Instance.setAgentDefaults( 10.0f, 3, 1.0f, 10.0f, 0.4f, 3f, new RVO.Vector2( 0.0f, 0.0f ) );
+
+        //Simulator.Instance.setAgentDefaults( 10.0f, 3, 1.0f, 10.0f, 0.5f, 3f, new RVO.Vector2( 0.0f, 0.0f ) );
+
 
         //add all the previous agents
         int agentCount = agentPositions.Count;
