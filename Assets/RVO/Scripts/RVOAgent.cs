@@ -93,6 +93,8 @@ public class RVOAgent : MonoBehaviour
     void Update ()
     {
 
+
+
         Vector3 animationPosition = Vector3.zero;
 
 
@@ -123,14 +125,14 @@ public class RVOAgent : MonoBehaviour
         {
             if ( isAbleToStart && agentIndex != -1 )
             {
-                System.Random r = new System.Random();
+                //System.Random r = new System.Random();
 
-                float angle = ( float )r.NextDouble() * 2.0f * ( float )Math.PI;
-                float dist = ( float )r.NextDouble() * 0.0001f;
+                //float angle = ( float )r.NextDouble() * 2.0f * ( float )Math.PI;
+                //float dist = ( float )r.NextDouble() * 0.0001f;
 
-                simulator.getSimulator().setAgentPrefVelocity( agentIndex, simulator.getSimulator().getAgentPrefVelocity( agentIndex ) +
-                                          dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
-                simulator.getSimulator().doStep();
+                //simulator.getSimulator().setAgentPrefVelocity( agentIndex, simulator.getSimulator().getAgentPrefVelocity( agentIndex ) +
+                //                          dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
+                //simulator.getSimulator().doStep();
 
                 ChangePosition( 2.3f );
                 animationPosition = toUnityVector( simulator.getAgentPosition( agentIndex ) ) - transform.position;

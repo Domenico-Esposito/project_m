@@ -118,11 +118,6 @@ namespace RVO
             }
         }
 
-        public void removeAgent (int agentIndex)
-        {
-            agents_.RemoveAt( agentIndex );
-        }
-
         /**
          * <summary>Adds a new agent with default properties to the simulation.
          * </summary>
