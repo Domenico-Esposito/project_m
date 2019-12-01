@@ -271,8 +271,13 @@ public abstract class PathManager : MonoBehaviour
 
         if ( IsExit() )
         {
-            destinationPoint.GetComponent<DestinationPoint>().Libera();
-            gameObject.SetActive( false );
+            if ( gameObject.activeInHierarchy )
+            {
+                destinationPoint.GetComponent<DestinationPoint>().Libera();
+                gameObject.SetActive( false );
+                GetComponent<RVOAgent>().SetPositionInactive();
+                transform.position = new Vector3( 30f, 0f, 30f );
+            }
         }
 
     }
@@ -330,9 +335,13 @@ public abstract class PathManager : MonoBehaviour
 
         if ( IsExit() )
         {
-            destinationPoint.GetComponent<DestinationPoint>().Libera();
-            gameObject.SetActive( false );
-
+            if ( gameObject.activeInHierarchy )
+            {
+                destinationPoint.GetComponent<DestinationPoint>().Libera();
+                gameObject.SetActive( false );
+                GetComponent<RVOAgent>().SetPositionInactive();
+                transform.position = new Vector3( 30f, 0f, 30f );
+            }
         }
     }
 

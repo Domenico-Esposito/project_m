@@ -123,14 +123,14 @@ public class RVOAgent : MonoBehaviour
         {
             if ( isAbleToStart && agentIndex != -1 )
             {
-                //System.Random r = new System.Random();
+                System.Random r = new System.Random();
 
-                //float angle = ( float )r.NextDouble() * 2.0f * ( float )Math.PI;
-                //float dist = ( float )r.NextDouble() * 0.0001f;
+                float angle = ( float )r.NextDouble() * 2.0f * ( float )Math.PI;
+                float dist = ( float )r.NextDouble() * 0.0001f;
 
-                //simulator.getSimulator().setAgentPrefVelocity( agentIndex, simulator.getSimulator().getAgentPrefVelocity( agentIndex ) +
-                                          //dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
-                //simulator.getSimulator().doStep();
+                simulator.getSimulator().setAgentPrefVelocity( agentIndex, simulator.getSimulator().getAgentPrefVelocity( agentIndex ) +
+                                          dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
+                simulator.getSimulator().doStep();
 
                 ChangePosition( 2.3f );
                 animationPosition = toUnityVector( simulator.getAgentPosition( agentIndex ) ) - transform.position;
@@ -144,6 +144,14 @@ public class RVOAgent : MonoBehaviour
     private void ChangePosition (float movimentTime)
     {
         transform.position = Vector3.Lerp( transform.position, toUnityVector( simulator.getAgentPosition( agentIndex ) ), Time.deltaTime * movimentTime );
+    }
+
+    public void SetPositionInactive ()
+    {
+        UpdateTarget(transform);
+        simulator.getSimulator().setAgentPosition( agentIndex, new RVO.Vector2( 30, 30 ) );
+        simulator.getSimulator().setAgentDefaults( 0, 0, 0, 0, 0, 0, new RVO.Vector2( 0, 0 ) );
+        simulator.getSimulator().doStep();
     }
 
     public RVO.Vector2 calculateNextStation ()
