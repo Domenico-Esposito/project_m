@@ -39,6 +39,7 @@ public class RVOAgent : MonoBehaviour
     {
         agentSeeker = gameObject.GetComponent<Seeker>();
         Path path = agentSeeker.StartPath( transform.position, target.position, OnPathComplete );
+
         yield return StartCoroutine( path.WaitForPath() );
     }
 
@@ -72,7 +73,7 @@ public class RVOAgent : MonoBehaviour
         try
         {
             float r = Vector3.Distance( transform.position, target.transform.position);
-            return r <= 0.3;
+            return r <= 0.2;
         }
         catch( UnassignedReferenceException e )
         {
@@ -82,6 +83,11 @@ public class RVOAgent : MonoBehaviour
 
     Vector3 station;
     bool doStep = true;
+
+    public void RemoveAgent ()
+    {
+        simulator.removeAgent( agentIndex );
+    }
 
     // Update is called once per frame
     void Update ()
@@ -96,7 +102,7 @@ public class RVOAgent : MonoBehaviour
 
         if ( destinazioneRaggiunta() )
         {
-            ChangePosition( 0.5f );
+            ChangePosition( 1f );
             GetComponent<CharacterAnimator>().Move( animationPosition );
 
             try
@@ -117,13 +123,13 @@ public class RVOAgent : MonoBehaviour
         {
             if ( isAbleToStart && agentIndex != -1 )
             {
-                System.Random r = new System.Random();
+                //System.Random r = new System.Random();
 
-                float angle = ( float )r.NextDouble() * 2.0f * ( float )Math.PI;
-                float dist = ( float )r.NextDouble() * 0.0001f;
+                //float angle = ( float )r.NextDouble() * 2.0f * ( float )Math.PI;
+                //float dist = ( float )r.NextDouble() * 0.0001f;
 
-                simulator.getSimulator().setAgentPrefVelocity( agentIndex, simulator.getSimulator().getAgentPrefVelocity( agentIndex ) +
-                                          dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
+                //simulator.getSimulator().setAgentPrefVelocity( agentIndex, simulator.getSimulator().getAgentPrefVelocity( agentIndex ) +
+                                          //dist * new RVO.Vector2( ( float )Math.Cos( angle ), ( float )Math.Sin( angle ) ) );
                 //simulator.getSimulator().doStep();
 
                 ChangePosition( 2.3f );

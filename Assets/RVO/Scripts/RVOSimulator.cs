@@ -56,8 +56,8 @@ public class RVOSimulator : MonoBehaviour
         //clear the simulation
         Simulator.Instance.Clear();
         //re initialize the simulation
-        Simulator.Instance.setTimeStep( 0.125f );
-        Simulator.Instance.setAgentDefaults( 10.0f, 3, 1.0f, 10.0f, 0.4f, 2.3f, new RVO.Vector2( 0.0f, 0.0f ) );
+        Simulator.Instance.setTimeStep( 0.12f );
+        Simulator.Instance.setAgentDefaults( 10.0f, 6, 1.0f, 10.0f, 0.56f, 2.3f, new RVO.Vector2( 0.0f, 0.0f ) );
 
         //Simulator.Instance.setAgentDefaults( 10.0f, 3, 1.0f, 10.0f, 0.5f, 3f, new RVO.Vector2( 0.0f, 0.0f ) );
 
@@ -87,6 +87,7 @@ public class RVOSimulator : MonoBehaviour
             {
                 RVO.Vector2 agentLoc = Simulator.Instance.getAgentPosition( i );
                 RVO.Vector2 station = rvoGameObj[ i ].GetComponent<RVOAgent>().calculateNextStation() - agentLoc;
+
                 if ( RVOMath.absSq( station ) > 1.0f )
                 {
                     station = RVOMath.normalize( station );
@@ -102,5 +103,13 @@ public class RVOSimulator : MonoBehaviour
         {
             Debug.Log( ex.StackTrace );
         }
+    }
+
+
+    public void removeAgent(int indexAgent )
+    {
+        //Simulator.Instance.removeAgent( indexAgent );
+        //rvoGameObj[ indexAgent ] = null;
+        Debug.Log( "Agente " + indexAgent + " rimosso." );
     }
 }
