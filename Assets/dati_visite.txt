@@ -270,3 +270,6 @@ PoissonPattern | insoddisfatto | Visitati: 14 | Non visitati: 22 | Tempo: 428,52
 # Configurazione 1
 # Configurazione 1
 # Configurazione 2
+# Configurazione 1
+# Configurazione 2
+# Configurazione 1

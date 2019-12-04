@@ -80,6 +80,10 @@ public class Filler : MonoBehaviour
     private void Awake ()
     {
         ReadData();
+    }
+
+    private void Start ()
+    {
         spawnPoint = spawnPoints.GetEnumerator();
     }
 
