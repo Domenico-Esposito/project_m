@@ -265,3 +265,8 @@ SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 121,930
 FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 336,3796 | Attesa: 8,10084 | Distanza: 229,3313
 PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 256,9595 | Attesa: 8,586733 | Distanza: 182,4204
 PoissonPattern | insoddisfatto | Visitati: 14 | Non visitati: 22 | Tempo: 428,5269 | Attesa: 93,0796 | Distanza: 413,2734
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 2

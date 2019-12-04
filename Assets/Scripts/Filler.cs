@@ -34,6 +34,9 @@ public class Filler : MonoBehaviour
     public GameObject poissonBot;
     public GameObject sauterelleBot;
 
+    public GridSystem spawnPoints;
+    public IEnumerator spawnPoint;
+
     //private void Awake ()
     //{
     //    if( gruppoMisto )
@@ -77,6 +80,7 @@ public class Filler : MonoBehaviour
     private void Awake ()
     {
         ReadData();
+        spawnPoint = spawnPoints.GetEnumerator();
     }
 
     private void fillGroupSingolo (int patternType = -1)
@@ -392,11 +396,23 @@ public class Filler : MonoBehaviour
         return null;
     }
 
+    private Vector3 GetSpawnPoint ()
+    {
+        if( spawnPoint.MoveNext() )
+        {
+            return ((GameObject) spawnPoint.Current).transform.position;
+        }
+        else
+        {
+            spawnPoint.Reset();
+            return GetSpawnPoint();
+        }
+    }
 
     private GameObject AddNewFourmi ()
     {
         GameObject o = Instantiate( fourmiBot, transform, true );
-        o.transform.position = new Vector3(Random.Range(-0.60f, -11.76f), 0, Random.Range(-17f, -19f ) );
+        o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
 
         return o;
@@ -405,7 +421,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewPapillon ()
     {
         GameObject o = Instantiate( papillonBot, transform, true );
-        o.transform.position = new Vector3( Random.Range( -0.60f, -11.76f ), 0, Random.Range( -17f, -19f ) );
+        o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
 
         return o;
@@ -415,7 +431,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewPoisson ()
     {
         GameObject o = Instantiate( poissonBot, transform, true );
-        o.transform.position = new Vector3( Random.Range( -0.60f, -11.76f ), 0, Random.Range( -17f, -19f ) );
+        o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
         return o;
     }
@@ -423,7 +439,7 @@ public class Filler : MonoBehaviour
     private GameObject AddNewSauterelle ()
     {
         GameObject o = Instantiate( sauterelleBot, transform, true );
-        o.transform.position = new Vector3( Random.Range( -0.60f, -11.76f ), 0, Random.Range( -17f, -19f ) );
+        o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
 
         return o;

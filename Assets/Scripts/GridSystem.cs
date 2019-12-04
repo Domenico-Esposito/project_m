@@ -33,6 +33,10 @@ public class GridSystem : MonoBehaviour
         }
     }
 
+    public IEnumerator GetEnumerator ()
+    {
+        return gridPoints.GetEnumerator();
+    }
 
     public bool HaveAvailablePoint ()
     {
