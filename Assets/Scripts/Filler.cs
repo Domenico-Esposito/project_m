@@ -90,6 +90,11 @@ public class Filler : MonoBehaviour
         {
             GameObject o;
             o = AddNewBot( patternType );
+            if ( leaderDespota )
+            {
+                o.GetComponent<PathManager>().activeBot = false;
+                o.GetComponent<PathManager>().noChoices = true;
+            }
             group.Add( o.GetComponent<PathManager>() );
         }
 
@@ -99,6 +104,9 @@ public class Filler : MonoBehaviour
         if ( leaderDespota )
         {
             capo.GetComponent<PathManager>().despota = true;
+            capo.GetComponent<PathManager>().noChoices = false;
+            capo.GetComponent<PathManager>().activeBot = true;
+
         }
         capo.GetComponent<PathManager>().SetGroup( group );
     }
@@ -129,6 +137,11 @@ public class Filler : MonoBehaviour
                 o = AddNewBot( 3 );
             }
 
+            if ( leaderDespota )
+            {
+                o.GetComponent<PathManager>().activeBot = false;
+                o.GetComponent<PathManager>().noChoices = true;
+            }
             group.Add( o.GetComponent<PathManager>() );
         }
 
@@ -138,6 +151,8 @@ public class Filler : MonoBehaviour
         if( leaderDespota )
         {
             capo.GetComponent<PathManager>().despota = true;
+            capo.GetComponent<PathManager>().noChoices = false;
+            capo.GetComponent<PathManager>().activeBot = true;
         }
 
         capo.GetComponent<PathManager>().SetGroup( group );
@@ -383,6 +398,7 @@ public class Filler : MonoBehaviour
         GameObject o = Instantiate( fourmiBot, transform, true );
         o.transform.position = new Vector3(Random.Range(-0.60f, -11.76f), 0, Random.Range(-17f, -19f ) );
         o.name = "Agente " + index++;
+
         return o;
     }
 

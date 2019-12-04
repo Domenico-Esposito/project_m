@@ -7,8 +7,8 @@ using Pathfinding;
 
 public class RVOAgent : MonoBehaviour
 {
-    
-    [ SerializeField]
+
+    [SerializeField]
     Transform target;
 
     Seeker agentSeeker;
@@ -23,7 +23,9 @@ public class RVOAgent : MonoBehaviour
     // Use this for initialization
     IEnumerator Start ()
     {
-        
+        if( target == null)
+            target = transform;
+
         currentNodeInThePath = 0;
         simulator = GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>();
         pathNodes = new List<Vector3>();
@@ -38,6 +40,7 @@ public class RVOAgent : MonoBehaviour
     IEnumerator StartPaths ()
     {
         agentSeeker = gameObject.GetComponent<Seeker>();
+
         Path path = agentSeeker.StartPath( transform.position, target.position, OnPathComplete );
 
         yield return StartCoroutine( path.WaitForPath() );
@@ -53,6 +56,7 @@ public class RVOAgent : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine( Start() );
+        simulator.getSimulator().doStep();
     }
 
     public void OnPathComplete ( Path p )
@@ -73,7 +77,7 @@ public class RVOAgent : MonoBehaviour
         try
         {
             float r = Vector3.Distance( transform.position, target.transform.position);
-            return r <= 0.2;
+            return r <= 0.2 && target != transform;
         }
         catch( UnassignedReferenceException e )
         {

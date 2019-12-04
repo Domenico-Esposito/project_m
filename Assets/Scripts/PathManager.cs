@@ -58,7 +58,7 @@ public abstract class PathManager : MonoBehaviour
     public const int NON_STANCO = 0;
     public const int STANCO = 1;
     public const int MOLTO_STANCO = 2;
-
+    
     protected void SetColorGroup(Color color )
     {
         transform.Find( "Bottom" ).gameObject.transform.Find( "Base" ).gameObject.GetComponent<Image>().color = color;
@@ -85,13 +85,6 @@ public abstract class PathManager : MonoBehaviour
         SelectImportantPictureStrategy();
 
         InitGroupData();
-
-        UpdateDestination();
-
-        foreach ( PathManager member in group )
-        {
-            member.NotifyNewDestination( destination );
-        }
 
     }
 
@@ -189,13 +182,20 @@ public abstract class PathManager : MonoBehaviour
 
     //    yield return checkDestination();
     //}
+    public bool activeBot = false;
 
     private void NoChoicesBot ()
     {
+        if( !activeBot )
+        {
+            return;
+        }
+
         durataVisita += Time.deltaTime;
 
         if ( inPausa )
         {
+            Debug.Log( name + ": vado in pausa" );
             foreach ( GameObject s in status )
             {
                 s.SetActive( false );
@@ -282,6 +282,9 @@ public abstract class PathManager : MonoBehaviour
 
     }
 
+    public bool loading = false;
+    public bool firstChoices = true;
+
     private void NormaleBot ()
     {
         durataVisita += Time.deltaTime;
@@ -306,8 +309,9 @@ public abstract class PathManager : MonoBehaviour
             return;
         }
 
-        if ( timedelta > pauseTime )
+        if ( timedelta > pauseTime || firstChoices )
         {
+            firstChoices = false;
             UpdateDestination();
             timedelta = 0f;
         }
@@ -371,8 +375,6 @@ public abstract class PathManager : MonoBehaviour
                     importantPictures.Remove( destination.transform.parent.gameObject );
                 }
 
-                Debug.Log( name + ": noChoices ha scelto", destination );
-
                 //CheckNextDestination();
             }
             else
@@ -397,7 +399,7 @@ public abstract class PathManager : MonoBehaviour
                 }
             }
 
-            CheckNextDestination();
+            //CheckNextDestination();
             return;
         }
 
@@ -487,7 +489,7 @@ public abstract class PathManager : MonoBehaviour
         {
             importantPictures.Remove( destination.transform.parent.gameObject );
         }
-
+        
         CheckNextDestination();
 
     }
@@ -509,16 +511,32 @@ public abstract class PathManager : MonoBehaviour
         if ( leaderDestination.CompareTag( "PicturePlane" ) || leaderDestination.CompareTag( "Empty Space" ))
         {
             Debug.Log( gameObject.name + ": Capo ha scelto nuova destinazione importante", leaderDestination );
+
             if( !noChoices && !importantPictures.Contains( leaderDestination.transform.parent.gameObject ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ))
             {
                 importantPictures.Add( leaderDestination.transform.parent.gameObject );
             }
 
-            if ( noChoices && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
+            if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !visitedPictures.Contains( leaderDestination ) )
             {
+                if( destinationPrePause )
+                {
+                    importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+                }
+                
+                importantPictures.Add( leaderDestination );
+            }
+            else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
+            {
+                if( destinationPrePause )
+                {
+                    importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+                }
                 importantPictures.Add( leaderDestination.transform.parent.gameObject );
             }
+
         }
+
     }
 
 
@@ -537,6 +555,10 @@ public abstract class PathManager : MonoBehaviour
                 try
                 {
                     member.NotifyNewDestination( destination );
+                    if( despota )
+                    {
+                        member.activeBot = true;
+                    }
                 }
                 catch( MissingReferenceException e )
                 {
@@ -594,7 +616,6 @@ public abstract class PathManager : MonoBehaviour
         if ( destinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
         {
             destination = destinationPrePause;
-            visitedPictures.Add( destination.transform.parent.gameObject );
             UpdateDestinationPoint();
             GoToDestinationPoint();
 
@@ -647,8 +668,10 @@ public abstract class PathManager : MonoBehaviour
         //// Posti disponibili e non è tra quelle da ignorare
         if ( destination.GetComponent<GridSystem>().HaveAvailablePoint() && !importantIgnoratePicture.Contains(destination) )
         {
-            visitedPictures.Add( destination.transform.parent.gameObject );
-
+            if ( !destination.CompareTag( "Empty Space" ) || !noChoices)
+            {
+                visitedPictures.Add( destination.transform.parent.gameObject );
+            }
             UpdateDestinationPoint();
             GoToDestinationPoint();
 
