@@ -39,7 +39,7 @@ public class PoissonPattern : PathManager
     {
         bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
 
-        if ( LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( importantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( viewPicture )
