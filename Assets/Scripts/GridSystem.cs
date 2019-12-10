@@ -72,11 +72,14 @@ public class GridSystem : MonoBehaviour
         lock ( gridPointsLock )
         { 
             availablePoint = gridPoints.FindAll( (System.Predicate<GameObject>) IsAvailable );
-            return availablePoint[ Random.Range( 0, availablePoint.Count ) ];
+            return availablePoint[ Random.Range( 0, availablePoint.Count-1) ];
         }
 
     }
 
+    public GameObject GetRandomPoint(){
+        return gridPoints[Random.Range(0, gridPoints.Count)];
+    }
 
     private bool IsAvailable (GameObject point)
     {

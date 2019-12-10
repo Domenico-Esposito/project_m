@@ -76,11 +76,22 @@ public class RVOSimulator : MonoBehaviour
         //return the index of the new added agent
         return Simulator.Instance.addAgent( toRVOVector( pos ) );
     }
+    public bool stopSimulation = false;
 
-    // Update is called once per frame
-    void Update ()
-    {
+    void FixedUpdate(){
+
+        if( stopSimulation ){
+            foreach (GameObject agent in rvoGameObj)
+            {
+                Destroy(agent);
+            }
+            rvoGameObj.Clear();
+            agentPositions.Clear();
+            return;
+        }
+
         int agentNUmber = Simulator.Instance.getNumAgents();
+
         try
         {
             for ( int i = 0; i < agentNUmber; i++ )
@@ -106,8 +117,6 @@ public class RVOSimulator : MonoBehaviour
                     Simulator.Instance.setAgentRadius( i, 0.56f );
                     rvoGameObj[ i ].GetComponent<CapsuleCollider>().radius = 0.3f;
                 }
-
-
             }
             Simulator.Instance.doStep();
         }
@@ -115,8 +124,8 @@ public class RVOSimulator : MonoBehaviour
         {
             Debug.Log( ex.StackTrace );
         }
-    }
 
+    }
 
     public void removeAgent(int indexAgent )
     {

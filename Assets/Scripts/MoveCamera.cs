@@ -21,7 +21,7 @@ public class MoveCamera : MonoBehaviour
 
         if ( Input.GetKeyDown( "space" ) )
         {
-            Debug.Log( "Reset camera" );
+            //Debug.Log( "Reset camera" );
             transform.position = new Vector3( transform.position.x, 14.4f, transform.position.z );
             transform.rotation = new Quaternion( 0, 0, 0, 0 );
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -314,7 +314,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &39243664
 Transform:
@@ -454,7 +454,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &40543888
 Transform:
@@ -687,7 +687,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &105032752
 RectTransform:
@@ -921,7 +921,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &137579418
 Transform:
@@ -1148,7 +1148,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &189388138
 RectTransform:
@@ -1387,7 +1387,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &204305627
 Transform:
@@ -1565,7 +1565,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &244018573
 Transform:
@@ -1775,7 +1775,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &297839066
 Transform:
@@ -2008,7 +2008,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &309991321
 Transform:
@@ -2102,7 +2102,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &312246108
 RectTransform:
@@ -2250,7 +2250,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &336871831
 Transform:
@@ -2388,7 +2388,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &346858986
 Transform:
@@ -2482,7 +2482,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &368689433
 RectTransform:
@@ -2704,7 +2704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395710987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.5, y: 14.9, z: -91}
+  m_LocalPosition: {x: 3.4, y: 8.1, z: -35.7}
   m_LocalScale: {x: 1, y: 1, z: 1.1893}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2729,7 +2729,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &409796928
 Transform:
@@ -2869,7 +2869,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &423733137
 Transform:
@@ -3010,7 +3010,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &423912851
 RectTransform:
@@ -3230,7 +3230,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &460171886
 Transform:
@@ -3349,7 +3349,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &471153125
 RectTransform:
@@ -3508,6 +3508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rvoGameObj: []
+  stopSimulation: 0
 --- !u!4 &471844329
 Transform:
   m_ObjectHideFlags: 0
@@ -3542,7 +3543,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &485090389
 RectTransform:
@@ -3691,7 +3692,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &501564092
 RectTransform:
@@ -3839,7 +3840,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &525872344
 Transform:
@@ -4054,7 +4055,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &574670498
 Transform:
@@ -4148,7 +4149,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &576069652
 RectTransform:
@@ -4296,7 +4297,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &594528962
 Transform:
@@ -4435,7 +4436,7 @@ GameObject:
   m_TagString: Uscita
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &603021119
 Transform:
@@ -4524,8 +4525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPoint: {fileID: 2914980921035116087, guid: e0e31e1d7f8b74445a46804c65be53fd,
     type: 3}
-  columns: 3
-  rows: 1
+  columns: 15
+  rows: 5
   autoLibera: 0
 --- !u!1 &624328362
 GameObject:
@@ -4547,7 +4548,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &624328363
 RectTransform:
@@ -4695,7 +4696,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &628102012
 Transform:
@@ -4835,7 +4836,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &651283294
 Transform:
@@ -4951,7 +4952,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &684513760
 Transform:
@@ -5210,7 +5211,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &751992616
 Transform:
@@ -5427,7 +5428,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &762860247
 Transform:
@@ -5827,7 +5828,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &936382414
 Transform:
@@ -6041,7 +6042,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &969321385
 Transform:
@@ -6182,7 +6183,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &975051550
 RectTransform:
@@ -6423,7 +6424,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &986009901
 Transform:
@@ -6561,7 +6562,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &991065071
 Transform:
@@ -6654,7 +6655,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &997335842
 Transform:
@@ -6847,7 +6848,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1056659232
 RectTransform:
@@ -6996,7 +6997,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1059419086
 RectTransform:
@@ -7145,7 +7146,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1061927633
 RectTransform:
@@ -7294,7 +7295,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1090712397
 RectTransform:
@@ -7443,7 +7444,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1100676715
 RectTransform:
@@ -7778,7 +7779,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1138301238
 Transform:
@@ -7989,7 +7990,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1145691930
 RectTransform:
@@ -8236,7 +8237,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1215221187
 Transform:
@@ -8329,7 +8330,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1215785098
 Transform:
@@ -8448,7 +8449,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1217771166
 RectTransform:
@@ -8864,7 +8865,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1304598231
 Transform:
@@ -9004,7 +9005,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1324894128
 Transform:
@@ -9221,7 +9222,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1339043828
 Transform:
@@ -9361,7 +9362,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1339345411
 Transform:
@@ -9501,7 +9502,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1353437722
 Transform:
@@ -9639,7 +9640,7 @@ GameObject:
   m_TagString: Museo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1378526610
 Transform:
@@ -9750,7 +9751,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1382727474
 Transform:
@@ -9890,7 +9891,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1395315704
 Transform:
@@ -10214,7 +10215,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1427054077
 Transform:
@@ -10352,7 +10353,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1438374827
 Transform:
@@ -10446,7 +10447,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1447441350
 RectTransform:
@@ -10705,7 +10706,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1483793491
 RectTransform:
@@ -10997,7 +10998,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1567190546
 RectTransform:
@@ -11146,7 +11147,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1706820419
 RectTransform:
@@ -11452,7 +11453,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1773994751
 Transform:
@@ -11593,7 +11594,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1779741288
 RectTransform:
@@ -11741,7 +11742,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1782152105
 Transform:
@@ -11894,7 +11895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIeznsgXcYwIAAAwFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMly4jAQ/RVK5wllA8Z4bjMOIXPIUiFTufgipDZWIUsuLQGS4t9Hkk3sQI0vtrvf6+V1S5+ICd0AMVKtFKMPkgL6OUL+G/0Y9c57OOCtFGv2AWfMG6Om8iAcMC/YMOnssadpWYNRjPwSW+7BkTNawUqp6iXdQi610c5cYq7BuZQ0ni2c6XOEDh3h2L0//Ht0cl8EhAHVo6bjLIqz+SzOLuA30TjJZtFiMUnmgWkF4bhugPoO+gCzyXiRuSdNuwCzxTgOBOG67LDxeOpzS86Z7opE5tgEEXLcaOtadADKsGs6lOc1qIBtK+N+JkPyU1lqMB1E4eMtU067Nir6LVtBa6x3bY3vmFufJ4knoao26MOVP44mswAolazvz5njyOthKkZ2L/hIsDYDzYfm2++lW7HHfIc3HN4qEI9ypaQV1DmNsp5qNUxuB6G+ussrILse11Z7YbTN9ZTjfsqn0P8h56zedAj3u+ayOe8RKDeaP67asDK6t/oK/mp4xdvhbnWOO6a0ca4um/ClbaRVHoqWQTDfiTW5VALUMEIDAnNzfHZxzHCE0bXv/6w77I9Rl73znU/HBSWYe3wUXbie5f5rVLqS+wfQ1ZM1nAnoZfaORydULoVoN0x/d3rW2qoSkwFraxn9vlkoK7N0Q2fJPIk3KV6QmyTD8818QaZpSlKaZCgsHhOuTcyf2zo7ddzQRB9cuCU7Xy6jlcJNWHaq8H7FPmo5qI+JUq6JAhBPbYSzQhqUS+KOJV1S5vRZgzFMhHmjzwJxSXZAi69AReh0eTAKF32UAjXsXRpvKVAerpQCndDpH1BLAwQUAAAICAAACCHsKRHSu20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNBRUEovSizIKAaKGII4pZkpIHa0kmWapXlSiompmalhknmiRbKuqWWiWZKZRbKxuXmyeYqppVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHs57IF3GMCAAAMBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsKRHSu20AAAB4AAAACQAkAAAAAAAAAAAAAACwAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGgDAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIeynKpxQYQIAAA0FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMly4jAQ/RVK5wllE4zx3GYcQuaQpUKmcvFFSG2sQpZcWgIkxb+PJBtsSI0vtrvf6+V1S1+ICd0AMVItFaOPkgL6OUL+G/0Y9c4H2OONFCv2CSfMO6Om8iAcMK/YMOnssadpWYNRjPwSG+7BkTNawUqp6gXdQC610c5cYq7BuZQ0ni2c6WuE9h3h0L0//Xt0dF8EhAHVo27HWRRns2mcXcFvonGSTaP5fJLMAtMKwnHdAPUd9AGmk/E8c0+adgGm83EcCMJ12WHj8a3PLTlnuisSmUMTRMhxo61r0QEow67pUJ7XoAK2qYz7mQzJz2WpwXQQhQ93TDnt2qjot2wFrbHetjV+YG59niSehKraoI/f/HE0mQZAqWT9cMocR14PUzGyfcUHgrUZaD40312WbsUO8y1ec3ivQDzJpZJWUOc0ynqq1TC5G4Q6d5dXQLY9rq32ymib71OO+ykfQ//7nLN63SHc74rL5rRHoNxo/rhqw8ro3uor+KvhDW+Gu9U57pnSxrm6bMKXtpZWeShaBMF8J9bkUglQwwgNCMzN4cXFMcMRRt99/2fdY3+Muuyd73Q6rijB3OOj6Mr1InfnUelK7h5BV8/WcCagl9k7npxQuRSi3TB96fSslVUlJgPWxjJ6uVkoK7N0TafJLInXKZ6TmyTDs/VsTm7TlKQ0yVBYPCZcm5i/tHV26rihDSURbstOt8toqXATtp0qvFuyz1oOCmSilCuiAMTzZQgNymVx55IuKHMCrcAYJsLA0VeBuCRboMU5UBFaXeyNwkUfpUAN+5DGWwqUhzulQEd0/AdQSwMEFAAACAgAAAgh7CkR0rttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTQUVBKL0osyCgGihiCOKWZKSB2tJJlmqV5UoqJqZmpYZJ5okWyrqllolmSmUWysbl5snmKqaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7KcqnFBhAgAADQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7CkR0rttAAAAeAAAAAkAJAAAAAAAAAAAAAAArgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABmAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -11907,7 +11908,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 1
   unwalkableNodeDebugSize: 0.03
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 5
   scanOnStartup: 1
   fullGetNearestSearch: 1
@@ -12106,7 +12107,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1834274721
 Transform:
@@ -12246,7 +12247,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1836061330
 Transform:
@@ -12362,7 +12363,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1865911812
 Transform:
@@ -12456,7 +12457,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1870400620
 RectTransform:
@@ -12605,7 +12606,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &1926789268
 RectTransform:
@@ -12753,7 +12754,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1928765762
 Transform:
@@ -12871,7 +12872,7 @@ GameObject:
   m_TagString: Empty Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1931703270
 Transform:
@@ -13154,7 +13155,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1952942821
 Transform:
@@ -13294,7 +13295,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1955461126
 Transform:
@@ -13506,7 +13507,7 @@ GameObject:
   m_TagString: PicturePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2021987589
 Transform:
@@ -13738,7 +13739,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &2069934457
 RectTransform:
@@ -13887,7 +13888,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &2080630480
 RectTransform:
@@ -14128,7 +14129,7 @@ GameObject:
   m_TagString: Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!224 &2135662245
 RectTransform:

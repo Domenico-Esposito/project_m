@@ -52,7 +52,7 @@ public class PoissonPattern : PathManager
             if ( poissonFloors.Count > 0 )
             {
                 poissonFloors.RemoveAll( ( GameObject obj ) => obj.GetComponent<PictureInfo>().index <= indexPathPartPiuVicino );
-                Debug.Log( "IndexPathPartVicino: " + indexPathPartPiuVicino );
+                //Debug.Log( "IndexPathPartVicino: " + indexPathPartPiuVicino );
                 pathPart = poissonFloors.GetEnumerator();
             }
 
@@ -74,7 +74,7 @@ public class PoissonPattern : PathManager
         GameObject destinationPlane = picturePlanes[ 0 ];
         picturePlanes.Remove( destinationPlane );
 
-        Debug.Log( "Index considerata: " + destinationPlane.transform.parent.GetComponent<PictureInfo>().index + " | IndexAttuale: " + currentPictureIndex );
+        //Debug.Log( "Index considerata: " + destinationPlane.transform.parent.GetComponent<PictureInfo>().index + " | IndexAttuale: " + currentPictureIndex );
 
 
         if( visitedPictures.Contains( destinationPlane.transform.parent.gameObject ) || destinationPlane.transform.parent.GetComponent<PictureInfo>().index <= currentPictureIndex )

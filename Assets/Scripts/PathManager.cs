@@ -195,7 +195,6 @@ public abstract class PathManager : MonoBehaviour
 
         if ( inPausa )
         {
-            Debug.Log( name + ": vado in pausa" );
             foreach ( GameObject s in status )
             {
                 s.SetActive( false );
@@ -212,8 +211,8 @@ public abstract class PathManager : MonoBehaviour
                 utilitySort.transform = leader.GetComponent<PathManager>().destinationPoint.transform;
                 emptySpaces.Sort( utilitySort.DistanzaPlane );
 
-                Debug.Log( gameObject.name + ": Destinazione: ", destination );
-                Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
+                //Debug.Log( gameObject.name + ": Destinazione: ", destination );
+                //Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
 
                 foreach ( GameObject plane in emptySpaces )
                 {
@@ -233,7 +232,7 @@ public abstract class PathManager : MonoBehaviour
                     UpdateDestinationPoint();
                     GoToDestinationPoint();
 
-                    Debug.Log( name + ": la destinazione si è liberata", destination );
+                    //Debug.Log( name + ": la destinazione si è liberata", destination );
 
                     inPausa = false;
                 }
@@ -384,8 +383,8 @@ public abstract class PathManager : MonoBehaviour
                 utilitySort.transform = leader.GetComponent<PathManager>().destinationPoint.transform;
                 emptySpaces.Sort( utilitySort.DistanzaPlane );
 
-                Debug.Log( gameObject.name + ": Destinazione: ", destination );
-                Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
+                //Debug.Log( gameObject.name + ": Destinazione: ", destination );
+                //Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
 
                 foreach ( GameObject plane in emptySpaces )
                 {
@@ -406,7 +405,7 @@ public abstract class PathManager : MonoBehaviour
         if ( lastPositionPattern == null )
         {
             destination = GetNextDestination();
-            Debug.Log( gameObject.name + ": Chiedo nuova destinazione dal pattern", destination );
+            //Debug.Log( gameObject.name + ": Chiedo nuova destinazione dal pattern", destination );
         }
         else
         {
@@ -417,13 +416,13 @@ public abstract class PathManager : MonoBehaviour
                 // Qui magari posso utilizzare la distanza dal quadro, invece che l'indice (sarebbe meglio)
                 if( destination.GetComponent<PictureInfo>().index < currentPictureIndex - 5 )
                 {
-                    Debug.Log( name + ": La destinazione già calcolata è un quadro con indice troppo basso per essere visitato ora." );
+                    //Debug.Log( name + ": La destinazione già calcolata è un quadro con indice troppo basso per essere visitato ora." );
                     lastPositionPattern = null;
                     UseLastDestinationOrNew();
                 }
             }
 
-            Debug.Log( gameObject.name + ": Uso destinazione già calcolata in precedenza", destination );
+            //Debug.Log( gameObject.name + ": Uso destinazione già calcolata in precedenza", destination );
 
         }
     }
@@ -467,16 +466,15 @@ public abstract class PathManager : MonoBehaviour
                     haveLastPositionPattern = true;
                     destination = picturePlane;
 
-                    //Debug.Log( "distanzaFromPictureImportant (" + distanzaFromPictureImportant + ") < distanceFromDestination (" + distanceFromDestination + ")" );
-                    Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
-                    Debug.Log( "Prossima destinazione è importante", destination );
+                    //Debug.Log( "Questa destinazione viene salvata per dopo", lastPositionPattern );
+                    //Debug.Log( "Prossima destinazione è importante", destination );
                     break;
                 }
             }
         }
         catch( NullReferenceException e )
         {
-            Debug.Log( name + ": nessuna destinazione" );
+            //Debug.Log( name + ": nessuna destinazione" );
         }
 
 
@@ -499,18 +497,34 @@ public abstract class PathManager : MonoBehaviour
         return destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
     }
 
+    private void UpdateDestinationPointForNoChoiceExit(){
+        StartCoroutine( LiberaPosto(destinationPoint) );
+        destinationPoint = destination.GetComponent<GridSystem>().GetRandomPoint();
+        destinationPoint.GetComponent<DestinationPoint>().Occupa();
+    }
     public void NotifyNewDestination(GameObject leaderDestination )
     {
         if( noChoices && leaderDestination.CompareTag( "Uscita" ) )
         {
+            Debug.Log(name + ": impostata destinazione come uscita", leaderDestination);
             destination = leaderDestination;
-            UpdateDestinationPoint();
+
+            if( destinationPrePause != null)
+            {
+                inPausa = false;
+                importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+                importantPictures.Clear();
+                destinationPrePause = null;
+            }
+
+            UpdateDestinationPointForNoChoiceExit();
             GoToDestinationPoint();
+            return;
         }
 
         if ( leaderDestination.CompareTag( "PicturePlane" ) || leaderDestination.CompareTag( "Empty Space" ))
         {
-            Debug.Log( gameObject.name + ": Capo ha scelto nuova destinazione importante", leaderDestination );
+            //Debug.Log( gameObject.name + ": Capo ha scelto nuova destinazione importante", leaderDestination );
 
             if( !noChoices && !importantPictures.Contains( leaderDestination.transform.parent.gameObject ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ))
             {
@@ -562,7 +576,7 @@ public abstract class PathManager : MonoBehaviour
                 }
                 catch( MissingReferenceException e )
                 {
-                    Debug.Log( gameObject.name + ": un membro del gruppo ha già abbandonato il museo." );
+                    //Debug.Log( gameObject.name + ": un membro del gruppo ha già abbandonato il museo." );
                 }
             }
         }
@@ -627,7 +641,7 @@ public abstract class PathManager : MonoBehaviour
             // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre)
             if ( timedelta > 15f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority <= 1 || timedelta > 20f && destinationPrePause.transform.parent.GetComponent<PictureInfo>().priority > 1 )
             {
-                Debug.Log( "È passato troppo tempo, passo oltre e ignoro questo quadro..." );
+                //Debug.Log( "È passato troppo tempo, passo oltre e ignoro questo quadro..." );
                 visitedPictures.Remove( destinationPrePause.transform.parent.gameObject );
                 //importantPictures.Add( destinationPrePause.transform.parent.gameObject );
                 importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
@@ -648,17 +662,17 @@ public abstract class PathManager : MonoBehaviour
     
         if( distanzaPercorsa > maxDistanza )
         {
-            Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );
+            //Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );
             return MOLTO_STANCO;
         }
 
         if ( distanzaPercorsa > ( maxDistanza / 1.2f ) )
         {
-            Debug.Log( gameObject.name + ": Livello stanchezza: Stanco" );
+            //Debug.Log( gameObject.name + ": Livello stanchezza: Stanco" );
             return STANCO;
         }
 
-        Debug.Log( gameObject.name + ": Livello stanchezza: Non stanco" );
+        //Debug.Log( gameObject.name + ": Livello stanchezza: Non stanco" );
         return NON_STANCO;
     }
 
@@ -690,8 +704,8 @@ public abstract class PathManager : MonoBehaviour
                 utilitySort.transform = destinationPrePause.transform;
                 emptySpaces.Sort( utilitySort.DistanzaPlane );
 
-                Debug.Log( gameObject.name + ": Destinazione: ", destination );
-                Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
+                //Debug.Log( gameObject.name + ": Destinazione: ", destination );
+                //Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
 
                 foreach( GameObject plane in emptySpaces )
                 {

@@ -48,6 +48,7 @@ public class ReceptionMuseum : MonoBehaviour
     public void AddUser ()
     {
         utenti++;
+        bots.text = utenti.ToString();
     }
 
     public void ReceivData (string patternType, List<GameObject> visitati, List<GameObject> non_visitati, List<GameObject> ignorati, float tempoVisita, float tempoDiAttesa, float distanza)
@@ -104,12 +105,17 @@ public class ReceptionMuseum : MonoBehaviour
 
         Debug.Log( "Dati visita salvati" );
 
+        if( (utentiInsoddisfatti + utentiSoddisfatti) == utenti ){
+            Debug.Log("Simulazione terminata");
+            FindObjectOfType<RVOSimulator>().stopSimulation = true;
+        }
+
+        like.text = utentiSoddisfatti.ToString();
+        dislike.text = utentiInsoddisfatti.ToString();
     }
 
     private void Update ()
     {
-        like.text = utentiSoddisfatti.ToString();
-        dislike.text = utentiInsoddisfatti.ToString();
-        bots.text = utenti.ToString();
+
     }
 }
