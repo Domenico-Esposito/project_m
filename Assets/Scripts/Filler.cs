@@ -24,10 +24,14 @@ public class Filler : MonoBehaviour
     public int numberOfSauterelle = 1;
     public int index = 1;
 
+    public int numberMax = 3;
+
     public bool gruppoMisto = false;
     public bool gruppoSingolo = false;
 
+    public int probabilitaLiberta = 0;
     public bool leaderDespota = false;
+
 
     public GameObject fourmiBot;
     public GameObject papillonBot;
@@ -36,6 +40,7 @@ public class Filler : MonoBehaviour
 
     public GridSystem spawnPoints;
     public IEnumerator spawnPoint;
+    RVOSimulator simulator = null;
 
     //private void Awake ()
     //{
@@ -85,6 +90,7 @@ public class Filler : MonoBehaviour
     private void Start ()
     {
         spawnPoint = spawnPoints.GetEnumerator();
+        simulator = GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>();
     }
 
     private void fillGroupSingolo (int patternType = -1)
@@ -94,16 +100,33 @@ public class Filler : MonoBehaviour
         if( patternType <= -1)
             patternType = Random.Range( 0, 3 );
 
-        for ( int i = 0; i < Random.Range( 3, 8 ); i++ )
+        int numberOfMember = Random.Range( 3, 8 );
+
+        for ( int i = 0; i < numberOfMember; i++ )
         {
             GameObject o;
             o = AddNewBot( patternType );
             if ( leaderDespota )
             {
                 o.GetComponent<PathManager>().activeBot = false;
-                o.GetComponent<PathManager>().noChoices = true;
+                if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1)
+                {
+                    //o.GetComponent<PathManager>().noChoices = true;
+                    Destroy( o.GetComponent<PathManager>() );
+                    o.GetComponent<BotVisitData>().ClearData();
+                    o.AddComponent<NoChoicesBot>();
+                }
             }
-            group.Add( o.GetComponent<PathManager>() );
+
+            if( o.GetComponent<NoChoicesBot>() != null )
+            {
+                group.Add( o.GetComponent<NoChoicesBot>() );
+            }
+            else
+            {
+                group.Add( o.GetComponent<PathManager>() );
+
+            }
         }
 
         PathManager capo = group[ group.Count - 1];
@@ -123,12 +146,13 @@ public class Filler : MonoBehaviour
     {
 
         List<PathManager> group = new List<PathManager>();
+        int numberOfMember = Random.Range( 3, 8 );
 
-        for ( int i = 0; i < Random.Range( 3, 8); i++)
+        for ( int i = 0; i < numberOfMember; i++ )
         {
             GameObject o;
 
-            if( Random.Range(0, 2) >= 1)
+            if ( Random.Range(0, 2) >= 1)
             {
                 o = AddNewBot( 0 );
             }
@@ -148,9 +172,24 @@ public class Filler : MonoBehaviour
             if ( leaderDespota )
             {
                 o.GetComponent<PathManager>().activeBot = false;
-                o.GetComponent<PathManager>().noChoices = true;
+                if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1 )
+                {
+                    //o.GetComponent<PathManager>().noChoices = true;
+                    Destroy( o.GetComponent<PathManager>() );
+                    o.GetComponent<BotVisitData>().ClearData();
+                    o.AddComponent<NoChoicesBot>();
+                }
             }
-            group.Add( o.GetComponent<PathManager>() );
+
+            if ( o.GetComponent<NoChoicesBot>() != null )
+            {
+                group.Add( o.GetComponent<NoChoicesBot>() );
+            }
+            else
+            {
+                group.Add( o.GetComponent<PathManager>() );
+
+            }
         }
 
         PathManager capo = group[ group.Count - 1];
@@ -298,6 +337,9 @@ public class Filler : MonoBehaviour
                             if ( numeroGruppiMisti > 0 )
                                 gruppoMisto = true;
                             break;
+                        case "probabilitaLiberta":
+                            probabilitaLiberta = data.Value;
+                            break;
                         case "leaderDespota":
                             if(data.Value == 1){
                                 leaderDespota = true;
@@ -380,10 +422,71 @@ public class Filler : MonoBehaviour
         reader.Close();
     }
 
+    private bool CheckType(GameObject agent, int type )
+    {
+    
+        switch ( type )
+        {
+        case 0:
+            return agent.TryGetComponent( out FourmiPattern fourmi );
+        case 1:
+            return agent.TryGetComponent( out PapillonPattern papillon );
+        case 2:
+            return agent.TryGetComponent( out PoissonPattern poisson );
+        case 3:
+            return agent.TryGetComponent( out SauterellePattern sauterelle );
+        }
+
+        return false;
+    }
+
     private GameObject AddNewBot (int type)
     {
 
         GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().AddUser();
+
+        simulator = GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>();
+        GameObject agent = simulator.rvoGameObj.Find( ( GameObject obj ) => !obj.activeInHierarchy );
+
+        if ( agent != null )
+        {
+
+            //GameObject agent = simulator.rvoGameObj.Find( ( GameObject obj ) => !obj.activeInHierarchy && CheckType(obj, type) );
+            DestroyImmediate( agent.GetComponent<PathManager>() );
+            agent.GetComponent<BotVisitData>().ClearData();
+
+            if( type == 0 )
+            {
+                agent.AddComponent<FourmiPattern>();
+            }
+
+            if ( type == 1 )
+            {
+                agent.AddComponent<PapillonPattern>();
+            }
+
+            if ( type == 2 )
+            {
+                agent.AddComponent<PoissonPattern>();
+            }
+
+            if ( type == 3 )
+            {
+                agent.AddComponent<SauterellePattern>();
+            }
+
+            Vector3 position = GetSpawnPoint();
+            int rvoGameIndex = simulator.rvoGameObj.IndexOf( agent );
+            simulator.getSimulator().setAgentPosition( rvoGameIndex, new RVO.Vector2(position.x, position.z));
+            agent.transform.position = position;
+            agent.name = "Agente " + index++;
+            agent.SetActive( true );
+
+            simulator.rvoGameObj[ rvoGameIndex ] = agent;
+
+            return simulator.rvoGameObj[ rvoGameIndex ];
+
+        }
 
         switch ( type )
         {
@@ -418,7 +521,6 @@ public class Filler : MonoBehaviour
         GameObject o = Instantiate( fourmiBot, transform, true );
         o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
-
         return o;
     }
 

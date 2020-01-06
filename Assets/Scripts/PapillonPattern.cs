@@ -12,7 +12,12 @@ public class PapillonPattern : PathManager
     private GameObject nextDestination;
 
     public int numberOfStop;
-    
+
+    private void Awake ()
+    {
+        GetComponentInChildren<Renderer>().material.SetColor("_Color", new Color32( 241, 108, 0, 1 ) );
+    }
+
     public override void InitMovementPattern ()
     {
         FindWallsWithPictures();

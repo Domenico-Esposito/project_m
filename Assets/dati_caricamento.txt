@@ -1,5 +1,5 @@
 #CONF
-pauseTime=8
+pauseTime=6
 numberOfFourmi=20
 numberOfPapillon=20
 numberOfPoisson=20
@@ -9,6 +9,7 @@ numeroGruppiSingoli=0
 pauseTimeGruppoMisto=0
 numeroGruppiMisti=0
 leaderDespota=0
+probabilitaLiberta=0
 #END
 #CONF
 pauseTime=0
@@ -17,10 +18,11 @@ numberOfPapillon=0
 numberOfPoisson=0
 numberOfSauterelle=0
 pauseTimeGruppoSingolo=30
-numeroGruppiSingoli=3
+numeroGruppiSingoli=5
 pauseTimeGruppoMisto=0
 numeroGruppiMisti=0
-leaderDespota=0
+leaderDespota=1
+probabilitaLiberta=5
 #END
 #CONF
 pauseTime=0
@@ -31,6 +33,7 @@ numberOfSauterelle=0
 pauseTimeGruppoSingolo=0
 numeroGruppiSingoli=0
 pauseTimeGruppoMisto=30
-numeroGruppiMisti=3
-leaderDespota=1
+numeroGruppiMisti=2
+leaderDespota=0
+probabilitaLiberta=0
 #END

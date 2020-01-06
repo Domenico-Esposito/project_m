@@ -13,20 +13,27 @@ public abstract class PathManager : MonoBehaviour
 {
     // Pattern movimento
     public GameObject destination;
-    protected GameObject destinationPoint;
+    public GameObject destinationPoint;
 
     protected Sort utilitySort;
 
     public bool inPausa = false;
 
     // Segui percorso
-    [SerializeField] float pauseTime = 5f;
+    [SerializeField] 
+    protected float pauseTime = 5f;
+
     public float timedelta = 0f;
     float baseTime;
 
     protected Dictionary<GameObject, List<GameObject>> picturesOnWalls = new Dictionary<GameObject, List<GameObject>>();
-    public List<GameObject> visitedPictures = new List<GameObject>();
-    public List<GameObject> importantPictures = new List<GameObject>();
+
+    protected List<GameObject> visitedPictures = new List<GameObject>();
+    protected List<GameObject> importantPictures = new List<GameObject>();
+    protected List<GameObject> importantIgnoratePicture = new List<GameObject>();
+
+    private BotVisitData visitData;
+    private MarkerManager markerManager;
 
     public int maxDistanza = 30;
     public float distanzaPercorsa = 0f;
@@ -50,24 +57,25 @@ public abstract class PathManager : MonoBehaviour
     public abstract GameObject GetNextDestination ();
     public abstract void InitMovementPattern ();
 
-    [SerializeField]
-    GameObject[ ] status;
-
-    public List<GameObject> importantIgnoratePicture = new List<GameObject>();
+    private bool firstChoices = true;
 
     public const int NON_STANCO = 0;
     public const int STANCO = 1;
     public const int MOLTO_STANCO = 2;
-    
-    protected void SetColorGroup(Color color )
-    {
-        transform.Find( "Bottom" ).gameObject.transform.Find( "Base" ).gameObject.GetComponent<Image>().color = color;
-        transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.GetComponent<Image>().color = color;
-    }
 
-    protected virtual void Start ()
+    public bool activeBot = false;
+
+
+    protected void Start ()
     {
-    
+        markerManager = GetComponent<MarkerManager>();
+
+        visitData = GetComponent<BotVisitData>();
+
+        visitedPictures = visitData.visitedPictures;
+        importantPictures = visitData.importantPictures;
+        importantIgnoratePicture = visitData.importantIgnoratePicture;
+
         utilitySort = new Sort
         {
             transform = transform
@@ -77,31 +85,24 @@ public abstract class PathManager : MonoBehaviour
 
         emptySpaces = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Empty Space" ) );
 
-        InitNavMeshAgent();
-        
-        InitAnimationBheavior();
         InitMovementPattern();
 
         SelectImportantPictureStrategy();
 
         InitGroupData();
-
     }
 
-    void GroupElementSetData (GameObject d, Color groupColor, bool leaderDespota)
+
+    protected virtual void GroupElementSetData (GameObject d, Color groupColor, bool leaderDespota)
     {
-        if( leaderDespota )
-        {
-            noChoices = true;
-        }
-
         SetLeader( gameObject );
-        SetColorGroup( groupColor );
+        markerManager.SetColorGroup( groupColor );
 
-        importantPictures.Clear();
-        visitedPictures.Clear();
-
-        //StartCoroutine( checkDestination() );
+        //if( noChoices )
+        //{
+        //    importantPictures.Clear();
+        //    visitedPictures.Clear();
+        //}
     }
 
 
@@ -115,9 +116,9 @@ public abstract class PathManager : MonoBehaviour
         if ( isLeader )
         {
             Color groupColor = GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().GetColor();
-            SetColorGroup( groupColor );
+            markerManager.SetColorGroup( groupColor );
 
-            transform.Find( "Bottom" ).gameObject.transform.Find( "Base Leader" ).gameObject.SetActive( true );
+            markerManager.ShowLeader();
 
             foreach ( PathManager member in group )
             {
@@ -126,7 +127,7 @@ public abstract class PathManager : MonoBehaviour
         }
         else
         {
-            transform.Find( "Bottom" ).gameObject.transform.Find( "Base" ).gameObject.SetActive( true );
+            markerManager.ShowBase();
         }
     }
 
@@ -140,7 +141,6 @@ public abstract class PathManager : MonoBehaviour
     {
         leader = myLeader;
     }
-
 
     void SelectImportantPictureStrategy ()
     {
@@ -159,30 +159,57 @@ public abstract class PathManager : MonoBehaviour
 
     }
 
-    void InitNavMeshAgent ()
+    protected virtual void Behaviour ()
     {
-        //agent.updateRotation = false;
+        durataVisita += Time.deltaTime;
+
+        if ( inPausa )
+        {
+
+            timedelta += Time.deltaTime;
+
+            GetComponentInChildren<BubbleHead>().InAttesa();
+
+            if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
+            {
+                tempoInAttesa += Time.deltaTime;
+            }
+
+            CheckDestinationFromPause();
+            return;
+        }
+
+        if ( timedelta > pauseTime || firstChoices )
+        {
+            firstChoices = false;
+            UpdateDestination();
+            timedelta = 0f;
+        }
+
+
+        if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
+        {
+            GetComponentInChildren<BubbleHead>().GuardoOpera();
+            timedelta += Time.deltaTime;
+
+        }
+        else
+        {
+            GetComponentInChildren<BubbleHead>().VersoDestinazione();
+
+        }
+
+        if ( IsExit() )
+        {
+            if ( gameObject.activeInHierarchy )
+            {
+                destinationPoint.GetComponent<DestinationPoint>().Libera();
+                gameObject.SetActive( false );
+                GetComponent<RVOAgent>().SetPositionInactive();
+                transform.position = new Vector3( 30f, 0f, 30f );
+            }
+        }
     }
-
-    public void InitAnimationBheavior ()
-    {
-
-    }
-
-    //IEnumerator checkDestination ()
-    //{
-    //    yield return new WaitForSeconds( 1f );
-
-    //    if ( importantPictures.Count > 0 )
-    //    {
-    //        destinationPrePause = null;
-    //        UpdateDestination();
-    //        timedelta = 0f;
-    //    }
-
-    //    yield return checkDestination();
-    //}
-    public bool activeBot = false;
 
     private void NoChoicesBot ()
     {
@@ -195,11 +222,7 @@ public abstract class PathManager : MonoBehaviour
 
         if ( inPausa )
         {
-            foreach ( GameObject s in status )
-            {
-                s.SetActive( false );
-            }
-            status[ 0 ].SetActive( true );
+            GetComponentInChildren<BubbleHead>().InAttesa();
 
             if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
             {
@@ -243,21 +266,13 @@ public abstract class PathManager : MonoBehaviour
 
         if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
         {
-            foreach ( GameObject s in status )
-            {
-                s.SetActive( false );
-            }
-            status[ 2 ].SetActive( true );
+            GetComponentInChildren<BubbleHead>().GuardoOpera();
             timedelta += Time.deltaTime;
 
         }
         else
         {
-            foreach ( GameObject s in status )
-            {
-                s.SetActive( false );
-            }
-            status[ 1 ].SetActive( true );
+            GetComponentInChildren<BubbleHead>().VersoDestinazione();
 
         }
 
@@ -280,10 +295,7 @@ public abstract class PathManager : MonoBehaviour
         }
 
     }
-
-    public bool loading = false;
-    public bool firstChoices = true;
-
+    
     private void NormaleBot ()
     {
         durataVisita += Time.deltaTime;
@@ -293,11 +305,7 @@ public abstract class PathManager : MonoBehaviour
 
             timedelta += Time.deltaTime;
 
-            foreach ( GameObject s in status )
-            {
-                s.SetActive( false );
-            }
-            status[ 0 ].SetActive( true );
+            GetComponentInChildren<BubbleHead>().InAttesa();
 
             if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
             {
@@ -318,21 +326,13 @@ public abstract class PathManager : MonoBehaviour
 
         if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
         {
-            foreach ( GameObject s in status )
-            {
-                s.SetActive( false );
-            }
-            status[ 2 ].SetActive( true );
+            GetComponentInChildren<BubbleHead>().GuardoOpera();
             timedelta += Time.deltaTime;
 
         }
         else
         {
-            foreach ( GameObject s in status )
-            {
-                s.SetActive( false );
-            }
-            status[ 1 ].SetActive( true );
+            GetComponentInChildren<BubbleHead>().VersoDestinazione();
 
         }
 
@@ -351,56 +351,58 @@ public abstract class PathManager : MonoBehaviour
     private void Update ()
     {
 
-        if ( noChoices )
-        {
-            NoChoicesBot();
-        }
-        else
-        {
-            NormaleBot();
-        }
+        Behaviour();
+
+        //if ( noChoices )
+        //{
+        //    NoChoicesBot();
+        //}
+        //else
+        //{
+        //    NormaleBot();
+        //}
     }
 
-    private void UseLastDestinationOrNew ()
+    protected virtual void UseLastDestinationOrNew ()
     {
 
-        if( noChoices )
-        {
-            if( importantPictures.Count > 0 )
-            {
-                destination = importantPictures[ 0 ].transform.GetChild( 0 ).gameObject;
-                if ( importantPictures.Contains( destination.transform.parent.gameObject ) )
-                {
-                    importantPictures.Remove( destination.transform.parent.gameObject );
-                }
+        //if( noChoices )
+        //{
+        //    if( importantPictures.Count > 0 )
+        //    {
+        //        destination = importantPictures[ 0 ].transform.GetChild( 0 ).gameObject;
+        //        if ( importantPictures.Contains( destination.transform.parent.gameObject ) )
+        //        {
+        //            importantPictures.Remove( destination.transform.parent.gameObject );
+        //        }
 
-                //CheckNextDestination();
-            }
-            else
-            {
-                inPausa = true;
+        //        //CheckNextDestination();
+        //    }
+        //    else
+        //    {
+        //        inPausa = true;
 
-                utilitySort.transform = leader.GetComponent<PathManager>().destinationPoint.transform;
-                emptySpaces.Sort( utilitySort.DistanzaPlane );
+        //        utilitySort.transform = leader.GetComponent<PathManager>().destinationPoint.transform;
+        //        emptySpaces.Sort( utilitySort.DistanzaPlane );
 
-                //Debug.Log( gameObject.name + ": Destinazione: ", destination );
-                //Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
+        //        //Debug.Log( gameObject.name + ": Destinazione: ", destination );
+        //        //Debug.Log( gameObject.name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", emptySpaces[ 0 ] );
 
-                foreach ( GameObject plane in emptySpaces )
-                {
-                    if ( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
-                    {
-                        destination = plane;
-                        //UpdateDestinationPoint();
-                        //GoToDestinationPoint();
-                        break;
-                    }
-                }
-            }
+        //        foreach ( GameObject plane in emptySpaces )
+        //        {
+        //            if ( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
+        //            {
+        //                destination = plane;
+        //                //UpdateDestinationPoint();
+        //                //GoToDestinationPoint();
+        //                break;
+        //            }
+        //        }
+        //    }
 
-            //CheckNextDestination();
-            return;
-        }
+        //    //CheckNextDestination();
+        //    return;
+        //}
 
         if ( lastPositionPattern == null )
         {
@@ -427,8 +429,7 @@ public abstract class PathManager : MonoBehaviour
         }
     }
 
-
-    private void UpdateDestination () 
+    protected void UpdateDestination () 
     {
         bool haveLastPositionPattern = false;
         float distanceFromDestination = 0;
@@ -497,64 +498,65 @@ public abstract class PathManager : MonoBehaviour
         return destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
     }
 
-    private void UpdateDestinationPointForNoChoiceExit(){
-        StartCoroutine( LiberaPosto(destinationPoint) );
-        destinationPoint = destination.GetComponent<GridSystem>().GetRandomPoint();
-        destinationPoint.GetComponent<DestinationPoint>().Occupa();
-    }
-    public void NotifyNewDestination(GameObject leaderDestination )
+    //private void UpdateDestinationPointForNoChoiceExit(){
+    //    StartCoroutine( LiberaPosto(destinationPoint) );
+    //    destinationPoint = destination.GetComponent<GridSystem>().GetRandomPoint();
+    //    destinationPoint.GetComponent<DestinationPoint>().Occupa();
+    //}
+
+    protected virtual void NotifyNewDestination(GameObject leaderDestination )
     {
-        if( noChoices && leaderDestination.CompareTag( "Uscita" ) )
-        {
-            Debug.Log(name + ": impostata destinazione come uscita", leaderDestination);
-            destination = leaderDestination;
+        //if( noChoices && leaderDestination.CompareTag( "Uscita" ) )
+        //{
+        //    Debug.Log(name + ": impostata destinazione come uscita", leaderDestination);
+        //    destination = leaderDestination;
 
-            if( destinationPrePause != null)
-            {
-                inPausa = false;
-                importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
-                importantPictures.Clear();
-                destinationPrePause = null;
-            }
+        //    if( destinationPrePause != null)
+        //    {
+        //        inPausa = false;
+        //        importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+        //        importantPictures.Clear();
+        //        destinationPrePause = null;
+        //    }
 
-            UpdateDestinationPointForNoChoiceExit();
-            GoToDestinationPoint();
-            return;
-        }
+        //    UpdateDestinationPointForNoChoiceExit();
+        //    GoToDestinationPoint();
+        //    return;
+        //}
 
         if ( leaderDestination.CompareTag( "PicturePlane" ) || leaderDestination.CompareTag( "Empty Space" ))
         {
             //Debug.Log( gameObject.name + ": Capo ha scelto nuova destinazione importante", leaderDestination );
 
-            if( !noChoices && !importantPictures.Contains( leaderDestination.transform.parent.gameObject ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ))
+            if( /* !noChoices && */ !importantPictures.Contains( leaderDestination.transform.parent.gameObject ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ))
             {
                 importantPictures.Add( leaderDestination.transform.parent.gameObject );
             }
 
-            if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !visitedPictures.Contains( leaderDestination ) )
-            {
-                if( destinationPrePause )
-                {
-                    importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
-                }
+            //if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !visitedPictures.Contains( leaderDestination ) )
+            //{
+            //    if( destinationPrePause )
+            //    {
+            //        importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+            //    }
                 
-                importantPictures.Add( leaderDestination );
-            }
-            else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
-            {
-                if( destinationPrePause )
-                {
-                    importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
-                }
-                importantPictures.Add( leaderDestination.transform.parent.gameObject );
-            }
+            //    importantPictures.Add( leaderDestination );
+            //}
+            //else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
+            //{
+            //    if( destinationPrePause )
+            //    {
+            //        importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+            //    }
+            //    importantPictures.Add( leaderDestination.transform.parent.gameObject );
+            //}
 
         }
 
     }
 
 
-    private void GoToDestinationPoint ()
+    protected void GoToDestinationPoint ()
     {
         GetComponent<RVOAgent>().UpdateTarget( destinationPoint.transform );
         GetComponent<RVOAgent>().Refresh();
@@ -602,16 +604,16 @@ public abstract class PathManager : MonoBehaviour
         return lng;
     }
 
-    IEnumerator LiberaPosto (GameObject oldDestination)
+    protected IEnumerator LiberaPosto (GameObject oldDestination)
     {
-        yield return new WaitForSeconds( 2f );
+        yield return new WaitForSeconds( 1.5f );
 
         if ( oldDestination != null )
             oldDestination.GetComponent<DestinationPoint>().Libera();
 
     }
 
-    private void UpdateDestinationPoint ()
+    protected void UpdateDestinationPoint ()
     {
         StartCoroutine( LiberaPosto(destinationPoint) );
 
@@ -624,7 +626,7 @@ public abstract class PathManager : MonoBehaviour
         }
     }
     
-    private void CheckDestinationFromPause ()
+    protected void CheckDestinationFromPause ()
     {
     
         if ( destinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )

@@ -10,13 +10,17 @@ public class SauterellePattern : PathManager
 
     private int maxJump = 10;
 
+    private void Awake ()
+    {
+        GetComponentInChildren<Renderer>().material.SetColor( "_Color", new Color32( 202, 12, 12, 1 ) );
+    }
+
     public override void InitMovementPattern ()
     {
         maxDistanza = 200;
         FindAllPicture();
         SetPictureToWatch();
     }
-
 
     private void FindAllPicture ()
     {

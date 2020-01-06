@@ -10,6 +10,11 @@ public class PoissonPattern : PathManager
     private IEnumerator<GameObject> pathPart;
     public List<GameObject> picturePlanes;
 
+    private void Awake ()
+    {
+        GetComponentInChildren<Renderer>().material.SetColor( "_Color", new Color32( 243, 24, 192, 1 ) );
+    }
+
     public override void InitMovementPattern ()
     {
         picturePlanes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );

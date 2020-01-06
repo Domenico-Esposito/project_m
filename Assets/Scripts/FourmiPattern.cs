@@ -14,6 +14,11 @@ public class FourmiPattern : PathManager
 
     public int numberOfStop;
 
+    private void Awake ()
+    {
+        GetComponentInChildren<Renderer>().material.SetColor( "_Color", new Color32( 250, 231, 44, 1 ) );
+    }
+
     public override void InitMovementPattern ()
     { 
         FindWallsWithPictures();
