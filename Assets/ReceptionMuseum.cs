@@ -45,15 +45,16 @@ public class ReceptionMuseum : MonoBehaviour
         return GetColor();
     }
 
-    public void AddUser ()
+    public void AddUser (int remove = 0)
     {
-        utenti = FindObjectsOfType<PathManager>().Length + 1;
-        bots.text = utenti.ToString();
+        List<PathManager> agenti = new List<PathManager>( FindObjectsOfType<PathManager>() );
+        int utentiAttivi = agenti.FindAll( ( PathManager obj ) => obj.gameObject.activeInHierarchy ).Count + 1 - remove;
+        bots.text = utentiAttivi.ToString();
     }
 
     public void ReceivData (string patternType, List<GameObject> visitati, List<GameObject> non_visitati, List<GameObject> ignorati, float tempoVisita, float tempoDiAttesa, float distanza)
     {
-        AddUser();
+        AddUser(2);
 
         // -1 è l'uscita
         numero_visitati += visitati.Count - 1;

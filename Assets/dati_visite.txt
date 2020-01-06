@@ -753,3 +753,23 @@ FourmiPattern | soddisfatto | Visitati: 15 | Non visitati: 1 | Tempo: 273,0613 |
 PoissonPattern | soddisfatto | Visitati: 18 | Non visitati: 0 | Tempo: 261,8658 | Attesa: 4,991204 | Distanza: 339,0625
 FourmiPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 282,8109 | Attesa: 2,999765 | Distanza: 375,1253
 # Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 2
+SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 110,3367 | Attesa: 0 | Distanza: 128,3233
+# Configurazione 1
+# Configurazione 2
+SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 85,00539 | Attesa: 0 | Distanza: 117,6583
+PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 188,6084 | Attesa: 0 | Distanza: 119,2589
+# Configurazione 1
+# Configurazione 2
+SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 72,28978 | Attesa: 0 | Distanza: 109,2294
+PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 185,596 | Attesa: 0 | Distanza: 130,8853
+# Configurazione 1
+# Configurazione 2
+SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 104,6788 | Attesa: 0 | Distanza: 124,8534
+PoissonPattern | soddisfatto | Visitati: 15 | Non visitati: 0 | Tempo: 220,1914 | Attesa: 0 | Distanza: 147,9009
+PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 269,3531 | Attesa: 0 | Distanza: 157,5437
+FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 344,261 | Attesa: 0 | Distanza: 149,1898
+PapillonPattern | soddisfatto | Visitati: 21 | Non visitati: 0 | Tempo: 412,346 | Attesa: 0 | Distanza: 239,1526
+FourmiPattern | soddisfatto | Visitati: 18 | Non visitati: 0 | Tempo: 438,403 | Attesa: 0 | Distanza: 168,2479
