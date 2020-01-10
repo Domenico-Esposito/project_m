@@ -38,12 +38,12 @@ public class SauterellePattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( importantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( picturesToWatch.MoveNext() )
         {
-            if ( visitedPictures.Contains( picturesToWatch.Current ) )
+            if ( VisitedPictures.Contains( picturesToWatch.Current ) )
             {
                 return GetNextDestination();
             }
@@ -53,8 +53,8 @@ public class SauterellePattern : PathManager
         }
         else
         {
-            if ( importantPictures.Count > 0 )
-                return importantPictures[ importantPictures.Count - 1 ].transform.GetChild( 0 ).gameObject;
+            if ( ImportantPictures.Count > 0 )
+                return ImportantPictures[ ImportantPictures.Count - 1 ].transform.GetChild( 0 ).gameObject;
         }
 
         return GetPlaneOfExit();

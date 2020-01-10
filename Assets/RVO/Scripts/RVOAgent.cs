@@ -113,9 +113,9 @@ public class RVOAgent : MonoBehaviour
 
             try
             {
-                if ( GetComponent<PathManager>().destination != null && GetComponent<PathManager>().destination.CompareTag( "PicturePlane" ) )
+                if ( GetComponent<BotVisitData>().destination != null && GetComponent<BotVisitData>().destination.CompareTag( "PicturePlane" ) )
                 {
-                    Vector3 picturePosition = GetComponent<PathManager>().destination.transform.parent.transform.position;
+                    Vector3 picturePosition = GetComponent<BotVisitData>().destination.transform.parent.transform.position;
                     GetComponent<CharacterAnimator>().TurnToPicture( picturePosition );
                 }
             }

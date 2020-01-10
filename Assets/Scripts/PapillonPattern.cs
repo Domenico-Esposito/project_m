@@ -7,7 +7,7 @@ public class PapillonPattern : PathManager
     // Pattern movimento
     private List<GameObject> walls = new List<GameObject>();
     
-    //private int currentPictureIndex = 0;
+    //private int CurrentPictureIndex = 0;
 
     private GameObject nextDestination;
 
@@ -30,14 +30,14 @@ public class PapillonPattern : PathManager
     public override GameObject GetNextDestination ()
     {
 
-        if ( ( importantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )
         {
-            Debug.Log( "Ho già visitato questo quadro? " + visitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
+            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
 
-            if( Random.Range(1, 10)  >  7 || visitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
+            if( Random.Range(1, 10)  >  7 || VisitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
             {
                 LookNextIndex();
                 return nextDestination;
@@ -48,9 +48,9 @@ public class PapillonPattern : PathManager
 
         if ( LookNextIndex() || LookNextIndex(0) )
         {
-            Debug.Log( "Ho già visitato questo quadro? " + visitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
+            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
 
-            if ( Random.Range( 0, 1 ) > 0.5f || visitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
+            if ( Random.Range( 0, 1 ) > 0.5f || VisitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
             {
                 return GetNextDestination();
             }
@@ -69,10 +69,10 @@ public class PapillonPattern : PathManager
         {
             foreach(GameObject pic in pics )
             {
-                if( pic.GetComponent<PictureInfo>().index > currentPictureIndex && pic.GetComponent<PictureInfo>().index < currentPictureIndex + maxJump )
+                if( pic.GetComponent<PictureInfo>().index > CurrentPictureIndex && pic.GetComponent<PictureInfo>().index < CurrentPictureIndex + maxJump )
                 {
                     nextDestination = pic.transform.GetChild( 0 ).gameObject;
-                    currentPictureIndex = pic.GetComponent<PictureInfo>().index;
+                    CurrentPictureIndex = pic.GetComponent<PictureInfo>().index;
                     picturesOnWalls[ pic.transform.parent.gameObject ].Remove( pic );
 
                     if ( picturesOnWalls[ pic.transform.parent.gameObject ].Count <= 0 )
@@ -132,7 +132,7 @@ public class PapillonPattern : PathManager
             GameObject mostClosePicture = consideratePics[ 0 ];
 
             nextDestination = mostClosePicture.transform.GetChild( 0 ).gameObject;
-            currentPictureIndex = mostClosePicture.GetComponent<PictureInfo>().index;
+            CurrentPictureIndex = mostClosePicture.GetComponent<PictureInfo>().index;
 
             consideratePics.Remove( mostClosePicture );
 

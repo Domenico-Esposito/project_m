@@ -33,10 +33,10 @@ public class PoissonPattern : PathManager
 
     protected override GameObject GetPointInDestination ()
     {
-        destinationPoint = destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
-        destinationPoint.GetComponent<DestinationPoint>().Occupa();
+        DestinationPoint = Destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
+        DestinationPoint.GetComponent<DestinationPoint>().Occupa();
 
-        return destinationPoint;
+        return DestinationPoint;
     }
 
 
@@ -44,7 +44,7 @@ public class PoissonPattern : PathManager
     {
         bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
 
-        if ( ( importantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( viewPicture )
@@ -79,10 +79,10 @@ public class PoissonPattern : PathManager
         GameObject destinationPlane = picturePlanes[ 0 ];
         picturePlanes.Remove( destinationPlane );
 
-        //Debug.Log( "Index considerata: " + destinationPlane.transform.parent.GetComponent<PictureInfo>().index + " | IndexAttuale: " + currentPictureIndex );
+        //Debug.Log( "Index considerata: " + destinationPlane.transform.parent.GetComponent<PictureInfo>().index + " | IndexAttuale: " + CurrentPictureIndex );
 
 
-        if( visitedPictures.Contains( destinationPlane.transform.parent.gameObject ) || destinationPlane.transform.parent.GetComponent<PictureInfo>().index <= currentPictureIndex )
+        if( VisitedPictures.Contains( destinationPlane.transform.parent.gameObject ) || destinationPlane.transform.parent.GetComponent<PictureInfo>().index <= CurrentPictureIndex )
         {
             return GetMostClosePicture();
         }

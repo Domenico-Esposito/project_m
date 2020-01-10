@@ -773,3 +773,9 @@ PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 269,3531
 FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 344,261 | Attesa: 0 | Distanza: 149,1898
 PapillonPattern | soddisfatto | Visitati: 21 | Non visitati: 0 | Tempo: 412,346 | Attesa: 0 | Distanza: 239,1526
 FourmiPattern | soddisfatto | Visitati: 18 | Non visitati: 0 | Tempo: 438,403 | Attesa: 0 | Distanza: 168,2479
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1

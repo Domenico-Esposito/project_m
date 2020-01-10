@@ -22,7 +22,7 @@ public class NoChoicesBot : PathManager
             return;
         }
 
-        durataVisita += Time.deltaTime;
+        DurataVisita += Time.deltaTime;
 
         if ( inPausa )
         {
@@ -30,12 +30,12 @@ public class NoChoicesBot : PathManager
 
             if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
             {
-                tempoInAttesa += Time.deltaTime;
+                TempoInAttesa += Time.deltaTime;
             }
 
-            if ( destinationPrePause == null || visitedPictures.Contains( destinationPrePause ) )
+            if ( DestinationPrePause == null || VisitedPictures.Contains( DestinationPrePause ) )
             {
-                utilitySort.transform = leader.GetComponent<PathManager>().destinationPoint.transform;
+                utilitySort.transform = leader.GetComponent<BotVisitData>().destinationPoint.transform;
                 emptySpaces.Sort( utilitySort.DistanzaPlane );
 
                 //Debug.Log( gameObject.name + ": Destinazione: ", destination );
@@ -45,17 +45,17 @@ public class NoChoicesBot : PathManager
                 {
                     if ( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
                     {
-                        destination = plane;
+                        Destination = plane;
                         break;
                     }
                 }
             }
             else
             {
-                if ( destinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
+                if ( DestinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
                 {
-                    destination = destinationPrePause;
-                    visitedPictures.Add( destination.transform.parent.gameObject );
+                    Destination = DestinationPrePause;
+                    VisitedPictures.Add( Destination.transform.parent.gameObject );
                     UpdateDestinationPoint();
                     GoToDestinationPoint();
 
@@ -80,7 +80,7 @@ public class NoChoicesBot : PathManager
 
         }
 
-        if ( importantPictures.Count > 0 || timedelta > pauseTime )
+        if ( ImportantPictures.Count > 0 || timedelta > pauseTime )
         {
             //destinationPrePause = null;
             UpdateDestination();
@@ -91,7 +91,7 @@ public class NoChoicesBot : PathManager
         {
             if ( gameObject.activeInHierarchy )
             {
-                destinationPoint.GetComponent<DestinationPoint>().Libera();
+                DestinationPoint.GetComponent<DestinationPoint>().Libera();
                 gameObject.SetActive( false );
                 GetComponent<RVOAgent>().SetPositionInactive();
                 transform.position = new Vector3( 30f, 0f, 30f );
@@ -101,12 +101,12 @@ public class NoChoicesBot : PathManager
 
     protected override void UseLastDestinationOrNew ()
     {
-        if ( importantPictures.Count > 0 )
+        if ( ImportantPictures.Count > 0 )
         {
-            destination = importantPictures[ 0 ].transform.GetChild( 0 ).gameObject;
-            if ( importantPictures.Contains( destination.transform.parent.gameObject ) )
+            Destination = ImportantPictures[ 0 ].transform.GetChild( 0 ).gameObject;
+            if ( ImportantPictures.Contains( Destination.transform.parent.gameObject ) )
             {
-                importantPictures.Remove( destination.transform.parent.gameObject );
+                ImportantPictures.Remove( Destination.transform.parent.gameObject );
             }
 
             //CheckNextDestination();
@@ -115,7 +115,7 @@ public class NoChoicesBot : PathManager
         {
             inPausa = true;
 
-            utilitySort.transform = leader.GetComponent<PathManager>().destinationPoint.transform;
+            utilitySort.transform = leader.GetComponent<BotVisitData>().destinationPoint.transform;
             emptySpaces.Sort( utilitySort.DistanzaPlane );
 
             //Debug.Log( gameObject.name + ": Destinazione: ", destination );
@@ -125,7 +125,7 @@ public class NoChoicesBot : PathManager
             {
                 if ( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
                 {
-                    destination = plane;
+                    Destination = plane;
                     //UpdateDestinationPoint();
                     //GoToDestinationPoint();
                     break;
@@ -138,35 +138,35 @@ public class NoChoicesBot : PathManager
     protected override void NotifyNewDestination(GameObject leaderDestination )
     {
         Debug.Log( name + ": impostata destinazione come uscita", leaderDestination );
-        destination = leaderDestination;
+        Destination = leaderDestination;
 
-        if ( destinationPrePause != null )
+        if ( DestinationPrePause != null )
         {
             inPausa = false;
-            importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
-            importantPictures.Clear();
-            destinationPrePause = null;
+            importantIgnoratePicture.Add( DestinationPrePause.transform.parent.gameObject );
+            ImportantPictures.Clear();
+            DestinationPrePause = null;
         }
 
         UpdateDestinationPointForNoChoiceExit();
         GoToDestinationPoint();
 
-        if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !visitedPictures.Contains( leaderDestination ) )
+        if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !VisitedPictures.Contains( leaderDestination ) )
         {
-            if ( destinationPrePause )
+            if ( DestinationPrePause )
             {
-                importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+                importantIgnoratePicture.Add( DestinationPrePause.transform.parent.gameObject );
             }
 
-            importantPictures.Add( leaderDestination );
+            ImportantPictures.Add( leaderDestination );
         }
-        else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !visitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
+        else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !VisitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
         {
-            if ( destinationPrePause )
+            if ( DestinationPrePause )
             {
-                importantIgnoratePicture.Add( destinationPrePause.transform.parent.gameObject );
+                importantIgnoratePicture.Add( DestinationPrePause.transform.parent.gameObject );
             }
-            importantPictures.Add( leaderDestination.transform.parent.gameObject );
+            ImportantPictures.Add( leaderDestination.transform.parent.gameObject );
         }
 
 
@@ -174,16 +174,16 @@ public class NoChoicesBot : PathManager
 
     private void UpdateDestinationPointForNoChoiceExit ()
     {
-        StartCoroutine( LiberaPosto( destinationPoint ) );
-        destinationPoint = destination.GetComponent<GridSystem>().GetRandomPoint();
-        destinationPoint.GetComponent<DestinationPoint>().Occupa();
+        StartCoroutine( LiberaPosto( DestinationPoint ) );
+        DestinationPoint = Destination.GetComponent<GridSystem>().GetRandomPoint();
+        DestinationPoint.GetComponent<DestinationPoint>().Occupa();
     }
 
     protected override void GroupElementSetData ( GameObject d, Color groupColor, bool leaderDespota )
     {
         base.GroupElementSetData(d, groupColor, leaderDespota );
 
-        importantPictures.Clear();
-        visitedPictures.Clear();
+        ImportantPictures.Clear();
+        VisitedPictures.Clear();
     }
 }
