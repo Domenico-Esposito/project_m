@@ -1,9 +1,9 @@
 #CONF
-pauseTime=6
-numberOfFourmi=20
-numberOfPapillon=20
-numberOfPoisson=20
-numberOfSauterelle=20
+pauseTime=8
+numberOfFourmi=5
+numberOfPapillon=5
+numberOfPoisson=5
+numberOfSauterelle=5
 pauseTimeGruppoSingolo=0
 numeroGruppiSingoli=0
 pauseTimeGruppoMisto=0
@@ -18,7 +18,7 @@ numberOfPapillon=0
 numberOfPoisson=0
 numberOfSauterelle=0
 pauseTimeGruppoSingolo=30
-numeroGruppiSingoli=5
+numeroGruppiSingoli=1
 pauseTimeGruppoMisto=0
 numeroGruppiMisti=0
 leaderDespota=1
@@ -33,7 +33,7 @@ numberOfSauterelle=0
 pauseTimeGruppoSingolo=0
 numeroGruppiSingoli=0
 pauseTimeGruppoMisto=30
-numeroGruppiMisti=2
+numeroGruppiMisti=1
 leaderDespota=0
 probabilitaLiberta=0
 #END

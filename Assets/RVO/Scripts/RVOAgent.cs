@@ -88,11 +88,6 @@ public class RVOAgent : MonoBehaviour
     Vector3 station;
     bool doStep = true;
 
-    public void RemoveAgent ()
-    {
-        simulator.removeAgent( agentIndex );
-    }
-
     // Update is called once per frame
     void Update ()
     {

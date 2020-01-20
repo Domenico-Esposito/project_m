@@ -35,9 +35,9 @@ public class PapillonPattern : PathManager
 
         if ( LookInBackward() )
         {
-            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
+            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ), nextDestination.transform.parent.gameObject );
 
-            if( Random.Range(1, 10)  >  7 || VisitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
+            if( Random.Range(1, 10)  >  7 || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 LookNextIndex();
                 return nextDestination;
@@ -48,9 +48,9 @@ public class PapillonPattern : PathManager
 
         if ( LookNextIndex() || LookNextIndex(0) )
         {
-            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.transform.parent.gameObject ), nextDestination.transform.parent.gameObject );
+            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ), nextDestination.transform.parent.gameObject );
 
-            if ( Random.Range( 0, 1 ) > 0.5f || VisitedPictures.Contains( nextDestination.transform.parent.gameObject ) )
+            if ( Random.Range( 0, 1 ) > 0.5f || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 return GetNextDestination();
             }
@@ -65,14 +65,14 @@ public class PapillonPattern : PathManager
 
     private bool LookNextIndex (int maxJump = 5)
     {
-        foreach(List<GameObject> pics in picturesOnWalls.Values)
+        foreach(List<PictureInfo> pics in picturesOnWalls.Values)
         {
-            foreach(GameObject pic in pics )
+            foreach(PictureInfo pic in pics )
             {
-                if( pic.GetComponent<PictureInfo>().index > CurrentPictureIndex && pic.GetComponent<PictureInfo>().index < CurrentPictureIndex + maxJump )
+                if( pic.index > CurrentPictureIndex && pic.index < CurrentPictureIndex + maxJump )
                 {
                     nextDestination = pic.transform.GetChild( 0 ).gameObject;
-                    CurrentPictureIndex = pic.GetComponent<PictureInfo>().index;
+                    CurrentPictureIndex = pic.index;
                     picturesOnWalls[ pic.transform.parent.gameObject ].Remove( pic );
 
                     if ( picturesOnWalls[ pic.transform.parent.gameObject ].Count <= 0 )
@@ -126,13 +126,13 @@ public class PapillonPattern : PathManager
 
         if( picturesOnWalls.ContainsKey(considerateWall[0]) )
         {
-            List<GameObject> consideratePics = picturesOnWalls[ considerateWall[ 0 ] ];
-            consideratePics.Sort( utilitySort.Distanza );
+            List<PictureInfo> consideratePics = picturesOnWalls[ considerateWall[ 0 ] ];
+            consideratePics.Sort( utilitySort.DistanzaPicture );
 
-            GameObject mostClosePicture = consideratePics[ 0 ];
+            PictureInfo mostClosePicture = consideratePics[ 0 ];
 
             nextDestination = mostClosePicture.transform.GetChild( 0 ).gameObject;
-            CurrentPictureIndex = mostClosePicture.GetComponent<PictureInfo>().index;
+            CurrentPictureIndex = mostClosePicture.index;
 
             consideratePics.Remove( mostClosePicture );
 
@@ -154,7 +154,7 @@ public class PapillonPattern : PathManager
             if ( wall.transform.childCount > 0 )
             {
                 walls.Add( wall );
-                picturesOnWalls.Add( wall, new List<GameObject>() );
+                picturesOnWalls.Add( wall, new List<PictureInfo>() );
             }
         }
 
@@ -168,11 +168,11 @@ public class PapillonPattern : PathManager
             foreach ( Transform picture in wall.transform )
             {
                 if ( picture.gameObject.transform.GetChild( 0 ).CompareTag( "PicturePlane" ) )
-                    picturesOnWalls[ wall].Add( picture.gameObject );
+                    picturesOnWalls[ wall].Add( picture.GetComponent<PictureInfo>() );
             }
 
             if( picturesOnWalls.ContainsKey(wall) )
-                picturesOnWalls[ wall ].Sort( utilitySort.SortByIndexPicture );
+                picturesOnWalls[ wall ].Sort( utilitySort.SortByIndex );
         }
     }
 

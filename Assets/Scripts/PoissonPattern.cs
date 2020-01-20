@@ -82,7 +82,7 @@ public class PoissonPattern : PathManager
         //Debug.Log( "Index considerata: " + destinationPlane.transform.parent.GetComponent<PictureInfo>().index + " | IndexAttuale: " + CurrentPictureIndex );
 
 
-        if( VisitedPictures.Contains( destinationPlane.transform.parent.gameObject ) || destinationPlane.transform.parent.GetComponent<PictureInfo>().index <= CurrentPictureIndex )
+        if( VisitedPictures.Contains( destinationPlane.GetComponentInParent<PictureInfo>() ) || destinationPlane.GetComponentInParent<PictureInfo>().index <= CurrentPictureIndex )
         {
             return GetMostClosePicture();
         }

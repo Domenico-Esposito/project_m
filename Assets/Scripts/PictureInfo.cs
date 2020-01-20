@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class PictureInfo : MonoBehaviour
 {
 
@@ -14,10 +16,5 @@ public class PictureInfo : MonoBehaviour
     */
     public int priority;
 
-    /*
-     * True = non considero, non cerco di visitarlo
-     * False = altrimenti
-     */
-    //public bool ignoro;
 
 }

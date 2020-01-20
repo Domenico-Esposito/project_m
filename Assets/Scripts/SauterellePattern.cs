@@ -4,9 +4,9 @@ using UnityEngine;
 public class SauterellePattern : PathManager
 {
     // Pattern movimento
-    private IEnumerator<GameObject> picturesToWatch;
+    private IEnumerator<PictureInfo> picturesToWatch;
 
-    public List<GameObject> pictures;
+    public List<PictureInfo> pictures;
 
     private int maxJump = 10;
 
@@ -24,15 +24,15 @@ public class SauterellePattern : PathManager
 
     private void FindAllPicture ()
     {
-        pictures = new List<GameObject>();
+        pictures = new List<PictureInfo>();
 
-        foreach(GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
+        foreach( GameObject picture in GameObject.FindGameObjectsWithTag( "Picture" ) )
         {
-            pictures.Add( picture );
+            pictures.Add( picture.GetComponent<PictureInfo>() );
         }
 
         utilitySort.transform = this.transform;
-        pictures.Sort( utilitySort.Distanza );
+        pictures.Sort( utilitySort.DistanzaPicture );
 
     }
 
@@ -63,16 +63,16 @@ public class SauterellePattern : PathManager
 
     private void SetPictureToWatch ()
     {
-        List<GameObject> picturesToWatch_list = new List<GameObject>();
+        List<PictureInfo> picturesToWatch_list = new List<PictureInfo>();
         int lastPictureIndexAdded = 0;
 
-        foreach ( GameObject picture in pictures )
+        foreach ( PictureInfo picture in pictures )
         {
-            int pictureIndex = picture.GetComponent<PictureInfo>().index;
+            int pictureIndex = picture.index;
 
             if ( Random.Range( 0, 10 ) > 8 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
             {
-                lastPictureIndexAdded = picture.GetComponent<PictureInfo>().index;
+                lastPictureIndexAdded = picture.index;
                 picturesToWatch_list.Add( picture );
             }
         }

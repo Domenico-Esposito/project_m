@@ -1,781 +1,186 @@
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 94,86282 | Attesa: 0 | Distanza: 128,2612
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 77,97372 | Attesa: 0 | Distanza: 106,0473
-SauterellePattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 102,9301 | Attesa: 0 | Distanza: 116,9889
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 67,60045 | Attesa: 0 | Distanza: 95,80288
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 101,6861 | Attesa: 0 | Distanza: 145,8611
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 70,02995 | Attesa: 0 | Distanza: 97,9242
-PapillonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 159,0231 | Attesa: 0 | Distanza: 122,4674
-PoissonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 201,872 | Attesa: 0 | Distanza: 144,0664
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 199,6723 | Attesa: 0 | Distanza: 185,1679
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 123,8 | Attesa: 0 | Distanza: 135,399
-PoissonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 196,5985 | Attesa: 0 | Distanza: 144,453
-PapillonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 89,11103 | Attesa: 0 | Distanza: 120,6287
-FourmiPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 77,27527 | Attesa: 7,181385 | Distanza: 74,59917
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 109,8837 | Attesa: 12,28872 | Distanza: 136,1326
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 78,67039 | Attesa: 5,961253 | Distanza: 129,2368
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 184,331 | Attesa: 5,149312 | Distanza: 153,8148
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 296,7633 | Attesa: 0 | Distanza: 159,3578
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 215,4513 | Attesa: 0 | Distanza: 219,1538
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 72,11018 | Attesa: 6,921406 | Distanza: 101,729
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 184,9514 | Attesa: 11,00252 | Distanza: 156,5033
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 151,1714 | Attesa: 0 | Distanza: 258,4648
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 1 | Tempo: 168,4912 | Attesa: 11,43949 | Distanza: 111,8809
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 193,474 | Attesa: 0 | Distanza: 191,8884
-PapillonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 85,84663 | Attesa: 5,630831 | Distanza: 133,6832
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 240,5486 | Attesa: 13,07997 | Distanza: 146,5243
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 339,7816 | Attesa: 0 | Distanza: 155,5768
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 129,946 | Attesa: 18,18878 | Distanza: 162,6455
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 176,9088 | Attesa: 12,86046 | Distanza: 220,6458
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 75,55593 | Attesa: 14,13193 | Distanza: 120,6129
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 205,3038 | Attesa: 13,25864 | Distanza: 192,1596
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 1 | Tempo: 181,8262 | Attesa: 10,88272 | Distanza: 139,7048
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 114,7869 | Attesa: 10,18 | Distanza: 124,1032
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 110,0667 | Attesa: 16,40166 | Distanza: 145,1013
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 1 | Tempo: 141,4958 | Attesa: 11,62101 | Distanza: 139,5681
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 140,3756 | Attesa: 6,060291 | Distanza: 259,3732
-FourmiPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 408,8306 | Attesa: 0 | Distanza: 185,2859
-PapillonPattern | soddisfatto | Visitati: 18 | Non visitati: 1 | Tempo: 428,1504 | Attesa: 18,67972 | Distanza: 253,7796
-# Configurazione 1
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 73,35186 | Attesa: 0 | Distanza: 109,6906
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 78,98897 | Attesa: 0 | Distanza: 97,93891
-SauterellePattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 113,5558 | Attesa: 0 | Distanza: 140,1644
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 171,5567 | Attesa: 0 | Distanza: 116,4029
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 96,65369 | Attesa: 0 | Distanza: 103,7984
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 98,8756 | Attesa: 0 | Distanza: 140,1825
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 78,89655 | Attesa: 0 | Distanza: 104,037
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 196,6667 | Attesa: 0 | Distanza: 167,9007
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 152,3099 | Attesa: 0 | Distanza: 160,8308
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 76,33198 | Attesa: 0 | Distanza: 125,8618
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 90,34224 | Attesa: 12,52634 | Distanza: 113,8059
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 80,45383 | Attesa: 0 | Distanza: 102,5457
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 82,89481 | Attesa: 0 | Distanza: 128,0208
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 99,87287 | Attesa: 0 | Distanza: 145,0009
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 131,3822 | Attesa: 0,2290434 | Distanza: 192,7035
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 90,81334 | Attesa: 2,785903 | Distanza: 107,3722
-# Configurazione 1
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 61,62806 | Attesa: 0 | Distanza: 108,8726
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 60,09486 | Attesa: 0 | Distanza: 110,934
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 91,30563 | Attesa: 0 | Distanza: 128,833
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 86,14037 | Attesa: 0 | Distanza: 113,66
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 0 | Tempo: 68,38255 | Attesa: 1,093428 | Distanza: 111,8149
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 65,00129 | Attesa: 0 | Distanza: 104,1301
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 87,86073 | Attesa: 0 | Distanza: 134,9364
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 104,6834 | Attesa: 0 | Distanza: 164,8138
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 73,12974 | Attesa: 0,5196941 | Distanza: 122,1482
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 70,46507 | Attesa: 11,14432 | Distanza: 146,5503
-PapillonPattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 133,4012 | Attesa: 0 | Distanza: 114,9814
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 182,1079 | Attesa: 1,20711 | Distanza: 138,8978
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 95,5292 | Attesa: 6,499326 | Distanza: 162,4627
-SauterellePattern | soddisfatto | Visitati: 10 | Non visitati: 2 | Tempo: 145,8722 | Attesa: 17,98347 | Distanza: 172,8259
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 181,516 | Attesa: 0 | Distanza: 173,0074
-SauterellePattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 171,5101 | Attesa: 0 | Distanza: 208,2463
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 101,9867 | Attesa: 21,82767 | Distanza: 180,3436
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 92,18221 | Attesa: 29,96604 | Distanza: 118,8787
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 216,6237 | Attesa: 5,429178 | Distanza: 207,9188
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 182,3375 | Attesa: 0 | Distanza: 201,3643
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 157,7926 | Attesa: 18,14581 | Distanza: 166,4761
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 85,08516 | Attesa: 7,436174 | Distanza: 142,5398
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 163,5518 | Attesa: 1,306397 | Distanza: 145,1025
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 65,73036 | Attesa: 5,956717 | Distanza: 99,06165
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 191,4482 | Attesa: 11,66767 | Distanza: 194,4636
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 154,0514 | Attesa: 12,95158 | Distanza: 211,9718
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 83,03197 | Attesa: 15,84586 | Distanza: 119,9732
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 184,9826 | Attesa: 13,71957 | Distanza: 193,1231
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 1 | Tempo: 69,63217 | Attesa: 22,0333 | Distanza: 138,4273
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 129,0701 | Attesa: 13,26878 | Distanza: 185,39
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 163,5425 | Attesa: 17,54262 | Distanza: 130,0809
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 175,8672 | Attesa: 11,3203 | Distanza: 214,9008
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 3 | Tempo: 188,0587 | Attesa: 27,81013 | Distanza: 152,5258
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 76,51412 | Attesa: 6,448147 | Distanza: 121,4685
-PapillonPattern | insoddisfatto | Visitati: 12 | Non visitati: 3 | Tempo: 195,0641 | Attesa: 47,51314 | Distanza: 229,8692
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 107,6435 | Attesa: 14,00295 | Distanza: 165,7731
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 163,3392 | Attesa: 0,7361932 | Distanza: 164,2653
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 152,8066 | Attesa: 33,84092 | Distanza: 219,0211
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 85,58836 | Attesa: 14,04003 | Distanza: 169,4625
-PapillonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 167,5323 | Attesa: 8,668048 | Distanza: 162,6198
-FourmiPattern | insoddisfatto | Visitati: 8 | Non visitati: 3 | Tempo: 163,0598 | Attesa: 37,7169 | Distanza: 217,6601
-PapillonPattern | insoddisfatto | Visitati: 14 | Non visitati: 3 | Tempo: 215,3773 | Attesa: 39,03954 | Distanza: 242,0976
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 160,6863 | Attesa: 11,25829 | Distanza: 279,531
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 140,5219 | Attesa: 21,44992 | Distanza: 205,0736
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 81,80922 | Attesa: 24,22119 | Distanza: 140,5581
-PapillonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 172,7753 | Attesa: 11,72928 | Distanza: 149,5416
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 100,1639 | Attesa: 15,15139 | Distanza: 205,0556
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 142,8502 | Attesa: 8,52479 | Distanza: 216,3079
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 122,5984 | Attesa: 24,52068 | Distanza: 191,6329
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 83,59015 | Attesa: 29,75192 | Distanza: 132,5027
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 141,9155 | Attesa: 43,72922 | Distanza: 199,4178
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 94,28329 | Attesa: 23,59017 | Distanza: 146,0812
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 106,6442 | Attesa: 22,70179 | Distanza: 153,6559
-PoissonPattern | insoddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 206,843 | Attesa: 31,62385 | Distanza: 203,5946
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 147,1944 | Attesa: 17,76232 | Distanza: 197,0549
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 78,72109 | Attesa: 31,38004 | Distanza: 73,47642
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 76,87881 | Attesa: 16,30893 | Distanza: 127,5302
-PapillonPattern | soddisfatto | Visitati: 12 | Non visitati: 2 | Tempo: 349,49 | Attesa: 27,12691 | Distanza: 244,2193
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 143,1005 | Attesa: 8,389076 | Distanza: 236,8373
-FourmiPattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 322,407 | Attesa: 17,03803 | Distanza: 223,5805
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 100,5604 | Attesa: 19,93124 | Distanza: 118,625
-PapillonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 373,061 | Attesa: 12,83714 | Distanza: 314,7244
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 139,7451 | Attesa: 27,93739 | Distanza: 189,7097
-PoissonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 149,7858 | Attesa: 28,61975 | Distanza: 107,8198
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 75,27851 | Attesa: 15,54006 | Distanza: 157,5591
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 91,24358 | Attesa: 18,0715 | Distanza: 160,0394
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 89,02225 | Attesa: 17,83042 | Distanza: 75,82383
-PapillonPattern | insoddisfatto | Visitati: 10 | Non visitati: 3 | Tempo: 361,9937 | Attesa: 39,44207 | Distanza: 269,889
-FourmiPattern | insoddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 173,3564 | Attesa: 32,86487 | Distanza: 256,7961
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 84,78233 | Attesa: 10,44536 | Distanza: 122,8543
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 269,7131 | Attesa: 28,97422 | Distanza: 253,0839
-FourmiPattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 318,9575 | Attesa: 14,75202 | Distanza: 226,9621
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 403,807 | Attesa: 6,739936 | Distanza: 237,8726
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 93,40278 | Attesa: 0 | Distanza: 118,7289
-SauterellePattern | soddisfatto | Visitati: 3 | Non visitati: 0 | Tempo: 57,48735 | Attesa: 6,396479 | Distanza: 119,4817
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 85,43737 | Attesa: 1,872319 | Distanza: 140,8667
-SauterellePattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 116,6947 | Attesa: 0 | Distanza: 136,9942
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 122,5214 | Attesa: 0 | Distanza: 150,4039
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 99,43938 | Attesa: 4,056572 | Distanza: 156,5663
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 80,40025 | Attesa: 0 | Distanza: 132,4991
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 184,8353 | Attesa: 0,1455706 | Distanza: 136,8893
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 76,19316 | Attesa: 0 | Distanza: 140,5524
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 134,7166 | Attesa: 4,999259 | Distanza: 148,4781
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 166,229 | Attesa: 0 | Distanza: 155,9324
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 117,373 | Attesa: 0 | Distanza: 203,2598
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 111,8423 | Attesa: 4,722605 | Distanza: 197,6582
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 190,7233 | Attesa: 0,404735 | Distanza: 163,7388
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 178,1253 | Attesa: 0 | Distanza: 81,48542
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 106,8206 | Attesa: 20,99208 | Distanza: 157,4275
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 83,03486 | Attesa: 0 | Distanza: 144,4471
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 171,1002 | Attesa: 0 | Distanza: 160,6235
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 226,3405 | Attesa: 2,644493 | Distanza: 227,9887
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 112,9161 | Attesa: 26,14479 | Distanza: 119,8246
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 128,2113 | Attesa: 25,94855 | Distanza: 153,9054
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 201,174 | Attesa: 0 | Distanza: 178,1262
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 3 | Tempo: 114,7183 | Attesa: 24,92335 | Distanza: 126,5436
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 169,3936 | Attesa: 8,785394 | Distanza: 158,0043
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 72,49158 | Attesa: 9,704119 | Distanza: 97,40955
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 89,38558 | Attesa: 45,3816 | Distanza: 133,3732
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 104,0924 | Attesa: 13,86385 | Distanza: 158,9619
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 211,1855 | Attesa: 10,33244 | Distanza: 139,5374
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 157,9289 | Attesa: 14,42918 | Distanza: 174,715
-PoissonPattern | insoddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 197,8284 | Attesa: 33,2529 | Distanza: 161,846
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 155,7966 | Attesa: 8,03658 | Distanza: 225,0304
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 63,81581 | Attesa: 14,48497 | Distanza: 113,2892
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 131,9277 | Attesa: 18,38896 | Distanza: 121,156
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 82,71774 | Attesa: 38,92561 | Distanza: 129,1889
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 106,6974 | Attesa: 46,14888 | Distanza: 130,263
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 59,79238 | Attesa: 5,600108 | Distanza: 91,86474
-FourmiPattern | insoddisfatto | Visitati: 1 | Non visitati: 4 | Tempo: 133,5502 | Attesa: 75,78467 | Distanza: 188,781
-FourmiPattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 111,9515 | Attesa: 51,81581 | Distanza: 194,4858
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 149,4916 | Attesa: 16,18026 | Distanza: 142,8136
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 89,67564 | Attesa: 6,468229 | Distanza: 160,8868
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 107,9414 | Attesa: 18,62317 | Distanza: 149,2738
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 65,67809 | Attesa: 10,46237 | Distanza: 101,4231
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 105,0853 | Attesa: 17,4669 | Distanza: 130,2901
-FourmiPattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 293,3903 | Attesa: 5,666079 | Distanza: 184,1111
-FourmiPattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 195,5694 | Attesa: 41,74843 | Distanza: 188,2718
-FourmiPattern | insoddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 169,2263 | Attesa: 35,86451 | Distanza: 213,251
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 103,1872 | Attesa: 21,39707 | Distanza: 118,0014
-PoissonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 179,4186 | Attesa: 39,74217 | Distanza: 197,2184
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 80,44144 | Attesa: 11,23337 | Distanza: 104,181
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 335,4914 | Attesa: 0 | Distanza: 198,8355
-PapillonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 358,3843 | Attesa: 12,70127 | Distanza: 369,6136
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 323,449 | Attesa: 23,66992 | Distanza: 345,0549
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 81,06997 | Attesa: 21,7685 | Distanza: 98,82896
-PapillonPattern | soddisfatto | Visitati: 4 | Non visitati: 0 | Tempo: 280,4248 | Attesa: 10,58497 | Distanza: 311,3263
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 178,4372 | Attesa: 44,54169 | Distanza: 303,3037
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 158,5171 | Attesa: 38,76016 | Distanza: 281,8524
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 80,53384 | Attesa: 18,74849 | Distanza: 127,8791
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 131,0972 | Attesa: 13,77301 | Distanza: 238,6996
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 72,64071 | Attesa: 24,46601 | Distanza: 89,05617
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 125,4747 | Attesa: 11,19904 | Distanza: 217,5976
-PapillonPattern | insoddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 369,9933 | Attesa: 41,19362 | Distanza: 292,7114
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 87,46989 | Attesa: 12,9614 | Distanza: 153,776
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 104,5132 | Attesa: 14,2163 | Distanza: 145,9628
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 189,6376 | Attesa: 12,14636 | Distanza: 242,1572
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 136,5533 | Attesa: 35,35117 | Distanza: 169,5273
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 155,1111 | Attesa: 10,68803 | Distanza: 205,0192
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 339,1881 | Attesa: 25,48616 | Distanza: 358,461
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 378,8774 | Attesa: 6,487166 | Distanza: 221,1384
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 291,5774 | Attesa: 77,28143 | Distanza: 293,7832
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 369,2608 | Attesa: 5,333973 | Distanza: 319,6978
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 398,4518 | Attesa: 22,86774 | Distanza: 216,9225
-PapillonPattern | soddisfatto | Visitati: 12 | Non visitati: 3 | Tempo: 337,2374 | Attesa: 20,14842 | Distanza: 285,8816
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 129,5352 | Attesa: 15,38408 | Distanza: 294,6295
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 172,5888 | Attesa: 57,17894 | Distanza: 206,9801
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 124,422 | Attesa: 7,083268 | Distanza: 234,9771
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 90,63152 | Attesa: 12,54707 | Distanza: 211,0058
-FourmiPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 122,7588 | Attesa: 23,24805 | Distanza: 219,105
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 5 | Tempo: 209,4055 | Attesa: 38,03379 | Distanza: 252,9641
-PoissonPattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 119,1073 | Attesa: 28,62759 | Distanza: 236,1771
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 92,12633 | Attesa: 34,51667 | Distanza: 129,6629
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 4 | Tempo: 184,7532 | Attesa: 40,85637 | Distanza: 305,2953
-PapillonPattern | soddisfatto | Visitati: 9 | Non visitati: 2 | Tempo: 320,8636 | Attesa: 18,41449 | Distanza: 317,4598
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 170,0335 | Attesa: 45,58044 | Distanza: 234,6816
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 371,2591 | Attesa: 20,40302 | Distanza: 176,3105
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 91,00659 | Attesa: 17,61084 | Distanza: 121,8862
-PapillonPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 373,1266 | Attesa: 12,57757 | Distanza: 290,7244
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 365,1174 | Attesa: 12,49123 | Distanza: 186,7755
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 117,6115 | Attesa: 8,908731 | Distanza: 153,7842
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 93,86426 | Attesa: 15,9757 | Distanza: 158,0636
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 131,5539 | Attesa: 5,289126 | Distanza: 262,6515
-FourmiPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 347,7052 | Attesa: 20,70865 | Distanza: 303,994
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 328,6123 | Attesa: 25,30477 | Distanza: 287,1439
-PapillonPattern | insoddisfatto | Visitati: 10 | Non visitati: 3 | Tempo: 208,2963 | Attesa: 47,09253 | Distanza: 258,0652
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 101,377 | Attesa: 20,06713 | Distanza: 82,93388
-FourmiPattern | insoddisfatto | Visitati: 15 | Non visitati: 2 | Tempo: 234,2281 | Attesa: 52,51382 | Distanza: 298,3184
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 105,7571 | Attesa: 22,60417 | Distanza: 165,9706
-PapillonPattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 332,824 | Attesa: 16,07156 | Distanza: 304,5751
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 6 | Tempo: 189,0042 | Attesa: 73,80233 | Distanza: 189,701
-PoissonPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 102,6823 | Attesa: 22,72137 | Distanza: 180,9829
-PapillonPattern | insoddisfatto | Visitati: 10 | Non visitati: 4 | Tempo: 215,0787 | Attesa: 54,35411 | Distanza: 258,5797
-PapillonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 360,6251 | Attesa: 25,08822 | Distanza: 295,4674
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 91,94154 | Attesa: 17,6719 | Distanza: 153,3336
-PapillonPattern | insoddisfatto | Visitati: 9 | Non visitati: 3 | Tempo: 204,889 | Attesa: 35,337 | Distanza: 300,1734
-FourmiPattern | insoddisfatto | Visitati: 9 | Non visitati: 2 | Tempo: 184,4234 | Attesa: 34,7063 | Distanza: 242,5079
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 63,92628 | Attesa: 10,39844 | Distanza: 83,49624
-PapillonPattern | insoddisfatto | Visitati: 7 | Non visitati: 3 | Tempo: 153,5951 | Attesa: 35,86277 | Distanza: 194,6164
-PapillonPattern | insoddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 334,9674 | Attesa: 49,33931 | Distanza: 275,9535
-FourmiPattern | insoddisfatto | Visitati: 10 | Non visitati: 2 | Tempo: 400,3028 | Attesa: 31,00861 | Distanza: 233,0187
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 101,2917 | Attesa: 12,75229 | Distanza: 154,4001
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 115,3843 | Attesa: 3,400105 | Distanza: 241,9663
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 151,1623 | Attesa: 20,94635 | Distanza: 156,2017
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 157,6999 | Attesa: 8,579554 | Distanza: 185,5309
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 88,61065 | Attesa: 9,817628 | Distanza: 167,1655
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 4 | Tempo: 192,9368 | Attesa: 41,41313 | Distanza: 283,8173
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 104,3511 | Attesa: 11,24209 | Distanza: 144,2593
-PapillonPattern | insoddisfatto | Visitati: 12 | Non visitati: 3 | Tempo: 204,2706 | Attesa: 46,02125 | Distanza: 263,2699
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 79,55756 | Attesa: 25,30899 | Distanza: 83,26066
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 102,3009 | Attesa: 15,33171 | Distanza: 144,9518
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 4 | Tempo: 162,8986 | Attesa: 54,12408 | Distanza: 226,3038
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 396,408 | Attesa: 32,89513 | Distanza: 278,6816
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 178,0902 | Attesa: 19,14579 | Distanza: 306,6587
-PapillonPattern | insoddisfatto | Visitati: 10 | Non visitati: 5 | Tempo: 222,3366 | Attesa: 74,0581 | Distanza: 246,166
-FourmiPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 383,2326 | Attesa: 21,29116 | Distanza: 300,0583
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 316,601 | Attesa: 25,3214 | Distanza: 300,4152
-PapillonPattern | insoddisfatto | Visitati: 12 | Non visitati: 2 | Tempo: 365,5445 | Attesa: 33,78402 | Distanza: 267,0701
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 334,7443 | Attesa: 29,35779 | Distanza: 324,8139
-PapillonPattern | insoddisfatto | Visitati: 11 | Non visitati: 3 | Tempo: 190,8817 | Attesa: 42,55403 | Distanza: 198,3783
-FourmiPattern | insoddisfatto | Visitati: 11 | Non visitati: 2 | Tempo: 189,3745 | Attesa: 37,0357 | Distanza: 235,0181
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 97,82431 | Attesa: 34,48484 | Distanza: 113,564
-PoissonPattern | insoddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 104,9266 | Attesa: 34,64656 | Distanza: 138,8125
-SauterellePattern | insoddisfatto | Visitati: 7 | Non visitati: 3 | Tempo: 165,0421 | Attesa: 38,02379 | Distanza: 171,475
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 123,8139 | Attesa: 18,66999 | Distanza: 121,0358
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 100,5152 | Attesa: 19,97154 | Distanza: 142,2175
-FourmiPattern | insoddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 194,8073 | Attesa: 49,62352 | Distanza: 285,3773
-PoissonPattern | insoddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 142,9933 | Attesa: 40,15287 | Distanza: 144,7961
-FourmiPattern | insoddisfatto | Visitati: 10 | Non visitati: 4 | Tempo: 186,1793 | Attesa: 37,33673 | Distanza: 203,626
-PapillonPattern | insoddisfatto | Visitati: 14 | Non visitati: 4 | Tempo: 377,1381 | Attesa: 46,46067 | Distanza: 226,5726
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 82,58512 | Attesa: 11,50817 | Distanza: 115,0082
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 143,5066 | Attesa: 15,49187 | Distanza: 214,0275
-PapillonPattern | insoddisfatto | Visitati: 12 | Non visitati: 3 | Tempo: 197,9618 | Attesa: 45,69783 | Distanza: 212,1645
-FourmiPattern | insoddisfatto | Visitati: 10 | Non visitati: 2 | Tempo: 180,7682 | Attesa: 35,96558 | Distanza: 280,5808
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 2 | Tempo: 168,8832 | Attesa: 19,51896 | Distanza: 208,8013
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 137,7518 | Attesa: 40,01509 | Distanza: 117,0582
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 102,2346 | Attesa: 26,47808 | Distanza: 142,6487
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 266,1838 | Attesa: 4,841557 | Distanza: 309,2984
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 107,0029 | Attesa: 10,03321 | Distanza: 130,3935
-# Configurazione 2
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 93,05282 | Attesa: 17,27884 | Distanza: 116,1579
-PapillonPattern | insoddisfatto | Visitati: 13 | Non visitati: 3 | Tempo: 208,2344 | Attesa: 40,61805 | Distanza: 229,5698
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 68,05569 | Attesa: 12,32051 | Distanza: 89,01776
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 89,73477 | Attesa: 11,01459 | Distanza: 122,9282
-PapillonPattern | insoddisfatto | Visitati: 15 | Non visitati: 3 | Tempo: 205,8833 | Attesa: 30,01291 | Distanza: 258,5102
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 104,4796 | Attesa: 18,40763 | Distanza: 206,3873
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 121,3286 | Attesa: 10,89289 | Distanza: 188,4283
-PapillonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 186,5838 | Attesa: 13,54003 | Distanza: 329,1179
-FourmiPattern | insoddisfatto | Visitati: 9 | Non visitati: 3 | Tempo: 193,1812 | Attesa: 30,06357 | Distanza: 253,5333
-PapillonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 84,25214 | Attesa: 18,19009 | Distanza: 124,131
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 97,63106 | Attesa: 3,385484 | Distanza: 165,0143
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 463,1986 | Attesa: 9,800752 | Distanza: 353,0025
-FourmiPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 104,6233 | Attesa: 25,35215 | Distanza: 162,1724
-FourmiPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 142,7993 | Attesa: 16,48791 | Distanza: 198,2324
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 113,1531 | Attesa: 7,203102 | Distanza: 160,8987
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 99,61449 | Attesa: 11,3403 | Distanza: 158,5133
-PapillonPattern | insoddisfatto | Visitati: 14 | Non visitati: 3 | Tempo: 215,3834 | Attesa: 33,07283 | Distanza: 294,973
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 82,95777 | Attesa: 20,70078 | Distanza: 133,013
-FourmiPattern | insoddisfatto | Visitati: 10 | Non visitati: 3 | Tempo: 177,1883 | Attesa: 30,14119 | Distanza: 187,9158
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 2 | Tempo: 203,4428 | Attesa: 23,34646 | Distanza: 289,0618
-FourmiPattern | insoddisfatto | Visitati: 12 | Non visitati: 3 | Tempo: 192,1059 | Attesa: 35,13902 | Distanza: 178,1904
-FourmiPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 168,7638 | Attesa: 15,86214 | Distanza: 289,5226
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 99,63725 | Attesa: 38,21593 | Distanza: 100,2551
-PapillonPattern | insoddisfatto | Visitati: 10 | Non visitati: 3 | Tempo: 192,8885 | Attesa: 50,46057 | Distanza: 253,0814
-PapillonPattern | insoddisfatto | Visitati: 11 | Non visitati: 2 | Tempo: 206,406 | Attesa: 40,46611 | Distanza: 284,8416
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 183,6747 | Attesa: 33,84127 | Distanza: 331,978
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 97,56496 | Attesa: 16,5234 | Distanza: 186,2124
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 73,79321 | Attesa: 16,87547 | Distanza: 91,75622
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 86,4258 | Attesa: 9,478262 | Distanza: 181,0131
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 163,1023 | Attesa: 23,51807 | Distanza: 287,2099
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 60,48481 | Attesa: 0 | Distanza: 96,50366
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 73,48386 | Attesa: 6,62023 | Distanza: 101,8014
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 82,12155 | Attesa: 0 | Distanza: 111,5974
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 69,49138 | Attesa: 2,307556 | Distanza: 114,2607
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 80,15571 | Attesa: 0 | Distanza: 157,3991
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 84,22695 | Attesa: 3,255318 | Distanza: 175,1477
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 83,4924 | Attesa: 22,0429 | Distanza: 105,6476
-PapillonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 155,7549 | Attesa: 10,57051 | Distanza: 123,5218
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 130,9734 | Attesa: 5,453069 | Distanza: 138,0636
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 113,463 | Attesa: 11,05628 | Distanza: 160,5199
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 147,0822 | Attesa: 11,88769 | Distanza: 157,3234
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 73,69604 | Attesa: 30,23891 | Distanza: 87,12988
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 100,566 | Attesa: 19,70158 | Distanza: 142,8702
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 159,7585 | Attesa: 13,32404 | Distanza: 145,3784
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 119,6326 | Attesa: 20,8373 | Distanza: 203,1175
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 90,98447 | Attesa: 20,61105 | Distanza: 92,06628
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 135,3247 | Attesa: 18,66556 | Distanza: 180,5103
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 79,90794 | Attesa: 16,27776 | Distanza: 125,8585
-PoissonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 123,9279 | Attesa: 31,64784 | Distanza: 156,1512
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 106,3238 | Attesa: 23,29568 | Distanza: 139,1737
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 190,9468 | Attesa: 13,09859 | Distanza: 204,0683
-PoissonPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 94,78041 | Attesa: 27,76423 | Distanza: 121,0796
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 89,43524 | Attesa: 28,08378 | Distanza: 140,856
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 176,6548 | Attesa: 13,50827 | Distanza: 242,9381
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 131,3193 | Attesa: 22,3634 | Distanza: 180,1089
-PoissonPattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 123,6954 | Attesa: 36,54839 | Distanza: 100,1456
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 217,4353 | Attesa: 7,860049 | Distanza: 173,0273
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 80,81776 | Attesa: 12,05635 | Distanza: 174,4919
-PoissonPattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 181,1983 | Attesa: 25,35149 | Distanza: 243,5172
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 60,84291 | Attesa: 19,94736 | Distanza: 61,25221
-PoissonPattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 152,3579 | Attesa: 19,89768 | Distanza: 177,9554
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 116,7528 | Attesa: 0,9742681 | Distanza: 178,9106
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 74,34884 | Attesa: 27,52801 | Distanza: 92,5573
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 138,7747 | Attesa: 35,08679 | Distanza: 240,4795
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 114,8964 | Attesa: 26,70618 | Distanza: 109,3198
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 108,3424 | Attesa: 16,98989 | Distanza: 161,2798
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 118,0843 | Attesa: 44,54927 | Distanza: 191,7935
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 89,28156 | Attesa: 42,24141 | Distanza: 94,97955
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 98,54747 | Attesa: 26,28095 | Distanza: 123,0616
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 1 | Tempo: 79,46317 | Attesa: 19,88805 | Distanza: 170,4045
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 75,26035 | Attesa: 21,81203 | Distanza: 96,00351
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 4 | Tempo: 97,84049 | Attesa: 53,1757 | Distanza: 16,60668
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 132,689 | Attesa: 56,27235 | Distanza: 173,7984
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 91,74238 | Attesa: 22,57563 | Distanza: 227,9913
-FourmiPattern | insoddisfatto | Visitati: 9 | Non visitati: 5 | Tempo: 193,5929 | Attesa: 59,7602 | Distanza: 223,6411
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 93,37934 | Attesa: 29,84356 | Distanza: 191,5399
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 178,2141 | Attesa: 33,325 | Distanza: 197,7448
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 77,53172 | Attesa: 34,08571 | Distanza: 43,46499
-PoissonPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 153,8759 | Attesa: 23,60086 | Distanza: 246,9288
-FourmiPattern | soddisfatto | Visitati: 11 | Non visitati: 3 | Tempo: 192,3165 | Attesa: 16,68169 | Distanza: 338,2048
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 4 | Tempo: 105,4551 | Attesa: 32,69487 | Distanza: 119,9433
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 93,32122 | Attesa: 40,8061 | Distanza: 117,249
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 102,8749 | Attesa: 20,46463 | Distanza: 139,995
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 53,01203 | Attesa: 12,02065 | Distanza: 107,4245
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 122,8864 | Attesa: 51,22281 | Distanza: 130,0317
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 80,84406 | Attesa: 33,50174 | Distanza: 102,3453
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 4 | Tempo: 15,14416 | Attesa: 0 | Distanza: 0
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 6 | Tempo: 168,2669 | Attesa: 77,87772 | Distanza: 131,0806
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 145,0864 | Attesa: 36,04151 | Distanza: 160,0989
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 255,5504 | Attesa: 31,50373 | Distanza: 327,9865
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 224,5772 | Attesa: 31,51253 | Distanza: 329,7609
-PoissonPattern | insoddisfatto | Visitati: 4 | Non visitati: 3 | Tempo: 101,5244 | Attesa: 30,65389 | Distanza: 98,01958
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 87,13933 | Attesa: 12,9895 | Distanza: 158,7456
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 101,9387 | Attesa: 19,17876 | Distanza: 0
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 91,64108 | Attesa: 15,931 | Distanza: 134,898
-PapillonPattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 286,7513 | Attesa: 74,49497 | Distanza: 269,459
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 3 | Tempo: 122,9536 | Attesa: 46,61808 | Distanza: 91,70905
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 4 | Tempo: 147,3452 | Attesa: 41,79557 | Distanza: 157,3962
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 305,9005 | Attesa: 34,68843 | Distanza: 321,3875
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 5 | Tempo: 118,4626 | Attesa: 46,66359 | Distanza: 106,9977
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 4 | Tempo: 15,15285 | Attesa: 0 | Distanza: 1,558199
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 7 | Tempo: 174,4846 | Attesa: 34,25039 | Distanza: 323,7598
-PapillonPattern | insoddisfatto | Visitati: 1 | Non visitati: 5 | Tempo: 109,4775 | Attesa: 64,25606 | Distanza: 24,55665
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 2 | Tempo: 16,51948 | Attesa: 0 | Distanza: 0
-PapillonPattern | insoddisfatto | Visitati: 9 | Non visitati: 2 | Tempo: 336,06 | Attesa: 55,64644 | Distanza: 285,5671
-PapillonPattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 296,9565 | Attesa: 6,975711 | Distanza: 422,828
-PapillonPattern | insoddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 330,3694 | Attesa: 39,39722 | Distanza: 283,6024
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 290,6071 | Attesa: 54,52511 | Distanza: 314,507
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 6 | Tempo: 111,4827 | Attesa: 71,35449 | Distanza: 62,11477
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 87,8993 | Attesa: 53,93598 | Distanza: 36,08096
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 98,1739 | Attesa: 12,83191 | Distanza: 131,2517
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 108,392 | Attesa: 28,35114 | Distanza: 83,50041
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 186,9194 | Attesa: 76,0147 | Distanza: 94,15868
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 78,03635 | Attesa: 37,7811 | Distanza: 80,72849
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 4 | Tempo: 82,71754 | Attesa: 33,88872 | Distanza: 80,47723
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 7 | Tempo: 165,3162 | Attesa: 80,96348 | Distanza: 180,5086
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 31,18283 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 96,252 | Attesa: 59,89143 | Distanza: 7,201426
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 126,3541 | Attesa: 73,5442 | Distanza: 58,36285
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 296,7516 | Attesa: 44,8224 | Distanza: 357,4716
-FourmiPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 315,1758 | Attesa: 21,36369 | Distanza: 272,8639
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 8 | Tempo: 233,0483 | Attesa: 81,96362 | Distanza: 306,2474
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 20,117 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 78,29325 | Attesa: 39,06211 | Distanza: 104,7422
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 7 | Tempo: 181,2408 | Attesa: 82,55438 | Distanza: 281,9762
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 112,3635 | Attesa: 47,70263 | Distanza: 54,02729
-PapillonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 92,09233 | Attesa: 28,41207 | Distanza: 125,8052
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 149,766 | Attesa: 64,8 | Distanza: 212,318
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 237,4877 | Attesa: 32,51611 | Distanza: 262,3985
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 95,64722 | Attesa: 11,68616 | Distanza: 177,3089
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 22,96381 | Attesa: 0 | Distanza: 0
-PapillonPattern | insoddisfatto | Visitati: 1 | Non visitati: 2 | Tempo: 276,9846 | Attesa: 50,54561 | Distanza: 321,105
-PapillonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 123,0587 | Attesa: 38,28548 | Distanza: 100,1688
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 6 | Tempo: 188,6935 | Attesa: 69,88591 | Distanza: 379,0959
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 376,822 | Attesa: 16,26519 | Distanza: 312,5434
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 4 | Tempo: 175,3345 | Attesa: 65,96042 | Distanza: 298,3642
-FourmiPattern | soddisfatto | Visitati: 10 | Non visitati: 2 | Tempo: 390,5482 | Attesa: 27,59937 | Distanza: 266,1341
-FourmiPattern | insoddisfatto | Visitati: 9 | Non visitati: 3 | Tempo: 350,532 | Attesa: 51,42747 | Distanza: 185,4268
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 10 | Tempo: 243,6167 | Attesa: 111,9004 | Distanza: 275,7283
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 6 | Tempo: 213,7284 | Attesa: 57,301 | Distanza: 346,7494
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 4 | Tempo: 153,0098 | Attesa: 66,88018 | Distanza: 181,3509
-# Configurazione 2
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 321,2914 | Attesa: 73,18934 | Distanza: 327,576
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 3 | Tempo: 372,1964 | Attesa: 80,09048 | Distanza: 320,4933
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 4 | Tempo: 184,4389 | Attesa: 40,98943 | Distanza: 305,4782
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 5 | Tempo: 137,95 | Attesa: 45,54348 | Distanza: 117,9707
-PapillonPattern | insoddisfatto | Visitati: 5 | Non visitati: 6 | Tempo: 235,3688 | Attesa: 91,4388 | Distanza: 305,9702
-FourmiPattern | insoddisfatto | Visitati: 11 | Non visitati: 4 | Tempo: 396,7024 | Attesa: 69,20422 | Distanza: 158,1748
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 273,7836 | Attesa: 51,40916 | Distanza: 308,976
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 109,5222 | Attesa: 31,97577 | Distanza: 103,9694
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 6 | Tempo: 205,7293 | Attesa: 74,68591 | Distanza: 215,8402
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 103,2638 | Attesa: 32,68521 | Distanza: 119,3613
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 81,0438 | Attesa: 3,630947 | Distanza: 136,4486
-FourmiPattern | insoddisfatto | Visitati: 8 | Non visitati: 3 | Tempo: 376,8563 | Attesa: 52,12193 | Distanza: 238,7806
-FourmiPattern | insoddisfatto | Visitati: 8 | Non visitati: 2 | Tempo: 410,8897 | Attesa: 44,04202 | Distanza: 236,5907
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 4 | Tempo: 129,9092 | Attesa: 31,54232 | Distanza: 107,8987
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 2 | Tempo: 85,24157 | Attesa: 11,46457 | Distanza: 154,4394
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 4 | Tempo: 351,0107 | Attesa: 61,09433 | Distanza: 258,6589
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 175,6223 | Attesa: 44,62846 | Distanza: 178,9404
-FourmiPattern | insoddisfatto | Visitati: 8 | Non visitati: 4 | Tempo: 402,8535 | Attesa: 37,78291 | Distanza: 263,206
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 4 | Tempo: 375,5725 | Attesa: 80,87809 | Distanza: 225,094
-PapillonPattern | insoddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 325,0924 | Attesa: 42,89371 | Distanza: 349,2326
-PapillonPattern | insoddisfatto | Visitati: 7 | Non visitati: 3 | Tempo: 350,0396 | Attesa: 68,64846 | Distanza: 259,7995
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 6 | Tempo: 304,507 | Attesa: 85,24774 | Distanza: 312,2687
-FourmiPattern | insoddisfatto | Visitati: 3 | Non visitati: 5 | Tempo: 192,1813 | Attesa: 54,69273 | Distanza: 338,5419
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 6 | Tempo: 154,3597 | Attesa: 59,95455 | Distanza: 134,7365
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 134,3013 | Attesa: 37,71439 | Distanza: 185,256
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 118,9538 | Attesa: 67,09126 | Distanza: 93,13018
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 6 | Tempo: 380,6451 | Attesa: 72,72755 | Distanza: 252,8386
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 6 | Tempo: 221,375 | Attesa: 74,21264 | Distanza: 235,9967
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 1 | Tempo: 72,82639 | Attesa: 4,590113 | Distanza: 226,5548
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 78,78882 | Attesa: 24,36751 | Distanza: 103,5481
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 6 | Tempo: 200,8472 | Attesa: 48,55604 | Distanza: 284,1294
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 6 | Tempo: 371,5666 | Attesa: 77,60733 | Distanza: 220,5486
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 92,24744 | Attesa: 17,19093 | Distanza: 133,5495
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 76,04541 | Attesa: 32,10982 | Distanza: 114,375
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 6 | Tempo: 185,8705 | Attesa: 94,76108 | Distanza: 176,4268
-PapillonPattern | insoddisfatto | Visitati: 5 | Non visitati: 6 | Tempo: 202,1572 | Attesa: 87,72622 | Distanza: 176,6169
-PapillonPattern | insoddisfatto | Visitati: 7 | Non visitati: 5 | Tempo: 267,4361 | Attesa: 67,0358 | Distanza: 273,2946
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 103,4884 | Attesa: 23,46065 | Distanza: 131,9681
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 5 | Tempo: 168,8127 | Attesa: 78,04095 | Distanza: 161,1871
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 121,8874 | Attesa: 48,02268 | Distanza: 194,1242
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 113,9054 | Attesa: 24,1964 | Distanza: 247,0606
-FourmiPattern | insoddisfatto | Visitati: 3 | Non visitati: 9 | Tempo: 234,5135 | Attesa: 103,1825 | Distanza: 312,9178
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 359,6191 | Attesa: 46,80582 | Distanza: 187,9077
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 5 | Tempo: 146,3135 | Attesa: 50,90829 | Distanza: 153,3203
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 2 | Tempo: 86,31815 | Attesa: 25,31252 | Distanza: 55,98839
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 114,8643 | Attesa: 52,61252 | Distanza: 107,6478
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 6 | Tempo: 372,088 | Attesa: 112,4144 | Distanza: 214,6983
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 127,4171 | Attesa: 27,99384 | Distanza: 205,1873
-PapillonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 368,1158 | Attesa: 18,46495 | Distanza: 355,3132
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 289,9026 | Attesa: 37,07396 | Distanza: 336,597
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 103,5479 | Attesa: 24,00835 | Distanza: 104,2633
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 3 | Tempo: 384,9856 | Attesa: 48,46286 | Distanza: 302,5867
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 7 | Tempo: 221,314 | Attesa: 58,71021 | Distanza: 191,2597
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 195,4191 | Attesa: 37,27447 | Distanza: 254,2973
-PapillonPattern | insoddisfatto | Visitati: 5 | Non visitati: 6 | Tempo: 221,2215 | Attesa: 82,60561 | Distanza: 268,3167
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 5 | Tempo: 176,991 | Attesa: 45,42406 | Distanza: 218,5205
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 215,845 | Attesa: 33,05167 | Distanza: 327,1178
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 4 | Tempo: 169,5602 | Attesa: 29,27849 | Distanza: 254,1106
-FourmiPattern | insoddisfatto | Visitati: 3 | Non visitati: 5 | Tempo: 234,5742 | Attesa: 66,70405 | Distanza: 221,8795
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 194,4807 | Attesa: 31,62261 | Distanza: 310,4644
-PapillonPattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 145,0815 | Attesa: 22,39178 | Distanza: 314,3238
-PapillonPattern | insoddisfatto | Visitati: 5 | Non visitati: 3 | Tempo: 201,961 | Attesa: 54,37432 | Distanza: 337,2112
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 5 | Tempo: 193,8719 | Attesa: 52,35087 | Distanza: 244,6834
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 376,3354 | Attesa: 40,13367 | Distanza: 410,0061
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 145,6164 | Attesa: 45,02795 | Distanza: 185,2268
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 328,7018 | Attesa: 48,46839 | Distanza: 332,4986
-PapillonPattern | insoddisfatto | Visitati: 4 | Non visitati: 4 | Tempo: 191,7763 | Attesa: 66,56683 | Distanza: 295,9096
-FourmiPattern | insoddisfatto | Visitati: 3 | Non visitati: 8 | Tempo: 211,4538 | Attesa: 103,6522 | Distanza: 214,5794
-PapillonPattern | insoddisfatto | Visitati: 6 | Non visitati: 4 | Tempo: 178,1918 | Attesa: 60,58697 | Distanza: 304,1078
-PapillonPattern | insoddisfatto | Visitati: 7 | Non visitati: 3 | Tempo: 381,3716 | Attesa: 77,3248 | Distanza: 230,5486
-# Configurazione 3
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 4 | Tempo: 162,8035 | Attesa: 56,54684 | Distanza: 176,0077
-FourmiPattern | insoddisfatto | Visitati: 7 | Non visitati: 4 | Tempo: 259,5998 | Attesa: 38,77711 | Distanza: 328,2897
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 179,5101 | Attesa: 43,30782 | Distanza: 258,3958
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 79,9099 | Attesa: 0 | Distanza: 116,6249
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 78,84648 | Attesa: 0 | Distanza: 108,5401
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 71,7196 | Attesa: 0 | Distanza: 120,4243
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 95,97289 | Attesa: 2,503313 | Distanza: 147,4469
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 86,31548 | Attesa: 9,623845 | Distanza: 104,5452
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 96,51914 | Attesa: 4,29027 | Distanza: 124,0402
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 123,1093 | Attesa: 0 | Distanza: 199,0372
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 157,6897 | Attesa: 0 | Distanza: 171,2405
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 94,91082 | Attesa: 9,273257 | Distanza: 150,6784
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 105,5599 | Attesa: 5,376629 | Distanza: 193,8491
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 0 | Tempo: 149,5019 | Attesa: 9,663434 | Distanza: 195,2933
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 91,77711 | Attesa: 20,88577 | Distanza: 127,63
-PapillonPattern | soddisfatto | Visitati: 4 | Non visitati: 0 | Tempo: 169,5618 | Attesa: 0,6037383 | Distanza: 235,1119
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 159,7282 | Attesa: 0 | Distanza: 170,8111
-PoissonPattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 145,11 | Attesa: 11,17787 | Distanza: 243,3043
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 138,6159 | Attesa: 2,806614 | Distanza: 147,6687
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 182,9467 | Attesa: 0 | Distanza: 134,6093
-PoissonPattern | soddisfatto | Visitati: 3 | Non visitati: 0 | Tempo: 118,6452 | Attesa: 2,396147 | Distanza: 200,0364
-PoissonPattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 139,6728 | Attesa: 6,372655 | Distanza: 226,8971
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 130,1624 | Attesa: 0 | Distanza: 215,151
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 94,00488 | Attesa: 0 | Distanza: 159,1311
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 89,6916 | Attesa: 21,2986 | Distanza: 147,2112
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 140,2945 | Attesa: 11,7438 | Distanza: 123,5669
-PoissonPattern | insoddisfatto | Visitati: 5 | Non visitati: 3 | Tempo: 119,6817 | Attesa: 22,4365 | Distanza: 116,0578
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 83,47832 | Attesa: 13,11403 | Distanza: 35,81226
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 76,69514 | Attesa: 3,411216 | Distanza: 192,6939
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 22,50424 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 75,33643 | Attesa: 13,27808 | Distanza: 179,7531
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 21,04891 | Attesa: 0 | Distanza: 0
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 125,7277 | Attesa: 45,08409 | Distanza: 160,8781
-PoissonPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 149,6909 | Attesa: 4,554317 | Distanza: 240,8732
-FourmiPattern | insoddisfatto | Visitati: 5 | Non visitati: 2 | Tempo: 162,5736 | Attesa: 30,47279 | Distanza: 62,09666
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 100,7042 | Attesa: 32,36296 | Distanza: 162,4075
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 111,1509 | Attesa: 21,71428 | Distanza: 158,4924
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 96,01807 | Attesa: 7,394077 | Distanza: 248,0934
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 136,0776 | Attesa: 37,69142 | Distanza: 165,3604
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 4 | Tempo: 112,6857 | Attesa: 47,52339 | Distanza: 129,2624
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 29,28656 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 21,56385 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 6 | Non visitati: 2 | Tempo: 144,4371 | Attesa: 25,85909 | Distanza: 142,7058
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 3 | Tempo: 94,23866 | Attesa: 37,25704 | Distanza: 115,3794
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 57,94538 | Attesa: 19,94278 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 136,3559 | Attesa: 32,09044 | Distanza: 198,1037
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 97,69966 | Attesa: 23,70229 | Distanza: 175,6999
-PapillonPattern | insoddisfatto | Visitati: 2 | Non visitati: 1 | Tempo: 222,1994 | Attesa: 24,91473 | Distanza: 341,7207
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 20,70076 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 29,6039 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 80,31143 | Attesa: 33,49695 | Distanza: 74,27274
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 97,21139 | Attesa: 25,65979 | Distanza: 128,9559
-SauterellePattern | insoddisfatto | Visitati: 5 | Non visitati: 3 | Tempo: 153,9889 | Attesa: 71,21973 | Distanza: 196,9701
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 29,84726 | Attesa: 0 | Distanza: 0
-PoissonPattern | insoddisfatto | Visitati: 1 | Non visitati: 3 | Tempo: 22,16754 | Attesa: 0 | Distanza: 0
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 73,93294 | Attesa: 0 | Distanza: 100,5703
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 101,3801 | Attesa: 0 | Distanza: 122,1313
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 116,4162 | Attesa: 0 | Distanza: 136,183
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 97,79781 | Attesa: 0 | Distanza: 99,26675
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 164,7905 | Attesa: 0 | Distanza: 137,3638
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 179,5325 | Attesa: 0 | Distanza: 154,6034
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 147,6816 | Attesa: 0 | Distanza: 30,89432
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 214,6738 | Attesa: 0 | Distanza: 71,70371
-SauterellePattern | insoddisfatto | Visitati: 1 | Non visitati: 1 | Tempo: 88,97881 | Attesa: 0 | Distanza: 122,5419
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 242,2608 | Attesa: 0 | Distanza: 86,29254
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 153,0052 | Attesa: 5,584947 | Distanza: 74,03322
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 190,6961 | Attesa: 0 | Distanza: 105,172
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 1 | Tempo: 172,9792 | Attesa: 0 | Distanza: 143,8589
-FourmiPattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 251,6254 | Attesa: 0 | Distanza: 70,89657
-SauterellePattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 236,1987 | Attesa: 0 | Distanza: 163,0978
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 130,0292 | Attesa: 7,978532 | Distanza: 45,58311
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 151,046 | Attesa: 0 | Distanza: 71,43227
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 2 | Tempo: 251,945 | Attesa: 0 | Distanza: 81,62293
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 220,6379 | Attesa: 0 | Distanza: 186,5294
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 279,7755 | Attesa: 0 | Distanza: 38,0615
-PapillonPattern | soddisfatto | Visitati: 9 | Non visitati: 2 | Tempo: 198,5216 | Attesa: 0 | Distanza: 114,8536
-FourmiPattern | insoddisfatto | Visitati: 4 | Non visitati: 5 | Tempo: 173,8382 | Attesa: 14 | Distanza: 37,94748
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 299,7105 | Attesa: 0 | Distanza: 104,7034
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 103,1647 | Attesa: 1,147336 | Distanza: 29,98244
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 5 | Tempo: 191,4813 | Attesa: 12,22043 | Distanza: 47,25204
-FourmiPattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 323,5884 | Attesa: 0 | Distanza: 134,4495
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 158,4961 | Attesa: 0 | Distanza: 157,0007
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 146,0855 | Attesa: 35,80539 | Distanza: 38,50322
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 113,0295 | Attesa: 13,38363 | Distanza: 8,135105
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 267,8419 | Attesa: 0,7 | Distanza: 80,65839
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 246,6383 | Attesa: 0 | Distanza: 170,262
-SauterellePattern | insoddisfatto | Visitati: 4 | Non visitati: 2 | Tempo: 112,4923 | Attesa: 11,43708 | Distanza: 12,01675
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 232,3446 | Attesa: 1,680691 | Distanza: 45,35021
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 2 | Tempo: 127,8996 | Attesa: 4,413436 | Distanza: 22,03811
-PoissonPattern | insoddisfatto | Visitati: 7 | Non visitati: 3 | Tempo: 233,5782 | Attesa: 0,08696255 | Distanza: 36,86142
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 150,374 | Attesa: 5,624958 | Distanza: 0
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 3 | Tempo: 206,5763 | Attesa: 20,47122 | Distanza: 30,04868
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 339,271 | Attesa: 0 | Distanza: 155,0397
-PapillonPattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 232,8201 | Attesa: 9,180066 | Distanza: 77,48442
-SauterellePattern | insoddisfatto | Visitati: 2 | Non visitati: 4 | Tempo: 116,6997 | Attesa: 31,4861 | Distanza: 26,64841
-PoissonPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 184,6756 | Attesa: 0 | Distanza: 21,29
-PoissonPattern | insoddisfatto | Visitati: 7 | Non visitati: 3 | Tempo: 194,3759 | Attesa: 0 | Distanza: 30,90251
-FourmiPattern | insoddisfatto | Visitati: 2 | Non visitati: 3 | Tempo: 233,1552 | Attesa: 15,24702 | Distanza: 36,91507
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 292,2192 | Attesa: 6,295371 | Distanza: 96,12128
-PoissonPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 230,4551 | Attesa: 0 | Distanza: 17,48469
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 85,15902 | Attesa: 0 | Distanza: 107,9934
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 85,66115 | Attesa: 0 | Distanza: 112,5987
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 87,47812 | Attesa: 0 | Distanza: 100,7906
-PoissonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 208,7624 | Attesa: 0 | Distanza: 127,5506
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 205,6342 | Attesa: 0 | Distanza: 140,8983
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 154,0384 | Attesa: 0 | Distanza: 200,7754
-SauterellePattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 139,1259 | Attesa: 0 | Distanza: 156,2113
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 116,9306 | Attesa: 7,124488 | Distanza: 126,7282
-PoissonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 205,5802 | Attesa: 0 | Distanza: 144,4762
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 104,9151 | Attesa: 7,671565 | Distanza: 120,6803
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 98,77531 | Attesa: 0 | Distanza: 125,994
-PapillonPattern | soddisfatto | Visitati: 15 | Non visitati: 2 | Tempo: 200,8902 | Attesa: 26,2699 | Distanza: 169,5314
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 79,368 | Attesa: 0 | Distanza: 104,137
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 104,82 | Attesa: 0 | Distanza: 103,9968
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 2 | Tempo: 219,982 | Attesa: 18,27733 | Distanza: 154,5746
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 255,2389 | Attesa: 6,977509 | Distanza: 225,3723
-PapillonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 217,9189 | Attesa: 0,678898 | Distanza: 265,1466
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 194,6087 | Attesa: 0 | Distanza: 141,5204
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 191,9865 | Attesa: 10,69033 | Distanza: 203,8648
-FourmiPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 307,2695 | Attesa: 10,23495 | Distanza: 150,1658
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 0 | Tempo: 90,62653 | Attesa: 11,50856 | Distanza: 124,6691
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 335,5357 | Attesa: 0 | Distanza: 178,2667
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 234,8467 | Attesa: 0 | Distanza: 187,5736
-PapillonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 370,5454 | Attesa: 0 | Distanza: 213,8152
-FourmiPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 284,1984 | Attesa: 12,36825 | Distanza: 129,3175
-FourmiPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 163,1921 | Attesa: 27,16272 | Distanza: 144,3955
-FourmiPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 398,7171 | Attesa: 0 | Distanza: 154,396
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 223,6171 | Attesa: 0 | Distanza: 146,3576
-SauterellePattern | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 79,35794 | Attesa: 0 | Distanza: 117,2727
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 170,3963 | Attesa: 10,23737 | Distanza: 147,6502
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 1 | Tempo: 124,3623 | Attesa: 16,36803 | Distanza: 117,819
-PapillonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 421,6218 | Attesa: 0 | Distanza: 241,4167
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 0 | Tempo: 161,3486 | Attesa: 0 | Distanza: 308,0666
-PapillonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 406,9532 | Attesa: 7,62784 | Distanza: 215,1643
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 1 | Tempo: 226,3279 | Attesa: 13,14561 | Distanza: 161,8786
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 159,765 | Attesa: 7,164961 | Distanza: 151,0635
-FourmiPattern | soddisfatto | Visitati: 7 | Non visitati: 2 | Tempo: 149,9047 | Attesa: 9,130125 | Distanza: 206,3332
-FourmiPattern | soddisfatto | Visitati: 18 | Non visitati: 0 | Tempo: 229,1248 | Attesa: 0 | Distanza: 193,8326
-PoissonPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 274,1171 | Attesa: 4,678937 | Distanza: 162,7111
-# Configurazione 2
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 187,1479 | Attesa: 0 | Distanza: 145,9481
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 222,4296 | Attesa: 13,80149 | Distanza: 217,5948
-FourmiPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 351,7845 | Attesa: 1,5 | Distanza: 149,06
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 114,1272 | Attesa: 5,084942 | Distanza: 112,4745
-PapillonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 426,8384 | Attesa: 8,189036 | Distanza: 250,6864
-SauterellePattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 144,7457 | Attesa: 19,38212 | Distanza: 138,2398
-FourmiPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 172,4433 | Attesa: 14,69409 | Distanza: 150,4922
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 108,0576 | Attesa: 0 | Distanza: 124,7285
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 246,0608 | Attesa: 2,091885 | Distanza: 163,327
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 155,9661 | Attesa: 6,086885 | Distanza: 96,9837
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 137,484 | Attesa: 6,629347 | Distanza: 142,3439
-SauterellePattern | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 109,4806 | Attesa: 8,288544 | Distanza: 141,192
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 478,2997 | Attesa: 0 | Distanza: 233,1532
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 1 | Tempo: 217,9993 | Attesa: 21,91426 | Distanza: 209,3909
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 103,9185 | Attesa: 0 | Distanza: 145,6767
-PapillonPattern | soddisfatto | Visitati: 20 | Non visitati: 1 | Tempo: 290,0335 | Attesa: 18,08741 | Distanza: 246,1606
-FourmiPattern | soddisfatto | Visitati: 9 | Non visitati: 1 | Tempo: 197,7528 | Attesa: 18,48174 | Distanza: 241,553
-PoissonPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 213,2308 | Attesa: 11,1519 | Distanza: 220,1304
-SauterellePattern | soddisfatto | Visitati: 5 | Non visitati: 1 | Tempo: 117,6108 | Attesa: 2,265216 | Distanza: 109,0311
-PapillonPattern | soddisfatto | Visitati: 13 | Non visitati: 2 | Tempo: 231,9293 | Attesa: 18,49922 | Distanza: 243,9631
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 2 | Tempo: 257,3482 | Attesa: 25,0493 | Distanza: 257,9041
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 388,361 | Attesa: 0 | Distanza: 136,5189
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 99,42447 | Attesa: 0 | Distanza: 157,0504
-PapillonPattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 119,5357 | Attesa: 0 | Distanza: 155,3695
-PapillonPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 220,6208 | Attesa: 7,24671 | Distanza: 200,9346
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 171,099 | Attesa: 1,196863 | Distanza: 193,9731
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 148,7805 | Attesa: 3,26201 | Distanza: 151,906
-PapillonPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 434,0887 | Attesa: 0 | Distanza: 248,7035
-FourmiPattern | soddisfatto | Visitati: 17 | Non visitati: 1 | Tempo: 495,7708 | Attesa: 7,751247 | Distanza: 215,5382
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 453,3771 | Attesa: 3,042686 | Distanza: 181,5268
-PapillonPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 230,0194 | Attesa: 0 | Distanza: 235,825
-FourmiPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 190,4126 | Attesa: 0 | Distanza: 145,6686
-# Configurazione 3
-FourmiPattern | soddisfatto | Visitati: 17 | Non visitati: 2 | Tempo: 253,8479 | Attesa: 23,18346 | Distanza: 235,6236
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 167,5653 | Attesa: 12,38513 | Distanza: 146,5103
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 197,7459 | Attesa: 0 | Distanza: 197,5817
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 467,1706 | Attesa: 10,39969 | Distanza: 271,4798
-PapillonPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 419,3678 | Attesa: 1,815498 | Distanza: 216,4182
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 1 | Tempo: 259,1357 | Attesa: 6,804276 | Distanza: 227,7543
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 1 | Tempo: 137,4424 | Attesa: 0,422508 | Distanza: 128,8005
-PapillonPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 462,3067 | Attesa: 0 | Distanza: 272,7091
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 168,4811 | Attesa: 0 | Distanza: 198,3606
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 139,0482 | Attesa: 11,06371 | Distanza: 179,8062
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 169,9715 | Attesa: 0 | Distanza: 242,765
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 0 | Tempo: 150,0154 | Attesa: 3,931579 | Distanza: 139,618
-NoChoicesBot | soddisfatto | Visitati: 2 | Non visitati: 0 | Tempo: 153,9254 | Attesa: 0 | Distanza: 248,9573
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 184,6658 | Attesa: 3,029179 | Distanza: 214,538
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 155,4285 | Attesa: 8,40302 | Distanza: 136,8808
-PoissonPattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 160,8867 | Attesa: 1,329517 | Distanza: 180,9036
-NoChoicesBot | soddisfatto | Visitati: 8 | Non visitati: 1 | Tempo: 225,2526 | Attesa: 0 | Distanza: 421,5312
-PoissonPattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 165,4375 | Attesa: 0,5 | Distanza: 174,4093
-FourmiPattern | soddisfatto | Visitati: 16 | Non visitati: 1 | Tempo: 226,1303 | Attesa: 0 | Distanza: 238,7355
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 226,8921 | Attesa: 1,380769 | Distanza: 169,1907
-NoChoicesBot | soddisfatto | Visitati: 4 | Non visitati: 1 | Tempo: 228,8515 | Attesa: 0 | Distanza: 407,7605
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 203,8879 | Attesa: 22,4831 | Distanza: 180,6355
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 164,2888 | Attesa: 3,757341 | Distanza: 161,0989
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 484,9313 | Attesa: 13,20261 | Distanza: 224,4673
-NoChoicesBot | soddisfatto | Visitati: 3 | Non visitati: 0 | Tempo: 183,4248 | Attesa: 0 | Distanza: 247,2605
-NoChoicesBot | soddisfatto | Visitati: 1 | Non visitati: 0 | Tempo: 184,9248 | Attesa: 0 | Distanza: 237,5899
-PoissonPattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 185,4248 | Attesa: 0 | Distanza: 145,2385
-FourmiPattern | insoddisfatto | Visitati: 6 | Non visitati: 3 | Tempo: 141,4516 | Attesa: 14,6614 | Distanza: 161,6379
-FourmiPattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 151,9699 | Attesa: 0 | Distanza: 154,7943
-PoissonPattern | soddisfatto | Visitati: 10 | Non visitati: 1 | Tempo: 244,658 | Attesa: 16,11262 | Distanza: 213,9645
-PoissonPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 223,449 | Attesa: 5,058602 | Distanza: 200,2951
-SauterellePattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 185,1384 | Attesa: 16,72025 | Distanza: 159,4322
-PapillonPattern | soddisfatto | Visitati: 19 | Non visitati: 0 | Tempo: 436,9117 | Attesa: 0 | Distanza: 191,4959
-SauterellePattern | soddisfatto | Visitati: 11 | Non visitati: 0 | Tempo: 197,0568 | Attesa: 0 | Distanza: 217,8054
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 230,4864 | Attesa: 5,76984 | Distanza: 278,1789
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 179,0003 | Attesa: 0 | Distanza: 122,3434
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 0 | Tempo: 211,2992 | Attesa: 5,641043 | Distanza: 236,6645
-NoChoicesBot | soddisfatto | Visitati: 11 | Non visitati: 2 | Tempo: 262,5507 | Attesa: 0 | Distanza: 510,5553
-NoChoicesBot | insoddisfatto | Visitati: 3 | Non visitati: 1 | Tempo: 263,0507 | Attesa: 0 | Distanza: 593,8926
-NoChoicesBot | insoddisfatto | Visitati: 1 | Non visitati: 2 | Tempo: 265,0507 | Attesa: 7,598476 | Distanza: 557,7744
-PapillonPattern | soddisfatto | Visitati: 20 | Non visitati: 0 | Tempo: 267,1873 | Attesa: 0 | Distanza: 201,6342
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 212,2804 | Attesa: 23,96365 | Distanza: 232,3565
-FourmiPattern | soddisfatto | Visitati: 12 | Non visitati: 1 | Tempo: 216,3165 | Attesa: 18,79766 | Distanza: 277,6768
-PapillonPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 281,0622 | Attesa: 3,679525 | Distanza: 314,3661
-PapillonPattern | soddisfatto | Visitati: 19 | Non visitati: 0 | Tempo: 281,0622 | Attesa: 13,13716 | Distanza: 231,1865
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 231,0263 | Attesa: 12,51902 | Distanza: 283,2055
-FourmiPattern | soddisfatto | Visitati: 16 | Non visitati: 0 | Tempo: 261,5633 | Attesa: 12,25931 | Distanza: 280,3329
-FourmiPattern | soddisfatto | Visitati: 15 | Non visitati: 1 | Tempo: 273,0613 | Attesa: 20,89174 | Distanza: 271,8671
-PoissonPattern | soddisfatto | Visitati: 18 | Non visitati: 0 | Tempo: 261,8658 | Attesa: 4,991204 | Distanza: 339,0625
-FourmiPattern | soddisfatto | Visitati: 17 | Non visitati: 0 | Tempo: 282,8109 | Attesa: 2,999765 | Distanza: 375,1253
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 2
-SauterellePattern | soddisfatto | Visitati: 8 | Non visitati: 0 | Tempo: 110,3367 | Attesa: 0 | Distanza: 128,3233
-# Configurazione 1
-# Configurazione 2
-SauterellePattern | soddisfatto | Visitati: 7 | Non visitati: 0 | Tempo: 85,00539 | Attesa: 0 | Distanza: 117,6583
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 188,6084 | Attesa: 0 | Distanza: 119,2589
-# Configurazione 1
-# Configurazione 2
-SauterellePattern | soddisfatto | Visitati: 6 | Non visitati: 0 | Tempo: 72,28978 | Attesa: 0 | Distanza: 109,2294
-PoissonPattern | soddisfatto | Visitati: 13 | Non visitati: 0 | Tempo: 185,596 | Attesa: 0 | Distanza: 130,8853
-# Configurazione 1
-# Configurazione 2
-SauterellePattern | soddisfatto | Visitati: 9 | Non visitati: 0 | Tempo: 104,6788 | Attesa: 0 | Distanza: 124,8534
-PoissonPattern | soddisfatto | Visitati: 15 | Non visitati: 0 | Tempo: 220,1914 | Attesa: 0 | Distanza: 147,9009
-PapillonPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 269,3531 | Attesa: 0 | Distanza: 157,5437
-FourmiPattern | soddisfatto | Visitati: 14 | Non visitati: 0 | Tempo: 344,261 | Attesa: 0 | Distanza: 149,1898
-PapillonPattern | soddisfatto | Visitati: 21 | Non visitati: 0 | Tempo: 412,346 | Attesa: 0 | Distanza: 239,1526
-FourmiPattern | soddisfatto | Visitati: 18 | Non visitati: 0 | Tempo: 438,403 | Attesa: 0 | Distanza: 168,2479
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
-# Configurazione 1
+[{ "visitati": [ {"index":1,"priority":0}, {"index":12,"priority":2}, {"index":13,"priority":0}, {"index":31,"priority":2}, {"index":36,"priority":0}, {"index":37,"priority":2}, {"index":29,"priority":1}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 134.45712280273438,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 223.84259033203126,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":4,"priority":0}, {"index":7,"priority":0}, {"index":12,"priority":2}, {"index":15,"priority":0}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 95.33995056152344,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 158.33624267578126,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":6,"priority":1}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":31,"priority":2}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":30,"priority":0}, {"index":25,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 168.38943481445313,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 258.0185241699219,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":2,"priority":0}, {"index":12,"priority":2}, {"index":3,"priority":0}, {"index":4,"priority":0}, {"index":31,"priority":2}, {"index":5,"priority":0}, {"index":6,"priority":0}, {"index":7,"priority":0}, {"index":37,"priority":2}, {"index":8,"priority":0}, {"index":9,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 137.509765625,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 324.62060546875,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":4,"priority":0}, {"index":12,"priority":2}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 104.57583618164063,
+    "tempoInAttesa": 11.753928184509278,
+    "durataVisita": 185.5187530517578,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":12,"priority":2}, {"index":31,"priority":2}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":33,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 83.27349853515625,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 223.92784118652345,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":7,"priority":0}, {"index":6,"priority":1}, {"index":3,"priority":0}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PapillonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 142.8292236328125,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 288.9351806640625,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":2,"priority":0}, {"index":12,"priority":2}, {"index":3,"priority":0}, {"index":4,"priority":0}, {"index":31,"priority":2}, {"index":7,"priority":0}, {"index":33,"priority":0}, {"index":8,"priority":0}, {"index":9,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 153.6128387451172,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 324.135986328125,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":6,"priority":1}, {"index":2,"priority":0}, {"index":12,"priority":2}, {"index":3,"priority":0}, {"index":4,"priority":0}, {"index":31,"priority":2}, {"index":7,"priority":0}, {"index":6,"priority":0}, {"index":37,"priority":2}, {"index":5,"priority":0}, {"index":8,"priority":0}, {"index":9,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 210.63998413085938,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 433.6385498046875,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":2,"priority":0}, {"index":12,"priority":2}, {"index":3,"priority":0}, {"index":4,"priority":0}, {"index":31,"priority":2}, {"index":5,"priority":0}, {"index":35,"priority":0}, {"index":6,"priority":0}, {"index":7,"priority":0}, {"index":9,"priority":0}, {"index":8,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 173.26258850097657,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 372.55548095703127,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":12,"priority":2}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":23,"priority":0}, {"index":37,"priority":2}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":29,"priority":1}, {"index":30,"priority":0}, {"index":31,"priority":2}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 155.7401580810547,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 472.2692565917969,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":31,"priority":2}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":23,"priority":0}, {"index":25,"priority":0}, {"index":28,"priority":0}, {"index":29,"priority":1}, {"index":30,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 118.60894775390625,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 512.46923828125,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":3,"priority":0}, {"index":31,"priority":2}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}], "nonVisitate": [ {"index":25,"priority":0}], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 172.94354248046876,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 321.1864013671875,
+    "configurazioneDiIngresso": 3
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":31,"priority":2}, {"index":21,"priority":0}, {"index":25,"priority":0}, {"index":30,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 122.85057067871094,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 410.57012939453127,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":13,"priority":0}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":37,"priority":2}],"patternType": "PapillonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 180.6829071044922,
+    "tempoInAttesa": 2.0,
+    "durataVisita": 542.1697387695313,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":31,"priority":2}, {"index":21,"priority":0}, {"index":23,"priority":0}, {"index":37,"priority":2}, {"index":26,"priority":0}, {"index":28,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 126.40933990478516,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 458.3865661621094,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":4,"priority":0}, {"index":2,"priority":0}, {"index":3,"priority":0}, {"index":31,"priority":2}, {"index":4,"priority":0}, {"index":32,"priority":0}, {"index":7,"priority":0}, {"index":6,"priority":0}, {"index":37,"priority":2}, {"index":5,"priority":0}, {"index":8,"priority":0}, {"index":9,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 206.9704132080078,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 429.79278564453127,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":4,"priority":0}, {"index":3,"priority":0}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":13,"priority":0}],"patternType": "PapillonPattern","soddisfatto": "False",
+    "distanzaPercorsa": 194.66769409179688,
+    "tempoInAttesa": 32.821258544921878,
+    "durataVisita": 558.19921875,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":4,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":13,"priority":0}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":7,"priority":0}],"patternType": "PapillonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 171.40365600585938,
+    "tempoInAttesa": 7.91402530670166,
+    "durataVisita": 547.4939575195313,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":3,"priority":0}, {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":19,"priority":0}, {"index":21,"priority":0}, {"index":28,"priority":0}, {"index":29,"priority":1}, {"index":30,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":33,"priority":0}, {"index":34,"priority":0}, {"index":37,"priority":2}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":23,"priority":0}],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 175.56051635742188,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 625.500244140625,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":12,"priority":2}, {"index":20,"priority":0}, {"index":23,"priority":0}, {"index":37,"priority":2}, {"index":26,"priority":0}, {"index":31,"priority":2}, {"index":33,"priority":0}, {"index":35,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":21,"priority":0}],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 200.07806396484376,
+    "tempoInAttesa": 6.0,
+    "durataVisita": 534.725341796875,
+    "configurazioneDiIngresso": 2
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":3,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":9,"priority":0}, {"index":2,"priority":0}, {"index":15,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":7,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":8,"priority":0}, {"index":9,"priority":0}], "nonVisitate": [ {"index":33,"priority":0}, {"index":30,"priority":0}, {"index":32,"priority":0}, {"index":31,"priority":2}{"index":34,"priority":0}], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 194.68341064453126,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 512.948974609375,
+    "configurazioneDiIngresso": 3
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":31,"priority":2}{"index":35,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":7,"priority":0}],"patternType": "NoChoicesBot","soddisfatto": "False",
+    "distanzaPercorsa": 453.43560791015627,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 543.6168823242188,
+    "configurazioneDiIngresso": 0
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":12,"priority":2}, {"index":26,"priority":0}, {"index":31,"priority":2}, {"index":33,"priority":0}{"index":35,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":7,"priority":0}],"patternType": "NoChoicesBot","soddisfatto": "True",
+    "distanzaPercorsa": 471.31182861328127,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 544.6168823242188,
+    "configurazioneDiIngresso": 0
+}, 
+{ "visitati": [ {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":3,"priority":0}, {"index":31,"priority":2}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":17,"priority":0}, {"index":21,"priority":0}, {"index":25,"priority":0}, {"index":30,"priority":0}, {"index":33,"priority":0}, {"index":32,"priority":0}, {"index":34,"priority":0}, {"index":29,"priority":1}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "distanzaPercorsa": 264.8489074707031,
+    "tempoInAttesa": 3.8401119709014894,
+    "durataVisita": 523.8868408203125,
+    "configurazioneDiIngresso": 3
+}, 
+{ "visitati": [ {"index":3,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":30,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":33,"priority":0}, {"index":34,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 153.29405212402345,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 543.6337890625,
+    "configurazioneDiIngresso": 3
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":12,"priority":2}, {"index":11,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":23,"priority":0}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":29,"priority":1}, {"index":33,"priority":0}, {"index":35,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":34,"priority":0}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 205.16522216796876,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 673.0946655273438,
+    "configurazioneDiIngresso": 2
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":3,"priority":0}, {"index":4,"priority":0}, {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":19,"priority":0}, {"index":21,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":33,"priority":0}, {"index":34,"priority":0}, {"index":30,"priority":0}, {"index":32,"priority":0}, {"index":31,"priority":2}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":13,"priority":0}],"patternType": "PapillonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 228.1826171875,
+    "tempoInAttesa": 2.0,
+    "durataVisita": 649.301025390625,
+    "configurazioneDiIngresso": 3
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":3,"priority":0}, {"index":4,"priority":0}, {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":13,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":34,"priority":0}, {"index":30,"priority":0}, {"index":32,"priority":0}, {"index":33,"priority":0}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PapillonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 260.5478210449219,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 700.9381103515625,
+    "configurazioneDiIngresso": 3
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":4,"priority":0}, {"index":3,"priority":0}, {"index":6,"priority":1}, {"index":11,"priority":0}, {"index":13,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":26,"priority":0}, {"index":28,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":36,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PapillonPattern","soddisfatto": "True",
+    "distanzaPercorsa": 242.73495483398438,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 880.328125,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":20,"priority":0}, {"index":25,"priority":0}, {"index":28,"priority":0}, {"index":29,"priority":1}, {"index":30,"priority":0}, {"index":32,"priority":0}, {"index":33,"priority":0}, {"index":34,"priority":0}, {"index":31,"priority":2}, {"index":35,"priority":0}, {"index":36,"priority":0}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ {"index":21,"priority":0}],"patternType": "FourmiPattern","soddisfatto": "True",
+    "distanzaPercorsa": 228.60208129882813,
+    "tempoInAttesa": 6.0,
+    "durataVisita": 710.9381103515625,
+    "configurazioneDiIngresso": 3
+}]

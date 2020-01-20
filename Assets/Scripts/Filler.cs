@@ -285,6 +285,8 @@ public class Filler : MonoBehaviour
     List<Dictionary<string, int>> configurationsFill = new List<Dictionary<string, int>>();
     int confNumber = 1;
 
+    bool terminate = false;
+
     private void Update ()
     {
 
@@ -349,6 +351,18 @@ public class Filler : MonoBehaviour
                                 leaderDespota = false;
                             }
                             break;
+                    }
+                }
+            }
+            else
+            {
+                if ( terminate == false )
+                {
+                    List<GameObject> agents = simulator.rvoGameObj.FindAll( ( GameObject obj ) => obj.activeInHierarchy );
+                    if ( agents.Count == 0 )
+                    {
+                        terminate = true;
+                        GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().TerminaSimulazione();
                     }
                 }
             }
@@ -454,6 +468,7 @@ public class Filler : MonoBehaviour
             //GameObject agent = simulator.rvoGameObj.Find( ( GameObject obj ) => !obj.activeInHierarchy && CheckType(obj, type) );
             DestroyImmediate( agent.GetComponent<PathManager>() );
             agent.GetComponent<BotVisitData>().ClearData();
+            agent.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
 
             if( type == 0 )
             {
@@ -521,6 +536,8 @@ public class Filler : MonoBehaviour
         GameObject o = Instantiate( fourmiBot, transform, true );
         o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
+        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
+
         return o;
     }
 
@@ -529,6 +546,7 @@ public class Filler : MonoBehaviour
         GameObject o = Instantiate( papillonBot, transform, true );
         o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
+        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
 
         return o;
 
@@ -539,6 +557,8 @@ public class Filler : MonoBehaviour
         GameObject o = Instantiate( poissonBot, transform, true );
         o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
+        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
+
         return o;
     }
 
@@ -547,6 +567,7 @@ public class Filler : MonoBehaviour
         GameObject o = Instantiate( sauterelleBot, transform, true );
         o.transform.position = GetSpawnPoint();
         o.name = "Agente " + index++;
+        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
 
         return o;
     }

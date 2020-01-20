@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class FourmiPattern : PathManager
 {
     // Pattern movimento
-    private IEnumerator<GameObject> pictures;
+    private IEnumerator<PictureInfo> pictures;
     public List<GameObject> walls = new List<GameObject>();
 
     public GameObject startWall;
@@ -82,7 +82,7 @@ public class FourmiPattern : PathManager
     {   
         if( pictures.Current )
         {
-            CurrentPictureIndex = pictures.Current.GetComponent<PictureInfo>().index;
+            CurrentPictureIndex = pictures.Current.index;
         }
     }
 
@@ -91,7 +91,7 @@ public class FourmiPattern : PathManager
     {
         walls.Remove( currentWall );
         walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[wall].Count <= 0 );
-        walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[ wall ][ 0 ].GetComponent<PictureInfo>().index < CurrentPictureIndex );
+        walls.RemoveAll( ( GameObject wall ) => picturesOnWalls[ wall ][ 0 ].index < CurrentPictureIndex );
 
         utilitySort.picturesOnWalls = picturesOnWalls;
         walls.Sort( utilitySort.SortByIndexPictureInWalls );
@@ -117,9 +117,9 @@ public class FourmiPattern : PathManager
         {
             GameObject wallWithMinPicIndex = wallsIntersectCurrentWall[0];
             picturesOnWalls[ wallWithMinPicIndex ].RemoveAll( ( pic ) => VisitedPictures.Contains( pic ) );
-            GameObject picWithMinIndex = picturesOnWalls[ wallWithMinPicIndex ][ 0 ];
+            PictureInfo picWithMinIndex = picturesOnWalls[ wallWithMinPicIndex ][ 0 ];
 
-            if ( picWithMinIndex.GetComponent<PictureInfo>().index >= CurrentPictureIndex )
+            if ( picWithMinIndex.index >= CurrentPictureIndex )
             {
                 currentWall = wallWithMinPicIndex;
                 return true;
@@ -146,7 +146,7 @@ public class FourmiPattern : PathManager
                 picturesOnWalls[ wall ].RemoveAll( ( pic ) => VisitedPictures.Contains( pic ) );
                 if( picturesOnWalls[wall].Count > 0 )
                 {
-                    if ( picturesOnWalls[wall][0].GetComponent<PictureInfo>().index < CurrentPictureIndex + 10 )
+                    if ( picturesOnWalls[wall][0].index < CurrentPictureIndex + 10 )
                         intersectsWalls.Add( wall );
                 }
             }
@@ -194,7 +194,7 @@ public class FourmiPattern : PathManager
             if ( wall.transform.childCount > 0 )
             {
                 walls.Add( wall );
-                picturesOnWalls.Add( wall, new List<GameObject>() );
+                picturesOnWalls.Add( wall, new List<PictureInfo>() );
             }
         }
 
@@ -209,7 +209,7 @@ public class FourmiPattern : PathManager
             GameObject picture = (picturePlane.transform).parent.gameObject;
             GameObject wall = (picture.transform).parent.gameObject;
 
-            picturesOnWalls[ wall ].Add( picture );
+            picturesOnWalls[ wall ].Add( picture.GetComponent<PictureInfo>() );
         }
 
     }
@@ -217,8 +217,8 @@ public class FourmiPattern : PathManager
 
     private void SortPicturesOnWalls ()
     {
-        foreach ( List<GameObject> pics in picturesOnWalls.Values )
-            pics.Sort( utilitySort.SortByIndexPicture );
+        foreach ( List<PictureInfo> pics in picturesOnWalls.Values )
+            pics.Sort( utilitySort.SortByIndex );
     }
 
 

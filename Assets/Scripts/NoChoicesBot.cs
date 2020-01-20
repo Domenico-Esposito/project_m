@@ -33,7 +33,7 @@ public class NoChoicesBot : PathManager
                 TempoInAttesa += Time.deltaTime;
             }
 
-            if ( DestinationPrePause == null || VisitedPictures.Contains( DestinationPrePause ) )
+            if ( DestinationPrePause == null || VisitedPictures.Contains( DestinationPrePause.GetComponentInParent<PictureInfo>() ) )
             {
                 utilitySort.transform = leader.GetComponent<BotVisitData>().destinationPoint.transform;
                 emptySpaces.Sort( utilitySort.DistanzaPlane );
@@ -55,7 +55,7 @@ public class NoChoicesBot : PathManager
                 if ( DestinationPrePause.GetComponent<GridSystem>().HaveAvailablePoint() )
                 {
                     Destination = DestinationPrePause;
-                    VisitedPictures.Add( Destination.transform.parent.gameObject );
+                    VisitedPictures.Add( Destination.GetComponentInParent<PictureInfo>() );
                     UpdateDestinationPoint();
                     GoToDestinationPoint();
 
@@ -104,9 +104,9 @@ public class NoChoicesBot : PathManager
         if ( ImportantPictures.Count > 0 )
         {
             Destination = ImportantPictures[ 0 ].transform.GetChild( 0 ).gameObject;
-            if ( ImportantPictures.Contains( Destination.transform.parent.gameObject ) )
+            if ( ImportantPictures.Contains( Destination.GetComponentInParent<PictureInfo>()  ) )
             {
-                ImportantPictures.Remove( Destination.transform.parent.gameObject );
+                ImportantPictures.Remove( Destination.GetComponentInParent<PictureInfo>() );
             }
 
             //CheckNextDestination();
@@ -143,7 +143,7 @@ public class NoChoicesBot : PathManager
         if ( DestinationPrePause != null )
         {
             inPausa = false;
-            importantIgnoratePicture.Add( DestinationPrePause.transform.parent.gameObject );
+            importantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
             ImportantPictures.Clear();
             DestinationPrePause = null;
         }
@@ -151,22 +151,22 @@ public class NoChoicesBot : PathManager
         UpdateDestinationPointForNoChoiceExit();
         GoToDestinationPoint();
 
-        if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !VisitedPictures.Contains( leaderDestination ) )
+        if ( noChoices && leaderDestination.CompareTag( "Empty Space" ) && !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
         {
             if ( DestinationPrePause )
             {
-                importantIgnoratePicture.Add( DestinationPrePause.transform.parent.gameObject );
+                importantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
             }
 
-            ImportantPictures.Add( leaderDestination );
+            ImportantPictures.Add( leaderDestination.GetComponentInParent<PictureInfo>() );
         }
-        else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !VisitedPictures.Contains( leaderDestination.transform.parent.gameObject ) )
+        else if ( noChoices && leaderDestination.CompareTag( "PicturePlane" ) && !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
         {
             if ( DestinationPrePause )
             {
-                importantIgnoratePicture.Add( DestinationPrePause.transform.parent.gameObject );
+                importantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
             }
-            ImportantPictures.Add( leaderDestination.transform.parent.gameObject );
+            ImportantPictures.Add( leaderDestination.GetComponentInParent<PictureInfo>() );
         }
 
 
@@ -179,9 +179,9 @@ public class NoChoicesBot : PathManager
         DestinationPoint.GetComponent<DestinationPoint>().Occupa();
     }
 
-    protected override void GroupElementSetData ( GameObject d, Color groupColor, bool leaderDespota )
+    protected override void GroupElementSetData (Color groupColor, bool leaderDespota )
     {
-        base.GroupElementSetData(d, groupColor, leaderDespota );
+        base.GroupElementSetData(groupColor, leaderDespota );
 
         ImportantPictures.Clear();
         VisitedPictures.Clear();

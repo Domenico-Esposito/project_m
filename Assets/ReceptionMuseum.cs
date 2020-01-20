@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
+
 public class ReceptionMuseum : MonoBehaviour
 {
 
@@ -12,9 +13,6 @@ public class ReceptionMuseum : MonoBehaviour
 
     public int numero_nonVisitati = 0;
     public int numero_visitati = 0;
-
-    public Dictionary<string, int> v = new Dictionary<string, int>();
-    public Dictionary<string, int> nV = new Dictionary<string, int>();
 
     public int utenti = 0;
     public int utentiInsoddisfatti = 0;
@@ -26,9 +24,10 @@ public class ReceptionMuseum : MonoBehaviour
 
     private void Awake ()
     {
+        string path = "Assets/dati_visite.txt";
+        System.IO.File.WriteAllText( path, string.Empty );
         Color[ ] colors = { Color.blue, Color.cyan, Color.green, Color.magenta, Color.red, Color.grey, Color.yellow };
         groupColor = colors.GetEnumerator();   
-
     }
 
     public Color GetColor ()
@@ -52,9 +51,16 @@ public class ReceptionMuseum : MonoBehaviour
         bots.text = utentiAttivi.ToString();
     }
 
-    public void ReceivData (string patternType, List<GameObject> visitati, List<GameObject> non_visitati, List<GameObject> ignorati, float tempoVisita, float tempoDiAttesa, float distanza)
+    public void ReceivData (string patternType, BotVisitData visitData)
     {
         AddUser(2);
+
+        List<PictureInfo> visitati = visitData.visitedPictures;
+        List<PictureInfo> non_visitati = visitData.importantPictures;
+        List<PictureInfo> ignorati = visitData.importantIgnoratePicture;
+        float tempoVisita = (float) visitData.durataVisita;
+        float tempoDiAttesa = (float) visitData.tempoInAttesa;
+        float distanza = (float) visitData.distanzaPercorsa;
 
         // -1 è l'uscita
         numero_visitati += visitati.Count - 1;
@@ -74,34 +80,10 @@ public class ReceptionMuseum : MonoBehaviour
             utentiSoddisfatti++;
         }
 
-        foreach (GameObject o in visitati )
-        {
-            if( v.ContainsKey(o.name) )
-            {
-                v[ o.name ] = v[ o.name ] + 1;
-            }
-            else
-            {
-                v.Add( o.name, 1 );
-            }
-        }
-
-
-        foreach ( GameObject o in non_visitati )
-        {
-            if ( nV.ContainsKey( o.name ) )
-            {
-                nV[ o.name ] = nV[ o.name ] + 1;
-            }
-            else
-            {
-                nV.Add( o.name, 1 );
-            }
-        }
-
         string path = "Assets/dati_visite.txt";
 
-        string resoconto = patternType + " | "  + ( soddisfatto ? "soddisfatto" : "insoddisfatto" ) + " | Visitati: " + visitati.Count + " | Non visitati: " + (non_visitati.Count + ignorati.Count) + " | Tempo: " + tempoVisita + " | Attesa: " + tempoDiAttesa + " | Distanza: " + distanza; 
+        //string resoconto = patternType + " | "  + ( soddisfatto ? "soddisfatto" : "insoddisfatto" ) + " | Visitati: " + visitati.Count + " | Non visitati: " + (non_visitati.Count + ignorati.Count) + " | Tempo: " + tempoVisita + " | Attesa: " + tempoDiAttesa + " | Distanza: " + distanza; 
+        string resoconto = visitData.JSON(patternType, soddisfatto) + ", ";
         StreamWriter writer = new StreamWriter( path, true );
         writer.WriteLine( resoconto );
         writer.Close();
@@ -115,6 +97,19 @@ public class ReceptionMuseum : MonoBehaviour
 
         like.text = utentiSoddisfatti.ToString();
         dislike.text = utentiInsoddisfatti.ToString();
+    }
+
+    public void TerminaSimulazione ()
+    {
+        string path = "Assets/dati_visite.txt";
+
+        StreamReader reader = new StreamReader( path, true );
+        string contenuto = reader.ReadToEnd();
+        reader.Close();
+
+        System.IO.File.WriteAllText( path, "[" + contenuto.Substring( 0, contenuto.Length - 3 ) + "]" );
+
+
     }
 
     private void Update ()

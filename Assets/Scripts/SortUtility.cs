@@ -9,15 +9,15 @@ namespace Museum.Utility
     {
 
         public Transform transform;
-        public Dictionary<GameObject, List<GameObject>> picturesOnWalls;
+        public Dictionary<GameObject, List<PictureInfo>> picturesOnWalls;
 
         public int SortByIndexPictureInWalls ( GameObject wallX, GameObject wallY )
         {
 
-            GameObject quadro_x = picturesOnWalls[ wallX ][ 0 ];
-            GameObject quadro_y = picturesOnWalls[ wallY ][ 0 ];
+            PictureInfo quadro_x = picturesOnWalls[ wallX ][ 0 ];
+            PictureInfo quadro_y = picturesOnWalls[ wallY ][ 0 ];
 
-            return SortByIndexPicture( quadro_x, quadro_y );
+            return SortByIndex( quadro_x, quadro_y );
         }
 
         public float GetPathLength ( GameObject picture )
@@ -50,6 +50,16 @@ namespace Museum.Utility
             return lng;
         }
 
+        public int SortByIndex(PictureInfo x, PictureInfo y )
+        {
+            float index_1 = x.index;
+            float index_2 = y.index;
+
+            if ( index_1 < index_2 ) return -1;
+            if ( index_1 > index_2 ) return 1;
+            return 0;
+        }
+
         public int SortByIndexPlace( GameObject x, GameObject y )
         {
             return SortByIndexPicture( x, y );
@@ -65,6 +75,11 @@ namespace Museum.Utility
             if ( index_1 > index_2 ) return 1;
             return 0;
 
+        }
+
+        public int DistanzaPicture(PictureInfo x, PictureInfo y )
+        {
+            return Distanza( x.gameObject, y.gameObject );
         }
 
         public int Distanza ( GameObject x, GameObject y )

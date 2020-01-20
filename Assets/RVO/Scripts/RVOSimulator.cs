@@ -126,11 +126,4 @@ public class RVOSimulator : MonoBehaviour
         }
 
     }
-
-    public void removeAgent(int indexAgent )
-    {
-        //Simulator.Instance.removeAgent( indexAgent );
-        //rvoGameObj[ indexAgent ] = null;
-        Debug.Log( "Agente " + indexAgent + " rimosso." );
-    }
 }

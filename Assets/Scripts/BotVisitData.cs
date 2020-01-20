@@ -1,13 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BotVisitData : MonoBehaviour
 {
+    [NonSerialized]
+    public List<PictureInfo> visitedPictures = new List<PictureInfo>();
 
-    public List<GameObject> visitedPictures = new List<GameObject>();
-    public List<GameObject> importantPictures = new List<GameObject>();
-    public List<GameObject> importantIgnoratePicture = new List<GameObject>();
+    [NonSerialized]
+    public List<PictureInfo> importantPictures = new List<PictureInfo>();
+
+    [NonSerialized]
+    public List<PictureInfo> importantIgnoratePicture = new List<PictureInfo>();
+
+    [NonSerialized]
+    public GameObject lastPositionPattern;
+    [NonSerialized]
+    public GameObject destinationPrePause;
+    [NonSerialized]
+    public GameObject destination;
+    [NonSerialized]
+    public GameObject destinationPoint;
+
+    public float distanzaPercorsa;
+    public float tempoInAttesa;
+    public float durataVisita;
+
+    [NonSerialized]
+    public int currentPictureIndex;
+
+    public int configurazioneDiIngresso;
 
     public void ClearData ()
     {
@@ -22,23 +45,43 @@ public class BotVisitData : MonoBehaviour
         tempoInAttesa = 0f;
         durataVisita = 0f;
         currentPictureIndex = 0;
+        configurazioneDiIngresso = 0;
 
         destination = null;
         destinationPoint = null;
 
     }
 
-    public float distanzaPercorsa = 0f;
 
-    public GameObject lastPositionPattern;
-    public GameObject destinationPrePause;
+    public string JSON (string patternType, bool soddisfatto)
+    {
+        string dati = ConvertToJson( "visitati", visitedPictures );
+        dati += ConvertToJson( "nonVisitate", importantPictures );
+        dati += ConvertToJson( "ignorate", importantIgnoratePicture );
+        dati += "\"patternType\": \"" + patternType + "\",";
+        dati += "\"soddisfatto\": \"" + soddisfatto + "\",";
 
-    public float tempoInAttesa = 0f;
-    public float durataVisita = 0f;
+        return JsonUtility.ToJson( this, true ).Insert( 1, dati );
+    }
 
-    public int currentPictureIndex = 0;
 
-    public GameObject destination;
-    public GameObject destinationPoint;
+    private string ConvertToJson(string key, IList list )
+    {
+        string dati = " \"" + key + "\": [ ";
 
+
+        for ( int i = 0; i < list.Count; i++ )
+        {
+            dati += JsonUtility.ToJson( list[ i ] );
+
+            if ( i < list.Count - 2 )
+            {
+                dati += ", ";
+            }
+        }
+
+        dati += "],";
+
+        return dati;
+    }
 }
