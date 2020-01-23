@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BubbleHead : MonoBehaviour
+public class ComicBalloon : MonoBehaviour
 {
-
     [SerializeField]
     GameObject[ ] status;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 v = Camera.main.transform.position - transform.position;

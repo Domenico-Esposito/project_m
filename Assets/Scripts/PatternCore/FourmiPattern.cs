@@ -12,6 +12,8 @@ public class FourmiPattern : PathManager
     private GameObject currentWall;
     //private int CurrentPictureIndex = 0;
 
+    private Dictionary<GameObject, List<PictureInfo>> picturesOnWalls = new Dictionary<GameObject, List<PictureInfo>>();
+
     public int numberOfStop;
 
     private void Awake ()
@@ -35,7 +37,7 @@ public class FourmiPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO)
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO)
             return GetPlaneOfExit();
 
         if ( MoveToNextPicOnCurrentWall() )

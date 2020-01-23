@@ -38,7 +38,7 @@ public class SauterellePattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( picturesToWatch.MoveNext() )

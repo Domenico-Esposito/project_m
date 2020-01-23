@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
 {
-    [SerializeField] float m_MovingTurnSpeed = 360;
-    [SerializeField] float m_StationaryTurnSpeed = 180;
+    float m_MovingTurnSpeed = 360;
+    float m_StationaryTurnSpeed = 180;
 
     Rigidbody m_Rigidbody;
     Animator m_Animator;
@@ -61,12 +61,6 @@ public class CharacterAnimator : MonoBehaviour
 
         if ( angleBetweenPlayerAndTarget > 40 )
         {
-            //move = move.normalized;
-            //move = transform.InverseTransformDirection( move );
-            //move = Vector3.ProjectOnPlane( move, m_GroundNormal );
-            //m_TurnAmount = Mathf.Atan2( move.x, move.z );
-            //m_Animator.SetFloat( "Turn", m_TurnAmount, 0.2f, Time.deltaTime );
-
             m_Animator.SetFloat( "Turn", 0.4f );
             transform.rotation = Quaternion.Slerp( transform.rotation, targetRotation, Time.deltaTime * 2f );
 

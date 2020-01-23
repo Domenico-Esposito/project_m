@@ -10,6 +10,7 @@ public class PapillonPattern : PathManager
     //private int CurrentPictureIndex = 0;
 
     private GameObject nextDestination;
+    private Dictionary<GameObject, List<PictureInfo>> picturesOnWalls = new Dictionary<GameObject, List<PictureInfo>>();
 
     public int numberOfStop;
 
@@ -30,7 +31,7 @@ public class PapillonPattern : PathManager
     public override GameObject GetNextDestination ()
     {
 
-        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )

@@ -25,14 +25,7 @@ namespace Museum.Utility
             NavMeshPath p = new NavMeshPath();
             NavMesh.CalculatePath( transform.position, picture.transform.GetChild( 0 ).transform.position, 1, p );
 
-            float lng = 0;
-
-            for ( int i = 0; i < p.corners.Length - 1; i++ )
-            {
-                lng += Vector3.Distance( p.corners[ i ], p.corners[ i + 1 ] );
-            }
-
-            return lng;
+            return GetPathLenght( p );
         }
 
         public float GetPathLengthPlane ( GameObject plane )
@@ -40,11 +33,16 @@ namespace Museum.Utility
             NavMeshPath p = new NavMeshPath();
             NavMesh.CalculatePath( transform.position, plane.transform.position, NavMesh.AllAreas, p );
 
+            return GetPathLenght( p );
+        }
+
+        public float GetPathLenght(NavMeshPath path )
+        {
             float lng = 0;
 
-            for ( int i = 0; i < p.corners.Length - 1; i++ )
+            for ( int i = 0; i < path.corners.Length - 1; i++ )
             {
-                lng += Vector3.Distance( p.corners[ i ], p.corners[ i + 1 ] );
+                lng += Vector3.Distance( path.corners[ i ], path.corners[ i + 1 ] );
             }
 
             return lng;

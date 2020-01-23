@@ -864,6 +864,8 @@ GameObject:
   - component: {fileID: 7423156619824752913}
   - component: {fileID: -9025880012039793864}
   - component: {fileID: 234642477282737073}
+  - component: {fileID: -6100110235984080321}
+  - component: {fileID: 8616578682785689547}
   m_Layer: 0
   m_Name: LowBody Papillon
   m_TagString: Untagged
@@ -992,22 +994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699bf58d403224c72a07d206a8d49da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 0}
-  inPausa: 0
   pauseTime: 15
-  timedelta: 0
   maxDistanza: 30
-  distanzaPercorsa: 0
-  currentPictureIndex: 0
-  emptySpaces: []
-  lastPositionPattern: {fileID: 0}
-  destinationPrePause: {fileID: 0}
-  despota: 0
-  noChoices: 0
-  isLeader: 0
-  group: []
-  tempoInAttesa: 0
-  durataVisita: 0
   activeBot: 0
   numberOfStop: 0
 --- !u!114 &7423156619824752913
@@ -1039,6 +1027,15 @@ MonoBehaviour:
   visitedPictures: []
   importantPictures: []
   importantIgnoratePicture: []
+  lastPositionPattern: {fileID: 0}
+  destinationPrePause: {fileID: 0}
+  destination: {fileID: 0}
+  destinationPoint: {fileID: 0}
+  distanzaPercorsa: 0
+  tempoInAttesa: 0
+  durataVisita: 0
+  inPausa: 0
+  configurazioneDiIngresso: 0
 --- !u!114 &234642477282737073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,7 +1050,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marker_base: {fileID: 4937158962682618998}
   marker_leader: {fileID: 2393955260984332759}
-  color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &-6100110235984080321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038491012599489086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90ca49687aee45b598e1ff2e38a7622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despota: 0
+  isLeader: 0
+  leader: {fileID: 0}
+  group: []
+--- !u!114 &8616578682785689547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038491012599489086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0c7698e07f34867bab5f300c33a548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4038491012688682084
 GameObject:
   m_ObjectHideFlags: 0

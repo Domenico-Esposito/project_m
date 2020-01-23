@@ -95,7 +95,7 @@ public class Filler : MonoBehaviour
 
     private void fillGroupSingolo (int patternType = -1)
     {
-        List<PathManager> group = new List<PathManager>();
+        List<GroupData> group = new List<GroupData>();
 
         if( patternType <= -1)
             patternType = Random.Range( 0, 3 );
@@ -118,34 +118,37 @@ public class Filler : MonoBehaviour
                 }
             }
 
-            if( o.GetComponent<NoChoicesBot>() != null )
-            {
-                group.Add( o.GetComponent<NoChoicesBot>() );
-            }
-            else
-            {
-                group.Add( o.GetComponent<PathManager>() );
+            //if( o.GetComponent<NoChoicesBot>() != null )
+            //{
+            //    group.Add( o.GetComponent<NoChoicesBot>() );
+            //}
+            //else
+            //{
+            //    group.Add( o.GetComponent<PathManager>() );
 
-            }
+            //}
+
+            group.Add( o.GetComponent<GroupData>() );
         }
 
-        PathManager capo = group[ group.Count - 1];
+        GroupData capo = group[ group.Count - 1];
         group.Remove( capo );
 
         if ( leaderDespota )
         {
-            capo.GetComponent<PathManager>().despota = true;
-            capo.GetComponent<PathManager>().noChoices = false;
+            capo.despota = true;
+            //capo.GetComponent<PathManager>().noChoices = false;
             capo.GetComponent<PathManager>().activeBot = true;
+            capo.GetComponent<PathManager>().pauseTime *= 2;
 
         }
-        capo.GetComponent<PathManager>().SetGroup( group );
+        capo.SetGroup( group );
     }
 
     private void fillGroup ()
     {
 
-        List<PathManager> group = new List<PathManager>();
+        List<GroupData> group = new List<GroupData>();
         int numberOfMember = Random.Range( 3, 8 );
 
         for ( int i = 0; i < numberOfMember; i++ )
@@ -181,28 +184,31 @@ public class Filler : MonoBehaviour
                 }
             }
 
-            if ( o.GetComponent<NoChoicesBot>() != null )
-            {
-                group.Add( o.GetComponent<NoChoicesBot>() );
-            }
-            else
-            {
-                group.Add( o.GetComponent<PathManager>() );
+            //if ( o.GetComponent<NoChoicesBot>() != null )
+            //{
+            //    group.Add( o.GetComponent<NoChoicesBot>() );
+            //}
+            //else
+            //{
+            //    group.Add( o.GetComponent<PathManager>() );
 
-            }
+            //}
+
+            group.Add( o.GetComponent<GroupData>() );
+
         }
 
-        PathManager capo = group[ group.Count - 1];
+        GroupData capo = group[ group.Count - 1];
         group.Remove( capo );
 
         if( leaderDespota )
         {
-            capo.GetComponent<PathManager>().despota = true;
-            capo.GetComponent<PathManager>().noChoices = false;
+            capo.despota = true;
+            //capo.GetComponent<PathManager>().noChoices = false;
             capo.GetComponent<PathManager>().activeBot = true;
         }
 
-        capo.GetComponent<PathManager>().SetGroup( group );
+        capo.SetGroup( group );
 
 
     }

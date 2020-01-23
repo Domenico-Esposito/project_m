@@ -21,30 +21,15 @@ public class PoissonPattern : PathManager
         poissonFloors = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Empty Space" ) );
         poissonFloors.Sort( utilitySort.SortByIndexPlace );
 
-        //if ( Random.Range( 0f, 1f ) > 0.5f )
-        //{
-        //    poissonFloors.Reverse();
-        //}
-
         pathPart = poissonFloors.GetEnumerator();
         maxDistanza = 400;
     }
-
-
-    protected override GameObject GetPointInDestination ()
-    {
-        DestinationPoint = Destination.GetComponent<GridSystem>().GetAvailableRandomPoint();
-        DestinationPoint.GetComponent<DestinationPoint>().Occupa();
-
-        return DestinationPoint;
-    }
-
 
     public override GameObject GetNextDestination ()
     {
         bool viewPicture = Random.Range( 0, 10 ) > 7 ? true : false;
 
-        if ( ( ImportantPictures.Count <= 0 && leader && !leader.activeInHierarchy ) || LivelloStanchezza() > MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( viewPicture )

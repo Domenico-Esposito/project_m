@@ -174,6 +174,8 @@ GameObject:
   - component: {fileID: 5878253609109412514}
   - component: {fileID: 5570438422490671043}
   - component: {fileID: 7422842637979164590}
+  - component: {fileID: 6749590836225417672}
+  - component: {fileID: 8923073213357590405}
   m_Layer: 0
   m_Name: LowBody Poisson
   m_TagString: Untagged
@@ -288,22 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff298191522a742b99b6d6cba5c35173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 0}
-  inPausa: 0
   pauseTime: 10
-  timedelta: 0
   maxDistanza: 30
-  distanzaPercorsa: 0
-  currentPictureIndex: 0
-  emptySpaces: []
-  lastPositionPattern: {fileID: 0}
-  destinationPrePause: {fileID: 0}
-  despota: 0
-  noChoices: 0
-  isLeader: 0
-  group: []
-  tempoInAttesa: 0
-  durataVisita: 0
   activeBot: 0
   poissonFloors: []
   picturePlanes: []
@@ -350,6 +338,15 @@ MonoBehaviour:
   visitedPictures: []
   importantPictures: []
   importantIgnoratePicture: []
+  lastPositionPattern: {fileID: 0}
+  destinationPrePause: {fileID: 0}
+  destination: {fileID: 0}
+  destinationPoint: {fileID: 0}
+  distanzaPercorsa: 0
+  tempoInAttesa: 0
+  durataVisita: 0
+  inPausa: 0
+  configurazioneDiIngresso: 0
 --- !u!114 &7422842637979164590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +361,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marker_base: {fileID: 9091727451108608501}
   marker_leader: {fileID: 1986381800054488148}
-  color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &6749590836225417672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190162961022832573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90ca49687aee45b598e1ff2e38a7622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despota: 0
+  isLeader: 0
+  leader: {fileID: 0}
+  group: []
+--- !u!114 &8923073213357590405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190162961022832573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0c7698e07f34867bab5f300c33a548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &190162961310538641
 GameObject:
   m_ObjectHideFlags: 0

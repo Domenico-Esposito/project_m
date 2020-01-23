@@ -770,6 +770,8 @@ GameObject:
   - component: {fileID: 1479077843289961262}
   - component: {fileID: -7605655341262426698}
   - component: {fileID: -8436744853081776877}
+  - component: {fileID: 4491918550554048022}
+  - component: {fileID: 645739087367009891}
   m_Layer: 0
   m_Name: LowBody Fourmi
   m_TagString: Untagged
@@ -900,10 +902,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseTime: 20
   maxDistanza: 30
-  despota: 0
-  noChoices: 0
-  isLeader: 0
-  group: []
   activeBot: 0
   walls: []
   startWall: {fileID: 0}
@@ -937,14 +935,15 @@ MonoBehaviour:
   visitedPictures: []
   importantPictures: []
   importantIgnoratePicture: []
-  distanzaPercorsa: 0
   lastPositionPattern: {fileID: 0}
   destinationPrePause: {fileID: 0}
-  tempoInAttesa: 0
-  durataVisita: 0
-  currentPictureIndex: 0
   destination: {fileID: 0}
   destinationPoint: {fileID: 0}
+  distanzaPercorsa: 0
+  tempoInAttesa: 0
+  durataVisita: 0
+  inPausa: 0
+  configurazioneDiIngresso: 0
 --- !u!114 &-8436744853081776877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +958,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marker_base: {fileID: 8767655879621975893}
   marker_leader: {fileID: 8767655880312879321}
+--- !u!114 &4491918550554048022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767655879096683794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90ca49687aee45b598e1ff2e38a7622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despota: 0
+  isLeader: 0
+  leader: {fileID: 0}
+  group: []
+--- !u!114 &645739087367009891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767655879096683794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0c7698e07f34867bab5f300c33a548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8767655879181668093
 GameObject:
   m_ObjectHideFlags: 0

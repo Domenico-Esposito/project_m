@@ -5,27 +5,21 @@ using System;
 
 public class BotVisitData : MonoBehaviour
 {
-    [NonSerialized]
     public List<PictureInfo> visitedPictures = new List<PictureInfo>();
 
-    [NonSerialized]
     public List<PictureInfo> importantPictures = new List<PictureInfo>();
 
-    [NonSerialized]
     public List<PictureInfo> importantIgnoratePicture = new List<PictureInfo>();
 
-    [NonSerialized]
     public GameObject lastPositionPattern;
-    [NonSerialized]
     public GameObject destinationPrePause;
-    [NonSerialized]
     public GameObject destination;
-    [NonSerialized]
     public GameObject destinationPoint;
 
     public float distanzaPercorsa;
     public float tempoInAttesa;
     public float durataVisita;
+    public bool inPausa;
 
     [NonSerialized]
     public int currentPictureIndex;
@@ -40,6 +34,7 @@ public class BotVisitData : MonoBehaviour
 
         distanzaPercorsa = 0f;
         lastPositionPattern = null;
+        inPausa = false;
         destinationPrePause = null;
 
         tempoInAttesa = 0f;
