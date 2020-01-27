@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NoChoicesBot : PathManager
 {
+
+    private PictureInfo lastDestinationLeader;
+
     public override GameObject GetNextDestination ()
     {
         throw new System.NotImplementedException();
@@ -39,15 +42,15 @@ public class NoChoicesBot : PathManager
         GoToDestinationPoint();
     }
 
-    private void CheckImportantPicture ()
+    private void CheckLeaderDestination ()
     {
-        if ( ImportantPictures[ 0 ].CompareTag( "Empty Space" ) )
+        if ( lastDestinationLeader.CompareTag( "Empty Space" ) )
         {
-            Destination = ImportantPictures[ 0 ].gameObject;
+            Destination = lastDestinationLeader.gameObject;
         }
         else
         {
-            Destination = ImportantPictures[ 0 ].transform.GetChild( 0 ).gameObject;
+            Destination = lastDestinationLeader.transform.GetChild( 0 ).gameObject;
         }
 
         if ( Destination.GetComponent<GridSystem>().HaveAvailablePoint() && !ImportantIgnoratePicture.Contains( Destination.GetComponentInParent<PictureInfo>() ) )
@@ -65,7 +68,7 @@ public class NoChoicesBot : PathManager
             Destination = GetMostCloseEmptySpace( groupData.leader.GetComponent<BotVisitData>().destinationPoint.transform );
         }
 
-        ImportantPictures.Clear();
+        lastDestinationLeader = null;
         UpdateDestinationPoint();
         GoToDestinationPoint();
     }
@@ -102,7 +105,7 @@ public class NoChoicesBot : PathManager
         {
             comicBalloon.InAttesa();
 
-            if(ImportantPictures.Count > 0 )
+            if( lastDestinationLeader != null )
             {
                 InPausa = false;
             }
@@ -133,9 +136,9 @@ public class NoChoicesBot : PathManager
 
 
         // Ho un quadro importante da vedere.
-        if ( ImportantPictures.Count > 0 )
+        if ( lastDestinationLeader != null )
         {
-            CheckImportantPicture();
+            CheckLeaderDestination();
 
         }
 
@@ -145,7 +148,7 @@ public class NoChoicesBot : PathManager
         }
     }
 
-    public override void SendLeaderChoices ( GameObject leaderDestination )
+    public override void ReceiveLeaderChoice ( GameObject leaderDestination )
     {
         if( leaderDestination.CompareTag( "Uscita" ) )
         {
@@ -156,7 +159,7 @@ public class NoChoicesBot : PathManager
             {
                 InPausa = false;
                 ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
-                ImportantPictures.Clear();
+                lastDestinationLeader = null;
                 DestinationPrePause = null;
             }
 
@@ -167,22 +170,14 @@ public class NoChoicesBot : PathManager
 
         if ( leaderDestination.CompareTag( "PicturePlane" ) || leaderDestination.CompareTag( "Empty Space" ) )
         {
-            if ( leaderDestination.CompareTag( "Empty Space" ) && !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
+            if ( !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 if ( DestinationPrePause )
                 {
                     ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
                 }
 
-                ImportantPictures.Add( leaderDestination.GetComponentInParent<PictureInfo>() );
-            }
-            else if ( leaderDestination.CompareTag( "PicturePlane" ) && !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
-            {
-                if ( DestinationPrePause )
-                {
-                    ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
-                }
-                ImportantPictures.Add( leaderDestination.GetComponentInParent<PictureInfo>() );
+                lastDestinationLeader = leaderDestination.GetComponentInParent<PictureInfo>();
             }
         }
 

@@ -17,7 +17,7 @@ public class FatigueManager : MonoBehaviour
         pathManager = GetComponent<PathManager>();
     }
 
-    public int LivelloStanchezza ()
+    public virtual int LivelloStanchezza ()
     {
 
         if ( visitData.distanzaPercorsa > pathManager.maxDistanza )

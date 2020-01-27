@@ -11,10 +11,12 @@ public class GroupData : MonoBehaviour
     public List<GroupData> group = new List<GroupData>();
 
     private MarkerManager markerManager;
+    private BotVisitData visitData;
 
     private void Start ()
     {
         markerManager = GetComponent<MarkerManager>();
+        visitData = GetComponent<BotVisitData>();
         InitGroupData();
     }
 
@@ -56,8 +58,8 @@ public class GroupData : MonoBehaviour
 
         if( TryGetComponent(out NoChoicesBot noChoicesBot ) )
         {
-            GetComponent<BotVisitData>().importantPictures.Clear();
-            GetComponent<BotVisitData>().visitedPictures.Clear();
+            visitData.importantPictures.Clear();
+            visitData.visitedPictures.Clear();
         }
     }
 
@@ -76,6 +78,22 @@ public class GroupData : MonoBehaviour
     {
         return leader && !leader.activeInHierarchy;
     }
+
+
+    public void NotifyDestinationChoice ()
+    {
+        CheckMembers();
+
+        foreach ( GroupData member in group )
+        {
+            member.GetComponent<PathManager>().ReceiveLeaderChoice( GetComponent<BotVisitData>().destination );
+            if ( despota )
+            {
+                member.GetComponent<PathManager>().activeBot = true;
+            }
+        }
+    }
+
 
     private List<E> ShuffleList<E> ( List<E> inputList )
     {

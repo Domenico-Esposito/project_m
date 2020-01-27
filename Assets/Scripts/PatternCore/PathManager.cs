@@ -271,15 +271,21 @@ public abstract class PathManager : MonoBehaviour
 
     private void UpdateDestination () 
     {
-        bool haveLastPositionPattern = false;
-        float distanceFromDestination = 0;
-
+    
         UseLastDestinationOrNew();
 
+        SelectImportantPicMostClosest();
+
+        CheckNextDestination();
+
+    }
+
+    private void SelectImportantPicMostClosest ()
+    {
         NavMeshPath staticPath = new NavMeshPath();
         NavMesh.CalculatePath( transform.position, Destination.transform.position, NavMesh.AllAreas, staticPath );
 
-        distanceFromDestination = GetPathLenght( staticPath );
+        float  distanceFromDestination = GetPathLenght( staticPath );
         Transform destinationPicture;
 
         destinationPicture = Destination.transform.parent;
@@ -303,33 +309,20 @@ public abstract class PathManager : MonoBehaviour
                 {
                     ImportantPictures.Remove( picture );
                     LastPositionPattern = Destination;
-                    haveLastPositionPattern = true;
                     Destination = picturePlane;
-
-                    break;
+                    return;
                 }
             }
         }
-        catch( NullReferenceException e )
+        catch ( NullReferenceException e )
         {
-            Debug.Log("Errore UpdateDestination: " + e);
+            Debug.Log( "Errore UpdateDestination: " + e );
         }
 
-        if ( !haveLastPositionPattern )
-        {
-            LastPositionPattern = null;
-        }
-
-        if ( ImportantPictures.Contains( Destination.GetComponentInParent<PictureInfo>() ) )
-        {
-            ImportantPictures.Remove( Destination.GetComponentInParent<PictureInfo>() );
-        }
-        
-        CheckNextDestination();
-
+        LastPositionPattern = null;
     }
 
-    public virtual void SendLeaderChoices(GameObject leaderDestination )
+    public virtual void ReceiveLeaderChoice ( GameObject leaderDestination )
     {
 
         if ( leaderDestination.CompareTag( "PicturePlane" ) || leaderDestination.CompareTag( "Empty Space" ))
@@ -345,20 +338,6 @@ public abstract class PathManager : MonoBehaviour
 
     }
 
-    private void NotifyDestinationChoice ()
-    {
-        groupData.CheckMembers();
-
-        foreach ( GroupData member in groupData.group )
-        {
-            member.GetComponent<PathManager>().SendLeaderChoices( Destination );
-            if ( groupData.despota )
-            {
-                member.GetComponent<PathManager>().activeBot = true;
-            }
-        }
-    }
-
     protected void GoToDestinationPoint ()
     {
         GetComponent<RVOAgent>().UpdateTarget( DestinationPoint.transform );
@@ -366,7 +345,7 @@ public abstract class PathManager : MonoBehaviour
         
         if ( groupData.isLeader )
         {
-            NotifyDestinationChoice();
+            groupData.NotifyDestinationChoice();
         }
 
         NavMeshPath staticPath = new NavMeshPath();
@@ -447,6 +426,7 @@ public abstract class PathManager : MonoBehaviour
             if ( !Destination.CompareTag( "Empty Space" ) )
             {
                 VisitedPictures.Add( Destination.GetComponentInParent<PictureInfo>() );
+                ImportantPictures.Remove( Destination.GetComponentInParent<PictureInfo>() );
             }
             UpdateDestinationPoint();
             GoToDestinationPoint();
