@@ -35,9 +35,9 @@ public abstract class PathManager : MonoBehaviour
 
     protected Sort utilitySort;
 
-    protected int FatigueStatus
+    protected int FatigueLevel
     {
-        get => fatigueManager.LivelloStanchezza();
+        get => fatigueManager.GetFatigueLevel();
     }
 
     protected List<PictureInfo> ImportantIgnoratePicture
@@ -109,9 +109,11 @@ public abstract class PathManager : MonoBehaviour
     public abstract void InitMovementPattern ();
 
     private bool firstChoices = true;
-    protected bool okTimer = false;
+    protected bool CheckTimer = false;
 
     public bool activeBot = false;
+
+    private const int SECOND = 1;
 
     protected void Start ()
     {
@@ -142,7 +144,7 @@ public abstract class PathManager : MonoBehaviour
         foreach ( PictureInfo picture in FindObjectsOfType<PictureInfo>() )
         {
             // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
-            if ( picture.priority > 1 || UnityEngine.Random.Range( 0, 2 ) > 1 )
+            if ( picture.priority > PictureInfo.OPERA_MEDIA || UnityEngine.Random.Range( 0, 2 ) > 1 )
             {
                 ImportantPictures.Add( picture );
             }
@@ -153,33 +155,33 @@ public abstract class PathManager : MonoBehaviour
         ImportantPictures.Reverse();
 
     }
-
+    
     IEnumerator ClockManager ()
     {
         while ( true )
         {
-            DurataVisita += 1;
+            DurataVisita += SECOND;
 
             if ( InPausa )
             {
-                timedelta += 1;
+                timedelta += SECOND;
 
                 if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
                 {
-                    TempoInAttesa += 1;
+                    TempoInAttesa += SECOND;
                 }
             }
             else
             {
                 if( timedelta > pauseTime )
                 {
-                    okTimer = true;
+                    CheckTimer = true;
                     timedelta = 0;
                 }
 
                 if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
                 {
-                    timedelta += 1;
+                    timedelta += SECOND;
                 }
             }
 
@@ -199,10 +201,10 @@ public abstract class PathManager : MonoBehaviour
             return;
         }
 
-        if ( okTimer || firstChoices )
+        if ( CheckTimer || firstChoices )
         {
             firstChoices = false;
-            okTimer = false;
+            CheckTimer = false;
             UpdateDestination();
         }
 
@@ -255,8 +257,9 @@ public abstract class PathManager : MonoBehaviour
 
             if ( Destination.CompareTag( "Picture" ) )
             {
-                // Qui magari posso utilizzare la distanza dal quadro, invece che l'indice (sarebbe meglio)
-                if( Destination.GetComponent<PictureInfo>().index < CurrentPictureIndex - 5 )
+                int minIndexAccepted = CurrentPictureIndex - 5;
+
+                if ( Destination.GetComponent<PictureInfo>().index < minIndexAccepted )
                 {
                     Debug.Log( name + ": La destinazione già calcolata è un quadro con indice troppo basso per essere visitato ora." );
                     LastPositionPattern = null;
@@ -276,7 +279,7 @@ public abstract class PathManager : MonoBehaviour
 
         SelectImportantPicMostClosest();
 
-        CheckNextDestination();
+        CheckDestination();
 
     }
 
@@ -297,9 +300,9 @@ public abstract class PathManager : MonoBehaviour
         {
             foreach ( PictureInfo picture in ImportantPictures )
             {
-                GameObject picturePlane = picture.gameObject.transform.GetChild( 0 ).gameObject;
+                GameObject pictureGrid = picture.GetComponentInChildren<GridSystem>().gameObject;
 
-                NavMesh.CalculatePath( transform.position, picturePlane.transform.position, NavMesh.AllAreas, staticPath );
+                NavMesh.CalculatePath( transform.position, pictureGrid.transform.position, NavMesh.AllAreas, staticPath );
 
                 float distanzaFromPictureImportant = GetPathLenght( staticPath );
 
@@ -309,7 +312,7 @@ public abstract class PathManager : MonoBehaviour
                 {
                     ImportantPictures.Remove( picture );
                     LastPositionPattern = Destination;
-                    Destination = picturePlane;
+                    Destination = pictureGrid;
                     return;
                 }
             }
@@ -408,8 +411,13 @@ public abstract class PathManager : MonoBehaviour
 
     protected virtual void TooLongWaitingStrategy ()
     {
+
+        float maxTimeForWaiting_OPERA_MEDIA = 15f;
+        float maxTimeForWaiting_OPERA_MAGGIORE = 30f;
+
         // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre). Il tempo è maggiore per i quadri importanti.
-        if ( timedelta > 15f && DestinationPrePause.GetComponentInParent<PictureInfo>().priority <= 1 || timedelta > 20f && DestinationPrePause.transform.parent.GetComponent<PictureInfo>().priority > 1 )
+        if ( ( timedelta > maxTimeForWaiting_OPERA_MEDIA && DestinationPrePause.GetComponentInParent<PictureInfo>().priority <= PictureInfo.OPERA_MEDIA )
+              || ( timedelta > maxTimeForWaiting_OPERA_MAGGIORE && DestinationPrePause.transform.parent.GetComponent<PictureInfo>().priority >= PictureInfo.OPERA_MAGGIORE ) )
         {
             VisitedPictures.Remove( DestinationPrePause.GetComponentInParent<PictureInfo>() );
             ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
@@ -418,10 +426,13 @@ public abstract class PathManager : MonoBehaviour
         }
     }
 
-    protected void CheckNextDestination ()
+
+    protected void CheckDestination ()
     {
-        // Il quadro ha posti disponibili e non è tra quelli da ignorare
-        if ( Destination.TryGetComponent(out GridSystem gridSystem) && Destination.GetComponent<GridSystem>().HaveAvailablePoint() && !ImportantIgnoratePicture.Contains(Destination.GetComponentInParent<PictureInfo>() ) )
+        bool ignoreDestination = ImportantIgnoratePicture.Contains( Destination.GetComponentInParent<PictureInfo>() );
+        bool destinationHaveAvailablePoint = Destination.TryGetComponent( out GridSystem gridSystem ) && Destination.GetComponent<GridSystem>().HaveAvailablePoint();
+
+        if ( destinationHaveAvailablePoint && !ignoreDestination )
         {
             if ( !Destination.CompareTag( "Empty Space" ) )
             {
@@ -435,22 +446,22 @@ public abstract class PathManager : MonoBehaviour
         }
         else
         {
+            bool destinationIsImportantPic = Destination.CompareTag( "PicturePlane" ) && Destination.GetComponentInParent<PictureInfo>().priority > PictureInfo.OPERA_MEDIA; 
+
             // "Non sono stanco", oppure "Sono stanco ma il quadro è molto importante"
-            if ( !ImportantIgnoratePicture.Contains( Destination.GetComponentInParent<PictureInfo>() ) && 
-                ( FatigueStatus == 0 || ( FatigueStatus == 1 && Destination.CompareTag("PicturePlane") && Destination.GetComponentInParent<PictureInfo>().priority > 1 )) )
+            if ( !ignoreDestination && ( FatigueLevel == FatigueManager.NON_STANCO || ( FatigueLevel == FatigueManager.STANCO && destinationIsImportantPic ) ) )
             {
 
                 InPausa = true;
                 DestinationPrePause = Destination;
-                
+
                 utilitySort.transform = DestinationPrePause.transform;
                 emptySpaces.Sort( utilitySort.DistanzaPlane );
-                
-                foreach( GameObject plane in emptySpaces )
+
+                foreach ( GameObject plane in emptySpaces )
                 {
-                    if( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
+                    if ( plane.GetComponent<GridSystem>().HaveAvailablePoint() )
                     {
-                        //Debug.Log( name + ": Scelgo di attendere in un posto vuoto, vicino alla destinazione", plane);
                         Destination = plane;
                         UpdateDestinationPoint();
                         GoToDestinationPoint();
@@ -468,10 +479,15 @@ public abstract class PathManager : MonoBehaviour
 
     protected bool IsExit ( )
     {
-        if ( Destination != null && Destination.gameObject.CompareTag("Uscita") && Vector3.Distance(transform.position, DestinationPoint.transform.position) <= 5f)
+        float exitPointRadius = 5f;
+
+        if ( Destination != null && Destination.gameObject.CompareTag("Uscita") )
         {
-            GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().ReceivData( this.GetType().Name, visitData);
-            return true;
+            if( Vector3.Distance( transform.position, DestinationPoint.transform.position ) <= exitPointRadius )
+            {
+                GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().ReceivData( GetType().Name, visitData);
+                return true;
+            }
         }
 
         return false;

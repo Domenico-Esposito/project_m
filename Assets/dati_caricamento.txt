@@ -4,10 +4,10 @@ numberOfFourmi=0
 numberOfPapillon=0
 numberOfPoisson=0
 numberOfSauterelle=0
-pauseTimeGruppoSingolo=0
-numeroGruppiSingoli=0
-pauseTimeGruppoMisto=1
-numeroGruppiMisti=1
-leaderDespota=1
-probabilitaLiberta=11
+pauseTimeGroupSinglePattern=1
+numberOfGroupSinglePattern=1
+pauseTimeMixedGroup=0
+numberOfMixedGroup=0
+leaderDespota=0
+probabilitaLiberta=0
 #END

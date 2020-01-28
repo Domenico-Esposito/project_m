@@ -7,13 +7,12 @@ using System;
 public class PictureInfo : MonoBehaviour
 {
 
+    public const int OPERA_MINORE = 0;
+    public const int OPERA_MEDIA = 1;
+    public const int OPERA_MAGGIORE = 2;
+
     public int index;
 
-    /*
-        0 = Opere minori 
-        1 = Opere medie
-        2 = Opere maggiori
-    */
     public int priority;
 
 

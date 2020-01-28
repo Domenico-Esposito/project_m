@@ -4,21 +4,17 @@ using UnityEngine.AI;
 
 public class FourmiPattern : PathManager
 {
-    // Pattern movimento
     private IEnumerator<PictureInfo> pictures;
     public List<GameObject> walls = new List<GameObject>();
 
     public GameObject startWall;
     private GameObject currentWall;
-    //private int CurrentPictureIndex = 0;
-
     private Dictionary<GameObject, List<PictureInfo>> picturesOnWalls = new Dictionary<GameObject, List<PictureInfo>>();
-
-    public int numberOfStop;
-
+    
     private void Awake ()
     {
-        GetComponentInChildren<Renderer>().material.SetColor( "_Color", new Color32( 250, 231, 44, 1 ) );
+        Color32 yellow = new Color32( 250, 231, 44, 1 );
+        GetComponentInChildren<Renderer>().material.SetColor( "_Color", yellow );
     }
 
     public override void InitMovementPattern ()
@@ -28,31 +24,26 @@ public class FourmiPattern : PathManager
         SortPicturesOnWalls();
 
         currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[Random.Range(0, 3)];
-        //currentWall = startWall;
 
-        numberOfStop = Random.Range( 13, walls.Count );
         maxDistanza = 280;
     }
 
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO)
+        if ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive || FatigueLevel >= FatigueManager.MOLTO_STANCO)
             return GetPlaneOfExit();
-
-        if ( MoveToNextPicOnCurrentWall() )
+            
+        if ( MoveToNextPicOnCurrentWall() || MoveToNextPicOnAnotherWall() ) 
         {
-            if ( Random.Range( 1, 10 ) > 6 )    //Salto un quadro
-                return GetNextDestination();
+            bool skipNewDestination = Random.Range( 1, 10 ) > 5;
+
+            if ( skipNewDestination )
+                    return GetNextDestination();
 
         }
-        else if ( MoveToNextPicOnAnotherWall() )
+        else
         {
-            if ( Random.Range( 1, 10 ) > 5 )    //Salto un muro
-                return GetNextDestination();
-
-        }
-        else{
             return GetPlaneOfExit();
         }
 
@@ -190,30 +181,27 @@ public class FourmiPattern : PathManager
 
     private void FindWallsWithPictures ()
     {
-
         foreach ( GameObject wall in GameObject.FindGameObjectsWithTag( "Wall" ) )
         {
-            if ( wall.transform.childCount > 0 )
+            int numberOfPictureOnWall = wall.GetComponentsInChildren<PictureInfo>().Length;
+            if ( numberOfPictureOnWall > 0 )
             {
                 walls.Add( wall );
                 picturesOnWalls.Add( wall, new List<PictureInfo>() );
             }
         }
-
     }
 
 
     private void FindPicturesOnWalls ()
     {
-
-        foreach ( GameObject picturePlane in GameObject.FindGameObjectsWithTag( "PicturePlane" ) )
+        foreach ( GameObject pictureGrid in GameObject.FindGameObjectsWithTag( "PicturePlane" ) )
         {
-            GameObject picture = (picturePlane.transform).parent.gameObject;
+            PictureInfo picture = pictureGrid.GetComponentInParent<PictureInfo>();
             GameObject wall = (picture.transform).parent.gameObject;
 
-            picturesOnWalls[ wall ].Add( picture.GetComponent<PictureInfo>() );
+            picturesOnWalls[ wall ].Add( picture );
         }
-
     }
 
 

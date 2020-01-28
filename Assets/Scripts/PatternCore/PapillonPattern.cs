@@ -4,19 +4,14 @@ using UnityEngine;
 public class PapillonPattern : PathManager
 {
 
-    // Pattern movimento
     private List<GameObject> walls = new List<GameObject>();
-    
-    //private int CurrentPictureIndex = 0;
-
     private GameObject nextDestination;
     private Dictionary<GameObject, List<PictureInfo>> picturesOnWalls = new Dictionary<GameObject, List<PictureInfo>>();
-
-    public int numberOfStop;
-
+    
     private void Awake ()
     {
-        GetComponentInChildren<Renderer>().material.SetColor("_Color", new Color32( 241, 108, 0, 1 ) );
+        Color32 orange = new Color32( 241, 108, 0, 1 );
+        GetComponentInChildren<Renderer>().material.SetColor("_Color", orange );
     }
 
     public override void InitMovementPattern ()
@@ -24,21 +19,20 @@ public class PapillonPattern : PathManager
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
-        numberOfStop = Random.Range( 15, walls.Count );
         maxDistanza = 300;
     }
 
     public override GameObject GetNextDestination ()
     {
 
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( LookInBackward() )
         {
-            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ), nextDestination.transform.parent.gameObject );
+            bool skipDestinationInBackward = Random.Range( 1, 10 ) > 7;
 
-            if( Random.Range(1, 10)  >  7 || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
+            if ( skipDestinationInBackward || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 LookNextIndex();
                 return nextDestination;
@@ -49,9 +43,9 @@ public class PapillonPattern : PathManager
 
         if ( LookNextIndex() || LookNextIndex(0) )
         {
-            Debug.Log( "Ho già visitato questo quadro? " + VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ), nextDestination.transform.parent.gameObject );
+            bool skipNextIndexDestination = Random.Range( 0, 1 ) > 0.5f;
 
-            if ( Random.Range( 0, 1 ) > 0.5f || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
+            if ( skipNextIndexDestination || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 return GetNextDestination();
             }
@@ -101,13 +95,10 @@ public class PapillonPattern : PathManager
 
         int layer_mask = LayerMask.GetMask( "Walls" );
 
-        //Debug.DrawRay( transform.position + new Vector3( 0, 0, 0 ), directions[ 0 ], Color.red, 10 );
-        //Debug.DrawRay( transform.position + new Vector3( 0, 0, 0 ), directions[ 1 ], Color.yellow, 10 );
-        //Debug.DrawRay( transform.position + new Vector3( 0, 0, 0 ), directions[ 2 ], Color.blue, 10 );
-
         foreach ( Vector3 direction in directions )
         {
-            if ( Physics.Raycast( transform.position + new Vector3( 0, 0, 0 ), direction, out hit, 150f, layer_mask ) )
+            float maxRayCastLenght = 150f;
+            if ( Physics.Raycast( transform.position, direction, out hit, maxRayCastLenght, layer_mask ) )
             {
                 if( picturesOnWalls.ContainsKey( hit.collider.gameObject ) )
                     considerateWall.Add( hit.collider.gameObject );
@@ -125,9 +116,11 @@ public class PapillonPattern : PathManager
         utilitySort.picturesOnWalls = picturesOnWalls;
         considerateWall.Sort( utilitySort.SortByIndexPictureInWalls );
 
-        if( picturesOnWalls.ContainsKey(considerateWall[0]) )
+        GameObject wallWithPictureSmallerIndex = considerateWall[ 0 ];
+
+        if ( picturesOnWalls.ContainsKey( wallWithPictureSmallerIndex ) )
         {
-            List<PictureInfo> consideratePics = picturesOnWalls[ considerateWall[ 0 ] ];
+            List<PictureInfo> consideratePics = picturesOnWalls[ wallWithPictureSmallerIndex ];
             consideratePics.Sort( utilitySort.DistanzaPicture );
 
             PictureInfo mostClosePicture = consideratePics[ 0 ];
@@ -138,7 +131,7 @@ public class PapillonPattern : PathManager
             consideratePics.Remove( mostClosePicture );
 
             if ( consideratePics.Count <= 0 )
-                picturesOnWalls.Remove( considerateWall[ 0 ] );
+                picturesOnWalls.Remove( wallWithPictureSmallerIndex );
 
             return true;
         }
@@ -168,8 +161,8 @@ public class PapillonPattern : PathManager
         {
             foreach ( Transform picture in wall.transform )
             {
-                if ( picture.gameObject.transform.GetChild( 0 ).CompareTag( "PicturePlane" ) )
-                    picturesOnWalls[ wall].Add( picture.GetComponent<PictureInfo>() );
+                if ( picture.GetComponentInChildren<GridSystem>().CompareTag( "PicturePlane" ) )
+                    picturesOnWalls[ wall ].Add( picture.GetComponent<PictureInfo>() );
             }
 
             if( picturesOnWalls.ContainsKey(wall) )

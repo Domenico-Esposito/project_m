@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class SauterellePattern : PathManager
 {
-    // Pattern movimento
     private IEnumerator<PictureInfo> picturesToWatch;
-
     public List<PictureInfo> pictures;
-
     private int maxJump = 10;
 
     private void Awake ()
     {
-        GetComponentInChildren<Renderer>().material.SetColor( "_Color", new Color32( 202, 12, 12, 1 ) );
+        Color32 red = new Color32( 202, 12, 12, 1 );
+        GetComponentInChildren<Renderer>().material.SetColor( "_Color", red );
     }
 
     public override void InitMovementPattern ()
@@ -31,14 +29,14 @@ public class SauterellePattern : PathManager
             pictures.Add( picture.GetComponent<PictureInfo>() );
         }
 
-        utilitySort.transform = this.transform;
+        utilitySort.transform = transform;
         pictures.Sort( utilitySort.DistanzaPicture );
 
     }
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueStatus > FatigueManager.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( picturesToWatch.MoveNext() )
@@ -48,13 +46,13 @@ public class SauterellePattern : PathManager
                 return GetNextDestination();
             }
 
-            GameObject picturePlane = picturesToWatch.Current.transform.GetChild(0).gameObject;
-            return picturePlane;
+            GameObject pictureGrid = picturesToWatch.Current.GetComponentInChildren<GridSystem>().gameObject;
+            return pictureGrid;
         }
         else
         {
             if ( ImportantPictures.Count > 0 )
-                return ImportantPictures[ ImportantPictures.Count - 1 ].transform.GetChild( 0 ).gameObject;
+                return ImportantPictures[ ImportantPictures.Count - 1 ].GetComponentInChildren<GridSystem>().gameObject;
         }
 
         return GetPlaneOfExit();
@@ -68,9 +66,9 @@ public class SauterellePattern : PathManager
 
         foreach ( PictureInfo picture in pictures )
         {
-            int pictureIndex = picture.index;
+            bool selectPicture = Random.Range( 0, 10 ) > 8;
 
-            if ( Random.Range( 0, 10 ) > 8 || IsMaxJump( pictureIndex, lastPictureIndexAdded ) )
+            if ( selectPicture || IsMaxJump( picture.index, lastPictureIndexAdded ) )
             {
                 lastPictureIndexAdded = picture.index;
                 picturesToWatch_list.Add( picture );

@@ -11,21 +11,22 @@ public class ReceptionMuseum : MonoBehaviour
     public IEnumerator groupColor;
     public Color color;
 
-    public int numero_nonVisitati = 0;
-    public int numero_visitati = 0;
+    public int numero_nonVisitati;
+    public int numero_visitati;
 
-    public int utenti = 0;
-    public int utentiInsoddisfatti = 0;
-    public int utentiSoddisfatti = 0;
+    public int utenti;
+    public int utentiInsoddisfatti;
+    public int utentiSoddisfatti;
 
     public Text like;
     public Text dislike;
-    public Text bots;
+    public Text agents;
+
+    private string visitDataFile = "Assets/visitData.json";
 
     private void Awake ()
     {
-        string path = "Assets/dati_visite.txt";
-        System.IO.File.WriteAllText( path, string.Empty );
+        System.IO.File.WriteAllText( visitDataFile, string.Empty );
         Color[ ] colors = { Color.blue, Color.cyan, Color.green, Color.magenta, Color.red, Color.grey, Color.yellow };
         groupColor = colors.GetEnumerator();   
     }
@@ -36,40 +37,48 @@ public class ReceptionMuseum : MonoBehaviour
         {
             return (Color) groupColor.Current;
         }
-        else
-        {
-            groupColor.Reset();
-        }
+
+        groupColor.Reset();
 
         return GetColor();
     }
 
-    public void AddUser (int remove = 0)
+    public void UpdateAgentsCounter (bool remove = false)
     {
         List<PathManager> agenti = new List<PathManager>( FindObjectsOfType<PathManager>() );
-        int utentiAttivi = agenti.FindAll( ( PathManager obj ) => obj.gameObject.activeInHierarchy ).Count + 1 - remove;
-        bots.text = utentiAttivi.ToString();
+        int utentiAttivi = agenti.FindAll( ( PathManager obj ) => obj.gameObject.activeInHierarchy ).Count + 1;
+
+        if ( remove )
+            utentiAttivi -= 2;
+
+        agents.text = utentiAttivi.ToString();
+    }
+
+    private void UpdateLikeCounters ()
+    {
+        like.text = utentiSoddisfatti.ToString();
+        dislike.text = utentiInsoddisfatti.ToString();
     }
 
     public void ReceivData (string patternType, BotVisitData visitData)
     {
-        AddUser(2);
+        UpdateAgentsCounter( true );
 
         List<PictureInfo> visitati = visitData.visitedPictures;
         List<PictureInfo> non_visitati = visitData.importantPictures;
         List<PictureInfo> ignorati = visitData.importantIgnoratePicture;
-        float tempoVisita = (float) visitData.durataVisita;
-        float tempoDiAttesa = (float) visitData.tempoInAttesa;
-        float distanza = (float) visitData.distanzaPercorsa;
+        float tempoVisita = visitData.durataVisita;
+        float tempoDiAttesa = visitData.tempoInAttesa;
+        float distanza = visitData.distanzaPercorsa;
 
-        // -1 è l'uscita
+        // -1 rappresenta l'uscita
         numero_visitati += visitati.Count - 1;
         numero_nonVisitati += non_visitati.Count;
 
         bool soddisfatto;
         int nonVisitati = ignorati.Count + non_visitati.Count;
 
-        if ( nonVisitati > (visitati.Count-1)/3 || tempoDiAttesa >= 30f )
+        if ( nonVisitati > visitati.Count/3 || tempoDiAttesa >= 30f )
         {
             soddisfatto = false;
             utentiInsoddisfatti++;
@@ -80,40 +89,27 @@ public class ReceptionMuseum : MonoBehaviour
             utentiSoddisfatti++;
         }
 
-        string path = "Assets/dati_visite.txt";
-
-        //string resoconto = patternType + " | "  + ( soddisfatto ? "soddisfatto" : "insoddisfatto" ) + " | Visitati: " + visitati.Count + " | Non visitati: " + (non_visitati.Count + ignorati.Count) + " | Tempo: " + tempoVisita + " | Attesa: " + tempoDiAttesa + " | Distanza: " + distanza; 
         string resoconto = visitData.JSON(patternType, soddisfatto) + ", ";
-        StreamWriter writer = new StreamWriter( path, true );
-        writer.WriteLine( resoconto );
+        WriteVisitData( resoconto );
+        UpdateLikeCounters();
+    }
+
+    private void WriteVisitData (string data)
+    {
+        StreamWriter writer = new StreamWriter( visitDataFile, true );
+        writer.WriteLine( data );
         writer.Close();
 
         Debug.Log( "Dati visita salvati" );
-
-        //if( (utentiInsoddisfatti + utentiSoddisfatti) == utenti ){
-        //    Debug.Log("Simulazione terminata");
-        //    FindObjectOfType<RVOSimulator>().stopSimulation = true;
-        //}
-
-        like.text = utentiSoddisfatti.ToString();
-        dislike.text = utentiInsoddisfatti.ToString();
     }
 
     public void TerminaSimulazione ()
     {
-        string path = "Assets/dati_visite.txt";
-
-        StreamReader reader = new StreamReader( path, true );
+        StreamReader reader = new StreamReader( visitDataFile, true );
         string contenuto = reader.ReadToEnd();
         reader.Close();
 
-        System.IO.File.WriteAllText( path, "[" + contenuto.Substring( 0, contenuto.Length - 3 ) + "]" );
-
-
+        System.IO.File.WriteAllText( visitDataFile, "[" + contenuto.Substring( 0, contenuto.Length - 3 ) + "]" );
     }
 
-    private void Update ()
-    {
-
-    }
 }

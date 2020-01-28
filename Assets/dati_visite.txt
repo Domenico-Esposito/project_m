@@ -1,1 +1,72 @@
-[# Configurazione]
+# Configurazione 1
+{ "visitati": [ {"index":4,"priority":0}, {"index":6,"priority":1}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":31,"priority":2}, {"index":33,"priority":0}, {"index":21,"priority":0}, {"index":36,"priority":0}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15834
+        },
+        {
+            "instanceID": 15518
+        },
+        {
+            "instanceID": 16090
+        },
+        {
+            "instanceID": 16178
+        },
+        {
+            "instanceID": 15882
+        },
+        {
+            "instanceID": 16650
+        },
+        {
+            "instanceID": 16534
+        },
+        {
+            "instanceID": 16890
+        },
+        {
+            "instanceID": 16562
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15908
+    },
+    "destinationPoint": {
+        "instanceID": -14734
+    },
+    "distanzaPercorsa": 112.39620971679688,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 98.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1
+# Configurazione 1

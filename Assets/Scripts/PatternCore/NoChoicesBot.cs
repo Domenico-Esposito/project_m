@@ -7,6 +7,11 @@ public class NoChoicesBot : PathManager
 
     private PictureInfo lastDestinationLeader;
 
+    private void Awake ()
+    {
+        GetComponentInChildren<Renderer>().material.SetColor( "_Color", Color.white );
+    }
+
     public override GameObject GetNextDestination ()
     {
         throw new System.NotImplementedException();
@@ -14,7 +19,7 @@ public class NoChoicesBot : PathManager
 
     public override void InitMovementPattern ()
     {
-
+        //...
     }
 
     private void CheckDestinationFromPause ()
@@ -50,22 +55,27 @@ public class NoChoicesBot : PathManager
         }
         else
         {
-            Destination = lastDestinationLeader.transform.GetChild( 0 ).gameObject;
+            Destination = lastDestinationLeader.GetComponentInChildren<GridSystem>().gameObject;
         }
 
-        if ( Destination.GetComponent<GridSystem>().HaveAvailablePoint() && !ImportantIgnoratePicture.Contains( Destination.GetComponentInParent<PictureInfo>() ) )
+        bool IgnoreDestination = ImportantIgnoratePicture.Contains( Destination.GetComponentInParent<PictureInfo>() );
+
+        if( !IgnoreDestination )
         {
-            if ( !Destination.CompareTag( "Empty Space" ) )
+            if ( Destination.GetComponent<GridSystem>().HaveAvailablePoint() )
             {
-                VisitedPictures.Add( Destination.GetComponentInParent<PictureInfo>() );
+                if ( !Destination.CompareTag( "Empty Space" ) )
+                {
+                    VisitedPictures.Add( Destination.GetComponentInParent<PictureInfo>() );
+                }
             }
-        }
-        else
-        {
-            InPausa = true;
+            else
+            {
+                InPausa = true;
 
-            DestinationPrePause = Destination;
-            Destination = GetMostCloseEmptySpace( groupData.leader.GetComponent<BotVisitData>().destinationPoint.transform );
+                DestinationPrePause = Destination;
+                Destination = GetMostCloseEmptySpace( groupData.leader.GetComponent<BotVisitData>().destinationPoint.transform );
+            }
         }
 
         lastDestinationLeader = null;
@@ -118,9 +128,9 @@ public class NoChoicesBot : PathManager
         }
 
         // Ho finito di vedere il quadro, ma il leader è ancora fermo. Mi metto in posto vicino.
-        if ( okTimer )
+        if ( CheckTimer )
         {
-            okTimer = false;
+            CheckTimer = false;
             AfterPictureView();
         }
 
@@ -168,17 +178,14 @@ public class NoChoicesBot : PathManager
             return;
         }
 
-        if ( leaderDestination.CompareTag( "PicturePlane" ) || leaderDestination.CompareTag( "Empty Space" ) )
+        if ( !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
         {
-            if ( !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
+            if ( DestinationPrePause )
             {
-                if ( DestinationPrePause )
-                {
-                    ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
-                }
-
-                lastDestinationLeader = leaderDestination.GetComponentInParent<PictureInfo>();
+                ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
             }
+
+            lastDestinationLeader = leaderDestination.GetComponentInParent<PictureInfo>();
         }
 
     }

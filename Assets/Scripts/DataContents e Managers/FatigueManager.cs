@@ -17,9 +17,8 @@ public class FatigueManager : MonoBehaviour
         pathManager = GetComponent<PathManager>();
     }
 
-    public virtual int LivelloStanchezza ()
+    public virtual int GetFatigueLevel ()
     {
-
         if ( visitData.distanzaPercorsa > pathManager.maxDistanza )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );

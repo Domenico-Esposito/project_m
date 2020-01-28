@@ -7,80 +7,66 @@ using System.Text.RegularExpressions;
 public class Filler : MonoBehaviour
 {
 
-    public float pauseTime = 3f;
-    public float pauseTimeGruppoSingolo = 3f;
-    public float pauseTimeGruppoMisto = 3f;
+    int index = 1;
+    IEnumerator spawnPoint;
+    RVOSimulator simulator;
 
-    public int numeroGruppiSingoli = 0;
-    public int numeroGruppiMisti = 0;
+    [Header( "Singoli agenti" )]
+    public float pauseTime;
+    public int numberOfFourmi;
+    public int numberOfPapillon;
+    public int numberOfPoisson;
+    public int numberOfSauterelle;
+    float deltaTime;
 
-    private float deltaTime = 0f;
-    private float deltaTimeGruppoMisto = 0f;
-    private float deltaTimeGruppoSingolo = 0f;
+    [Header( "Gruppi agenti con singolo pattern" )]
+    public int numberOfGroupSinglePattern;
+    public float pauseTimeGroupSinglePattern;
+    public bool activeGroupSinglePattern;
+    float deltaTimeGruppoSingolo;
 
-    public int numberOfFourmi = 1;
-    public int numberOfPapillon = 1;
-    public int numberOfPoisson = 1;
-    public int numberOfSauterelle = 1;
-    public int index = 1;
+    [Header( "Gruppi agenti con pattern random" )]
+    public float pauseTimeMixedGroup;
+    public int numberOfMixedGroup;
+    public bool activeMixedGroup;
+    float deltaTimeGruppoMisto;
 
-    public int numberMax = 3;
+    [Header( "Proprietà per leader despota" )]
+    [Range( 0, 11 )]
+    public int probabilitaLiberta;
+    public bool leaderDespota;
 
-    public bool gruppoMisto = false;
-    public bool gruppoSingolo = false;
-
-    public int probabilitaLiberta = 0;
-    public bool leaderDespota = false;
-
-
-    public GameObject fourmiBot;
-    public GameObject papillonBot;
-    public GameObject poissonBot;
-    public GameObject sauterelleBot;
-
+    [Header( "Prefabs e Spawn Point" )]
+    public string RadiceNomeAgenti = "Agente";
+    public GameObject lowPolyMan;
     public GridSystem spawnPoints;
-    public IEnumerator spawnPoint;
-    RVOSimulator simulator = null;
 
-    //private void Awake ()
-    //{
-    //    if( gruppoMisto )
-    //    {
-    //        fillGroup();
-    //    }
-    //    else if( gruppoSingolo )
-    //    {
-    //        fillGroupSingolo();
-    //    }
-    //    else
-    //    {
-    //        fill();
-    //    }
-    //}
 
-    //private void Update ()
-    //{
+    List<Dictionary<string, int>> configurations = new List<Dictionary<string, int>>();
 
-    //if( deltaTime > pauseTime )
-    //{
-    //    if ( gruppoMisto )
-    //    {
-    //        fillGroup();
-    //    }
-    //    else if( gruppoSingolo )
-    //    {
-    //        fillGroupSingolo();
-    //    }
-    //    else
-    //    {
-    //        fill();
-    //    }
+    bool running = false;
+    bool terminate = false;
 
-    //    deltaTime = 0;
-    //}
+    int configurationNumber = 1;
 
-    //deltaTime += Time.deltaTime;
-    //}
+    private System.Type FOURMI {
+        get => typeof(FourmiPattern );
+    }
+
+    private System.Type PAPILLON
+    {
+        get => typeof( PapillonPattern );
+    }
+    
+    private System.Type POISSON
+    {
+        get => typeof( PoissonPattern );
+    }
+    
+    private System.Type SAUTERELLE
+    {
+        get => typeof( SauterellePattern );
+    }       
 
     private void Awake ()
     {
@@ -93,40 +79,26 @@ public class Filler : MonoBehaviour
         simulator = GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>();
     }
 
-    private void fillGroupSingolo (int patternType = -1)
+    private void AddGroupSinglePattern ()
     {
         List<GroupData> group = new List<GroupData>();
-
-        if( patternType <= -1)
-            patternType = Random.Range( 0, 3 );
 
         int numberOfMember = Random.Range( 3, 8 );
 
         for ( int i = 0; i < numberOfMember; i++ )
         {
             GameObject o;
-            o = AddNewBot( patternType );
+            o = AddAgent( GetRandomMovementPattern() );
             if ( leaderDespota )
             {
                 o.GetComponent<PathManager>().activeBot = false;
                 if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1)
                 {
-                    //o.GetComponent<PathManager>().noChoices = true;
                     Destroy( o.GetComponent<PathManager>() );
                     o.GetComponent<BotVisitData>().ClearData();
                     o.AddComponent<NoChoicesBot>();
                 }
             }
-
-            //if( o.GetComponent<NoChoicesBot>() != null )
-            //{
-            //    group.Add( o.GetComponent<NoChoicesBot>() );
-            //}
-            //else
-            //{
-            //    group.Add( o.GetComponent<PathManager>() );
-
-            //}
 
             group.Add( o.GetComponent<GroupData>() );
         }
@@ -137,7 +109,6 @@ public class Filler : MonoBehaviour
         if ( leaderDespota )
         {
             capo.despota = true;
-            //capo.GetComponent<PathManager>().noChoices = false;
             capo.GetComponent<PathManager>().activeBot = true;
             capo.GetComponent<PathManager>().pauseTime *= 2;
 
@@ -145,7 +116,25 @@ public class Filler : MonoBehaviour
         capo.SetGroup( group );
     }
 
-    private void fillGroup ()
+    private System.Type GetRandomMovementPattern ()
+    {
+        int numberOfPattern = 3;
+        switch( Random.Range( 0, numberOfPattern ) )
+        {
+            case 0:
+                return typeof(FourmiPattern);
+            case 1:
+                return typeof(PapillonPattern);
+            case 2:
+                return typeof(PoissonPattern);
+            case 3:
+                return typeof(SauterellePattern);
+        }
+
+        return typeof( PathManager );
+    }
+
+    private void AddMixedGroup ()
     {
 
         List<GroupData> group = new List<GroupData>();
@@ -155,44 +144,18 @@ public class Filler : MonoBehaviour
         {
             GameObject o;
 
-            if ( Random.Range(0, 2) >= 1)
-            {
-                o = AddNewBot( 0 );
-            }
-            else if ( Random.Range( 0, 2 ) >= 1 )
-            {
-                o = AddNewBot( 1 );
-            }
-            else if ( Random.Range( 0, 2 ) >= 1 )
-            {
-                o = AddNewBot( 2 );
-            }
-            else
-            {
-                o = AddNewBot( 3 );
-            }
+            o = InitializeAgent( GetRandomMovementPattern() );
 
             if ( leaderDespota )
             {
                 o.GetComponent<PathManager>().activeBot = false;
                 if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1 )
                 {
-                    //o.GetComponent<PathManager>().noChoices = true;
                     Destroy( o.GetComponent<PathManager>() );
                     o.GetComponent<BotVisitData>().ClearData();
                     o.AddComponent<NoChoicesBot>();
                 }
             }
-
-            //if ( o.GetComponent<NoChoicesBot>() != null )
-            //{
-            //    group.Add( o.GetComponent<NoChoicesBot>() );
-            //}
-            //else
-            //{
-            //    group.Add( o.GetComponent<PathManager>() );
-
-            //}
 
             group.Add( o.GetComponent<GroupData>() );
 
@@ -204,7 +167,6 @@ public class Filler : MonoBehaviour
         if( leaderDespota )
         {
             capo.despota = true;
-            //capo.GetComponent<PathManager>().noChoices = false;
             capo.GetComponent<PathManager>().activeBot = true;
         }
 
@@ -213,71 +175,42 @@ public class Filler : MonoBehaviour
 
     }
 
-    //private void fill()
-    //{
-    //    int[ ] numbers = { numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle };
 
-
-    //    for ( int i = 0; i < Mathf.Max( numbers ) ; i++)
-    //    {
-    //        if( i < numberOfFourmi )
-    //        {
-    //            AddNewBot( 0 );
-    //        }
-
-    //        if( i < numberOfPapillon )
-    //        {
-    //            AddNewBot( 1 );
-    //        }
-
-    //        if ( i < numberOfPoisson)
-    //        {
-    //            AddNewBot( 2 );
-    //        }
-
-    //        if ( i < numberOfSauterelle )
-    //        {
-    //            AddNewBot( 3 );
-    //        }
-    //    }
-    //}
-
-
-    IEnumerator addBot ()
+    IEnumerator GenerateSingleAgents ()
     {
     
         if(  numberOfFourmi > 0)
         {
             numberOfFourmi--;
-            AddNewBot( 0 );
+            AddAgent( FOURMI );
             yield return new WaitForSeconds( pauseTime );
         }
 
         if ( numberOfPapillon > 0 )
         {
             numberOfPapillon--;
-            AddNewBot( 1 );
+            AddAgent( PAPILLON );
             yield return new WaitForSeconds( pauseTime );
         }
 
         if ( numberOfPoisson > 0)
         {
             numberOfPoisson--;
-            AddNewBot( 2 );
+            AddAgent( POISSON );
             yield return new WaitForSeconds( pauseTime );
         }
 
         if ( numberOfSauterelle > 0)
         {
             numberOfSauterelle--;
-            AddNewBot( 3 );
+            AddAgent( SAUTERELLE );
             yield return new WaitForSeconds( pauseTime );
         }
 
         if( Mathf.Max( numberOfFourmi , numberOfPoisson, numberOfPapillon, numberOfSauterelle) > 0 )
         {
             running = true;
-            yield return addBot();
+            yield return GenerateSingleAgents();
         }
         else
         {
@@ -286,29 +219,22 @@ public class Filler : MonoBehaviour
 
     }
 
-    bool running = false;
-
-    List<Dictionary<string, int>> configurationsFill = new List<Dictionary<string, int>>();
-    int confNumber = 1;
-
-    bool terminate = false;
-
     private void Update ()
     {
 
-        if( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle, numeroGruppiMisti, numeroGruppiSingoli ) == 0)
+        if( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle, numberOfMixedGroup, numberOfGroupSinglePattern ) == 0)
         {
 
-            if( configurationsFill.Count > 0 )
+            if( configurations.Count > 0 )
             {
 
                 string path = "Assets/dati_visite.txt";
                 StreamWriter writer = new StreamWriter( path, true );
-                writer.WriteLine( "# Configurazione " + confNumber++);
+                writer.WriteLine( "# Configurazione " + configurationNumber++);
                 writer.Close();
 
-                Dictionary<string, int> configurazione = configurationsFill[ 0 ];
-                configurationsFill.RemoveAt( 0 );
+                Dictionary<string, int> configurazione = configurations[ 0 ];
+                configurations.RemoveAt( 0 );
 
                 foreach ( KeyValuePair<string, int> data in configurazione)
                 {
@@ -329,21 +255,21 @@ public class Filler : MonoBehaviour
                         case "numberOfSauterelle":
                             numberOfSauterelle = data.Value;
                             break;
-                        case "pauseTimeGruppoSingolo":
-                            pauseTimeGruppoSingolo = data.Value;
+                        case "pauseTimeGroupSinglePattern":
+                            pauseTimeGroupSinglePattern = data.Value;
                             break;
-                        case "numeroGruppiSingoli":
-                            numeroGruppiSingoli = data.Value;
-                            if ( pauseTimeGruppoSingolo > 0 )
-                                gruppoSingolo = true;
+                        case "numberOfGroupSinglePattern":
+                            numberOfGroupSinglePattern = data.Value;
+                            if ( pauseTimeGroupSinglePattern > 0 )
+                                activeGroupSinglePattern = true;
                             break;
-                        case "pauseTimeGruppoMisto":
-                            pauseTimeGruppoMisto = data.Value;
+                        case "pauseTimeMixedGroup":
+                            pauseTimeMixedGroup = data.Value;
                             break;
-                        case "numeroGruppiMisti":
-                            numeroGruppiMisti = data.Value;
-                            if ( numeroGruppiMisti > 0 )
-                                gruppoMisto = true;
+                        case "numberOfMixedGroup":
+                            numberOfMixedGroup = data.Value;
+                            if ( numberOfMixedGroup > 0 )
+                                activeMixedGroup = true;
                             break;
                         case "probabilitaLiberta":
                             probabilitaLiberta = data.Value;
@@ -378,27 +304,27 @@ public class Filler : MonoBehaviour
         if ( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle ) > 0 && running == false )
         {
             running = true;
-            StartCoroutine( addBot() );
+            StartCoroutine( GenerateSingleAgents() );
         }
 
-        if ( deltaTimeGruppoMisto > pauseTimeGruppoMisto )
+        if ( deltaTimeGruppoMisto > pauseTimeMixedGroup )
         {
-            if ( gruppoMisto && numeroGruppiMisti > 0 )
+            if ( activeMixedGroup && numberOfMixedGroup > 0 )
             {
-                numeroGruppiMisti--;
-                fillGroup();
+                numberOfMixedGroup--;
+                AddMixedGroup();
             }
 
             deltaTimeGruppoMisto = 0f;
         }
 
 
-        if ( deltaTimeGruppoSingolo > pauseTimeGruppoSingolo )
+        if ( deltaTimeGruppoSingolo > pauseTimeGroupSinglePattern )
         {
-            if ( gruppoSingolo && numeroGruppiSingoli > 0 )
+            if ( activeGroupSinglePattern && numberOfGroupSinglePattern > 0 )
             {
-                numeroGruppiSingoli--;
-                fillGroupSingolo();
+                numberOfGroupSinglePattern--;
+                AddGroupSinglePattern();
             }
 
             deltaTimeGruppoSingolo = 0f;
@@ -413,14 +339,14 @@ public class Filler : MonoBehaviour
 
     public void ReadData ()
     {
-        string path = "Assets/dati_caricamento.txt";
-        StreamReader reader = new StreamReader( path );
+        string configFile = "Assets/dati_caricamento.txt";
+        StreamReader reader = new StreamReader( configFile );
         string content = reader.ReadToEnd();
 
         Regex regex_conf = new Regex( "#CONF\\n(.*\\n?)*?#END" );
-        MatchCollection configurations = regex_conf.Matches( content );
+        MatchCollection FileConfigurations = regex_conf.Matches( content );
         
-        foreach( Match configuration in configurations )
+        foreach( Match configuration in FileConfigurations )
         {
 
             Dictionary<string, int> data = new Dictionary<string, int>();
@@ -434,7 +360,7 @@ public class Filler : MonoBehaviour
                 data.Add(item[0], System.Int32.Parse(item[1]));
             }
 
-            configurationsFill.Add( data );
+            configurations.Add( data );
         }
 
         Debug.Log( "Configurazioni recuperate con successo" );
@@ -442,139 +368,64 @@ public class Filler : MonoBehaviour
         reader.Close();
     }
 
-    private bool CheckType(GameObject agent, int type )
-    {
-    
-        switch ( type )
-        {
-        case 0:
-            return agent.TryGetComponent( out FourmiPattern fourmi );
-        case 1:
-            return agent.TryGetComponent( out PapillonPattern papillon );
-        case 2:
-            return agent.TryGetComponent( out PoissonPattern poisson );
-        case 3:
-            return agent.TryGetComponent( out SauterellePattern sauterelle );
-        }
 
-        return false;
-    }
-
-    private GameObject AddNewBot (int type)
+    private GameObject AddAgent (System.Type type)
     {
 
-        GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().AddUser();
+        GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().UpdateAgentsCounter();
 
         simulator = GameObject.FindGameObjectWithTag( "RVOSim" ).GetComponent<RVOSimulator>();
         GameObject agent = simulator.rvoGameObj.Find( ( GameObject obj ) => !obj.activeInHierarchy );
 
         if ( agent != null )
         {
-
-            //GameObject agent = simulator.rvoGameObj.Find( ( GameObject obj ) => !obj.activeInHierarchy && CheckType(obj, type) );
-            DestroyImmediate( agent.GetComponent<PathManager>() );
-            agent.GetComponent<BotVisitData>().ClearData();
-            agent.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
-
-            if( type == 0 )
-            {
-                agent.AddComponent<FourmiPattern>();
-            }
-
-            if ( type == 1 )
-            {
-                agent.AddComponent<PapillonPattern>();
-            }
-
-            if ( type == 2 )
-            {
-                agent.AddComponent<PoissonPattern>();
-            }
-
-            if ( type == 3 )
-            {
-                agent.AddComponent<SauterellePattern>();
-            }
-
-            Vector3 position = GetSpawnPoint();
-            int rvoGameIndex = simulator.rvoGameObj.IndexOf( agent );
-            simulator.getSimulator().setAgentPosition( rvoGameIndex, new RVO.Vector2(position.x, position.z));
-            agent.transform.position = position;
-            agent.name = "Agente " + index++;
-            agent.SetActive( true );
-
-            simulator.rvoGameObj[ rvoGameIndex ] = agent;
-
-            return simulator.rvoGameObj[ rvoGameIndex ];
-
+            return RecyclesAgent( agent, type );
         }
 
-        switch ( type )
-        {
-        case 0:
-            return AddNewFourmi();
-        case 1:
-            return AddNewPapillon();
-        case 2:
-            return AddNewPoisson();
-        case 3:
-            return AddNewSauterelle();
-        }
+        return InitializeAgent( type );
+    }
 
-        return null;
+    private GameObject RecyclesAgent (GameObject oldAgent, System.Type type)
+    {
+        DestroyImmediate( oldAgent.GetComponent<PathManager>() );
+        oldAgent.GetComponent<BotVisitData>().ClearData();
+        oldAgent.GetComponent<BotVisitData>().configurazioneDiIngresso = configurationNumber - 1;
+
+        oldAgent.AddComponent( type );
+
+        Vector3 position = GetSpawnPoint();
+        int rvoGameIndex = simulator.rvoGameObj.IndexOf( oldAgent );
+        simulator.getSimulator().setAgentPosition( rvoGameIndex, new RVO.Vector2( position.x, position.z ) );
+        oldAgent.transform.position = position;
+        oldAgent.name = RadiceNomeAgenti + " " + index++;
+        oldAgent.SetActive( true );
+
+        simulator.rvoGameObj[ rvoGameIndex ] = oldAgent;
+
+        return simulator.rvoGameObj[ rvoGameIndex ];
+    }
+
+
+    private GameObject InitializeAgent (System.Type type)
+    {
+        GameObject o = Instantiate( lowPolyMan, transform, true );
+        o.AddComponent(type);
+        o.transform.position = GetSpawnPoint();
+        o.name = RadiceNomeAgenti + " " + index++;
+        o.GetComponent<BotVisitData>().configurazioneDiIngresso = configurationNumber - 1;
+
+        return o;
     }
 
     private Vector3 GetSpawnPoint ()
     {
-        if( spawnPoint.MoveNext() )
+        if ( spawnPoint.MoveNext() )
         {
-            return ((GameObject) spawnPoint.Current).transform.position;
+            return ( ( GameObject )spawnPoint.Current ).transform.position;
         }
-        else
-        {
-            spawnPoint.Reset();
-            return GetSpawnPoint();
-        }
-    }
 
-    private GameObject AddNewFourmi ()
-    {
-        GameObject o = Instantiate( fourmiBot, transform, true );
-        o.transform.position = GetSpawnPoint();
-        o.name = "Agente " + index++;
-        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
+        spawnPoint.Reset();
+        return GetSpawnPoint();
 
-        return o;
-    }
-
-    private GameObject AddNewPapillon ()
-    {
-        GameObject o = Instantiate( papillonBot, transform, true );
-        o.transform.position = GetSpawnPoint();
-        o.name = "Agente " + index++;
-        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
-
-        return o;
-
-    }
-
-    private GameObject AddNewPoisson ()
-    {
-        GameObject o = Instantiate( poissonBot, transform, true );
-        o.transform.position = GetSpawnPoint();
-        o.name = "Agente " + index++;
-        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
-
-        return o;
-    }
-
-    private GameObject AddNewSauterelle ()
-    {
-        GameObject o = Instantiate( sauterelleBot, transform, true );
-        o.transform.position = GetSpawnPoint();
-        o.name = "Agente " + index++;
-        o.GetComponent<BotVisitData>().configurazioneDiIngresso = confNumber - 1;
-
-        return o;
     }
 }
