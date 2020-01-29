@@ -1,0 +1,524 @@
+{ "visitati": [ {"index":1,"priority":0}, {"index":12,"priority":2}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":35,"priority":0}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15768
+        },
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15642
+        },
+        {
+            "instanceID": 15626
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11944
+    },
+    "distanzaPercorsa": 188.73541259765626,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 224.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":1,"priority":0}, {"index":12,"priority":2}, {"index":11,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}, {"index":35,"priority":0}, {"index":37,"priority":2}], "nonVisitate": [ {"index":9,"priority":0}, {"index":1,"priority":0}{"index":3,"priority":0}], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15096
+        },
+        {
+            "instanceID": 15768
+        },
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 15594
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15642
+        },
+        {
+            "instanceID": 15626
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [
+        {
+            "instanceID": 15030
+        },
+        {
+            "instanceID": 16218
+        },
+        {
+            "instanceID": 15356
+        }
+    ],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11744
+    },
+    "distanzaPercorsa": 179.1555633544922,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 241.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":4,"priority":0}, {"index":12,"priority":2}, {"index":15,"priority":0}, {"index":20,"priority":0}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15266
+        },
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 16168
+        },
+        {
+            "instanceID": 15190
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -12094
+    },
+    "distanzaPercorsa": 113.59927368164063,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 111.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":12,"priority":2}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "PoissonPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11494
+    },
+    "distanzaPercorsa": 107.45298767089844,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 138.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":31,"priority":2}, {"index":26,"priority":0}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15096
+        },
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 15610
+        },
+        {
+            "instanceID": 15250
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 16348
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 15852
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11724
+    },
+    "distanzaPercorsa": 138.73880004882813,
+    "tempoInAttesa": 6.0,
+    "durataVisita": 135.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":3,"priority":0}, {"index":17,"priority":0}, {"index":31,"priority":2}, {"index":21,"priority":0}, {"index":25,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15356
+        },
+        {
+            "instanceID": 15610
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15136
+        },
+        {
+            "instanceID": 16184
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 15852
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11904
+    },
+    "distanzaPercorsa": 156.02857971191407,
+    "tempoInAttesa": 7.0,
+    "durataVisita": 146.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":17,"priority":0}, {"index":31,"priority":2}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "SauterellePattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15610
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 15890
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -12114
+    },
+    "distanzaPercorsa": 182.7851104736328,
+    "tempoInAttesa": 8.0,
+    "durataVisita": 126.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":37,"priority":2}, {"index":25,"priority":0}, {"index":35,"priority":0}], "nonVisitate": [ ], "ignorate": [ {"index":12,"priority":2}],"patternType": "SauterellePattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 16184
+        },
+        {
+            "instanceID": 15626
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [
+        {
+            "instanceID": 15522
+        }
+    ],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 15108
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11884
+    },
+    "distanzaPercorsa": 109.89805603027344,
+    "tempoInAttesa": 21.0,
+    "durataVisita": 113.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":4,"priority":0}, {"index":12,"priority":2}, {"index":31,"priority":2}, {"index":7,"priority":0}, {"index":32,"priority":0}, {"index":35,"priority":0}, {"index":37,"priority":2}, {"index":3,"priority":0}, {"index":20,"priority":0}, {"index":6,"priority":1}], "nonVisitate": [ {"index":6,"priority":0}], "ignorate": [ ],"patternType": "PapillonPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15768
+        },
+        {
+            "instanceID": 15266
+        },
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15096
+        },
+        {
+            "instanceID": 15642
+        },
+        {
+            "instanceID": 15626
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 15356
+        },
+        {
+            "instanceID": 15190
+        },
+        {
+            "instanceID": 14950
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [
+        {
+            "instanceID": 16204
+        }
+    ],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -11964
+    },
+    "distanzaPercorsa": 397.19384765625,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 384.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":7,"priority":0}, {"index":17,"priority":0}, {"index":20,"priority":0}, {"index":21,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}], "nonVisitate": [ ], "ignorate": [ {"index":23,"priority":0}],"patternType": "FourmiPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15096
+        },
+        {
+            "instanceID": 15610
+        },
+        {
+            "instanceID": 15190
+        },
+        {
+            "instanceID": 15136
+        },
+        {
+            "instanceID": 15966
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [
+        {
+            "instanceID": 15718
+        }
+    ],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 15278
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -12154
+    },
+    "distanzaPercorsa": 134.0042266845703,
+    "tempoInAttesa": 13.0,
+    "durataVisita": 164.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
+{ "visitati": [ {"index":1,"priority":0}, {"index":3,"priority":0}, {"index":11,"priority":0}, {"index":12,"priority":2}, {"index":17,"priority":0}, {"index":19,"priority":0}, {"index":21,"priority":0}, {"index":21,"priority":0}, {"index":37,"priority":2}, {"index":26,"priority":0}, {"index":29,"priority":1}, {"index":30,"priority":0}, {"index":31,"priority":2}, {"index":32,"priority":0}], "nonVisitate": [ ], "ignorate": [ ],"patternType": "FourmiPattern","soddisfatto": "True",
+    "visitedPictures": [
+        {
+            "instanceID": 15768
+        },
+        {
+            "instanceID": 15356
+        },
+        {
+            "instanceID": 15594
+        },
+        {
+            "instanceID": 15522
+        },
+        {
+            "instanceID": 15610
+        },
+        {
+            "instanceID": 15250
+        },
+        {
+            "instanceID": 15136
+        },
+        {
+            "instanceID": 15966
+        },
+        {
+            "instanceID": 15994
+        },
+        {
+            "instanceID": 16348
+        },
+        {
+            "instanceID": 16034
+        },
+        {
+            "instanceID": 16018
+        },
+        {
+            "instanceID": 15314
+        },
+        {
+            "instanceID": 15642
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "importantPictures": [],
+    "importantIgnoratePicture": [],
+    "lastPositionPattern": {
+        "instanceID": 0
+    },
+    "destinationPrePause": {
+        "instanceID": 0
+    },
+    "destination": {
+        "instanceID": 15340
+    },
+    "destinationPoint": {
+        "instanceID": -12034
+    },
+    "distanzaPercorsa": 133.31781005859376,
+    "tempoInAttesa": 0.0,
+    "durataVisita": 222.0,
+    "inPausa": false,
+    "configurazioneDiIngresso": 1
+}, 
