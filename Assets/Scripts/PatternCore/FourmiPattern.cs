@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class FourmiPattern : PathManager
 {
-    private IEnumerator<PictureInfo> pictures;
+    private IEnumerator<PictureInfo> picsOnCurrentWall;
     public List<GameObject> walls = new List<GameObject>();
 
     public GameObject startWall;
@@ -47,7 +47,7 @@ public class FourmiPattern : PathManager
             return GetPlaneOfExit();
         }
 
-        if( VisitedPictures.Contains( pictures.Current ) )
+        if( VisitedPictures.Contains( picsOnCurrentWall.Current ) )
         {
             return GetNextDestination();
         }
@@ -58,10 +58,10 @@ public class FourmiPattern : PathManager
 
     private bool MoveToNextPicOnCurrentWall ()
     {
-        if ( pictures == null )
+        if ( picsOnCurrentWall == null )
             return false;
 
-        if ( pictures.MoveNext() )
+        if ( picsOnCurrentWall.MoveNext() )
         {
             RefreshCurrentPictureIndex();
             return true;
@@ -73,9 +73,9 @@ public class FourmiPattern : PathManager
 
     private void RefreshCurrentPictureIndex ()
     {   
-        if( pictures.Current )
+        if( picsOnCurrentWall.Current )
         {
-            CurrentPictureIndex = pictures.Current.index;
+            CurrentPictureIndex = picsOnCurrentWall.Current.index;
         }
     }
 
@@ -92,8 +92,8 @@ public class FourmiPattern : PathManager
         if ( NextPictureIsInClosestWall() || NextPictureIsInDetachedWall() ) 
         {
             picturesOnWalls[ currentWall ].RemoveAll( ( pic ) => VisitedPictures.Contains( pic ) );
-            pictures = picturesOnWalls[ currentWall ].GetEnumerator();
-            pictures.MoveNext();
+            picsOnCurrentWall = picturesOnWalls[ currentWall ].GetEnumerator();
+            picsOnCurrentWall.MoveNext();
             RefreshCurrentPictureIndex();
             return true;
         }
@@ -153,10 +153,10 @@ public class FourmiPattern : PathManager
 
     private GameObject GetPlaneOfCurrentPicture ()
     {
-        if( pictures.Current )
+        if( picsOnCurrentWall.Current )
         {
-            if( pictures.Current.transform.GetChild(0) )
-                return pictures.Current.transform.GetChild( 0 ).gameObject;
+            if( picsOnCurrentWall.Current.transform.GetChild(0) )
+                return picsOnCurrentWall.Current.transform.GetChild( 0 ).gameObject;
         }
 
         return GetPlaneOfExit();

@@ -66,12 +66,13 @@ public class PapillonPattern : PathManager
             {
                 if( pic.index > CurrentPictureIndex && pic.index < CurrentPictureIndex + maxJump )
                 {
-                    nextDestination = pic.transform.GetChild( 0 ).gameObject;
+                    nextDestination = pic.GetComponentInChildren<GridSystem>().gameObject;
                     CurrentPictureIndex = pic.index;
-                    picturesOnWalls[ pic.transform.parent.gameObject ].Remove( pic );
+                    GameObject currentPictureWall = pic.transform.parent.gameObject;
+                    picturesOnWalls[ currentPictureWall ].Remove( pic );
 
-                    if ( picturesOnWalls[ pic.transform.parent.gameObject ].Count <= 0 )
-                        picturesOnWalls.Remove( pic.transform.parent.gameObject );
+                    if ( picturesOnWalls[ currentPictureWall ].Count <= 0 )
+                        picturesOnWalls.Remove( currentPictureWall );
 
                     return true;
                 }
@@ -125,7 +126,7 @@ public class PapillonPattern : PathManager
 
             PictureInfo mostClosePicture = consideratePics[ 0 ];
 
-            nextDestination = mostClosePicture.transform.GetChild( 0 ).gameObject;
+            nextDestination = mostClosePicture.GetComponentInChildren<GridSystem>().gameObject;
             CurrentPictureIndex = mostClosePicture.index;
 
             consideratePics.Remove( mostClosePicture );

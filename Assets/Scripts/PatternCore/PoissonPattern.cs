@@ -27,11 +27,11 @@ public class PoissonPattern : PathManager
         if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.MOLTO_STANCO )
             return GetPlaneOfExit();
 
+        utilitySort.transform = transform;
+        emptySpaces.Sort( utilitySort.DistanzaPlane );
+        
         if ( viewPicture )
         {
-            utilitySort.transform = transform;
-            emptySpaces.Sort( utilitySort.DistanzaPlane );
-
             GameObject mostCloseEmptySpace = emptySpaces[ 0 ];
             int indexOfMostCloseEmptySpace = mostCloseEmptySpace.GetComponent<PictureInfo>().index;
 
