@@ -122,7 +122,7 @@ public class RVOSimulator : MonoBehaviour
         }
         catch ( System.Exception ex )
         {
-            Debug.Log( ex.StackTrace );
+            //Debug.Log( ex.StackTrace );
         }
 
     }

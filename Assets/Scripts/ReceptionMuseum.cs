@@ -9,20 +9,21 @@ public class ReceptionMuseum : MonoBehaviour
 {
 
     public IEnumerator groupColor;
-    public Color color;
 
-    public int numero_nonVisitati;
-    public int numero_visitati;
+    private int numero_nonVisitati;
+    private int numero_visitati;
 
-    public int utenti;
-    public int utentiInsoddisfatti;
-    public int utentiSoddisfatti;
+    private int utenti;
+    private int utentiInsoddisfatti;
+    private int utentiSoddisfatti;
 
     public Text like;
     public Text dislike;
     public Text agents;
 
-    private string visitDataFile = "Assets/visitData.json";
+    private string visitDataFile {
+        get => Application.persistentDataPath  + "/visitData.json";
+    }
 
     private void Awake ()
     {
@@ -64,6 +65,17 @@ public class ReceptionMuseum : MonoBehaviour
     {
         UpdateAgentsCounter( true );
 
+        bool satisfaction = GetAgentSatisfaction( visitData );
+
+        string resoconto = visitData.JSON(patternType, satisfaction ) + ", ";
+        WriteVisitData( resoconto );
+        UpdateLikeCounters();
+    }
+
+    private bool GetAgentSatisfaction (BotVisitData visitData)
+    {
+        bool satisfaction;
+
         List<PictureInfo> visitati = visitData.visitedPictures;
         List<PictureInfo> non_visitati = visitData.importantPictures;
         List<PictureInfo> ignorati = visitData.importantIgnoratePicture;
@@ -75,23 +87,20 @@ public class ReceptionMuseum : MonoBehaviour
         numero_visitati += visitati.Count - 1;
         numero_nonVisitati += non_visitati.Count;
 
-        bool soddisfatto;
         int nonVisitati = ignorati.Count + non_visitati.Count;
 
-        if ( nonVisitati > visitati.Count/3 || tempoDiAttesa >= 30f )
+        if ( nonVisitati > visitati.Count / 3 || tempoDiAttesa >= 30f )
         {
-            soddisfatto = false;
+            satisfaction = false;
             utentiInsoddisfatti++;
         }
         else
         {
-            soddisfatto = true;
+            satisfaction = true;
             utentiSoddisfatti++;
         }
 
-        string resoconto = visitData.JSON(patternType, soddisfatto) + ", ";
-        WriteVisitData( resoconto );
-        UpdateLikeCounters();
+        return satisfaction;
     }
 
     private void WriteVisitData (string data)

@@ -274,7 +274,7 @@ public abstract class PathManager : MonoBehaviour
 
     private void UpdateDestination () 
     {
-    
+
         UseLastDestinationOrNew();
 
         SelectImportantPicMostClosest();
@@ -285,42 +285,44 @@ public abstract class PathManager : MonoBehaviour
 
     private void SelectImportantPicMostClosest ()
     {
+
         NavMeshPath staticPath = new NavMeshPath();
         NavMesh.CalculatePath( transform.position, Destination.transform.position, NavMesh.AllAreas, staticPath );
 
         float  distanceFromDestination = GetPathLenght( staticPath );
         Transform destinationPicture;
 
-        destinationPicture = Destination.transform.parent;
+        if( Destination.CompareTag( "PicturePlane" ) )
+        {
+            destinationPicture = Destination.transform.parent;
+        }
+        else
+        {
+            destinationPicture = Destination.transform;
+        }
 
         utilitySort.transform = this.transform;
         ImportantPictures.Sort( utilitySort.DistanzaPicture );
-
-        try
+        
+        foreach ( PictureInfo picture in ImportantPictures )
         {
-            foreach ( PictureInfo picture in ImportantPictures )
+            GameObject pictureGrid = picture.GetComponentInChildren<GridSystem>().gameObject;
+
+            NavMesh.CalculatePath( transform.position, pictureGrid.transform.position, NavMesh.AllAreas, staticPath );
+
+            float distanzaFromPictureImportant = GetPathLenght( staticPath );
+
+            // Immagine importante più vicina di immagine pattern
+            if ( distanzaFromPictureImportant < distanceFromDestination || (
+                 picture.index < destinationPicture.GetComponent<PictureInfo>().index && Destination.CompareTag( "PicturePlane" ) ) )
             {
-                GameObject pictureGrid = picture.GetComponentInChildren<GridSystem>().gameObject;
-
-                NavMesh.CalculatePath( transform.position, pictureGrid.transform.position, NavMesh.AllAreas, staticPath );
-
-                float distanzaFromPictureImportant = GetPathLenght( staticPath );
-
-                // Immagine importante più vicina di immagine pattern
-                if ( distanzaFromPictureImportant < distanceFromDestination || (
-                     picture.index < destinationPicture.GetComponent<PictureInfo>().index && Destination.CompareTag( "PicturePlane" ) ) )
-                {
-                    ImportantPictures.Remove( picture );
-                    LastPositionPattern = Destination;
-                    Destination = pictureGrid;
-                    return;
-                }
+                ImportantPictures.Remove( picture );
+                LastPositionPattern = Destination;
+                Destination = pictureGrid;
+                return;
             }
         }
-        catch ( NullReferenceException e )
-        {
-            Debug.Log( "Errore UpdateDestination: " + e );
-        }
+        
 
         LastPositionPattern = null;
     }
@@ -452,6 +454,8 @@ public abstract class PathManager : MonoBehaviour
             if ( !ignoreDestination && ( FatigueLevel == FatigueManager.NON_STANCO || ( FatigueLevel == FatigueManager.STANCO && destinationIsImportantPic ) ) )
             {
 
+                Debug.Log( name + ": Non sono stanco, oppur stanco ma quadro importante" );
+
                 InPausa = true;
                 DestinationPrePause = Destination;
 
@@ -468,13 +472,20 @@ public abstract class PathManager : MonoBehaviour
                         break;
                     }
                 }
+
+                if( Destination == DestinationPrePause )
+                {
+                    Debug.Log( name + ": Non ci sono spazi vuoti per attendere" );
+                    UpdateDestination();
+                }
             }
             else
             {
+                Debug.Log( name + ": Richiedo nuova destinazione" );
                 UpdateDestination();
             }
-
         }
+
     }
 
     protected bool IsExit ( )

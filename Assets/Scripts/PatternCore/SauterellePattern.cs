@@ -5,12 +5,14 @@ public class SauterellePattern : PathManager
 {
     private IEnumerator<PictureInfo> picturesToWatch;
     public List<PictureInfo> pictures;
-    private int maxJump = 10;
+    private int maxJump;
 
     private void Awake ()
     {
         Color32 red = new Color32( 202, 12, 12, 1 );
         GetComponentInChildren<Renderer>().material.SetColor( "_Color", red );
+
+        maxJump = Random.Range( 5, 10 );
     }
 
     public override void InitMovementPattern ()
@@ -49,11 +51,15 @@ public class SauterellePattern : PathManager
             GameObject pictureGrid = picturesToWatch.Current.GetComponentInChildren<GridSystem>().gameObject;
             return pictureGrid;
         }
-        else
+
+        if ( ImportantPictures.Count > 0 )
         {
-            if ( ImportantPictures.Count > 0 )
-                return ImportantPictures[ ImportantPictures.Count - 1 ].GetComponentInChildren<GridSystem>().gameObject;
+            GameObject importantDestination = ImportantPictures[ ImportantPictures.Count - 1 ].GetComponentInChildren<GridSystem>().gameObject;
+            ImportantPictures.RemoveAt( ImportantPictures.Count - 1 );
+
+            return importantDestination;
         }
+    
 
         return GetPlaneOfExit();
     }
