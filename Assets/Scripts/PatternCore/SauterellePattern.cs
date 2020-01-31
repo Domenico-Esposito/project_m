@@ -38,7 +38,7 @@ public class SauterellePattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= ( int ) FatigueManager.Level.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( picturesToWatch.MoveNext() )
@@ -54,10 +54,10 @@ public class SauterellePattern : PathManager
 
         if ( ImportantPictures.Count > 0 )
         {
-            GameObject importantDestination = ImportantPictures[ ImportantPictures.Count - 1 ].GetComponentInChildren<GridSystem>().gameObject;
-            ImportantPictures.RemoveAt( ImportantPictures.Count - 1 );
+            PictureInfo importantPicture = ImportantPictures[ ImportantPictures.Count - 1 ];
+            ImportantPictures.Remove( importantPicture );
 
-            return importantDestination;
+            return importantPicture.GetComponentInChildren<GridSystem>().gameObject;
         }
     
 

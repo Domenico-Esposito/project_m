@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class FatigueManager : MonoBehaviour
 {
-    public const int NON_STANCO = 0;
-    public const int STANCO = 1;
-    public const int MOLTO_STANCO = 2;
+    public enum Level
+    {
+        NON_STANCO,
+        STANCO,
+        MOLTO_STANCO
+    };
 
     private BotVisitData visitData;
     private PathManager pathManager;
@@ -22,17 +25,17 @@ public class FatigueManager : MonoBehaviour
         if ( visitData.distanzaPercorsa > pathManager.maxDistanza )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );
-            return MOLTO_STANCO;
+            return (int) Level.MOLTO_STANCO;
         }
 
         if ( visitData.distanzaPercorsa > ( pathManager.maxDistanza / 1.2f ) )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Stanco" );
-            return STANCO;
+            return ( int ) Level.STANCO;
         }
 
         Debug.Log( gameObject.name + ": Livello stanchezza: Non stanco" );
-        return NON_STANCO;
+        return ( int ) Level.NON_STANCO;
     }
 
 }

@@ -24,7 +24,7 @@ public class PoissonPattern : PathManager
     {
         bool viewPicture = Random.Range( 0, 10 ) > 7;
 
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= ( int )FatigueManager.Level.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         utilitySort.transform = transform;

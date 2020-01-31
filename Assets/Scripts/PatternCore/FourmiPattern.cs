@@ -31,7 +31,7 @@ public class FourmiPattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive || FatigueLevel >= FatigueManager.MOLTO_STANCO)
+        if ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive || FatigueLevel >= (int) FatigueManager.Level.MOLTO_STANCO)
             return GetPlaneOfExit();
             
         if ( MoveToNextPicOnCurrentWall() || MoveToNextPicOnAnotherWall() ) 

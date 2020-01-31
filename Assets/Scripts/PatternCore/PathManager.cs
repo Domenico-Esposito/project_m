@@ -144,7 +144,9 @@ public abstract class PathManager : MonoBehaviour
         foreach ( PictureInfo picture in FindObjectsOfType<PictureInfo>() )
         {
             // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
-            if ( picture.priority > PictureInfo.OPERA_MEDIA || UnityEngine.Random.Range( 0, 2 ) > 1 )
+            bool selectPicture = UnityEngine.Random.Range( 0, 2 ) > 1;
+
+            if ( picture.priority > (int) PictureInfo.Priority.OPERA_MEDIA || selectPicture )
             {
                 ImportantPictures.Add( picture );
             }
@@ -417,12 +419,15 @@ public abstract class PathManager : MonoBehaviour
         float maxTimeForWaiting_OPERA_MEDIA = 15f;
         float maxTimeForWaiting_OPERA_MAGGIORE = 30f;
 
+        int priorityOfDestinationPrePausa = DestinationPrePause.GetComponentInParent<PictureInfo>().priority;
+
         // Controllo tempo di attesa (l'agent si è scocciato di attendere e passa oltre). Il tempo è maggiore per i quadri importanti.
-        if ( ( timedelta > maxTimeForWaiting_OPERA_MEDIA && DestinationPrePause.GetComponentInParent<PictureInfo>().priority <= PictureInfo.OPERA_MEDIA )
-              || ( timedelta > maxTimeForWaiting_OPERA_MAGGIORE && DestinationPrePause.transform.parent.GetComponent<PictureInfo>().priority >= PictureInfo.OPERA_MAGGIORE ) )
+        if ( ( timedelta > maxTimeForWaiting_OPERA_MEDIA && priorityOfDestinationPrePausa <= ( int ) PictureInfo.Priority.OPERA_MEDIA )
+              || ( timedelta > maxTimeForWaiting_OPERA_MAGGIORE && priorityOfDestinationPrePausa >= ( int ) PictureInfo.Priority.OPERA_MAGGIORE ) )
         {
-            VisitedPictures.Remove( DestinationPrePause.GetComponentInParent<PictureInfo>() );
-            ImportantIgnoratePicture.Add( DestinationPrePause.GetComponentInParent<PictureInfo>() );
+            PictureInfo pictureDestinationPrePausa = DestinationPrePause.GetComponentInParent<PictureInfo>();
+            VisitedPictures.Remove( pictureDestinationPrePausa );
+            ImportantIgnoratePicture.Add( pictureDestinationPrePausa );
             InPausa = false;
             Destination = null;
         }
@@ -438,8 +443,9 @@ public abstract class PathManager : MonoBehaviour
         {
             if ( !Destination.CompareTag( "Empty Space" ) )
             {
-                VisitedPictures.Add( Destination.GetComponentInParent<PictureInfo>() );
-                ImportantPictures.Remove( Destination.GetComponentInParent<PictureInfo>() );
+                PictureInfo pictureDestination = Destination.GetComponentInParent<PictureInfo>();
+                VisitedPictures.Add( pictureDestination );
+                ImportantPictures.Remove( pictureDestination );
             }
             UpdateDestinationPoint();
             GoToDestinationPoint();
@@ -448,10 +454,11 @@ public abstract class PathManager : MonoBehaviour
         }
         else
         {
-            bool destinationIsImportantPic = Destination.CompareTag( "PicturePlane" ) && Destination.GetComponentInParent<PictureInfo>().priority > PictureInfo.OPERA_MEDIA; 
+            int destinationPriority = Destination.GetComponentInParent<PictureInfo>().priority;
+            bool destinationIsImportantPic = Destination.CompareTag( "PicturePlane" ) && destinationPriority > ( int ) PictureInfo.Priority.OPERA_MEDIA; 
 
             // "Non sono stanco", oppure "Sono stanco ma il quadro è molto importante"
-            if ( !ignoreDestination && ( FatigueLevel == FatigueManager.NON_STANCO || ( FatigueLevel == FatigueManager.STANCO && destinationIsImportantPic ) ) )
+            if ( !ignoreDestination && ( FatigueLevel == ( int ) FatigueManager.Level.NON_STANCO || ( FatigueLevel == ( int ) FatigueManager.Level.STANCO && destinationIsImportantPic ) ) )
             {
 
                 Debug.Log( name + ": Non sono stanco, oppur stanco ma quadro importante" );
