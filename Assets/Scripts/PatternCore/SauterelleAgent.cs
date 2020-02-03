@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class SauterellePattern : PathManager
+public class SauterelleAgent : BaseAgent
 {
     private IEnumerator<PictureInfo> picturesToWatch;
     public List<PictureInfo> pictures;
@@ -17,7 +17,9 @@ public class SauterellePattern : PathManager
 
     public override void InitMovementPattern ()
     {
-        maxDistanza = 200;
+        MaxDistanza = 200;
+        ChanceSkipDestination = 65;
+
         FindAllPicture();
         SetPictureToWatch();
     }
@@ -38,7 +40,7 @@ public class SauterellePattern : PathManager
 
     public override GameObject GetNextDestination ()
     {
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= ( int ) FatigueManager.Level.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.Level.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         if ( picturesToWatch.MoveNext() )
@@ -72,7 +74,8 @@ public class SauterellePattern : PathManager
 
         foreach ( PictureInfo picture in pictures )
         {
-            bool selectPicture = Random.Range( 0, 10 ) > 8;
+            int chanceSelectDestination = 70;
+            bool selectPicture = Random.Range( 0, 100 ) < chanceSelectDestination;
 
             if ( selectPicture || IsMaxJump( picture.index, lastPictureIndexAdded ) )
             {

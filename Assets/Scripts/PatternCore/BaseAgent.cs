@@ -9,7 +9,7 @@ using Pathfinding;
 
 using System.Collections;
 
-public abstract class PathManager : MonoBehaviour
+public abstract class BaseAgent : MonoBehaviour
 {
     protected GameObject DestinationPoint
     {
@@ -35,7 +35,7 @@ public abstract class PathManager : MonoBehaviour
 
     protected Sort utilitySort;
 
-    protected int FatigueLevel
+    protected FatigueManager.Level FatigueLevel
     {
         get => fatigueManager.GetFatigueLevel();
     }
@@ -62,9 +62,7 @@ public abstract class PathManager : MonoBehaviour
     private MarkerManager markerManager;
     private FatigueManager fatigueManager;
     protected ComicBalloon comicBalloon;
-
-    public int maxDistanza = 30;
-
+    
     private float DistanzaPercorsa
     {
         get => visitData.distanzaPercorsa;
@@ -105,6 +103,18 @@ public abstract class PathManager : MonoBehaviour
         set => visitData.tempoInAttesa = value;
     }
 
+    protected int ChanceSkipDestination
+    {
+        get => visitData.chanceSkipDestination;
+        set => visitData.chanceSkipDestination = value;
+    }
+
+    protected int MaxDistanza
+    {
+        get => visitData.maxDistanza;
+        set => visitData.maxDistanza = value;
+    }
+
     public abstract GameObject GetNextDestination ();
     public abstract void InitMovementPattern ();
 
@@ -143,10 +153,10 @@ public abstract class PathManager : MonoBehaviour
     {
         foreach ( PictureInfo picture in FindObjectsOfType<PictureInfo>() )
         {
-            // "Opere medio/grandi per l'espositore", oppure, "Opere di interesse per l'agent"
-            bool selectPicture = UnityEngine.Random.Range( 0, 2 ) > 1;
-
-            if ( picture.priority > (int) PictureInfo.Priority.OPERA_MEDIA || selectPicture )
+            int chanceAddPicture = 60;
+            bool isImportantForAgent = UnityEngine.Random.Range( 0, 100) > chanceAddPicture;
+            bool isImportantPicture = picture.priority > ( int )PictureInfo.Priority.OPERA_MEDIA;
+            if ( isImportantForAgent || isImportantPicture )
             {
                 ImportantPictures.Add( picture );
             }
@@ -259,8 +269,9 @@ public abstract class PathManager : MonoBehaviour
 
             if ( Destination.CompareTag( "Picture" ) )
             {
-                int minIndexAccepted = CurrentPictureIndex - 5;
+                int indexMaxDifference = 5;
 
+                int minIndexAccepted = CurrentPictureIndex - indexMaxDifference;
                 if ( Destination.GetComponent<PictureInfo>().index < minIndexAccepted )
                 {
                     Debug.Log( name + ": La destinazione già calcolata è un quadro con indice troppo basso per essere visitato ora." );
@@ -458,7 +469,7 @@ public abstract class PathManager : MonoBehaviour
             bool destinationIsImportantPic = Destination.CompareTag( "PicturePlane" ) && destinationPriority > ( int ) PictureInfo.Priority.OPERA_MEDIA; 
 
             // "Non sono stanco", oppure "Sono stanco ma il quadro è molto importante"
-            if ( !ignoreDestination && ( FatigueLevel == ( int ) FatigueManager.Level.NON_STANCO || ( FatigueLevel == ( int ) FatigueManager.Level.STANCO && destinationIsImportantPic ) ) )
+            if ( !ignoreDestination && ( FatigueLevel == FatigueManager.Level.NON_STANCO || ( FatigueLevel == FatigueManager.Level.STANCO && destinationIsImportantPic ) ) )
             {
 
                 Debug.Log( name + ": Non sono stanco, oppur stanco ma quadro importante" );

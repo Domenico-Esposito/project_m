@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PapillonPattern : PathManager
+public class PapillonAgent : BaseAgent
 {
 
     private List<GameObject> walls = new List<GameObject>();
@@ -19,20 +19,21 @@ public class PapillonPattern : PathManager
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
-        maxDistanza = 300;
+        ChanceSkipDestination = 65;
+        MaxDistanza = 300;
     }
 
     public override GameObject GetNextDestination ()
     {
 
-        if ( ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive ) || FatigueLevel >= (int) FatigueManager.Level.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive ) || FatigueLevel >=  FatigueManager.Level.MOLTO_STANCO )
             return GetPlaneOfExit();
+
+        bool skipDestination = Random.Range( 0, 100 ) < ChanceSkipDestination;
 
         if ( LookInBackward() )
         {
-            bool skipDestinationInBackward = Random.Range( 1, 10 ) > 7;
-
-            if ( skipDestinationInBackward || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
+            if ( skipDestination || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 LookNextIndex();
                 return nextDestination;
@@ -43,9 +44,7 @@ public class PapillonPattern : PathManager
 
         if ( LookNextIndex() || LookNextIndex(0) )
         {
-            bool skipNextIndexDestination = Random.Range( 0, 1 ) > 0.5f;
-
-            if ( skipNextIndexDestination || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
+            if ( skipDestination || VisitedPictures.Contains( nextDestination.GetComponentInParent<PictureInfo>() ) )
             {
                 return GetNextDestination();
             }

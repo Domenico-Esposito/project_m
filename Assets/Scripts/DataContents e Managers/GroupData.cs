@@ -56,7 +56,7 @@ public class GroupData : MonoBehaviour
         SetLeader( myLeader );
         markerManager.SetColorGroup( groupColor );
 
-        if( TryGetComponent(out NoChoicesBot noChoicesBot ) )
+        if( TryGetComponent(out NoChoicesAgent noChoicesBot ) )
         {
             visitData.importantPictures.Clear();
             visitData.visitedPictures.Clear();
@@ -86,10 +86,10 @@ public class GroupData : MonoBehaviour
 
         foreach ( GroupData member in group )
         {
-            member.GetComponent<PathManager>().ReceiveLeaderChoice( GetComponent<BotVisitData>().destination );
+            member.GetComponent<BaseAgent>().ReceiveLeaderChoice( GetComponent<BotVisitData>().destination );
             if ( despota )
             {
-                member.GetComponent<PathManager>().activeBot = true;
+                member.GetComponent<BaseAgent>().activeBot = true;
             }
         }
     }

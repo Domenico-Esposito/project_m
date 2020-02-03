@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: 'Assets/Scenes/Scena #3.unity'
+    path: Assets/Scenes/Museo.unity
     guid: 4d3ee0dd4552f445d95e663c970f64f8
   m_configObjects: {}

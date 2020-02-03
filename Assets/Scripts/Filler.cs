@@ -50,22 +50,22 @@ public class Filler : MonoBehaviour
     int configurationNumber = 1;
 
     private System.Type FOURMI {
-        get => typeof(FourmiPattern );
+        get => typeof( FourmiAgent );
     }
 
     private System.Type PAPILLON
     {
-        get => typeof( PapillonPattern );
+        get => typeof( PapillonAgent );
     }
     
     private System.Type POISSON
     {
-        get => typeof( PoissonPattern );
+        get => typeof( PoissonAgent );
     }
     
     private System.Type SAUTERELLE
     {
-        get => typeof( SauterellePattern );
+        get => typeof( SauterelleAgent );
     }       
 
     private void Awake ()
@@ -162,16 +162,16 @@ public class Filler : MonoBehaviour
         switch ( Random.Range( 0, numberOfPattern ) )
         {
         case 0:
-            return typeof( FourmiPattern );
+            return typeof( FourmiAgent );
         case 1:
-            return typeof( PapillonPattern );
+            return typeof( PapillonAgent );
         case 2:
-            return typeof( PoissonPattern );
+            return typeof( PoissonAgent );
         case 3:
-            return typeof( SauterellePattern );
+            return typeof( SauterelleAgent );
         }
 
-        return typeof( PathManager );
+        return typeof( BaseAgent );
     }
 
     private void AddGroupSinglePattern ()
@@ -180,18 +180,20 @@ public class Filler : MonoBehaviour
 
         int numberOfMember = Random.Range( 3, 8 );
 
+        System.Type agentType = GetRandomMovementPattern();
+
         for ( int i = 0; i < numberOfMember; i++ )
         {
             GameObject o;
-            o = AddAgent( GetRandomMovementPattern() );
+            o = AddAgent( agentType );
             if ( leaderDespota )
             {
-                o.GetComponent<PathManager>().activeBot = false;
+                o.GetComponent<BaseAgent>().activeBot = false;
                 if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1 )
                 {
-                    Destroy( o.GetComponent<PathManager>() );
+                    Destroy( o.GetComponent<BaseAgent>() );
                     o.GetComponent<BotVisitData>().ClearData();
-                    o.AddComponent<NoChoicesBot>();
+                    o.AddComponent<NoChoicesAgent>();
                 }
             }
 
@@ -204,8 +206,8 @@ public class Filler : MonoBehaviour
         if ( leaderDespota )
         {
             capo.despota = true;
-            capo.GetComponent<PathManager>().activeBot = true;
-            capo.GetComponent<PathManager>().pauseTime *= 2;
+            capo.GetComponent<BaseAgent>().activeBot = true;
+            capo.GetComponent<BaseAgent>().pauseTime *= 2;
 
         }
         capo.SetGroup( group );
@@ -225,12 +227,12 @@ public class Filler : MonoBehaviour
 
             if ( leaderDespota )
             {
-                o.GetComponent<PathManager>().activeBot = false;
+                o.GetComponent<BaseAgent>().activeBot = false;
                 if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1 )
                 {
-                    Destroy( o.GetComponent<PathManager>() );
+                    Destroy( o.GetComponent<BaseAgent>() );
                     o.GetComponent<BotVisitData>().ClearData();
-                    o.AddComponent<NoChoicesBot>();
+                    o.AddComponent<NoChoicesAgent>();
                 }
             }
 
@@ -244,7 +246,7 @@ public class Filler : MonoBehaviour
         if( leaderDespota )
         {
             capo.despota = true;
-            capo.GetComponent<PathManager>().activeBot = true;
+            capo.GetComponent<BaseAgent>().activeBot = true;
         }
 
         capo.SetGroup( group );
@@ -413,7 +415,7 @@ public class Filler : MonoBehaviour
 
     private GameObject RecyclesAgent (GameObject oldAgent, System.Type type)
     {
-        DestroyImmediate( oldAgent.GetComponent<PathManager>() );
+        DestroyImmediate( oldAgent.GetComponent<BaseAgent>() );
         oldAgent.GetComponent<BotVisitData>().ClearData();
         oldAgent.GetComponent<BotVisitData>().configurazioneDiIngresso = configurationNumber - 1;
 

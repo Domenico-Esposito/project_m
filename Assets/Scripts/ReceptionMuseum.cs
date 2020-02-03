@@ -46,8 +46,8 @@ public class ReceptionMuseum : MonoBehaviour
 
     public void UpdateAgentsCounter (bool remove = false)
     {
-        List<PathManager> agenti = new List<PathManager>( FindObjectsOfType<PathManager>() );
-        int utentiAttivi = agenti.FindAll( ( PathManager obj ) => obj.gameObject.activeInHierarchy ).Count + 1;
+        List<BaseAgent> agenti = new List<BaseAgent>( FindObjectsOfType<BaseAgent>() );
+        int utentiAttivi = agenti.FindAll( ( BaseAgent obj ) => obj.gameObject.activeInHierarchy ).Count + 1;
 
         if ( remove )
             utentiAttivi -= 2;

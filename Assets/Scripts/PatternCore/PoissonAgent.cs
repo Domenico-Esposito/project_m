@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PoissonPattern : PathManager
+public class PoissonAgent : BaseAgent
 {
     private IEnumerator<GameObject> pathPart;
     public List<GameObject> picturePlanes;
@@ -17,14 +17,15 @@ public class PoissonPattern : PathManager
         picturePlanes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
         pathPart = emptySpaces.GetEnumerator();
 
-        maxDistanza = 400;
+        ChanceSkipDestination = 65;
+        MaxDistanza = 400;
     }
 
     public override GameObject GetNextDestination ()
     {
-        bool viewPicture = Random.Range( 0, 10 ) > 7;
+        bool viewPicture = Random.Range( 0, 100 ) < ChanceSkipDestination ;
 
-        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= ( int )FatigueManager.Level.MOLTO_STANCO )
+        if ( ( ImportantPictures.Count <= 0 && groupData.LeaderIsAlive ) || FatigueLevel >= FatigueManager.Level.MOLTO_STANCO )
             return GetPlaneOfExit();
 
         utilitySort.transform = transform;

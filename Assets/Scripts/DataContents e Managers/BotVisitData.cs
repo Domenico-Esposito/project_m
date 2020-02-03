@@ -16,12 +16,15 @@ public class BotVisitData : MonoBehaviour
     public GameObject destination;
     public GameObject destinationPoint;
 
+    public int maxDistanza;
     public float distanzaPercorsa;
     public float tempoInAttesa;
     public float durataVisita;
     public bool inPausa;
 
-    [NonSerialized]
+    public int chanceSkipDestination;
+
+    [ NonSerialized]
     public int currentPictureIndex;
 
     public int configurazioneDiIngresso;

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FourmiPattern : PathManager
+public class FourmiAgent : BaseAgent
 {
     private IEnumerator<PictureInfo> picsOnCurrentWall;
     public List<GameObject> walls = new List<GameObject>();
@@ -10,7 +10,9 @@ public class FourmiPattern : PathManager
     public GameObject startWall;
     private GameObject currentWall;
     private Dictionary<GameObject, List<PictureInfo>> picturesOnWalls = new Dictionary<GameObject, List<PictureInfo>>();
-    
+
+    public int maxDiffNextPicIndexInClosestWall = 10;
+
     private void Awake ()
     {
         Color32 yellow = new Color32( 250, 231, 44, 1 );
@@ -25,18 +27,19 @@ public class FourmiPattern : PathManager
 
         currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[Random.Range(0, 3)];
 
-        maxDistanza = 280;
+        MaxDistanza = 280;
+        ChanceSkipDestination = 65;
     }
 
 
     public override GameObject GetNextDestination ()
     {
-        if ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive || FatigueLevel >= (int) FatigueManager.Level.MOLTO_STANCO)
+        if ( ImportantPictures.Count <= 0 && !groupData.LeaderIsAlive || FatigueLevel >= FatigueManager.Level.MOLTO_STANCO)
             return GetPlaneOfExit();
             
         if ( MoveToNextPicOnCurrentWall() || MoveToNextPicOnAnotherWall() ) 
         {
-            bool skipNewDestination = Random.Range( 1, 10 ) > 5;
+            bool skipNewDestination = Random.Range( 0, 100 ) < ChanceSkipDestination;
 
             if ( skipNewDestination )
                     return GetNextDestination();
@@ -122,7 +125,6 @@ public class FourmiPattern : PathManager
         return false;
     }
 
-
     private List<GameObject> GetWallsClosestToCurrent ()
     {
         List<GameObject> intersectsWalls = new List<GameObject>();
@@ -139,7 +141,7 @@ public class FourmiPattern : PathManager
                 picturesOnWalls[ wall ].RemoveAll( ( pic ) => VisitedPictures.Contains( pic ) );
                 if( picturesOnWalls[wall].Count > 0 )
                 {
-                    if ( picturesOnWalls[wall][0].index < CurrentPictureIndex + 10 )
+                    if ( picturesOnWalls[wall][0].index - CurrentPictureIndex < maxDiffNextPicIndexInClosestWall )
                         intersectsWalls.Add( wall );
                 }
             }

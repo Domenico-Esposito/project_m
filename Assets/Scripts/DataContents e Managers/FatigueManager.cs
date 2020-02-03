@@ -12,30 +12,28 @@ public class FatigueManager : MonoBehaviour
     };
 
     private BotVisitData visitData;
-    private PathManager pathManager;
 
     void Start ()
     {
         visitData = GetComponent<BotVisitData>();
-        pathManager = GetComponent<PathManager>();
     }
 
-    public virtual int GetFatigueLevel ()
+    public virtual Level GetFatigueLevel ()
     {
-        if ( visitData.distanzaPercorsa > pathManager.maxDistanza )
+        if ( visitData.distanzaPercorsa > visitData.maxDistanza )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );
-            return (int) Level.MOLTO_STANCO;
+            return Level.MOLTO_STANCO;
         }
 
-        if ( visitData.distanzaPercorsa > ( pathManager.maxDistanza / 1.2f ) )
+        if ( visitData.distanzaPercorsa > ( visitData.maxDistanza / 1.2f ) )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Stanco" );
-            return ( int ) Level.STANCO;
+            return Level.STANCO;
         }
 
         Debug.Log( gameObject.name + ": Livello stanchezza: Non stanco" );
-        return ( int ) Level.NON_STANCO;
+        return Level.NON_STANCO;
     }
 
 }

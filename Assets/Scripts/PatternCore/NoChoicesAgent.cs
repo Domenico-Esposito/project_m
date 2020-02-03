@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoChoicesBot : PathManager
+public class NoChoicesAgent : BaseAgent
 {
 
     private PictureInfo lastDestinationLeader;
