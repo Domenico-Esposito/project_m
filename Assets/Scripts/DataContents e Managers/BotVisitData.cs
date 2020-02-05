@@ -5,15 +5,25 @@ using System;
 
 public class BotVisitData : MonoBehaviour
 {
+    [NonSerialized]
     public List<PictureInfo> visitedPictures = new List<PictureInfo>();
 
+    [NonSerialized]
     public List<PictureInfo> importantPictures = new List<PictureInfo>();
 
+    [NonSerialized]
     public List<PictureInfo> importantIgnoratePicture = new List<PictureInfo>();
 
+    [NonSerialized]
     public GameObject lastPositionPattern;
+
+    [NonSerialized]
     public GameObject destinationPrePause;
+
+    [NonSerialized]
     public GameObject destination;
+
+    [NonSerialized]
     public GameObject destinationPoint;
 
     public int maxDistanza;
@@ -21,7 +31,6 @@ public class BotVisitData : MonoBehaviour
     public float tempoInAttesa;
     public float durataVisita;
     public bool inPausa;
-
     public int chanceSkipDestination;
 
     [ NonSerialized]
