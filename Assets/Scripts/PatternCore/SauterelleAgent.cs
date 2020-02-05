@@ -4,7 +4,7 @@ using UnityEngine;
 public class SauterelleAgent : BaseAgent
 {
     private IEnumerator<PictureInfo> picturesToWatch;
-    public List<PictureInfo> pictures;
+    private List<PictureInfo> pictures;
     private int maxJump;
 
     private void Awake ()
@@ -12,13 +12,13 @@ public class SauterelleAgent : BaseAgent
         Color32 red = new Color32( 202, 12, 12, 1 );
         GetComponentInChildren<Renderer>().material.SetColor( "_Color", red );
 
-        maxJump = Random.Range( 5, 10 );
+        maxJump = Random.Range( 6, 10 );
     }
 
     public override void InitMovementPattern ()
     {
         MaxDistanza = 200;
-        ChanceSkipDestination = 65;
+        ChanceSkipDestination = 2;
 
         FindAllPicture();
         SetPictureToWatch();
@@ -66,23 +66,28 @@ public class SauterelleAgent : BaseAgent
         return GetPlaneOfExit();
     }
 
-
+    public List<PictureInfo> picturesToWatch_list;
     private void SetPictureToWatch ()
-    {
-        List<PictureInfo> picturesToWatch_list = new List<PictureInfo>();
+    {   
+        picturesToWatch_list = new List<PictureInfo>();
         int lastPictureIndexAdded = 0;
 
         foreach ( PictureInfo picture in pictures )
         {
-            int chanceSelectDestination = 70;
+            int chanceSelectDestination = 20;
             bool selectPicture = Random.Range( 0, 100 ) < chanceSelectDestination;
 
             if ( selectPicture || IsMaxJump( picture.index, lastPictureIndexAdded ) )
             {
+                Debug.Log( "Aggiungo " + picture.index );
                 lastPictureIndexAdded = picture.index;
-                picturesToWatch_list.Add( picture );
+                if( !ImportantPictures.Contains( picture ))
+                    picturesToWatch_list.Add( picture );
             }
         }
+        
+        utilitySort.transform = transform;
+        picturesToWatch_list.Sort( utilitySort.SortByIndex );
 
         picturesToWatch = picturesToWatch_list.GetEnumerator();
     }

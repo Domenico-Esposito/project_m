@@ -19,7 +19,7 @@ public class PapillonAgent : BaseAgent
         FindWallsWithPictures();
         FindPicturesOnWalls();
 
-        ChanceSkipDestination = 65;
+        ChanceSkipDestination = 25;
         MaxDistanza = 300;
     }
 

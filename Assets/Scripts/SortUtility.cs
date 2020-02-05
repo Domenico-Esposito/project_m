@@ -77,7 +77,7 @@ namespace Museum.Utility
 
         public int DistanzaPicture(PictureInfo x, PictureInfo y )
         {
-            return Distanza( x.gameObject, y.gameObject );
+            return Distanza( x.GetComponentInChildren<GridSystem>().gameObject, y.GetComponentInChildren<GridSystem>().gameObject );
         }
 
         public int Distanza ( GameObject x, GameObject y )

@@ -28,7 +28,7 @@ public class FourmiAgent : BaseAgent
         currentWall = GameObject.FindGameObjectsWithTag( "Wall" )[Random.Range(0, 3)];
 
         MaxDistanza = 280;
-        ChanceSkipDestination = 65;
+        ChanceSkipDestination = 25;
     }
 
 

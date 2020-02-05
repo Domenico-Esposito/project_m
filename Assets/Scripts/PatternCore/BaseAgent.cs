@@ -142,9 +142,10 @@ public abstract class BaseAgent : MonoBehaviour
 
         emptySpaces = new List<GameObject>( GameObject.FindGameObjectsWithTag( "Empty Space" ) );
 
+        SelectImportantPictureStrategy();
+
         InitMovementPattern();
 
-        SelectImportantPictureStrategy();
 
         StartCoroutine( ClockManager() );
     }
@@ -153,8 +154,11 @@ public abstract class BaseAgent : MonoBehaviour
     {
         foreach ( PictureInfo picture in FindObjectsOfType<PictureInfo>() )
         {
-            int chanceAddPicture = 60;
-            bool isImportantForAgent = UnityEngine.Random.Range( 0, 100) > chanceAddPicture;
+            if ( !picture.CompareTag( "Picture" ) )
+                continue;
+
+            int chanceAddPicture = 10;
+            bool isImportantForAgent = UnityEngine.Random.Range( 0, 100) < chanceAddPicture;
             bool isImportantPicture = picture.priority > ( int )PictureInfo.Priority.OPERA_MEDIA;
             if ( isImportantForAgent || isImportantPicture )
             {

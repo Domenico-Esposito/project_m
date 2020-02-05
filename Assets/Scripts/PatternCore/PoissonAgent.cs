@@ -17,7 +17,7 @@ public class PoissonAgent : BaseAgent
         picturePlanes = new List<GameObject>( GameObject.FindGameObjectsWithTag( "PicturePlane" ) );
         pathPart = emptySpaces.GetEnumerator();
 
-        ChanceSkipDestination = 65;
+        ChanceSkipDestination = 25;
         MaxDistanza = 400;
     }
 
