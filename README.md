@@ -1,7 +1,7 @@
 ### Abstract 
 # Studio dei pattern comportamentali dei visitatori di un museo e loro implementazione in ambiente 3D con Unity
 
-![Software di simulazione - Screen 1](https://octodex.github.com/images/yaktocat.png)
+![Software di simulazione - Screen 1](https://github.com/Domenico-Esposito/project_m/blob/master/readme/assets/Simulazione_1.jpg?raw=true)
 
 Al giorno d'oggi l'ausilio di strumenti avanzati e creati ad-hoc per simulare determinati eventi nel mondo reale aiuta a comprendere meglio ciò che potrebbe essere migliorato, o che addirittura non funziona, in uno specifico progetto o in una sua parte.
 
@@ -17,4 +17,4 @@ Questi agenti si muoveranno in un ambiente tridimensionale, realizzato utilizzan
 
 La codifica di diversi comportamenti degli agenti, unita alla realizzazione di strumenti utili a gestire la simulazione, nonché al salvataggio delle informazioni sui movimenti e sulle scelte dei singoli agenti, permetteranno all'utilizzatore del software di studiare i flussi di quest'ultimi e comprendere in che modo il posizionamento dei punti di interesse, la loro importanza e l'architettura della stanza dove gli agenti si muovono, possano agevolare o intralciare tali flussi e di conseguenza compromettere la soddisfazione del visitatore.
 
-![Software di simulazione - Screen 2](https://octodex.github.com/images/yaktocat.png)
+![Software di simulazione - Screen 2](https://github.com/Domenico-Esposito/project_m/blob/master/readme/assets/Simulazione_2.jpg?raw=true)
