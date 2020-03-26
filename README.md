@@ -1,5 +1,7 @@
 ### Abstract 
 # Studio dei pattern comportamentali dei visitatori di un museo e loro implementazione in ambiente 3D con Unity
+[![Made with Unity](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat&logo=unity)](https://unity3d.com) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/Domenico-Esposito/project_m/issues/new)
+
 
 ![Software di simulazione - Screen 1](https://github.com/Domenico-Esposito/project_m/blob/master/readme/assets/Simulazione_1.jpg?raw=true)
 
