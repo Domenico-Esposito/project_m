@@ -7,6 +7,4 @@ Capire come le persone si muovono in un ambiente limitato è di estrema importan
 
 La codifica di diversi comportamenti degli agenti, unita alla presenza di strumenti utili a gestire la simulazione, nonché al salvataggio delle informazioni sui movimenti e sulle scelte dei singoli agenti, permetteranno all'utilizzatore del software di studiare i flussi di quest'ultimi e comprendere in che modo il posizionamento dei punti di interesse, la loro importanza e l'architettura della stanza possano agevolare o intralciare tali flussi e di conseguenza compromettere la soddisfazione degli agenti.
 
-![Software di simulazione - Screen 2](https://github.com/Domenico-Esposito/project_m/blob/master/readme/assets/Simulazione_2.jpg?raw=true)
-
 > _[1] Gli agenti, o bot, rappresentano nella simulazione la controparte virtuale delle persone nel mondo reale._
