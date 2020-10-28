@@ -19,13 +19,13 @@ public class GridSystem : MonoBehaviour
     {
         Vector3 size = GetComponent<MeshFilter>().mesh.bounds.size;
 
-        for ( float x = -Mathf.Ceil( columns / 2 ) + 1; x <= Mathf.Ceil( columns / 2 ) - 1; x++ )
+        for( float x = -size.x/2; x < size.x/2; x += size.x/columns)
         {
-            for ( float z = -Mathf.Ceil( rows / 2 ) + 1; z <= Mathf.Ceil( rows / 2 ) - 1; z++ )
+            for( float z = -size.z/2; z< size.z/2; z += size.z / rows )
             {
                 GameObject point = Instantiate( gridPoint, transform.position, Quaternion.identity, transform );
                 point.AddComponent<DestinationPoint>();
-                point.transform.localPosition = new Vector3( (size.x / columns) * x, 0f, (size.z / rows) * z );
+                point.transform.localPosition = new Vector3( x + (size.x/columns)/2, 0f, z + ( size.z / rows) / 2 );
                 gridPoints.Add( point );
             }
         }
