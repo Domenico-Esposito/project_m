@@ -20,13 +20,13 @@ public class FatigueManager : MonoBehaviour
 
     public virtual Level GetFatigueLevel ()
     {
-        if ( visitData.distanzaPercorsa > visitData.maxDistanza )
+        if ( visitData.totalDistance > visitData.maxDistanza )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Molto stanco" );
             return Level.MOLTO_STANCO;
         }
 
-        if ( visitData.distanzaPercorsa > ( visitData.maxDistanza / 1.2f ) )
+        if ( visitData.totalDistance > ( visitData.maxDistanza / 1.2f ) )
         {
             Debug.Log( gameObject.name + ": Livello stanchezza: Stanco" );
             return Level.STANCO;

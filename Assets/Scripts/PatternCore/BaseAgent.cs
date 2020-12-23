@@ -63,10 +63,10 @@ public abstract class BaseAgent : MonoBehaviour
     private FatigueManager fatigueManager;
     protected ComicBalloon comicBalloon;
     
-    private float DistanzaPercorsa
+    private float totalDistance
     {
-        get => visitData.distanzaPercorsa;
-        set => visitData.distanzaPercorsa = value;
+        get => visitData.totalDistance;
+        set => visitData.totalDistance = value;
     }
 
     protected int CurrentPictureIndex
@@ -91,16 +91,16 @@ public abstract class BaseAgent : MonoBehaviour
 
     protected GroupData groupData;
 
-    protected float DurataVisita
+    protected float visitDuration
     {
-        get => visitData.durataVisita;
-        set => visitData.durataVisita = value;
+        get => visitData.visitDuration;
+        set => visitData.visitDuration = value;
     }
 
-    protected float TempoInAttesa
+    protected float waitingTime
     {
-        get => visitData.tempoInAttesa;
-        set => visitData.tempoInAttesa = value;
+        get => visitData.waitingTime;
+        set => visitData.waitingTime = value;
     }
 
     protected int ChanceSkipDestination
@@ -176,7 +176,7 @@ public abstract class BaseAgent : MonoBehaviour
     {
         while ( true )
         {
-            DurataVisita += SECOND;
+            visitDuration += SECOND;
 
             if ( InPausa )
             {
@@ -184,7 +184,7 @@ public abstract class BaseAgent : MonoBehaviour
 
                 if ( GetComponent<RVOAgent>().destinazioneRaggiunta() )
                 {
-                    TempoInAttesa += SECOND;
+                    waitingTime += SECOND;
                 }
             }
             else
@@ -373,7 +373,7 @@ public abstract class BaseAgent : MonoBehaviour
         NavMeshPath staticPath = new NavMeshPath();
         NavMesh.CalculatePath( transform.position, DestinationPoint.transform.position, NavMesh.AllAreas, staticPath );
 
-        DistanzaPercorsa += GetPathLenght( staticPath );
+        totalDistance += GetPathLenght( staticPath );
     }
 
     protected float GetPathLenght ( NavMeshPath path )

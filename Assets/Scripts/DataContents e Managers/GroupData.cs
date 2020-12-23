@@ -8,12 +8,15 @@ public class GroupData : MonoBehaviour
     public bool despota = false;
     public bool isLeader = false;
     public GameObject leader;
+
     public List<GroupData> group = new List<GroupData>();
 
     private MarkerManager markerManager;
     private BotVisitData visitData;
 
-    private void Start ()
+    private Color groupColor; 
+
+    private void Awake ()
     {
         markerManager = GetComponent<MarkerManager>();
         visitData = GetComponent<BotVisitData>();
@@ -24,15 +27,8 @@ public class GroupData : MonoBehaviour
     {
         if ( isLeader )
         {
-            Color groupColor = GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().GetColor();
             markerManager.SetColorGroup( groupColor );
-
             markerManager.ShowLeader();
-
-            foreach ( GroupData member in group )
-            {
-                member.GroupElementSetData( groupColor, despota, gameObject );
-            }
         }
         else
         {
@@ -40,18 +36,24 @@ public class GroupData : MonoBehaviour
         }
     }
 
-    public void SetGroup ( List<GroupData> groupMembers )
+    public void AddMember ( GroupData memeber )
     {
-        isLeader = true;
-        group = groupMembers;
+        group.Add( memeber );
     }
 
-    void SetLeader ( GameObject myLeader )
+    public void SetGroup ( Color color )
+    {
+        isLeader = true;
+        groupColor = color;
+        InitGroupData();
+    }
+
+    public void SetLeader ( GameObject myLeader )
     {
         leader = myLeader;
     }
 
-    void GroupElementSetData ( Color groupColor, bool leaderDespota, GameObject myLeader )
+    public void GroupElementSetData ( Color groupColor, bool leaderDespota, GameObject myLeader )
     {
         SetLeader( myLeader );
         markerManager.SetColorGroup( groupColor );
@@ -93,7 +95,6 @@ public class GroupData : MonoBehaviour
             }
         }
     }
-
 
     private List<E> ShuffleList<E> ( List<E> inputList )
     {

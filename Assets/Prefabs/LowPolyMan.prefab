@@ -870,7 +870,7 @@ MonoBehaviour:
       m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags: -1
-  tagPenalties: 00000000140000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  tagPenalties: 0000000032000000280000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 1
 --- !u!114 &8767655879096683799
@@ -911,18 +911,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e80e2f474af41b68ad05b2e8893d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visitedPictures: []
-  importantPictures: []
-  importantIgnoratePicture: []
-  lastPositionPattern: {fileID: 0}
-  destinationPrePause: {fileID: 0}
   destination: {fileID: 0}
-  destinationPoint: {fileID: 0}
-  distanzaPercorsa: 0
-  tempoInAttesa: 0
-  durataVisita: 0
+  maxDistanza: 0
+  totalDistance: 0
+  waitingTime: 0
+  visitDuration: 0
   inPausa: 0
-  configurazioneDiIngresso: 0
+  chanceSkipDestination: 0
+  configIndex: 0
 --- !u!114 &-8436744853081776877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,7 +1243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.01}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8767655879621975883
@@ -1598,7 +1594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0.000007729977}
+  m_AnchoredPosition: {x: 0, y: 0.01}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8767655880312879326

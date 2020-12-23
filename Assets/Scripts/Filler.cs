@@ -31,7 +31,10 @@ public class Filler : MonoBehaviour
     public bool activeMixedGroup;
     float deltaTimeGruppoMisto;
 
-    [Header( "Proprietà per leader despota" )]
+    [Header( "Ingresso membri gruppi" )]
+    public float pauseTimeGroupMember;
+
+    [ Header( "Proprietà per leader despota" )]
     [Range( 0, 11 )]
     public int probabilitaLiberta;
     public bool leaderDespota;
@@ -44,7 +47,10 @@ public class Filler : MonoBehaviour
 
     List<Dictionary<string, int>> configurations = new List<Dictionary<string, int>>();
 
-    bool running = false;
+    bool isRunMixedgroup = false;
+    bool isRunGenSingAgent = false;
+    bool isRunGroupSingle = false;
+
     bool terminate = false;
 
     int configurationNumber = 1;
@@ -72,7 +78,6 @@ public class Filler : MonoBehaviour
     {
         ReadConfigurationData();
     }
-
 
     public void ReadConfigurationData ()
     {
@@ -115,46 +120,45 @@ public class Filler : MonoBehaviour
 
     IEnumerator GenerateSingleAgents ()
     {
+        isRunGenSingAgent = true;
 
-        if ( numberOfFourmi > 0 )
+        while ( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle ) > 0 )
         {
-            numberOfFourmi--;
-            AddAgent( FOURMI );
-            yield return new WaitForSeconds( pauseTime );
+
+            if ( numberOfFourmi > 0 )
+            {
+                yield return new WaitForSeconds( pauseTime );
+                numberOfFourmi--;
+                AddAgent( FOURMI );
+            }
+
+            if ( numberOfPapillon > 0 )
+            {
+                yield return new WaitForSeconds( pauseTime );
+                numberOfPapillon--;
+                AddAgent( PAPILLON );
+            }
+
+            if ( numberOfPoisson > 0 )
+            {
+                yield return new WaitForSeconds( pauseTime );
+                numberOfPoisson--;
+                AddAgent( POISSON );
+            }
+
+            if ( numberOfSauterelle > 0 )
+            {
+                yield return new WaitForSeconds( pauseTime );
+                numberOfSauterelle--;
+                AddAgent( SAUTERELLE );
+            }
+           
         }
 
-        if ( numberOfPapillon > 0 )
-        {
-            numberOfPapillon--;
-            AddAgent( PAPILLON );
-            yield return new WaitForSeconds( pauseTime );
-        }
+        isRunGenSingAgent = false;
 
-        if ( numberOfPoisson > 0 )
-        {
-            numberOfPoisson--;
-            AddAgent( POISSON );
-            yield return new WaitForSeconds( pauseTime );
-        }
-
-        if ( numberOfSauterelle > 0 )
-        {
-            numberOfSauterelle--;
-            AddAgent( SAUTERELLE );
-            yield return new WaitForSeconds( pauseTime );
-        }
-
-        if ( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle ) > 0 )
-        {
-            running = true;
-            yield return GenerateSingleAgents();
-        }
-        else
-        {
-            running = false;
-        }
+        yield return null;
     }
-
 
     private System.Type GetRandomMovementPattern ()
     {
@@ -174,84 +178,103 @@ public class Filler : MonoBehaviour
         return typeof( BaseAgent );
     }
 
-    private void AddGroupSinglePattern ()
+    private IEnumerator AddGroupSinglePattern ()
     {
+        Color groupColor = GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().GetColor();
+
         List<GroupData> group = new List<GroupData>();
 
-        int numberOfMember = Random.Range( 3, 8 );
+        int numberOfMember = Random.Range( 3, 8 ); ;
 
         System.Type agentType = GetRandomMovementPattern();
 
+        GameObject obj = InitializeAgent( agentType );
+        GroupData capo = obj.GetComponent<GroupData>();
+
+        capo.isLeader = true;
+        if ( leaderDespota )
+        {
+            capo.despota = true;
+            capo.GetComponent<BaseAgent>().pauseTime *= 2;
+        }
+
+        capo.SetGroup( groupColor );
+
         for ( int i = 0; i < numberOfMember; i++ )
         {
+            yield return new WaitForSeconds( pauseTimeGroupMember );
+
             GameObject o;
-            o = AddAgent( agentType );
+
+            o = InitializeAgent( GetRandomMovementPattern() );
+            
             if ( leaderDespota )
             {
                 o.GetComponent<BaseAgent>().activeBot = false;
-                if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1 )
+                if ( probabilitaLiberta > Random.Range( 1, 10 ) )
                 {
                     Destroy( o.GetComponent<BaseAgent>() );
                     o.GetComponent<BotVisitData>().ClearData();
                     o.AddComponent<NoChoicesAgent>();
+                    o.GetComponent<NoChoicesAgent>().ReceiveLeaderChoiceQueue( capo.GetComponent<BotVisitData>().destination );
+                    o.GetComponent<NoChoicesAgent>().activeBot = true;
                 }
             }
 
-            group.Add( o.GetComponent<GroupData>() );
+            o.GetComponent<GroupData>().GroupElementSetData( groupColor, true, capo.gameObject );
+            capo.AddMember( o.GetComponent<GroupData>() );
         }
+        
+        yield break;
+    }
 
-        GroupData capo = group[ group.Count - 1 ];
-        group.Remove( capo );
+    private IEnumerator AddMixedGroup ()
+    {
+        Color groupColor = GameObject.FindWithTag( "Museo" ).GetComponent<ReceptionMuseum>().GetColor();
 
+        List<GroupData> group = new List<GroupData>();
+        int numberOfMember = Random.Range( 3, 8 ); ;
+
+        GameObject obj = InitializeAgent( GetRandomMovementPattern() );
+        GroupData capo = obj.GetComponent<GroupData>();
+
+        capo.isLeader = true;
         if ( leaderDespota )
         {
             capo.despota = true;
-            capo.GetComponent<BaseAgent>().activeBot = true;
             capo.GetComponent<BaseAgent>().pauseTime *= 2;
-
         }
-        capo.SetGroup( group );
-    }
-
-    private void AddMixedGroup ()
-    {
-
-        List<GroupData> group = new List<GroupData>();
-        int numberOfMember = Random.Range( 3, 8 );
+        capo.SetGroup( groupColor );
 
         for ( int i = 0; i < numberOfMember; i++ )
         {
+            yield return new WaitForSeconds( pauseTimeGroupMember );
+
             GameObject o;
 
             o = InitializeAgent( GetRandomMovementPattern() );
 
+            group.Add( o.GetComponent<GroupData>() );
+
             if ( leaderDespota )
             {
                 o.GetComponent<BaseAgent>().activeBot = false;
-                if ( probabilitaLiberta > Random.Range( 1, 10 ) && i < numberOfMember - 1 )
+                if ( probabilitaLiberta > Random.Range( 1, 10 ) )
                 {
                     Destroy( o.GetComponent<BaseAgent>() );
                     o.GetComponent<BotVisitData>().ClearData();
                     o.AddComponent<NoChoicesAgent>();
+                    o.GetComponent<NoChoicesAgent>().ReceiveLeaderChoiceQueue( capo.GetComponent<BotVisitData>().destination );
+                    o.GetComponent<NoChoicesAgent>().activeBot = true;
+
                 }
             }
 
-            group.Add( o.GetComponent<GroupData>() );
-
+            o.GetComponent<GroupData>().GroupElementSetData( groupColor, true, capo.gameObject );
+            capo.AddMember( o.GetComponent<GroupData>() );
         }
 
-        GroupData capo = group[ group.Count - 1];
-        group.Remove( capo );
-
-        if( leaderDespota )
-        {
-            capo.despota = true;
-            capo.GetComponent<BaseAgent>().activeBot = true;
-        }
-
-        capo.SetGroup( group );
-
-
+        yield break;
     }
 
     private void Update ()
@@ -259,7 +282,7 @@ public class Filler : MonoBehaviour
 
         if( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle, numberOfMixedGroup, numberOfGroupSinglePattern ) == 0)
         {
-            if( configurations.Count > 0 )
+            if ( configurations.Count > 0 )
             {
                 LoadNextConfiguration();
             }
@@ -269,15 +292,22 @@ public class Filler : MonoBehaviour
             }
         }
 
-        if ( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle ) > 0 && running == false )
+        // Restart if add manually data in Unity Editor
+
+        if ( Mathf.Max( numberOfFourmi, numberOfPoisson, numberOfPapillon, numberOfSauterelle ) > 0 && !isRunGenSingAgent)
         {
-            RestartSimulation();
+            StartCoroutine( GenerateSingleAgents() );
         }
 
-        ManageSingleGroupCreation();
-        ManageMixedGroupCreation();
+        if ( numberOfMixedGroup > 0 && !isRunMixedgroup )
+        {
+            StartCoroutine( ManageMixedGroupCreation() );
+        }
 
-        deltaTime += Time.deltaTime;
+        if( numberOfGroupSinglePattern  > 0 && !isRunGroupSingle)
+        {
+            StartCoroutine( ManageSingleGroupCreation() );
+        }
     }
 
     private void LoadNextConfiguration ()
@@ -290,6 +320,21 @@ public class Filler : MonoBehaviour
         foreach ( KeyValuePair<string, int> data in configurazione )
         {
             UpdateConfigurationData( data.Key, data.Value );
+        }
+
+        if( !isRunGenSingAgent )
+        {
+            StartCoroutine( GenerateSingleAgents() );
+        }
+
+        if( !isRunGroupSingle )
+        {
+            StartCoroutine( ManageSingleGroupCreation() );
+        }
+
+        if( !isRunMixedgroup )
+        {
+            StartCoroutine( ManageMixedGroupCreation() );
         }
     }
 
@@ -341,6 +386,9 @@ public class Filler : MonoBehaviour
                 leaderDespota = false;
             }
             break;
+        case "pauseTimeGroupMember":
+            pauseTimeGroupMember = value;
+            break;
         }
     }
 
@@ -357,44 +405,45 @@ public class Filler : MonoBehaviour
         }
     }
 
-    private void RestartSimulation ()
+    private IEnumerator ManageSingleGroupCreation ()
     {
-        running = true;
-        StartCoroutine( GenerateSingleAgents() );
-    }
+        isRunGroupSingle = true;
 
-    private void ManageSingleGroupCreation ()
-    {
-        if ( deltaTimeGruppoSingolo > pauseTimeGroupSinglePattern )
+        while ( numberOfGroupSinglePattern > 0 )
         {
-            if ( activeGroupSinglePattern && numberOfGroupSinglePattern > 0 )
+
+            if ( activeGroupSinglePattern )
             {
                 numberOfGroupSinglePattern--;
-                AddGroupSinglePattern();
+                yield return new WaitForSeconds( pauseTimeGroupSinglePattern );
+                yield return StartCoroutine( AddGroupSinglePattern() );
             }
-
-            deltaTimeGruppoSingolo = 0f;
         }
 
-        deltaTimeGruppoSingolo += Time.deltaTime;
+        isRunGroupSingle = false;
 
+        yield break;
     }
 
-    private void ManageMixedGroupCreation ()
+    private IEnumerator ManageMixedGroupCreation ()
     {
-        if ( deltaTimeGruppoMisto > pauseTimeMixedGroup )
+        isRunMixedgroup = true;
+
+        while ( numberOfMixedGroup  > 0 )
         {
-            if ( activeMixedGroup && numberOfMixedGroup > 0 )
+
+            if ( activeMixedGroup )
             {
                 numberOfMixedGroup--;
-                AddMixedGroup();
+                yield return new WaitForSeconds( pauseTimeMixedGroup );
+                yield return StartCoroutine ( AddMixedGroup());
             }
 
-            deltaTimeGruppoMisto = 0f;
         }
 
+        isRunMixedgroup = false;
 
-        deltaTimeGruppoMisto += Time.deltaTime;
+        yield break;
     }
 
     private GameObject AddAgent (System.Type type)
@@ -417,7 +466,7 @@ public class Filler : MonoBehaviour
     {
         DestroyImmediate( oldAgent.GetComponent<BaseAgent>() );
         oldAgent.GetComponent<BotVisitData>().ClearData();
-        oldAgent.GetComponent<BotVisitData>().configurazioneDiIngresso = configurationNumber - 1;
+        oldAgent.GetComponent<BotVisitData>().configIndex = configurationNumber - 1;
 
         oldAgent.AddComponent( type );
 
@@ -434,14 +483,13 @@ public class Filler : MonoBehaviour
         return simulator.rvoGameObj[ rvoGameIndex ];
     }
 
-
     private GameObject InitializeAgent (System.Type type)
     {
         GameObject o = Instantiate( lowPolyMan, transform, true );
         o.AddComponent(type);
         o.transform.position = GetSpawnPoint();
         o.name = RadiceNomeAgenti + " " + index++;
-        o.GetComponent<BotVisitData>().configurazioneDiIngresso = configurationNumber - 1;
+        o.GetComponent<BotVisitData>().configIndex = configurationNumber - 1;
 
         return o;
     }

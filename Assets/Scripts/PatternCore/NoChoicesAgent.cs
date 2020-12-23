@@ -178,6 +178,7 @@ public class NoChoicesAgent : BaseAgent
             return;
         }
 
+
         if ( !VisitedPictures.Contains( leaderDestination.GetComponentInParent<PictureInfo>() ) )
         {
             if ( DestinationPrePause )
@@ -187,7 +188,13 @@ public class NoChoicesAgent : BaseAgent
 
             lastDestinationLeader = leaderDestination.GetComponentInParent<PictureInfo>();
         }
+        
+    }
 
+    public void ReceiveLeaderChoiceQueue ( GameObject leaderDestination )
+    {
+        lastDestinationLeader = leaderDestination.GetComponentInParent<PictureInfo>();
+        return;
     }
 
     private void UpdateDestinationPointForNoChoiceExit ()

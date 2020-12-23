@@ -26,6 +26,8 @@ public class GridSystem : MonoBehaviour
                 GameObject point = Instantiate( gridPoint, transform.position, Quaternion.identity, transform );
                 point.AddComponent<DestinationPoint>();
                 point.transform.localPosition = new Vector3( x + (size.x/columns)/2, 0f, z + ( size.z / rows) / 2 );
+                point.transform.rotation = new Quaternion( 0f, 0f, 0f, 0f );
+                point.transform.localScale = new Vector3(0.1f/transform.lossyScale.x, 0f, 0.1f/transform.lossyScale.z );
                 gridPoints.Add( point );
             }
         }

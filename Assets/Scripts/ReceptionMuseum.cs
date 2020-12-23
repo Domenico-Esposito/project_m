@@ -79,9 +79,9 @@ public class ReceptionMuseum : MonoBehaviour
         List<PictureInfo> visitati = visitData.visitedPictures;
         List<PictureInfo> non_visitati = visitData.importantPictures;
         List<PictureInfo> ignorati = visitData.importantIgnoratePicture;
-        float tempoVisita = visitData.durataVisita;
-        float tempoDiAttesa = visitData.tempoInAttesa;
-        float distanza = visitData.distanzaPercorsa;
+        float tempoVisita = visitData.visitDuration;
+        float tempoDiAttesa = visitData.waitingTime;
+        float distanza = visitData.totalDistance;
 
         // -1 rappresenta l'uscita
         numero_visitati += visitati.Count - 1;

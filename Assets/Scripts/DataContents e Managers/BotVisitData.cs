@@ -20,23 +20,22 @@ public class BotVisitData : MonoBehaviour
     [NonSerialized]
     public GameObject destinationPrePause;
 
-    [NonSerialized]
     public GameObject destination;
 
     [NonSerialized]
     public GameObject destinationPoint;
 
     public int maxDistanza;
-    public float distanzaPercorsa;
-    public float tempoInAttesa;
-    public float durataVisita;
+    public float totalDistance;
+    public float waitingTime;
+    public float visitDuration;
     public bool inPausa;
     public int chanceSkipDestination;
 
     [ NonSerialized]
     public int currentPictureIndex;
 
-    public int configurazioneDiIngresso;
+    public int configIndex;
 
     public void ClearData ()
     {
@@ -44,15 +43,15 @@ public class BotVisitData : MonoBehaviour
         importantPictures.Clear();
         importantIgnoratePicture.Clear();
 
-        distanzaPercorsa = 0f;
+        totalDistance = 0f;
         lastPositionPattern = null;
         inPausa = false;
         destinationPrePause = null;
 
-        tempoInAttesa = 0f;
-        durataVisita = 0f;
+        waitingTime = 0f;
+        visitDuration = 0f;
         currentPictureIndex = 0;
-        configurazioneDiIngresso = 0;
+        configIndex = 0;
 
         destination = null;
         destinationPoint = null;
@@ -62,11 +61,11 @@ public class BotVisitData : MonoBehaviour
 
     public string JSON (string patternType, bool soddisfatto)
     {
-        string dati = ConvertToJson( "visitati", visitedPictures );
-        dati += ConvertToJson( "nonVisitate", importantPictures );
-        dati += ConvertToJson( "ignorate", importantIgnoratePicture );
+        string dati = ConvertToJson( "visited", visitedPictures );
+        dati += ConvertToJson( "nonVisited", importantPictures );
+        dati += ConvertToJson( "ignored", importantIgnoratePicture );
         dati += "\"patternType\": \"" + patternType + "\",";
-        dati += "\"soddisfatto\": \"" + soddisfatto + "\",";
+        dati += "\"satisfied\": \"" + soddisfatto + "\",";
 
         return JsonUtility.ToJson( this, true ).Insert( 1, dati );
     }

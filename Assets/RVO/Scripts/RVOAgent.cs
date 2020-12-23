@@ -151,8 +151,11 @@ public class RVOAgent : MonoBehaviour
     {
         UpdateTarget(transform);
         simulator.getSimulator().setAgentPosition( agentIndex, new RVO.Vector2( 30, 30 ) );
-        simulator.getSimulator().setAgentDefaults( 0, 0, 0, 0, 0, 0, new RVO.Vector2( 0, 0 ) );
-        simulator.getSimulator().doStep();
+        //simulator.getSimulator().setAgentDefaults( 0, 0, 0, 0, 0, 0, new RVO.Vector2( 0, 0 ) );
+
+        simulator.getSimulator().setAgentMaxSpeed( agentIndex, 0f );
+
+        //simulator.getSimulator().doStep();
     }
 
     public RVO.Vector2 calculateNextStation ()
